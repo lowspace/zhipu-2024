@@ -1,0 +1,13 @@
+langchain_openai
+langchain
+langchainhub
+langchain_core
+httpx_sse
+zhipuai
+requests
+ipykernel
+pandas
+notebook
+tqdm
+google-generativeai
+anthropic
