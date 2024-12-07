@@ -1,0 +1,5322 @@
+[
+    {
+        "tid": "tttt----1",
+        "team": [
+            {
+                "id": "tttt----1----1-1-1",
+                "question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？",
+                "data_source_reasoning": "该问题需要查询上市公司的基本信息，包括公司全称、A股简称、法人等，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----1----1-1-2",
+                "question": "该公司实控人是否发生改变？如果发生变化，什么时候变成了谁？是哪国人？是否有永久境外居留权？（回答时间用XXXX-XX-XX）",
+                "data_source_reasoning": "问题涉及实控人的变更情况，包括变更时间和背景信息，这些内容可以在上市公司股东与股本相关的公司实际控制人表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ActualController"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----1----1-1-3",
+                "question": "在实控人发生变化的当年股权发生了几次转让？",
+                "data_source_reasoning": "问题涉及实控人变更当年的股权转让情况，这些信息可以从股东股权变动的记录中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareTransfer"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 415,
+                "prompt_tokens": 9937,
+                "total_tokens": 10352,
+                "prompt_cache_hit_tokens": 9920,
+                "prompt_cache_miss_tokens": 17
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.34s"
+        }
+    },
+    {
+        "tid": "tttt----2",
+        "team": [
+            {
+                "id": "tttt----2----2-1-1",
+                "question": "今天是2021年12月24日，创近半年新高的股票有几只？",
+                "data_source_reasoning": "此问题需要统计近半年内股票的最高点信息，这属于股票技术形态的分析内容，可以通过市场行情数据库的股票技术形态表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----2----2-1-2",
+                "question": "哪些股票股价大于75，且同时当天创一年新高的是？",
+                "data_source_reasoning": "此问题需要获取每日收盘数据，并结合股票技术形态分析是否创一年新高。涉及到的表包括每日行情表和股票技术形态表。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----2----2-1-3",
+                "question": "以上股票连续两日（今日与昨日）满足上述要求的是？",
+                "data_source_reasoning": "此问题需要获取每日行情数据，并对比分析连续两日的数据，判断是否满足条件。涉及每日行情表和技术形态表。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 442,
+                "prompt_tokens": 9916,
+                "total_tokens": 10358,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1724
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.20s"
+        }
+    },
+    {
+        "tid": "tttt----3",
+        "team": [
+            {
+                "id": "tttt----3----3-2-1",
+                "question": "2019年度（合并）常熟银行的职工总数有多少人？",
+                "data_source_reasoning": "此问题需要查询公司员工总数的信息，可以从产品供销与人力资源数据库的职工构成表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----3----3-2-2",
+                "question": "该公司披露的硕士或研究生学历（及以上）的有多少人？",
+                "data_source_reasoning": "问题需要获取公司员工的学历构成信息，可以从产品供销与人力资源数据库的职工构成表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----3----3-2-3",
+                "question": "20201月1日至年底退休了多少人？",
+                "data_source_reasoning": "问题需要获取员工退休情况的信息，这些数据存储在职工构成表中。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 348,
+                "prompt_tokens": 9905,
+                "total_tokens": 10253,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1713
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.31s"
+        }
+    },
+    {
+        "tid": "tttt----4",
+        "team": [
+            {
+                "id": "tttt----4----4-2-1",
+                "question": "互联网金融属于科技概念的什么分支？这个概念的英文名称是什么？",
+                "data_source_reasoning": "问题涉及科技概念的分支和英文名称，这些信息通常记录在概念板块常量表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ConceptList"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----4----4-2-2",
+                "question": "截至2021年底，这个概念有多少只股票（不包含已经调出的）？调出了多少只股票？",
+                "data_source_reasoning": "问题需要查询概念所属公司表，以获取截至2021年底该概念下的股票数量及调出情况。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----4----4-2-3",
+                "question": "哪些是2020年纳入的，A股简称分别叫什么？",
+                "data_source_reasoning": "问题需要查询概念所属公司表，以获取2020年纳入该概念的股票及其A股简称。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    },
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 394,
+                "prompt_tokens": 9921,
+                "total_tokens": 10315,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1729
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.77s"
+        }
+    },
+    {
+        "tid": "tttt----5",
+        "team": [
+            {
+                "id": "tttt----5----5-2-1",
+                "question": "化工纳入过多少个子类概念？",
+                "data_source_reasoning": "问题涉及化工行业的子类概念数量，这些信息通常记录在上市公司行业板块数据库的概念板块常量表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ConceptList"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----5----5-2-2",
+                "question": "2021年纳入过多少个？分别是？",
+                "data_source_reasoning": "问题需要查询2021年新纳入的概念信息，这些信息可以在上市公司行业板块数据库的概念板块常量表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ConceptList"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----5----5-2-3",
+                "question": "2021年纳入的这些概念的股票有多少只？分别属于哪些三级行业（仅考虑2021年新纳入的行业数据）？",
+                "data_source_reasoning": "问题需要获取2021年新纳入概念的股票数量及其所属的三级行业信息。这些信息可以从上市公司行业板块数据库的概念所属公司表和公司行业划分表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    },
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 412,
+                "prompt_tokens": 9915,
+                "total_tokens": 10327,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1723
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.99s"
+        }
+    },
+    {
+        "tid": "tttt----6",
+        "team": [
+            {
+                "id": "tttt----6----6-2-1",
+                "question": "天顺风能披露了多少次担保信息？",
+                "data_source_reasoning": "问题涉及公司披露的担保信息次数，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司担保明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----6----6-2-2",
+                "question": "他一共披露过多少次借贷信息？2021年披露了多少次？",
+                "data_source_reasoning": "问题涉及公司披露的借贷信息次数，包括总次数和2021年的次数，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司借贷明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----6----6-2-3",
+                "question": "他一共披露了多少次重大资产重组信息？2021年披露了多少次？2020年披露了多少次？",
+                "data_source_reasoning": "问题涉及公司披露的重大资产重组信息次数，包括总次数和2021年、2020年的次数，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司资产重组明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Regroup"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 416,
+                "prompt_tokens": 9918,
+                "total_tokens": 10334,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1726
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.10s"
+        }
+    },
+    {
+        "tid": "tttt----7",
+        "team": [
+            {
+                "id": "tttt----7----7-2-1",
+                "question": "天顺风能属于哪个三级行业？",
+                "data_source_reasoning": "问题需要查询天顺风能所属的三级行业信息，这些信息通常记录在上市公司行业板块数据库的公司行业划分表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----7----7-2-2",
+                "question": "2021年发布的该行业的股票有多少只？",
+                "data_source_reasoning": "问题需要统计2021年发布的属于特定行业的股票数量，这些信息可以从公司行业划分表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----7----7-2-3",
+                "question": "该行业8月公布的最高行业营业收入是多少万元？",
+                "data_source_reasoning": "问题需要查询特定行业在8月公布的最高营业收入，这些财务数据通常记录在行业财务指标表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_IndFinIndicators"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 359,
+                "prompt_tokens": 9895,
+                "total_tokens": 10254,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1703
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.85s"
+        }
+    },
+    {
+        "tid": "tttt----8",
+        "team": [
+            {
+                "id": "tttt----8----8-2-1",
+                "question": "首钢股份发布增发和配股次数分别是多少次？",
+                "data_source_reasoning": "该问题需要查询首钢股份的增发和配股次数，这些信息通常记录在上市公司财务指标/财务报表/融资与分红数据库的相关表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_AShareSeasonedNewIssue"
+                    },
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_ASharePlacement"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----8----8-2-2",
+                "question": "该股每次增发预计募集资金总额分别是？增发预计募集资金总额最高的公司中文全称是？金额是？",
+                "data_source_reasoning": "该问题需要查询每次增发的预计募集资金总额，以及最高募集资金总额的公司信息，这些数据可以在上市公司财务指标/财务报表/融资与分红数据库的A股增发表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_AShareSeasonedNewIssue"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----8----8-2-3",
+                "question": "该股每次配股发行费用总额分别是？配股发行费用总额最高的中文全称是？金额是？",
+                "data_source_reasoning": "该问题需要查询每次配股的发行费用总额，以及最高发行费用总额的公司信息，这些数据可以在上市公司财务指标/财务报表/融资与分红数据库的A股配股表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_ASharePlacement"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 464,
+                "prompt_tokens": 9927,
+                "total_tokens": 10391,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1735
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.65s"
+        }
+    },
+    {
+        "tid": "tttt----9",
+        "team": [
+            {
+                "id": "tttt----9----9-2-1",
+                "question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）",
+                "data_source_reasoning": "该问题需要查询公司的研发投入和研发人员数量，这些信息通常记录在上市公司财务指标相关的公司研发投入与产出表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IntAssetsDetail"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----9----9-2-2",
+                "question": "费用化研发占比为？资本化研发占比为？",
+                "data_source_reasoning": "问题涉及研发投入的费用化和资本化占比，这些信息可以在公司研发投入与产出表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IntAssetsDetail"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----9----9-2-3",
+                "question": "上一年度研发投入最高的三家公司是？（回答中文简称）",
+                "data_source_reasoning": "问题需要获取上一年度研发投入最高的三家公司的信息，这些数据可以从公司研发投入与产出表中进行排序和筛选。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IntAssetsDetail"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 397,
+                "prompt_tokens": 9926,
+                "total_tokens": 10323,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1734
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.53s"
+        }
+    },
+    {
+        "tid": "tttt----10",
+        "team": [
+            {
+                "id": "tttt----10----10-2-1",
+                "question": "000958公司2021年主营业务产品有哪些？（合并报表调整后的，金额保留2位小数）",
+                "data_source_reasoning": "该问题需要查询公司2021年的主营业务产品及其金额，这些信息通常记录在财务报表相关的公司主营业务构成表中。由于要求合并报表调整后的数据，因此需要查询调整后的合并报表数据。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_MainOperIncome"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----10----10-2-2",
+                "question": "公司2021年比2020年主营业务产品减少的有？",
+                "data_source_reasoning": "该问题需要对比公司2021年和2020年的主营业务产品，找出减少的产品。这些信息可以从公司主营业务构成表中获取，通过对比两年的数据来确定减少的产品。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_MainOperIncome"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----10----10-2-3",
+                "question": "公司2021年度经营情况的信息发布日期是（XXXX-XX-XX）？",
+                "data_source_reasoning": "该问题需要查询公司2021年度经营情况的信息发布日期，这些信息通常记录在财务报表相关的公司经营情况述评表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_OperatingStatus"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 453,
+                "prompt_tokens": 9938,
+                "total_tokens": 10391,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1746
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.87s"
+        }
+    },
+    {
+        "tid": "tttt----11",
+        "team": [
+            {
+                "id": "tttt----11----11-2-1",
+                "question": "工商银行的H股代码、中文名称及英文名称分别是？",
+                "data_source_reasoning": "该问题需要查询工商银行的H股代码、中文名称及英文名称，这些信息通常记录在港股数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "HK_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----11----11-2-2",
+                "question": "该公司的主席及公司邮箱是？",
+                "data_source_reasoning": "问题涉及工商银行的主席及公司邮箱信息，这些内容可以在港股数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "HK_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----11----11-2-3",
+                "question": "该公司2020年12月底披露的变更前后的员工人数为多少人？",
+                "data_source_reasoning": "问题需要获取工商银行在2020年12月底披露的员工人数变更情况，这些信息可以从港股数据库的员工数量变动表中查询到。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "HK_EmployeeChange"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 379,
+                "prompt_tokens": 9910,
+                "total_tokens": 10289,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1718
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.28s"
+        }
+    },
+    {
+        "tid": "tttt----12",
+        "team": [
+            {
+                "id": "tttt----12----12-2-1",
+                "question": "今天是2020年6月24日，阅文集团近一个月最高价是（保留2位小数）？",
+                "data_source_reasoning": "该问题需要查询阅文集团近一个月的最高价，这属于股票行情数据，可以通过市场行情数据库的股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----12----12-2-2",
+                "question": "近一年最低价？",
+                "data_source_reasoning": "该问题需要查询阅文集团近一年的最低价，这也属于股票行情数据，可以通过市场行情数据库的股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----12----12-2-3",
+                "question": "差额是？",
+                "data_source_reasoning": "该问题需要计算近一个月最高价与近一年最低价之间的差额，这需要结合前两个问题的数据进行计算。",
+                "data_source": []
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 355,
+                "prompt_tokens": 9907,
+                "total_tokens": 10262,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1715
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.93s"
+        }
+    },
+    {
+        "tid": "tttt----13",
+        "team": [
+            {
+                "id": "tttt----13----13-2-1",
+                "question": "今天是2020年10月27日，当日收盘价第3高的港股是？(以下都回答简称)",
+                "data_source_reasoning": "该问题需要查询2020年10月27日港股的收盘价信息，并找出收盘价第3高的股票简称。这些信息通常记录在港股数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----13----13-2-2",
+                "question": "成交量第3高的是？",
+                "data_source_reasoning": "该问题需要查询2020年10月27日港股的成交量信息，并找出成交量第3高的股票简称。这些信息通常记录在港股数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----13----13-2-3",
+                "question": "换手率第3高的是？",
+                "data_source_reasoning": "该问题需要查询2020年10月27日港股的换手率信息，并找出换手率第3高的股票简称。这些信息通常记录在港股数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 424,
+                "prompt_tokens": 9911,
+                "total_tokens": 10335,
+                "prompt_cache_hit_tokens": 9856,
+                "prompt_cache_miss_tokens": 55
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.21s"
+        }
+    },
+    {
+        "tid": "tttt----14",
+        "team": [
+            {
+                "id": "tttt----14----14-2-1",
+                "question": "2019-09-02，当日收盘价最高的港股是？(以下都回答简称)",
+                "data_source_reasoning": "该问题需要查询2019-09-02当日的港股收盘价数据，以确定收盘价最高的港股简称。这些信息通常记录在港股数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----14----14-2-2",
+                "question": "2019-09-02，当日成交量最高的是？",
+                "data_source_reasoning": "该问题需要查询2019-09-02当日的港股成交量数据，以确定成交量最高的港股简称。这些信息通常记录在港股数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----14----14-2-3",
+                "question": "2019-09-02，当日换手率最高的是？",
+                "data_source_reasoning": "该问题需要查询2019-09-02当日的港股换手率数据，以确定换手率最高的港股简称。这些信息通常记录在港股数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 434,
+                "prompt_tokens": 9927,
+                "total_tokens": 10361,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1735
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.51s"
+        }
+    },
+    {
+        "tid": "tttt----15",
+        "team": [
+            {
+                "id": "tttt----15----15-2-1",
+                "question": "2020年之间 哪些公司进行公司名称全称变更，公司代码是什么？",
+                "data_source_reasoning": "该问题需要查询2020年之间公司名称全称变更的记录，这些信息通常记录在上市公司基本资料数据库的公司名称更改状况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_NameChange"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----15----15-2-2",
+                "question": "这些公司A股证券代码分别是什么？",
+                "data_source_reasoning": "问题需要获取这些公司的A股证券代码，这些信息可以从常量库的证券主表中找到。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----15----15-2-3",
+                "question": "这些公司的证券内部编码是多少？",
+                "data_source_reasoning": "问题需要获取这些公司的证券内部编码，这些信息同样可以从常量库的证券主表中找到。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 368,
+                "prompt_tokens": 9908,
+                "total_tokens": 10276,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1716
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.87s"
+        }
+    },
+    {
+        "tid": "tttt----16",
+        "team": [
+            {
+                "id": "tttt----16----16-2-1",
+                "question": "2021-12-31报告期内，查询总资产最高的公司是?",
+                "data_source_reasoning": "该问题需要查询公司在特定报告期内的总资产数据，这些信息通常记录在财务报表中的资产负债表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----16----16-2-2",
+                "question": "经营活动产生的现金流量净额最高的公司是？",
+                "data_source_reasoning": "问题涉及经营活动产生的现金流量净额，这些数据可以在财务报表中的现金流量表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_CashFlowStatementAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----16----16-2-3",
+                "question": "这两个公司净利润差额是？",
+                "data_source_reasoning": "问题需要获取两个公司的净利润数据，这些信息可以在财务报表中的利润表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IncomeStatementAll"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 366,
+                "prompt_tokens": 9907,
+                "total_tokens": 10273,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1715
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.78s"
+        }
+    },
+    {
+        "tid": "tttt----17",
+        "team": [
+            {
+                "id": "tttt----17----17-2-1",
+                "question": "2020年4月涨幅前10的港股股票有哪些?",
+                "data_source_reasoning": "该问题需要查询港股在2020年4月的涨幅情况，这属于股票行情表现的分析内容，可以通过港股数据库的港股行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "CS_HKStockPerformance"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----17----17-2-2",
+                "question": "2020年5月涨幅前10的港股股票有哪些？",
+                "data_source_reasoning": "该问题需要查询港股在2020年5月的涨幅情况，这属于股票行情表现的分析内容，可以通过港股数据库的港股行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "CS_HKStockPerformance"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----17----17-2-3",
+                "question": "2020年4月涨幅前十的股票中， 5月涨幅最小的是？",
+                "data_source_reasoning": "该问题需要先查询2020年4月涨幅前十的港股股票，然后再查询这些股票在2020年5月的涨幅情况，找出涨幅最小的股票。这涉及两次查询，分别通过港股行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "CS_HKStockPerformance"
+                    },
+                    {
+                        "database": "HKStockDB",
+                        "table": "CS_HKStockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 444,
+                "prompt_tokens": 9920,
+                "total_tokens": 10364,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1728
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.18s"
+        }
+    },
+    {
+        "tid": "tttt----18",
+        "team": [
+            {
+                "id": "tttt----18----1-2-1",
+                "question": "东航物流的注册邮箱是什么？",
+                "data_source_reasoning": "该问题需要查询公司的联系方式，包括注册邮箱，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----18----1-2-2",
+                "question": "该公司的实控人是谁？",
+                "data_source_reasoning": "问题涉及公司的实际控制人信息，这些内容可以在上市公司股东与股本相关的公司实际控制人表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ActualController"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----18----1-2-3",
+                "question": "该实控人名下一共有多少家公司？",
+                "data_source_reasoning": "问题需要获取实控人名下的公司数量，这些信息可以从公司实际控制人表中找到，但可能需要结合其他表进行进一步的统计。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ActualController"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----18----1-2-4",
+                "question": "这些公司从事物流业务的有多少家？",
+                "data_source_reasoning": "问题需要获取实控人名下从事物流业务的公司数量，这些信息可以从公司实际控制人表和公司经营范围与行业变更表中找到，并进行筛选和统计。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ActualController"
+                    },
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_Business"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 507,
+                "prompt_tokens": 9932,
+                "total_tokens": 10439,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1740
+            }
+        },
+        "time_usage": {
+            "stage_1": "24.46s"
+        }
+    },
+    {
+        "tid": "tttt----19",
+        "team": [
+            {
+                "id": "tttt----19----2-2-1",
+                "question": "航锦科技股份有限公司是否变更过公司名称？",
+                "data_source_reasoning": "该问题需要查询公司名称的变更历史，这些信息通常记录在上市公司基本资料数据库的公司名称更改状况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_NameChange"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----19----2-2-2",
+                "question": "该公司涉及回购的最大的一笔金额是多少？",
+                "data_source_reasoning": "问题涉及公司回购的金额信息，这些内容可以在上市公司股东与股本相关的股份回购表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----19----2-2-3",
+                "question": "该年度前十大股东的持股比例变成了多少？",
+                "data_source_reasoning": "问题涉及前十大股东的持股比例，这些信息可以从股东名单表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----19----2-2-4",
+                "question": "当年公司的技术与生产人员一共有多少人？",
+                "data_source_reasoning": "问题需要获取公司技术与生产人员的总数，这些数据存储在职工构成表中。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 457,
+                "prompt_tokens": 9939,
+                "total_tokens": 10396,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1747
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.19s"
+        }
+    },
+    {
+        "tid": "tttt----20",
+        "team": [
+            {
+                "id": "tttt----20----3-2-1",
+                "question": "申万一级行业是交通运输的公司有多少家？",
+                "data_source_reasoning": "该问题需要查询申万一级行业分类中属于交通运输行业的公司数量，这些信息通常记录在上市公司行业板块数据库的公司行业划分表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----20----3-2-2",
+                "question": "这些公司中多少家是20年变更的行业？",
+                "data_source_reasoning": "问题涉及20年行业变更的公司数量，这些信息可以在上市公司行业板块数据库的公司行业变更表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndChange"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----20----3-2-3",
+                "question": "变更后又在21年取消的有哪些公司？",
+                "data_source_reasoning": "问题需要获取20年变更行业后在21年又被取消的公司名单，这些信息同样可以从公司行业变更表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndChange"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 374,
+                "prompt_tokens": 9900,
+                "total_tokens": 10274,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1708
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.80s"
+        }
+    },
+    {
+        "tid": "tttt----21",
+        "team": [
+            {
+                "id": "tttt----21----4-2-1",
+                "question": "科达制造2021年8月4日当天的最高价与最低价分别是多少",
+                "data_source_reasoning": "该问题需要查询特定股票在特定日期的最高价和最低价，这些信息通常记录在股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----21----4-2-2",
+                "question": "该股票的概念板块当年多少次涨停？",
+                "data_source_reasoning": "问题涉及股票在特定年份的涨停次数，这属于股票技术形态的分析内容，可以通过市场行情数据库的股票技术形态表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----21----4-2-3",
+                "question": "该股票所属的一级概念是什么？",
+                "data_source_reasoning": "问题需要获取股票所属的概念板块信息，这些信息通常记录在上市公司行业板块数据库的概念所属公司表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----21----4-2-4",
+                "question": "该公司所属二级行业当日行业总市值有多少",
+                "data_source_reasoning": "问题需要查询特定行业在特定日期的总市值，这些信息通常记录在上市公司行业板块数据库的行业估值指标表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_IndustryValuation"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 488,
+                "prompt_tokens": 9945,
+                "total_tokens": 10433,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1753
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.74s"
+        }
+    },
+    {
+        "tid": "tttt----22",
+        "team": [
+            {
+                "id": "tttt----22----5-2-1",
+                "question": "涪陵榨菜的注册地址在哪？",
+                "data_source_reasoning": "该问题需要查询上市公司的基本信息，包括注册地址，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----22----5-2-2",
+                "question": "该公司上市公告书中的前十大股东是哪些？",
+                "data_source_reasoning": "问题涉及上市公司的股东信息，特别是上市公告书中的前十大股东，这些信息可以在上市公司股东与股本相关的股东名单表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----22----5-2-3",
+                "question": "这些股东里有几家是基金管理公司？",
+                "data_source_reasoning": "问题需要识别前十大股东中哪些是基金管理公司，这些信息可以从股东名单表中获取，并通过股东类型分类表进行进一步确认。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    },
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SHTypeClassifi"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----22----5-2-4",
+                "question": "存在资料的公司有几家，这些公司在2019年分别管理了多少种基金？",
+                "data_source_reasoning": "问题需要获取基金管理公司的详细信息及其在2019年管理的基金数量，这些信息可以从公募基金数据库的基金管理人概况表和基金概况表中获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_InvestAdvisorOutline"
+                    },
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 559,
+                "prompt_tokens": 9950,
+                "total_tokens": 10509,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1758
+            }
+        },
+        "time_usage": {
+            "stage_1": "26.00s"
+        }
+    },
+    {
+        "tid": "tttt----23",
+        "team": [
+            {
+                "id": "tttt----23----6-2-1",
+                "question": "唐山港集团股份有限公司是什么时间上市的（回答XXXX-XX-XX）",
+                "data_source_reasoning": "该问题需要查询唐山港集团股份有限公司的上市时间，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----23----6-2-2",
+                "question": "当年一共上市了多少家企业？",
+                "data_source_reasoning": "问题需要统计当年上市的企业数量，这些信息可以从上市公司基本资料数据库的公司概况表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----23----6-2-3",
+                "question": "这些企业有多少是在北京注册的？",
+                "data_source_reasoning": "问题需要获取在北京注册的企业数量，这些信息可以从上市公司基本资料数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----23----6-2-4",
+                "question": "哪些是注册和办公都在海淀的？",
+                "data_source_reasoning": "问题需要获取注册和办公地点都在海淀的企业信息，这些信息可以从上市公司基本资料数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 468,
+                "prompt_tokens": 9936,
+                "total_tokens": 10404,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1744
+            }
+        },
+        "time_usage": {
+            "stage_1": "28.90s"
+        }
+    },
+    {
+        "tid": "tttt----24",
+        "team": [
+            {
+                "id": "tttt----24----7-2-1",
+                "question": "山东药玻2020年发布的19年年报的大股东是谁",
+                "data_source_reasoning": "问题涉及2019年年报中的大股东信息，这些信息通常记录在上市公司股东与股本相关的股东名单表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----24----7-2-2",
+                "question": "19年一共有多少户股东？",
+                "data_source_reasoning": "问题需要获取2019年的股东户数信息，这些数据可以从上市公司股东与股本相关的股东户数表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SHNumber"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----24----7-2-3",
+                "question": "他的流通股本有多少股？",
+                "data_source_reasoning": "问题涉及流通股本的信息，这些数据可以从上市公司股东与股本相关的公司股本结构变动表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareStru"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----24----7-2-4",
+                "question": "19年的股权变动中涉及股数量最大的一次非专场大宗交易是在哪天正式变动的？（时间回答XXXX-XX-XX）",
+                "data_source_reasoning": "问题需要查询2019年股权变动中涉及股数量最大的一次非专场大宗交易的具体日期，这些信息可以从股东股权变动表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareTransfer"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 510,
+                "prompt_tokens": 9961,
+                "total_tokens": 10471,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1769
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.33s"
+        }
+    },
+    {
+        "tid": "tttt----25",
+        "team": [
+            {
+                "id": "tttt----25----8-2-1",
+                "question": "中南出版传媒集团股份有限公司的证券代码是多少？",
+                "data_source_reasoning": "该问题需要查询上市公司的证券代码，这些信息通常记录在常量库的证券主表中。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----25----8-2-2",
+                "question": "该公司2019年母公司一季报中预付款项是多少？",
+                "data_source_reasoning": "问题涉及公司财务报表中的预付款项信息，这些数据可以在上市公司财务指标数据库的资产负债表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----25----8-2-3",
+                "question": "总营收呢？",
+                "data_source_reasoning": "问题需要获取公司财务报表中的总营收信息，这些数据可以在上市公司财务指标数据库的利润分配表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IncomeStatementAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----25----8-2-4",
+                "question": "经营活动现金流入了多少？",
+                "data_source_reasoning": "问题涉及公司财务报表中的经营活动现金流信息，这些数据可以在上市公司财务指标数据库的现金流量表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_CashFlowStatementAll"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 467,
+                "prompt_tokens": 9937,
+                "total_tokens": 10404,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1745
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.71s"
+        }
+    },
+    {
+        "tid": "tttt----26",
+        "team": [
+            {
+                "id": "tttt----26----9-2-1",
+                "question": "000932的英文名称是什么？",
+                "data_source_reasoning": "该问题需要查询上市公司的基本信息，包括英文名称，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----26----9-2-2",
+                "question": "该公司20年的年报中前三高管薪资是多少？",
+                "data_source_reasoning": "问题涉及公司高管的薪资信息，这些内容可以在上市公司产品供销与人力资源数据库的管理层报酬统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----26----9-2-3",
+                "question": "当年该公司是否成功资产重组？(回答是或者否)",
+                "data_source_reasoning": "问题涉及公司资产重组的情况，这些信息可以从上市公司公告资讯与重大事项数据库的公司资产重组明细表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Regroup"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 370,
+                "prompt_tokens": 9902,
+                "total_tokens": 10272,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1710
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.79s"
+        }
+    },
+    {
+        "tid": "tttt----27",
+        "team": [
+            {
+                "id": "tttt----27----10-2-1",
+                "question": "RXW中文全称是什么？",
+                "data_source_reasoning": "该问题需要查询公司的中文全称，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----27----10-2-2",
+                "question": "该公司上市时一共配售了多少张股？",
+                "data_source_reasoning": "问题涉及公司上市时的配售情况，这些信息可以从上市公司财务指标相关的A股配股表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_ASharePlacement"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----27----10-2-3",
+                "question": "21年该公司的研发投入是多少？",
+                "data_source_reasoning": "问题需要获取公司2021年的研发投入信息，这些数据存储在公司研发投入与产出表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IntAssetsDetail"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 360,
+                "prompt_tokens": 9897,
+                "total_tokens": 10257,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1705
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.63s"
+        }
+    },
+    {
+        "tid": "tttt----28",
+        "team": [
+            {
+                "id": "tttt----28----11-2-1",
+                "question": "Titan Wind Energy (Suzhou) Co.,Ltd.董秘是谁",
+                "data_source_reasoning": "该问题需要查询上市公司的基本信息，包括公司董秘的姓名，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----28----11-2-2",
+                "question": "20年首次信息发布中单笔回购资金总额上限最高的是多少？",
+                "data_source_reasoning": "问题涉及股份回购的详细信息，包括单笔回购资金总额上限，这些内容可以在上市公司股东与股本相关的股份回购表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----28----11-2-3",
+                "question": "怎么管理？",
+                "data_source_reasoning": "该问题较为宽泛，没有明确指向具体的数据需求，因此无法确定具体的数据库和表。",
+                "data_source": []
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 353,
+                "prompt_tokens": 9905,
+                "total_tokens": 10258,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1713
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.97s"
+        }
+    },
+    {
+        "tid": "tttt----29",
+        "team": [
+            {
+                "id": "tttt----29----12-2-1",
+                "question": "东兴证券2019年一共成功为多少家公司提供过担保？",
+                "data_source_reasoning": "该问题需要查询东兴证券在2019年提供的担保服务数量，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司担保明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----29----12-2-2",
+                "question": "这些担保项目中担保最多的金额是多少？",
+                "data_source_reasoning": "问题涉及担保项目的金额信息，这些内容可以在上市公司公告资讯/重大事项数据库的公司担保明细表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----29----12-2-3",
+                "question": "当年该公司有多少起合同纠纷？",
+                "data_source_reasoning": "问题涉及合同纠纷的数量，这些信息可以从上市公司公告资讯/重大事项数据库的公司重大经营合同明细表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 377,
+                "prompt_tokens": 9904,
+                "total_tokens": 10281,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1712
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.86s"
+        }
+    },
+    {
+        "tid": "tttt----30",
+        "team": [
+            {
+                "id": "tttt----30----13-2-1",
+                "question": "李一硕一共管理了多少支基金",
+                "data_source_reasoning": "该问题需要查询基金管理人的管理基金数量，这些信息通常记录在公募基金数据库的基金管理人概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_InvestAdvisorOutline"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----30----13-2-2",
+                "question": "这些基金中规模最大的是哪一个？",
+                "data_source_reasoning": "问题涉及基金的规模信息，这些内容可以在公募基金数据库的基金概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----30----13-2-3",
+                "question": "这支基金的管理人法人是谁？",
+                "data_source_reasoning": "问题需要获取基金管理人的法人信息，这些信息可以从公募基金数据库的基金管理人概况表中查询到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_InvestAdvisorOutline"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 355,
+                "prompt_tokens": 9893,
+                "total_tokens": 10248,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1701
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.68s"
+        }
+    },
+    {
+        "tid": "tttt----31",
+        "team": [
+            {
+                "id": "tttt----31----14-2-1",
+                "question": "2019年12月12日哪家证券公司受到了处罚",
+                "data_source_reasoning": "该问题需要查询特定日期的证券公司处罚信息，这些信息通常记录在诚信数据库的违规当事人处罚表中。",
+                "data_source": [
+                    {
+                        "database": "CreditDB",
+                        "table": "LC_ViolatiParty"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----31----14-2-2",
+                "question": "他是多少家公司的股东？",
+                "data_source_reasoning": "问题涉及某个特定股东在多家公司中的持股情况，这些信息可以从上市公司股东与股本相关的股东名单表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----31----14-2-3",
+                "question": "哪家公司当年的借贷最多，共计多少？",
+                "data_source_reasoning": "问题需要查询公司借贷金额最多的记录，这些信息可以从上市公司公告资讯与重大事项相关的公司借贷明细表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 366,
+                "prompt_tokens": 9901,
+                "total_tokens": 10267,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1709
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.80s"
+        }
+    },
+    {
+        "tid": "tttt----32",
+        "team": [
+            {
+                "id": "tttt----32----15-2-1",
+                "question": "深桑达最近一次停牌是什么时候？（时间回答XXXX-XX-XX）",
+                "data_source_reasoning": "问题需要查询深桑达最近一次停牌的具体日期，这属于股票停牌复牌信息，可以通过上市公司股票行情数据库的停牌复牌表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "LC_SuspendResumption"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----32----15-2-2",
+                "question": "当日哪家公司收盘价最高，最高价是多少？",
+                "data_source_reasoning": "问题需要查询当日所有公司的收盘价，并找出最高价的公司及其价格，这属于每日行情数据，可以通过上市公司股票行情数据库的日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----32----15-2-3",
+                "question": "是否创近一周的新高？（回答是或者否）",
+                "data_source_reasoning": "问题需要判断某只股票是否在近一周内创出新高，这属于股票技术形态的分析内容，可以通过上市公司股票行情数据库的股票技术形态表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 409,
+                "prompt_tokens": 9914,
+                "total_tokens": 10323,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1722
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.84s"
+        }
+    },
+    {
+        "tid": "tttt----33",
+        "team": [
+            {
+                "id": "tttt----33----16-2-1",
+                "question": "深圳市桑达实业股份有限公司最近一次创上市以来的新高是在什么时候？（时间回答XXXX-XX-XX）",
+                "data_source_reasoning": "该问题需要查询深圳市桑达实业股份有限公司的股票行情数据，特别是其上市以来的最高点信息。这些信息通常记录在股票行情数据库的股票技术形态表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----33----16-2-2",
+                "question": "当天涨幅超过10%股票有多少家？",
+                "data_source_reasoning": "该问题需要查询当天的股票行情数据，特别是涨幅超过10%的股票数量。这些信息可以从每日行情表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----33----16-2-3",
+                "question": "这些公司中有哪些是连板的？",
+                "data_source_reasoning": "该问题需要查询连续涨停的股票信息，这些信息可以从股票技术形态表中获取，特别是连涨天数的相关数据。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 391,
+                "prompt_tokens": 9911,
+                "total_tokens": 10302,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1719
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.26s"
+        }
+    },
+    {
+        "tid": "tttt----34",
+        "team": [
+            {
+                "id": "tttt----34----17-2-1",
+                "question": "山东国瓷功能材料股份有限公司2021年9月23日开盘价是多少？",
+                "data_source_reasoning": "该问题需要查询特定日期的股票开盘价，这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----34----17-2-2",
+                "question": "当天，外资占股多少？",
+                "data_source_reasoning": "问题涉及外资持股比例，这些信息可以从上市公司股东与股本相关的数据库中找到，具体在境外投资者持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "CS_ForeignHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----34----17-2-3",
+                "question": "当年及20年该公司的预案一共增发了多少股？",
+                "data_source_reasoning": "问题需要获取公司增发股票的预案信息，这些信息通常记录在上市公司财务指标相关的数据库中，具体在A股增发表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_AShareSeasonedNewIssue"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 391,
+                "prompt_tokens": 9912,
+                "total_tokens": 10303,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1720
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.13s"
+        }
+    },
+    {
+        "tid": "tttt----35",
+        "team": [
+            {
+                "id": "tttt----35----18-3-1",
+                "question": "北京国枫律师事务所2020年见证多少家公司的年度股东大会？",
+                "data_source_reasoning": "该问题需要查询律师事务所见证的年度股东大会数量，这些信息通常记录在上市公司股东与股本相关的股东大会出席信息表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SMAttendInfo"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----35----18-3-2",
+                "question": "这些公司中有哪些当年股东减持了的？",
+                "data_source_reasoning": "问题涉及股东减持情况，这些信息可以从股东股权变动的记录中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareTransfer"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----35----18-3-3",
+                "question": "当年哪家公司的涨幅最大，达到了多少，保留4位小数？",
+                "data_source_reasoning": "问题需要获取股票的涨幅信息，这属于股票行情表现的分析内容，可以通过市场行情数据库的股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 376,
+                "prompt_tokens": 9911,
+                "total_tokens": 10287,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1719
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.27s"
+        }
+    },
+    {
+        "tid": "tttt----36",
+        "team": [
+            {
+                "id": "tttt----36----19-2-1",
+                "question": "2019-01-04哪家公司主力净流入最多？",
+                "data_source_reasoning": "问题需要查询某一天主力净流入最多的公司，这属于股票交易资金流向的统计指标，可以通过市场行情数据库的境内股票交易资金流向指标表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockCapFlowIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----36----19-2-2",
+                "question": "这家公司5日内平均成交额是多少，保留2位小数？",
+                "data_source_reasoning": "问题需要计算某家公司5日内的平均成交额，这属于股票行情表现的统计指标，可以通过市场行情数据库的股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----36----19-2-3",
+                "question": "当日该指标超过该公司的一共有多少家？",
+                "data_source_reasoning": "问题需要统计某一天内5日内平均成交额超过指定公司的公司数量，这属于股票行情表现的统计指标，可以通过市场行情数据库的股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 405,
+                "prompt_tokens": 9913,
+                "total_tokens": 10318,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1721
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.42s"
+        }
+    },
+    {
+        "tid": "tttt----37",
+        "team": [
+            {
+                "id": "tttt----37----20-2-1",
+                "question": "波司登在港股的股票代码是什么？",
+                "data_source_reasoning": "该问题需要查询港股上市公司的股票代码信息，这些信息通常记录在港股数据库的证券主表中。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "HK_SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----37----20-2-2",
+                "question": "他的注册资本是多少？",
+                "data_source_reasoning": "问题涉及公司的注册资本信息，这些内容可以在港股数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "HK_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----37----20-2-3",
+                "question": "他的员工人数哪年变动最大，前后差距是多少人？",
+                "data_source_reasoning": "问题需要获取公司员工数量的变动历史记录，这些信息可以从港股数据库的公司员工数量变动表中查询到。",
+                "data_source": [
+                    {
+                        "database": "HKStockDB",
+                        "table": "HK_EmployeeChange"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 349,
+                "prompt_tokens": 9899,
+                "total_tokens": 10248,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1707
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.43s"
+        }
+    },
+    {
+        "tid": "tttt----38",
+        "team": [
+            {
+                "id": "tttt----38----21-2-1",
+                "question": "天弘沪深300ETF联接A基金的管理经理是谁？",
+                "data_source_reasoning": "该问题需要查询基金的管理经理信息，这些信息通常记录在公募基金数据库的基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----38----21-2-2",
+                "question": "所在基金公司管理了多少支基金？",
+                "data_source_reasoning": "问题涉及基金公司管理的基金数量，这些信息可以从公募基金数据库的基金概况表中获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----38----21-2-3",
+                "question": "哪只基金20年最后一次分红的税前分红最高，有多少，保留2位小数？",
+                "data_source_reasoning": "问题需要获取基金的分红信息，包括税前分红金额，这些数据存储在公募基金数据库的基金分红表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 376,
+                "prompt_tokens": 9917,
+                "total_tokens": 10293,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1725
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.54s"
+        }
+    },
+    {
+        "tid": "tttt----39",
+        "team": [
+            {
+                "id": "tttt----39----22-2-1",
+                "question": "JD.com, Inc.这家公司在美股英文名称是什么？",
+                "data_source_reasoning": "问题需要查询美股公司的基本信息，包括公司名称。这些信息通常记录在美股数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "USStockDB",
+                        "table": "US_CompanyInfo"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----39----22-2-2",
+                "question": "他的证券简称是什么？",
+                "data_source_reasoning": "问题需要查询美股公司的证券简称，这些信息通常记录在美股数据库的证券主表中。",
+                "data_source": [
+                    {
+                        "database": "USStockDB",
+                        "table": "US_SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----39----22-2-3",
+                "question": "20年该公司单日最高涨幅有多少",
+                "data_source_reasoning": "问题需要查询2020年该公司单日最高涨幅，这属于股票行情表现的分析内容，可以通过美股数据库的日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "USStockDB",
+                        "table": "US_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 356,
+                "prompt_tokens": 9897,
+                "total_tokens": 10253,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1705
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.04s"
+        }
+    },
+    {
+        "tid": "tttt----40",
+        "team": [
+            {
+                "id": "tttt----40----23-2-1",
+                "question": "携程网这家公司电话是多少？",
+                "data_source_reasoning": "该问题需要查询公司的联系方式，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----40----23-2-2",
+                "question": "他是什么时候成立的？（时间回答XXXX-XX-XX）",
+                "data_source_reasoning": "问题涉及公司的成立日期，这些信息可以在上市公司基本资料数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----40----23-2-3",
+                "question": "2020年9月18日这家公司的收盘价是多少",
+                "data_source_reasoning": "问题需要获取特定日期的股票收盘价，这些信息可以从上市公司股票行情数据库的日行情表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 366,
+                "prompt_tokens": 9909,
+                "total_tokens": 10275,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1717
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.31s"
+        }
+    },
+    {
+        "tid": "tttt----41",
+        "team": [
+            {
+                "id": "tttt----41----24-2-1",
+                "question": "2020年成立的CN公司有多少家？",
+                "data_source_reasoning": "该问题需要查询2020年成立的公司数量，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----41----24-2-2",
+                "question": "哪家公司（证券简称）上市的时间最晚，是什么时候？（时间回答XXXX-XX-XX）",
+                "data_source_reasoning": "问题涉及查询上市时间最晚的公司及其上市日期，这些信息可以在证券主表中找到。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----41----24-2-3",
+                "question": "2019年的当天有多少家公司是上涨的？",
+                "data_source_reasoning": "问题需要获取2019年某一天的股票涨跌情况，这属于股票行情数据，可以通过市场行情数据库的日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 381,
+                "prompt_tokens": 9916,
+                "total_tokens": 10297,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1724
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.16s"
+        }
+    },
+    {
+        "tid": "tttt----42",
+        "team": [
+            {
+                "id": "tttt----42----25-1-1",
+                "question": "比特矿业这家公司邮编多少？",
+                "data_source_reasoning": "问题需要查询公司的邮编信息，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----42----25-1-2",
+                "question": "上市了多少年",
+                "data_source_reasoning": "问题需要查询公司的上市年数，这些信息可以从证券主表中获取，该表记录了证券的上市日期等基础信息。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----42----25-1-3",
+                "question": "这些年A股一共上市了多少家公司？",
+                "data_source_reasoning": "问题需要统计A股市场的上市公司数量，这些信息可以从证券主表中获取，该表记录了所有证券的基础信息。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 348,
+                "prompt_tokens": 9889,
+                "total_tokens": 10237,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1697
+            }
+        },
+        "time_usage": {
+            "stage_1": "16.29s"
+        }
+    },
+    {
+        "tid": "tttt----43",
+        "team": [
+            {
+                "id": "tttt----43----26-1-1",
+                "question": "TOUR他是否已经退市了？（是或者否）",
+                "data_source_reasoning": "该问题需要查询公司的退市状态，通常退市信息会记录在上市公司股票行情数据库的停牌复牌表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "LC_SuspendResumption"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----43----26-1-2",
+                "question": "这家公司19年最高收盘价是多少",
+                "data_source_reasoning": "问题需要获取公司2019年的最高收盘价，这属于股票行情数据，可以通过市场行情数据库的日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----43----26-1-3",
+                "question": "当天有多少家公司退市了",
+                "data_source_reasoning": "问题需要统计当天退市的公司数量，退市信息通常记录在上市公司股票行情数据库的停牌复牌表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "LC_SuspendResumption"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 376,
+                "prompt_tokens": 9900,
+                "total_tokens": 10276,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1708
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.12s"
+        }
+    },
+    {
+        "tid": "tttt----44",
+        "team": [
+            {
+                "id": "tttt----44----27-1-1",
+                "question": "2021年08月哪支基金税后分红最高",
+                "data_source_reasoning": "该问题需要查询公募基金在2021年08月的分红情况，特别是税后分红金额最高的基金。这些信息通常记录在公募基金数据库的基金分红表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----44----27-1-2",
+                "question": "这支基金是什么时候生效的（时间回答XXXX-XX-XX）",
+                "data_source_reasoning": "问题涉及基金的生效日期，这些信息可以在公募基金数据库的基金概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----44----27-1-3",
+                "question": "基金所属公司的官网是什么",
+                "data_source_reasoning": "问题需要获取基金所属公司的官网信息，这些信息通常记录在公募基金数据库的基金管理人概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_InvestAdvisorOutline"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 379,
+                "prompt_tokens": 9905,
+                "total_tokens": 10284,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1713
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.82s"
+        }
+    },
+    {
+        "tid": "tttt----45",
+        "team": [
+            {
+                "id": "tttt----45----28-1-1",
+                "question": "易方达基金管理有限公司在19年成立了多少支基金？",
+                "data_source_reasoning": "该问题需要查询基金管理公司在特定年份成立的基金数量，这些信息通常记录在公募基金数据库的公募基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----45----28-1-2",
+                "question": "哪支基金的规模最大？",
+                "data_source_reasoning": "问题涉及基金的规模信息，这些内容可以在公募基金数据库的公募基金概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----45----28-1-3",
+                "question": "这支基金20年最后一次分红派现比例多少钱？",
+                "data_source_reasoning": "问题需要获取基金的分红信息，包括分红比例和金额，这些数据存储在公募基金数据库的公募基金分红表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 373,
+                "prompt_tokens": 9904,
+                "total_tokens": 10277,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1712
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.48s"
+        }
+    },
+    {
+        "tid": "tttt----46",
+        "team": [
+            {
+                "id": "tttt----46----28-4-1",
+                "question": "南方基金管理股份有限公司在19年成立了多少支基金？",
+                "data_source_reasoning": "该问题需要查询南方基金管理股份有限公司在2019年成立的基金数量，这些信息通常记录在公募基金数据库的公募基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----46----28-4-2",
+                "question": "哪支基金的规模最大？",
+                "data_source_reasoning": "问题涉及查询南方基金管理股份有限公司旗下基金的规模信息，这些信息可以在公募基金数据库的公募基金概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----46----28-4-3",
+                "question": "这支基金20年最后一次分红派现比例多少钱,保留2位小数？",
+                "data_source_reasoning": "问题需要获取特定基金在2020年的最后一次分红派现比例，这些信息可以从公募基金数据库的公募基金分红表中查询到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 391,
+                "prompt_tokens": 9908,
+                "total_tokens": 10299,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1716
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.06s"
+        }
+    },
+    {
+        "tid": "tttt----47",
+        "team": [
+            {
+                "id": "tttt----47----30-1-1",
+                "question": "中证指数有限公司发布了多少种指数？",
+                "data_source_reasoning": "该问题需要查询中证指数有限公司发布的指数种类数量，这些信息通常记录在指数数据库的指数基本情况表中。",
+                "data_source": [
+                    {
+                        "database": "IndexDB",
+                        "table": "LC_IndexBasicInfo"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----47----30-1-2",
+                "question": "这些指数包括了多少家公司？",
+                "data_source_reasoning": "问题需要获取中证指数有限公司发布的指数所包含的公司数量，这些信息可以从指数成份表中找到，该表记录了指数的成份证券构成情况。",
+                "data_source": [
+                    {
+                        "database": "IndexDB",
+                        "table": "LC_IndexComponent"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----47----30-1-3",
+                "question": "在2020年调入过的有多少家？",
+                "data_source_reasoning": "问题需要获取2020年调入指数的公司数量，这些信息可以从指数成份表中找到，该表记录了指数成份证券的入选和删除日期。",
+                "data_source": [
+                    {
+                        "database": "IndexDB",
+                        "table": "LC_IndexComponent"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 377,
+                "prompt_tokens": 9897,
+                "total_tokens": 10274,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1705
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.06s"
+        }
+    },
+    {
+        "tid": "tttt----48",
+        "team": [
+            {
+                "id": "tttt----48----1-2-1",
+                "question": "铜陵有色金属集团股份有限公司的法人代表是谁？",
+                "data_source_reasoning": "该问题需要查询上市公司的基本信息，包括法人代表，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----48----1-2-2",
+                "question": "铜陵有色金属集团股份有限公司在什么时候成立的？回复时给我YYYY/MM/DD的格式",
+                "data_source_reasoning": "问题涉及公司的成立日期，这些信息可以在上市公司基本资料数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----48----1-2-3",
+                "question": "铜陵有色金属集团股份有限公司的总经理是谁？",
+                "data_source_reasoning": "问题需要获取公司总经理的信息，这些内容可以在上市公司基本资料数据库的公司概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 367,
+                "prompt_tokens": 9908,
+                "total_tokens": 10275,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1716
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.58s"
+        }
+    },
+    {
+        "tid": "tttt----49",
+        "team": [
+            {
+                "id": "tttt----49----3-2-1",
+                "question": "深科技的信披网址是哪个网站?",
+                "data_source_reasoning": "该问题需要查询上市公司的基本信息，包括公司概况和联系方式，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----49----3-2-2",
+                "question": "该公司在过去的进行了几次非公开增发",
+                "data_source_reasoning": "问题涉及公司的融资活动，特别是非公开增发的情况，这些信息可以从上市公司财务指标/财务报表/融资与分红数据库的A股增发表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_AShareSeasonedNewIssue"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----49----3-2-3",
+                "question": "最近一次非公开增发的数量是多少？",
+                "data_source_reasoning": "问题需要获取最近一次非公开增发的具体数量，这些信息可以从上市公司财务指标/财务报表/融资与分红数据库的A股增发表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_AShareSeasonedNewIssue"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 392,
+                "prompt_tokens": 9896,
+                "total_tokens": 10288,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1704
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.02s"
+        }
+    },
+    {
+        "tid": "tttt----50",
+        "team": [
+            {
+                "id": "tttt----50----4-2-1",
+                "question": "福建坤彩材料科技股份有限公司的注册地在哪个省份？",
+                "data_source_reasoning": "该问题需要查询公司的注册地信息，这些信息通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----50----4-2-2",
+                "question": "该公司2020年年度报告中，未调整的合并资产负债表中提到的资产总计是多少？",
+                "data_source_reasoning": "问题涉及2020年年度报告中未调整的合并资产负债表中的资产总计信息，这些财务数据可以在上市公司财务指标数据库的资产负债表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----50----4-2-3",
+                "question": "他的2020年年度报告中，未调整的母公司资产负债表显示的负债合计是多少？",
+                "data_source_reasoning": "问题涉及2020年年度报告中未调整的母公司资产负债表中的负债合计信息，这些财务数据可以在上市公司财务指标数据库的资产负债表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 413,
+                "prompt_tokens": 9926,
+                "total_tokens": 10339,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1734
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.75s"
+        }
+    },
+    {
+        "tid": "tttt----51",
+        "team": [
+            {
+                "id": "tttt----51----5-2-1",
+                "question": "海信视像科技股份有限公司在什么时候成立的，XXXX-XX-XX？",
+                "data_source_reasoning": "该问题需要查询公司的成立日期，这属于公司的基本信息，通常记录在上市公司基本资料数据库的公司概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_StockArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----51----5-2-2",
+                "question": "该公司在2021年的半年度报告中未调整的**合并报表**营业总成本是多少？",
+                "data_source_reasoning": "问题涉及2021年半年度报告中未调整的合并报表的营业总成本，这属于财务报表数据，可以在上市公司财务指标/财务报表/融资与分红数据库的资产负债表_新会计准则表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----51----5-2-3",
+                "question": "该公司在2021年的半年度报告中未调整的**合并报表**净利润是多少？",
+                "data_source_reasoning": "问题涉及2021年半年度报告中未调整的合并报表的净利润，这属于财务报表数据，可以在上市公司财务指标/财务报表/融资与分红数据库的利润分配表_新会计准则表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IncomeStatementAll"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 443,
+                "prompt_tokens": 9927,
+                "total_tokens": 10370,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1735
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.61s"
+        }
+    },
+    {
+        "tid": "tttt----52",
+        "team": [
+            {
+                "id": "tttt----52----6-2-1",
+                "question": "申能股份在过去一共接待了几次调研？",
+                "data_source_reasoning": "该问题需要查询上市公司接待调研的次数，这些信息通常记录在上市公司公告资讯/重大事项数据库的投资者关系活动表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----52----6-2-2",
+                "question": "最近一次调研是什么时候？",
+                "data_source_reasoning": "问题涉及最近一次调研的时间，这些信息可以在投资者关系活动表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----52----6-2-3",
+                "question": "最近一次调研的地点是哪？",
+                "data_source_reasoning": "问题需要获取最近一次调研的地点信息，这些内容可以在投资者关系活动表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 345,
+                "prompt_tokens": 9891,
+                "total_tokens": 10236,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1699
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.26s"
+        }
+    },
+    {
+        "tid": "tttt----53",
+        "team": [
+            {
+                "id": "tttt----53----7-2-1",
+                "question": "水晶光电实施完成的员工持股计划有几个？",
+                "data_source_reasoning": "问题涉及查询公司实施完成的员工持股计划的数量，这些信息通常记录在上市公司股东与股本相关的员工持股计划概况表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOPSummary"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----53----7-2-2",
+                "question": "最近一次完成的员工持股计划，股票规模上限和资金总额上限是多少",
+                "data_source_reasoning": "问题需要获取最近一次完成的员工持股计划的具体信息，包括股票规模上限和资金总额上限，这些详细信息可以在员工持股计划表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOP"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----53----7-2-3",
+                "question": "该计划是否是分期实施的？如果实施回答A，没有实施回答B",
+                "data_source_reasoning": "问题涉及判断员工持股计划是否分期实施，这一信息可以在员工持股计划表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOP"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 381,
+                "prompt_tokens": 9909,
+                "total_tokens": 10290,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1717
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.83s"
+        }
+    },
+    {
+        "tid": "tttt----54",
+        "team": [
+            {
+                "id": "tttt----54----8-2-1",
+                "question": "普洛药业在2020-11-25的最高价和最低价是多少？",
+                "data_source_reasoning": "该问题需要查询特定日期的股票最高价和最低价，这些信息通常记录在股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----54----8-2-2",
+                "question": "当天换手率是多少,保留2位小数？",
+                "data_source_reasoning": "换手率是衡量股票流动性的指标，通常在日行情表中记录。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----54----8-2-3",
+                "question": "年化夏普比率和波动率（日步长）是多少,保留2位小数？",
+                "data_source_reasoning": "年化夏普比率和波动率是衡量股票风险和收益的指标，这些信息通常在股票行情表现表中记录。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 388,
+                "prompt_tokens": 9924,
+                "total_tokens": 10312,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1732
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.20s"
+        }
+    },
+    {
+        "tid": "tttt----55",
+        "team": [
+            {
+                "id": "tttt----55----9-2-1",
+                "question": "截止2021-06-17上海建工的近一周成交金额（万元）是多少？",
+                "data_source_reasoning": "该问题需要查询特定股票在特定时间段的成交金额，这属于股票行情数据，可以通过市场行情数据库的日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----55----9-2-2",
+                "question": "近一个月的成交金额（万元）是多少？",
+                "data_source_reasoning": "该问题需要查询特定股票在近一个月的成交金额，这同样属于股票行情数据，可以通过市场行情数据库的日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----55----9-2-3",
+                "question": "与月成交均价相比，近一周的成交均价是高还是低？这两者具体是多少？保留两位小数",
+                "data_source_reasoning": "该问题需要查询特定股票在近一周和近一个月的成交均价，这属于股票行情数据的衍生指标，可以通过市场行情数据库的股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 412,
+                "prompt_tokens": 9929,
+                "total_tokens": 10341,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1737
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.58s"
+        }
+    },
+    {
+        "tid": "tttt----56",
+        "team": [
+            {
+                "id": "tttt----56----10-2-1",
+                "question": "建元信托股份有限公司十大股东的类型有哪些？",
+                "data_source_reasoning": "该问题需要查询上市公司的股东类型信息，这些信息通常记录在上市公司股东与股本数据库的股东类型分类表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SHTypeClassifi"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----56----10-2-2",
+                "question": "2020年年度报告中，该公司的最大股东是谁，他持有多少股份？",
+                "data_source_reasoning": "问题涉及2020年年度报告中最大股东的信息，包括股东名称和持股数量，这些内容可以在上市公司股东与股本数据库的股东名单表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----56----10-2-3",
+                "question": "2020年年度报告中,该公司的国有股东持股总和是多少？",
+                "data_source_reasoning": "问题需要获取2020年年度报告中所有国有股东的持股总和，这些信息可以从上市公司股东与股本数据库的股东名单表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 409,
+                "prompt_tokens": 9917,
+                "total_tokens": 10326,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1725
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.87s"
+        }
+    },
+    {
+        "tid": "tttt----57",
+        "team": [
+            {
+                "id": "tttt----57----31-3-1",
+                "question": "2020年最后一个交易日是哪一天？用XXXX年XX月XX日回复我",
+                "data_source_reasoning": "该问题需要查询2020年的交易日信息，确定最后一个交易日。这可以通过交易日表获取。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "QT_TradingDayNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----57----31-3-2",
+                "question": "鱼跃医疗在2020年末的总市值是多少元？",
+                "data_source_reasoning": "该问题需要查询鱼跃医疗在2020年末的总市值，这属于股票行情数据，可以通过日行情表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----57----31-3-3",
+                "question": "鱼跃医疗在2020年末回看近12个月成交金额是多少元？",
+                "data_source_reasoning": "该问题需要查询鱼跃医疗在2020年末回看近12个月的成交金额，这属于股票行情表现数据，可以通过股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----57----31-3-4",
+                "question": "帮我算一下，鱼跃医疗 在2020年末的12个月总成交金额占总市值的比值是多少？保留2位小数",
+                "data_source_reasoning": "该问题需要计算鱼跃医疗在2020年末的12个月总成交金额占总市值的比值，这需要同时查询总市值和成交金额数据，可以通过日行情表和股票行情表现表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 581,
+                "prompt_tokens": 9992,
+                "total_tokens": 10573,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1800
+            }
+        },
+        "time_usage": {
+            "stage_1": "30.32s"
+        }
+    },
+    {
+        "tid": "tttt----58",
+        "team": [
+            {
+                "id": "tttt----58----32-2-1",
+                "question": "2021年1月11日，正常交易且跳空低开的股票一共有几只？",
+                "data_source_reasoning": "该问题需要查询2021年1月11日的股票交易数据，包括开盘价和前一交易日的收盘价，以判断是否跳空低开。这些信息可以从每日行情表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----58----32-2-2",
+                "question": "其中振幅最大的是哪个股票？",
+                "data_source_reasoning": "问题需要获取2021年1月11日股票的振幅数据，以找出振幅最大的股票。振幅信息可以从每日行情表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----58----32-2-3",
+                "question": "这只股票主力净流入量是多少？",
+                "data_source_reasoning": "问题需要获取特定股票在2021年1月11日的主力净流入量。主力净流入量信息可以从股票交易资金流向指标表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockCapFlowIndex"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 421,
+                "prompt_tokens": 9911,
+                "total_tokens": 10332,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1719
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.77s"
+        }
+    },
+    {
+        "tid": "tttt----59",
+        "team": [
+            {
+                "id": "tttt----59----33-2-1",
+                "question": "2019下半年，成交量创近一季度新高的证券数量最多的交易日是哪一天？",
+                "data_source_reasoning": "该问题需要查询2019下半年内每个交易日的成交量数据，并找出成交量创近一季度新高的证券数量最多的交易日。这涉及到每日的成交量数据和近期的成交量技术指标，因此需要查询股票行情数据库中的日行情表和成交量技术指标表。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_TurnoverVolTecIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----59----33-2-2",
+                "question": "那一天成交量创近一季度新高的证券数量有多少？",
+                "data_source_reasoning": "该问题需要统计在特定交易日（即上一问题中确定的交易日）成交量创近一季度新高的证券数量。这同样涉及到每日的成交量数据和近期的成交量技术指标，因此需要查询股票行情数据库中的日行情表和成交量技术指标表。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_TurnoverVolTecIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----59----33-2-3",
+                "question": "那一天上涨和下跌的证券数量分别是？",
+                "data_source_reasoning": "该问题需要查询特定交易日（即上一问题中确定的交易日）的证券涨跌情况。这可以通过股票行情数据库中的日行情表和股票行情表现表来获取，因为这些表中包含了每日的收盘价和涨跌情况。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 537,
+                "prompt_tokens": 9912,
+                "total_tokens": 10449,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1720
+            }
+        },
+        "time_usage": {
+            "stage_1": "30.05s"
+        }
+    },
+    {
+        "tid": "tttt----60",
+        "team": [
+            {
+                "id": "tttt----60----33-5-1",
+                "question": "2021下半年，成交量创近一季度新高的证券数量最多的交易日是哪一天，XXXX年XX月XX日？",
+                "data_source_reasoning": "该问题需要查询2021下半年内成交量创近一季度新高的证券数量最多的交易日。这涉及到每日的成交量数据以及近一季度的成交量比较，可以通过股票行情数据库中的日行情表和股票技术形态表来获取相关数据。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----60----33-5-2",
+                "question": "那一天成交量创近一季度新高的证券数量有多少？",
+                "data_source_reasoning": "该问题需要查询在特定交易日（即上一问题中确定的交易日）成交量创近一季度新高的证券数量。这同样需要通过股票行情数据库中的日行情表和股票技术形态表来获取相关数据。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----60----33-5-3",
+                "question": "那一天上涨和下跌的证券数量分别是？",
+                "data_source_reasoning": "该问题需要查询在特定交易日（即上一问题中确定的交易日）上涨和下跌的证券数量。这可以通过股票行情数据库中的日行情表和股票行情表现表来获取每日的涨跌情况。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_StockPerformance"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 517,
+                "prompt_tokens": 9919,
+                "total_tokens": 10436,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1727
+            }
+        },
+        "time_usage": {
+            "stage_1": "27.90s"
+        }
+    },
+    {
+        "tid": "tttt----61",
+        "team": [
+            {
+                "id": "tttt----61----34-3-1",
+                "question": "2020上半年共上市多少只基金？",
+                "data_source_reasoning": "该问题需要查询2020年上半年上市的基金数量，这些信息通常记录在公募基金数据库的公募基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----61----34-3-2",
+                "question": "其中设立规模最大的基金是？(披露名称按证监会官网命名)",
+                "data_source_reasoning": "问题涉及2020年上半年设立规模最大的基金，需要查询基金的设立规模信息，这些信息可以在公募基金数据库的公募基金概况表中找到。同时，基金的名称信息可以在公募基金产品名称表中获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    },
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundProdName"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----61----34-3-3",
+                "question": "其中数量最多的基金类别是什么，有多少只？",
+                "data_source_reasoning": "问题需要统计2020年上半年各类基金的数量，这些信息可以从公募基金数据库的公募基金概况表中获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 422,
+                "prompt_tokens": 9905,
+                "total_tokens": 10327,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1713
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.28s"
+        }
+    },
+    {
+        "tid": "tttt----62",
+        "team": [
+            {
+                "id": "tttt----62----35-1-1",
+                "question": "博时基金公司成立于（XXXX年XX月XX日）？",
+                "data_source_reasoning": "该问题需要查询基金公司的成立日期，这些信息通常记录在公募基金数据库的基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----62----35-1-2",
+                "question": "比博时基金成立更早的基金公司(简称)有哪些？",
+                "data_source_reasoning": "问题涉及比博时基金成立更早的基金公司，需要查询所有基金公司的成立日期，并筛选出成立日期早于博时基金的公司。这些信息可以在公募基金数据库的基金概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----62----35-1-3",
+                "question": "和博时基金属于同一地区的基金公司(简称)有哪些？",
+                "data_source_reasoning": "问题需要获取与博时基金属于同一地区的基金公司信息，这些信息通常记录在公募基金数据库的基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 400,
+                "prompt_tokens": 9913,
+                "total_tokens": 10313,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1721
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.09s"
+        }
+    },
+    {
+        "tid": "tttt----63",
+        "team": [
+            {
+                "id": "tttt----63----36-1-1",
+                "question": "最新更新的2019年度报告中，机构持有无限售流通A股数量合计最多的公司简称是？",
+                "data_source_reasoning": "该问题需要查询2019年度报告中机构持有无限售流通A股数量合计最多的公司简称。这些信息通常记录在上市公司股东与股本相关的股东持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----63----36-1-2",
+                "question": "在这份报告中，该公司机构持有无限售流通A股比例合计是多少，2位小数？",
+                "data_source_reasoning": "问题需要获取2019年度报告中机构持有无限售流通A股比例合计的具体数值。这些信息可以在股东持股统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----63----36-1-3",
+                "question": "该公司前十大股东持股比例合计是多少，2位小数？",
+                "data_source_reasoning": "问题需要获取前十大股东持股比例合计的具体数值。这些信息可以在股东持股统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 417,
+                "prompt_tokens": 9931,
+                "total_tokens": 10348,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1739
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.45s"
+        }
+    },
+    {
+        "tid": "tttt----64",
+        "team": [
+            {
+                "id": "tttt----64----36-4-1",
+                "question": "最新更新的2021年度报告中，机构持有无限售流通A股数量合计最多的公司简称是？",
+                "data_source_reasoning": "该问题需要查询2021年度报告中机构持有无限售流通A股数量合计最多的公司简称。这些信息通常记录在上市公司股东与股本相关的股东持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----64----36-4-2",
+                "question": "在这份报告中，该公司机构持有无限售流通A股比例合计是多少，保留2位小数？",
+                "data_source_reasoning": "问题需要获取2021年度报告中机构持有无限售流通A股比例合计的具体数值。这些信息可以在股东持股统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----64----36-4-3",
+                "question": "该公司前十大股东持股比例合计是多少？",
+                "data_source_reasoning": "问题需要获取前十大股东持股比例合计的具体数值。这些信息可以在股东持股统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 413,
+                "prompt_tokens": 9927,
+                "total_tokens": 10340,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1735
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.17s"
+        }
+    },
+    {
+        "tid": "tttt----65",
+        "team": [
+            {
+                "id": "tttt----65----37-2-1",
+                "question": "安琪酵母在2020年全年的最高收盘价是多少，出现在哪一天（XXXX年XX月XX日）？",
+                "data_source_reasoning": "该问题需要查询安琪酵母在2020年全年的每日收盘价数据，以确定最高收盘价及其出现日期。这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----65----37-2-2",
+                "question": "当天成交量是否创近一月以来新高？",
+                "data_source_reasoning": "问题涉及成交量是否创近一月新高，需要查询安琪酵母在2020年全年的每日成交量数据，并进行比较。这些信息可以从上市公司股票行情数据库的日行情表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----65----37-2-3",
+                "question": "连续放量天数为多少？",
+                "data_source_reasoning": "问题需要查询安琪酵母在2020年全年的每日成交量数据，并计算连续放量的天数。这些信息可以从上市公司股票行情数据库的股票技术形态表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 438,
+                "prompt_tokens": 9916,
+                "total_tokens": 10354,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1724
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.36s"
+        }
+    },
+    {
+        "tid": "tttt----66",
+        "team": [
+            {
+                "id": "tttt----66----37-5-1",
+                "question": "安琪酵母在2021年全年的最高收盘价是多少，出现在哪一天，XXXX年XX月XX日？",
+                "data_source_reasoning": "该问题需要查询安琪酵母在2021年的每日收盘价数据，以确定最高收盘价及其出现日期。这些信息通常记录在股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----66----37-5-2",
+                "question": "当天成交量是否创近一月以来新高？",
+                "data_source_reasoning": "问题涉及成交量是否创近一月新高，需要查询股票行情数据库中的日行情表和股票技术形态表，以获取成交量数据并进行比较。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----66----37-5-3",
+                "question": "连续放量天数为多少？",
+                "data_source_reasoning": "问题需要获取连续放量天数，这属于股票技术形态的分析内容，可以通过市场行情数据库的股票技术形态表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 429,
+                "prompt_tokens": 9915,
+                "total_tokens": 10344,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1723
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.24s"
+        }
+    },
+    {
+        "tid": "tttt----67",
+        "team": [
+            {
+                "id": "tttt----67----38-2-1",
+                "question": "厦门钨业在2019年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？",
+                "data_source_reasoning": "该问题需要查询厦门钨业在2019年的每日收盘价数据，以确定最低收盘价及其出现日期。这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----67----38-2-2",
+                "question": "厦门钨业在当天的VRSI量相对强弱是多少，保留4位小数？",
+                "data_source_reasoning": "问题涉及厦门钨业在特定日期的VRSI量相对强弱指标，这属于股票技术指标的分析内容，可以通过市场行情数据库的成交量技术指标表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_TurnoverVolTecIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----67----38-2-3",
+                "question": "厦门钨业已连跌几天？",
+                "data_source_reasoning": "问题需要获取厦门钨业的每日行情数据，并分析其连续下跌的天数。涉及到的表包括每日行情表和股票技术形态表。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 458,
+                "prompt_tokens": 9930,
+                "total_tokens": 10388,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1738
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.30s"
+        }
+    },
+    {
+        "tid": "tttt----68",
+        "team": [
+            {
+                "id": "tttt----68----38-5-1",
+                "question": "厦门钨业在2021年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？",
+                "data_source_reasoning": "该问题需要查询厦门钨业在2021年的每日收盘价数据，以确定最低收盘价及其出现日期。这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----68----38-5-2",
+                "question": "厦门钨业在当天的VRSI量相对强弱是多少，保留4位小数？",
+                "data_source_reasoning": "问题涉及厦门钨业在特定日期的VRSI量相对强弱指标，这属于技术分析指标，通常记录在股票行情数据库的成交量技术指标表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_TurnoverVolTecIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----68----38-5-3",
+                "question": "厦门钨业已连跌几天？",
+                "data_source_reasoning": "问题需要查询厦门钨业的连续下跌天数，这属于股票技术形态分析内容，可以通过市场行情数据库的股票技术形态表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 433,
+                "prompt_tokens": 9930,
+                "total_tokens": 10363,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1738
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.78s"
+        }
+    },
+    {
+        "tid": "tttt----69",
+        "team": [
+            {
+                "id": "tttt----69----39-2-1",
+                "question": "芯片概念概念板块属于什么2级概念？",
+                "data_source_reasoning": "该问题需要查询芯片概念所属的二级概念分类，这些信息通常记录在上市公司行业板块数据库的概念板块常量表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ConceptList"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----69----39-2-2",
+                "question": "截止2023年末,该2级概念下一共有几个未终止的概念板块？",
+                "data_source_reasoning": "问题涉及查询某个二级概念下未终止的概念板块数量，这些信息可以从概念板块常量表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ConceptList"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----69----39-2-3",
+                "question": "芯片概念概念板块的英文名称是什么？",
+                "data_source_reasoning": "问题需要获取芯片概念板块的英文名称，这些信息通常记录在概念板块常量表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ConceptList"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 366,
+                "prompt_tokens": 9908,
+                "total_tokens": 10274,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1716
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.91s"
+        }
+    },
+    {
+        "tid": "tttt----70",
+        "team": [
+            {
+                "id": "tttt----70----40-2-1",
+                "question": "按2021年末新版申万行业分类，现在杰瑞股份属于什么申万二级行业？",
+                "data_source_reasoning": "该问题需要查询杰瑞股份在2021年末新版申万行业分类中的行业归属，这属于上市公司行业板块的分类信息，可以通过公司行业划分表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----70----40-2-2",
+                "question": "2021年末，该申万二级行业中有几个股票？",
+                "data_source_reasoning": "问题需要统计2021年末某个申万二级行业中的股票数量，这属于行业板块的分类信息，可以通过公司行业划分表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----70----40-2-3",
+                "question": "2021年末，该股票的总市值占二级行业总市值百分之多少（四舍五入保留2位小数）？",
+                "data_source_reasoning": "问题需要计算2021年末某股票在其所属申万二级行业中的市值占比，这需要获取该股票的总市值和二级行业总市值，可以通过公司行业划分表和财务指标表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    },
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 462,
+                "prompt_tokens": 9938,
+                "total_tokens": 10400,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1746
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.74s"
+        }
+    },
+    {
+        "tid": "tttt----71",
+        "team": [
+            {
+                "id": "tttt----71----41-2-1",
+                "question": "2021年末，按新版申万行业分类，现在均胜电子属于什么申万一级行业？",
+                "data_source_reasoning": "该问题需要查询均胜电子在2021年末的申万行业分类信息，这些信息通常记录在上市公司行业板块数据库的公司行业划分表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----71----41-2-2",
+                "question": "2021年末，该一级行业中有几个股票？",
+                "data_source_reasoning": "问题需要统计2021年末某个申万一级行业中的股票数量，这些信息可以从公司行业划分表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----71----41-2-3",
+                "question": "2021年末，该股票的A股流通市值占一级行业流通市值百分之多少（四舍五入保留2位小数）？",
+                "data_source_reasoning": "问题需要计算均胜电子在2021年末的A股流通市值占其所属一级行业流通市值的百分比，这需要获取股票的流通市值和行业总流通市值，涉及到的表包括公司行业划分表和股票行情表。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 465,
+                "prompt_tokens": 9940,
+                "total_tokens": 10405,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1748
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.61s"
+        }
+    },
+    {
+        "tid": "tttt----72",
+        "team": [
+            {
+                "id": "tttt----72----29-2-1",
+                "question": "2020-07-02风电零部件行业的总市值是多少(元)？",
+                "data_source_reasoning": "该问题需要查询特定行业的总市值信息，这些信息通常记录在行业板块数据库的行业估值指标表中。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_IndustryValuation"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----72----29-2-2",
+                "question": "其中A股流通市值是多少（元）？",
+                "data_source_reasoning": "问题涉及特定行业的A股流通市值，这些信息可以在行业板块数据库的行业估值指标表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_IndustryValuation"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----72----29-2-3",
+                "question": "下一个交易日的A股流通市值是多少（元）？",
+                "data_source_reasoning": "问题需要获取下一个交易日的A股流通市值，这些信息可以从股票行情数据库的日行情表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 374,
+                "prompt_tokens": 9916,
+                "total_tokens": 10290,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1724
+            }
+        },
+        "time_usage": {
+            "stage_1": "18.19s"
+        }
+    },
+    {
+        "tid": "tttt----73",
+        "team": [
+            {
+                "id": "tttt----73----17-2-1",
+                "question": "软通动力在2019年报酬总额和领取报酬的管理层人数是多少？",
+                "data_source_reasoning": "该问题需要查询公司管理层在2019年的报酬总额和领取报酬的管理层人数，这些信息通常记录在上市公司产品供销与人力资源数据库的公司管理层报酬统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----73----17-2-2",
+                "question": "其中前三名董事的报酬是多少？",
+                "data_source_reasoning": "问题涉及2019年公司前三名董事的报酬情况，这些信息可以在公司管理层报酬统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----73----17-2-3",
+                "question": "该公司2020年报酬总额是多少？与2019年相比增加还是减少？",
+                "data_source_reasoning": "问题需要获取2020年公司报酬总额，并对比2019年的数据，这些信息可以从公司管理层报酬统计表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 406,
+                "prompt_tokens": 9921,
+                "total_tokens": 10327,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1729
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.29s"
+        }
+    },
+    {
+        "tid": "tttt----74",
+        "team": [
+            {
+                "id": "tttt----74----18-2-1",
+                "question": "天弘增利短债C的基金管理人是谁？",
+                "data_source_reasoning": "该问题需要查询基金的管理人信息，这些信息通常记录在公募基金数据库的基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----74----18-2-2",
+                "question": "该基金的运作方式是什么？",
+                "data_source_reasoning": "问题涉及基金的运作方式，这些信息可以在公募基金数据库的基金概况表中找到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----74----18-2-3",
+                "question": "该基金的投资风格是什么？",
+                "data_source_reasoning": "问题需要获取基金的投资风格信息，这些内容可以在公募基金数据库的基金概况表中查询到。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 351,
+                "prompt_tokens": 9896,
+                "total_tokens": 10247,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1704
+            }
+        },
+        "time_usage": {
+            "stage_1": "17.36s"
+        }
+    },
+    {
+        "tid": "tttt----75",
+        "team": [
+            {
+                "id": "tttt----75----42-2-1",
+                "question": "截止至中国软件2021年Q4季度，研发投入总额是多少？（调整后的合并报表）",
+                "data_source_reasoning": "该问题需要查询中国软件在2021年Q4季度的研发投入总额，这些信息通常记录在上市公司财务指标相关的公司研发投入与产出表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IntAssetsDetail"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----75----42-2-2",
+                "question": "截止至中国软件2021年Q4季度，研发投入占营业收入比例是多少？",
+                "data_source_reasoning": "该问题需要查询中国软件在2021年Q4季度的研发投入占营业收入的比例，这些信息通常记录在上市公司财务指标相关的公司研发投入与产出表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_IntAssetsDetail"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----75----42-2-3",
+                "question": "请根据中国软件截止至2021年Q4季度的研发人员数量和占比推算公司总人数（计算方式：总人数 = 研发人员数量 ÷ (研发人员占比 ÷ 100)，结果取整）。",
+                "data_source_reasoning": "该问题需要查询中国软件在2021年Q4季度的研发人员数量和占比，这些信息通常记录在上市公司产品供销与人力资源相关的公司职工构成表中。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 474,
+                "prompt_tokens": 9971,
+                "total_tokens": 10445,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1779
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.17s"
+        }
+    },
+    {
+        "tid": "tttt----76",
+        "team": [
+            {
+                "id": "tttt----76----43-2-1",
+                "question": "陆家嘴在2019年的最大借贷金额是多少？",
+                "data_source_reasoning": "该问题需要查询陆家嘴在2019年的借贷金额信息，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司借贷明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----76----43-2-2",
+                "question": "陆家嘴在2019年的单次首次借贷金额最高的借款方是谁？其单次首次借贷金额是多少？",
+                "data_source_reasoning": "问题涉及陆家嘴在2019年的单次首次借贷金额最高的借款方及其金额，这些信息可以在上市公司公告资讯/重大事项数据库的公司借贷明细表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----76----43-2-3",
+                "question": "陆家嘴在2019年最新的借贷事件是什么？给我的答案包括事件内容、借贷方、出借方和借贷金额等信息。",
+                "data_source_reasoning": "问题需要获取陆家嘴在2019年最新的借贷事件的详细信息，包括事件内容、借贷方、出借方和借贷金额等，这些信息可以从上市公司公告资讯/重大事项数据库的公司借贷明细表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 452,
+                "prompt_tokens": 9943,
+                "total_tokens": 10395,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1751
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.37s"
+        }
+    },
+    {
+        "tid": "tttt----77",
+        "team": [
+            {
+                "id": "tttt----77----44-2-1",
+                "question": "亿帆医药在2020年的最大担保金额是多少？",
+                "data_source_reasoning": "该问题需要查询亿帆医药在2020年的担保金额信息，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司担保明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----77----44-2-2",
+                "question": "亿帆医药在2020年的最大担保金额涉及的担保方是谁？担保金额是多少？",
+                "data_source_reasoning": "问题涉及亿帆医药在2020年的担保金额及其涉及的担保方信息，这些内容可以在上市公司公告资讯/重大事项数据库的公司担保明细表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----77----44-2-3",
+                "question": "亿帆医药在2020年最新的担保事件是什么？答案包括事件内容、担保方、被担保方和担保金额信息。",
+                "data_source_reasoning": "问题需要获取亿帆医药在2020年的最新担保事件的详细信息，包括事件内容、担保方、被担保方和担保金额，这些信息可以从上市公司公告资讯/重大事项数据库的公司担保明细表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 448,
+                "prompt_tokens": 9938,
+                "total_tokens": 10386,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1746
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.29s"
+        }
+    },
+    {
+        "tid": "tttt----78",
+        "team": [
+            {
+                "id": "tttt----78----45-2-1",
+                "question": "许继电气在2021年发布了多少条重大事项公告？",
+                "data_source_reasoning": "该问题需要查询许继电气在2021年发布的重大事项公告数量，这些信息通常记录在上市公司公告资讯/重大事项数据库中的相关表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_SuitArbitration"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_EntrustInv"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Regroup"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorDetail"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----78----45-2-2",
+                "question": "许继电气在2021年签订的涉及金额最大的合同标的是哪个？金额是多少？",
+                "data_source_reasoning": "该问题需要查询许继电气在2021年签订的合同中涉及金额最大的合同标的及其金额，这些信息通常记录在上市公司公告资讯/重大事项数据库中的公司重大经营合同明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----78----45-2-3",
+                "question": "许继电气在2021年签订金额最大的合同是否发生在重大事项公告之后？签订的合同日期和重大事项公告日期分别是什么（XXXX-XX-XX）？",
+                "data_source_reasoning": "该问题需要查询许继电气在2021年签订金额最大的合同的日期，并对比重大事项公告的日期，这些信息分别记录在上市公司公告资讯/重大事项数据库中的公司重大经营合同明细表和重大事项公告表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_SuitArbitration"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_EntrustInv"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Regroup"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorDetail"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 779,
+                "prompt_tokens": 9948,
+                "total_tokens": 10727,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1756
+            }
+        },
+        "time_usage": {
+            "stage_1": "36.93s"
+        }
+    },
+    {
+        "tid": "tttt----79",
+        "team": [
+            {
+                "id": "tttt----79----46-2-1",
+                "question": "美亚光电在2021年的减持计划中，最大可减持股份数量（减持股份数量上限(股)）与最小可减持股份数量（减持股份数量下限(股)）的差距是多少？",
+                "data_source_reasoning": "该问题需要查询美亚光电在2021年的减持计划中，股东的最大可减持股份数量和最小可减持股份数量，这些信息通常记录在上市公司股东与股本相关的股东增减持计划表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_TransferPlan"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----79----46-2-2",
+                "question": "美亚光电在2021年的减持计划中涉及了多少名股东？",
+                "data_source_reasoning": "问题涉及美亚光电在2021年的减持计划中涉及的股东数量，这些信息可以从股东增减持计划表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_TransferPlan"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----79----46-2-3",
+                "question": "美亚光电在2021年的减持计划中，哪位股东的最大减持比例最高？",
+                "data_source_reasoning": "问题需要获取美亚光电在2021年的减持计划中，每位股东的最大减持比例，并找出其中最高的比例。这些信息可以从股东增减持计划表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_TransferPlan"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 461,
+                "prompt_tokens": 9956,
+                "total_tokens": 10417,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1764
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.11s"
+        }
+    },
+    {
+        "tid": "tttt----80",
+        "team": [
+            {
+                "id": "tttt----80----1-2-1",
+                "question": "利亚德的证券代码和ISIN代码是什么？",
+                "data_source_reasoning": "该问题需要查询利亚德的证券代码和ISIN代码，这些信息通常记录在证券主表中。",
+                "data_source": [
+                    {
+                        "database": "ConstantDB",
+                        "table": "SecuMain"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----80----1-2-2",
+                "question": "该公司最新的证监会行业代码是多少？该行业下有多少家上市公司？",
+                "data_source_reasoning": "问题涉及利亚德的证监会行业代码以及该行业下的上市公司数量。证监会行业代码信息可以从上市公司行业板块数据库的公司行业划分表中获取，而行业下的上市公司数量可以通过统计公司行业划分表中的记录数来确定。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----80----1-2-3",
+                "question": "利亚德最近三次投资者调研的具体时间(xxxx-xx-xx的格式)、地点和参与机构数量分别是多少？",
+                "data_source_reasoning": "问题需要获取利亚德最近三次投资者调研的详细信息，包括时间、地点和参与机构数量。这些信息可以从上市公司公告资讯/重大事项数据库的投资者关系活动调研明细表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorDetail"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 417,
+                "prompt_tokens": 9919,
+                "total_tokens": 10336,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1727
+            }
+        },
+        "time_usage": {
+            "stage_1": "20.43s"
+        }
+    },
+    {
+        "tid": "tttt----81",
+        "team": [
+            {
+                "id": "tttt----81----2-2-1 ",
+                "question": "隧道股份在2021年底有多少个国家队持股股东？",
+                "data_source_reasoning": "该问题需要查询隧道股份在2021年底的国家队持股股东数量，这些信息通常记录在上市公司股东与股本相关的A股国家队持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_NationalStockHoldSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----81----2-2-2 ",
+                "question": "这些股东的持有A股总数是多少？",
+                "data_source_reasoning": "问题涉及国家队持股股东的持有A股总数，这些信息可以在上市公司股东与股本相关的A股国家队持股统计表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_NationalStockHoldSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----81----2-2-3 ",
+                "question": "在这些股东中，持股比例最高的是哪个股东？持股比例是多少？（保留2位小数）",
+                "data_source_reasoning": "问题需要获取国家队持股股东中持股比例最高的信息，这些数据可以从上市公司股东与股本相关的A股国家队持股统计表中查询到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_NationalStockHoldSt"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 404,
+                "prompt_tokens": 9914,
+                "total_tokens": 10318,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1722
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.44s"
+        }
+    },
+    {
+        "tid": "tttt----82",
+        "team": [
+            {
+                "id": "tttt----82----3-2-1",
+                "question": "中国宝安2021年底的员工总数是多少？其中技术人员占比是多少？（保留2位小数）",
+                "data_source_reasoning": "该问题需要查询公司员工总数和技术人员的占比信息，这些信息通常记录在产品供销与人力资源数据库的职工构成表中。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----82----3-2-2",
+                "question": "在该公司的技术人员中，具有硕士及以上学历（硕士+博士）的人员占比是多少？（保留2位小数）",
+                "data_source_reasoning": "问题需要获取公司技术人员的学历构成信息，特别是硕士及以上学历的人员占比，这些数据存储在职工构成表中。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----82----3-2-3",
+                "question": "该公司的人才结构是否合理？请分析技术人员、生产人员、销售人员的比例构成。",
+                "data_source_reasoning": "问题需要分析公司不同类型员工的构成比例，这些信息可以从职工构成表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_Staff"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 393,
+                "prompt_tokens": 9938,
+                "total_tokens": 10331,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1746
+            }
+        },
+        "time_usage": {
+            "stage_1": "19.55s"
+        }
+    },
+    {
+        "tid": "tttt----83",
+        "team": [
+            {
+                "id": "tttt----83----4-2-1",
+                "question": "海信家电在2021-12-24这天，小单、中单和大单的净流入情况如何？净流入额分别是多少？(单位：元)",
+                "data_source_reasoning": "该问题需要查询特定日期的资金流向数据，包括小单、中单和大单的净流入情况。这些信息通常记录在股票行情数据库中的资金流向指标表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockCapFlowIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----83----4-2-2",
+                "question": "基于上述资金流向数据，大单对比小单的净买入率(额)差值是多少个百分点？这种资金流向组合反映了什么现象？ (保留两位小数)",
+                "data_source_reasoning": "该问题需要基于前一问题的资金流向数据进行计算，特别是大单和小单的净买入率差值。因此，数据源与前一问题相同，仍需查询资金流向指标表。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockCapFlowIndex"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----83----4-2-3",
+                "question": "请结合该股票所属的概念板块，2021-12-24当天其所属概念板块的大单小单净买入率差值是多少个百分点？",
+                "data_source_reasoning": "该问题需要查询股票所属的概念板块，并结合概念板块的资金流向数据进行分析。首先需要查询概念所属公司表获取股票所属概念板块，然后查询资金流向指标表获取概念板块的资金流向数据。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockCapFlowIndex"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 520,
+                "prompt_tokens": 9978,
+                "total_tokens": 10498,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1786
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.68s"
+        }
+    },
+    {
+        "tid": "tttt----84",
+        "team": [
+            {
+                "id": "tttt----84----5-2-1 ",
+                "question": "永泰能源在2020年发生了几次业务范围变更？请列出每次变更的具体日期（xxxx-xx-xx的格式）",
+                "data_source_reasoning": "问题涉及公司业务范围的变更情况，这些信息通常记录在上市公司基本资料数据库的公司经营范围与行业变更表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_Business"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----84----5-2-2 ",
+                "question": "在2020年永泰能源的业务变更日期前后30天内，公司发生了多少次信用评级相关事件？请列出具体的事件日期。",
+                "data_source_reasoning": "问题涉及信用评级相关事件，这些信息通常记录在上市公司公告资讯/重大事项数据库的公司借贷明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----84----5-2-3 ",
+                "question": "比较永泰能源在2019年和2020年的业务变更次数和信用事件次数，计算2020年相对于2019年的变化率。哪个指标的变化更大？",
+                "data_source_reasoning": "问题需要比较2019年和2020年的业务变更次数和信用事件次数，这些信息分别存储在公司经营范围与行业变更表和公司借贷明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockBasicInfoDB",
+                        "table": "LC_Business"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 470,
+                "prompt_tokens": 9974,
+                "total_tokens": 10444,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1782
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.71s"
+        }
+    },
+    {
+        "tid": "tttt----85",
+        "team": [
+            {
+                "id": "tttt----85----6-2-1 ",
+                "question": "鹏华基金在2019年成立了多少只基金？这些基金的总募集规模是多少？(单位：元)",
+                "data_source_reasoning": "该问题需要查询鹏华基金在2019年成立的基金数量及其总募集规模。这些信息通常记录在公募基金数据库的公募基金概况表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----85----6-2-2 ",
+                "question": "在上述成立的基金中，有多少只是股票型基金？这些股票型基金的平均募集规模是多少？(单位：元)",
+                "data_source_reasoning": "问题需要进一步细分鹏华基金在2019年成立的股票型基金数量及其平均募集规模。这些信息可以在公募基金概况表中找到，通过筛选投资类型为股票型的基金来获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----85----6-2-3 ",
+                "question": "请分析该公司2019年新成立的股票型基金中，采用被动投资策略(指数型)的基金占比是多少？这一比例相比同期其他基金公司是高还是低？",
+                "data_source_reasoning": "问题需要分析鹏华基金在2019年新成立的股票型基金中，采用被动投资策略（指数型）的基金占比，并与其他基金公司进行比较。这些信息可以在公募基金概况表中找到，通过筛选投资类型为股票型且投资策略为被动型的基金来获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 497,
+                "prompt_tokens": 9961,
+                "total_tokens": 10458,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1769
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.08s"
+        }
+    },
+    {
+        "tid": "tttt----86",
+        "team": [
+            {
+                "id": "tttt----86----7-2-1 ",
+                "question": "安琪酵母在2021年12月31日的股东总户数是多少？其中A股股东户均持股数是多少股？",
+                "data_source_reasoning": "该问题需要查询安琪酵母在特定日期的股东总户数和A股股东户均持股数，这些信息通常记录在上市公司股东与股本相关的股东户数表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SHNumber"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----86----7-2-2 ",
+                "question": "基于上述股东数据，该公司A股户均持股数相比上一季度的变化率是多少(四舍五入到小数点后两位)？这种变化反映了什么现象？",
+                "data_source_reasoning": "该问题需要对比安琪酵母在不同季度的A股股东户均持股数，计算变化率。这些数据可以从股东户数表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SHNumber"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----86----7-2-3 ",
+                "question": "该公司2021年的管理层总薪酬是多少，所有公司平均水平是多少？该公司管理层薪酬与行业平均水平的差异率是多少？ (四舍五入保留两位小数)",
+                "data_source_reasoning": "该问题需要查询安琪酵母2021年的管理层总薪酬，并对比所有公司平均水平和行业平均水平。这些信息可以从产品供销与人力资源数据库的管理层报酬统计表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 489,
+                "prompt_tokens": 9981,
+                "total_tokens": 10470,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1789
+            }
+        },
+        "time_usage": {
+            "stage_1": "24.88s"
+        }
+    },
+    {
+        "tid": "tttt----87",
+        "team": [
+            {
+                "id": "tttt----87----8-2-1 ",
+                "question": "健康元药业集团股份有限公司在2020-2021年期间进行了几次股份回购？每次回购的金额(单位：万元，保留两位小数)和股数分别是多少？",
+                "data_source_reasoning": "该问题需要查询公司在特定时间段内的股份回购情况，包括回购次数、金额和股数。这些信息通常记录在上市公司股东与股本相关的股份回购表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----87----8-2-2 ",
+                "question": "最近一次回购的主要目的是什么？是否涉及股权激励计划？",
+                "data_source_reasoning": "问题涉及最近一次股份回购的具体目的和是否涉及股权激励计划，这些信息可以在股份回购关联表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_BuybackAttach"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----87----8-2-3 ",
+                "question": "该公司在2020-2021年期间的回购总金额在A股上市公司中排名如何？",
+                "data_source_reasoning": "问题需要比较该公司在特定时间段内的回购总金额与其他A股上市公司的排名情况。这需要从股份回购表中获取总金额数据，并结合其他公司的数据进行排名。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 435,
+                "prompt_tokens": 9946,
+                "total_tokens": 10381,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1754
+            }
+        },
+        "time_usage": {
+            "stage_1": "21.29s"
+        }
+    },
+    {
+        "tid": "tttt----88",
+        "team": [
+            {
+                "id": "tttt----88----9-2-1",
+                "question": "伟明环保最近一期员工持股计划的参与总人数是多少？其中管理层参与人数占比(四舍五入精确到小数点后两位，并以百分比形式表示)是多少？",
+                "data_source_reasoning": "该问题需要查询员工持股计划的具体参与人数及管理层参与人数占比，这些信息通常记录在上市公司股东与股本相关的员工持股计划表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOP"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----88----9-2-2",
+                "question": "该期员工持股计划的股票来源是什么？计划购买股票数量是多少股？",
+                "data_source_reasoning": "问题涉及员工持股计划的股票来源和计划购买股票数量，这些信息可以在员工持股计划表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOP"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----88----9-2-3",
+                "question": "对比伟明环保与在证券市场和证券类别相同的公司的员工持股计划,分析:(1)在证券市场和证券类别相同的公司的员工持股计划的数量(2)该公司的持股计划规模处于什么水平(精确到小数点后两位，并以百分比形式表示)?(3)管理层参与人数比例处于什么水平(精确到小数点后两位，并以百分比形式表示)?(4)锁定期长度处于什么水平(精确到小数点后两位，并以百分比形式表示)?",
+                "data_source_reasoning": "此问题需要对比分析伟明环保与其他同市场同类别公司的员工持股计划情况，包括计划数量、规模、管理层参与比例和锁定期长度。这些信息可以从员工持股计划表和相关统计数据中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOP"
+                    },
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ESOPSummary"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 547,
+                "prompt_tokens": 10033,
+                "total_tokens": 10580,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1841
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.70s"
+        }
+    },
+    {
+        "tid": "tttt----89",
+        "team": [
+            {
+                "id": "tttt----89----10-2-1",
+                "question": "光环新网(代码:300383)的年度报告中在2021年年末的机构持股比例是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？其中基金持股比例是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？",
+                "data_source_reasoning": "该问题需要查询2021年年末光环新网的机构持股比例和基金持股比例。这些信息通常记录在上市公司股东与股本相关的股东持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----89----10-2-2",
+                "question": "非基金定报，以最后一次统计日期为准，该公司2021年全年(第一季度末到第四季度末)机构持股比例分别是多少(四舍五入精确到小数点后两位，并以百分比形式表示)？",
+                "data_source_reasoning": "该问题需要查询2021年全年光环新网的机构持股比例，这些信息通常记录在上市公司股东与股本相关的股东持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----89----10-2-3",
+                "question": "对比2020年末和2021年末的数据，该公司的机构持股比例和基金持股比例分别是多少(四舍五入精确到小数点后两位，并以百分比形式表示)，变化了多少(保留正负符号，四舍五入精确到小数点后两位，并以百分比形式表示)？",
+                "data_source_reasoning": "该问题需要查询2020年末和2021年末光环新网的机构持股比例和基金持股比例，并计算其变化。这些信息通常记录在上市公司股东与股本相关的股东持股统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 586,
+                "prompt_tokens": 10070,
+                "total_tokens": 10656,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1878
+            }
+        },
+        "time_usage": {
+            "stage_1": "27.73s"
+        }
+    },
+    {
+        "tid": "tttt----90",
+        "team": [
+            {
+                "id": "tttt----90----11-2-1",
+                "question": "九州通在2020-2021年间实施了几次分红方案？每次分红的合计派现金额（四舍五入保留两位小数，单位元）和实施公告日期（xxxx-xx-xx的格式）分别是多少？",
+                "data_source_reasoning": "该问题需要查询公司在2020-2021年间的分红方案及其详细信息，包括分红次数、合计派现金额和实施公告日期。这些信息通常记录在上市公司财务指标相关的公司分红表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_Dividend"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----90----11-2-2",
+                "question": "从公司年报中，在2020-2021年间，该公司的机构持无限售流通A股比例是是否增长(输出是/否)，请列出具体数据，保留4位小数。",
+                "data_source_reasoning": "问题涉及机构持有无限售流通A股比例的变化情况，这些数据可以从上市公司股东与股本相关的股东持股统计表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----90----11-2-3",
+                "question": "在2020-2021年间，公司发生了多少重大借贷事件（单笔金额超过3000万元）？这些借贷事件最大金额和对应的借款方和贷款方是谁？",
+                "data_source_reasoning": "问题需要查询公司在2020-2021年间的重大借贷事件，包括借贷金额、借款方和贷款方等信息。这些信息通常记录在上市公司公告资讯相关的公司借贷明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Credit"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 530,
+                "prompt_tokens": 10019,
+                "total_tokens": 10549,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1827
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.42s"
+        }
+    },
+    {
+        "tid": "tttt----91",
+        "team": [
+            {
+                "id": "tttt----91----12-2-1 ",
+                "question": "在2021-12-31这一天，A股市场中创出月度新高的公司有哪些（中文名称缩写即可）？他们的证券代码是多少？",
+                "data_source_reasoning": "此问题需要查询2021-12-31这一天A股市场中创出月度新高的公司及其证券代码。这属于股票技术形态的分析内容，可以通过市场行情数据库的股票技术形态表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----91----12-2-2 ",
+                "question": "在这些创出新高的公司中，哪些公司的股东中包含企业资本？请列出公司名（中文名称缩写即可）和企业资本股东名称",
+                "data_source_reasoning": "此问题需要查询创出月度新高的公司中，股东包含企业资本的公司及其企业资本股东名称。这涉及到股东信息，可以通过上市公司股东与股本数据库的股东名单表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_MainSHListNew"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----91----12-2-3 ",
+                "question": "对于同时具备企业资本背景和创新高的公司，请从以下维度深入分析：\n    这些公司的行业代码是什么？行业相同的公司分别是什么（中文名称缩写即可）",
+                "data_source_reasoning": "此问题需要查询同时具备企业资本背景和创新高的公司的行业代码，并找出行业相同的公司。这涉及到行业划分信息，可以通过上市公司行业板块数据库的公司行业划分表获取。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_ExgIndustry"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 497,
+                "prompt_tokens": 9978,
+                "total_tokens": 10475,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1786
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.27s"
+        }
+    },
+    {
+        "tid": "tttt----92",
+        "team": [
+            {
+                "id": "tttt----92----13-2-1",
+                "question": "华夏鼎康债券A在2019年的分红次数是多少？每次分红的派现比例是多少？",
+                "data_source_reasoning": "该问题需要查询基金的分红信息，包括分红次数和每次分红的派现比例。这些信息通常记录在公募基金数据库的基金分红表中。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----92----13-2-2",
+                "question": "基于上述分红数据，在2019年最后一次分红时，如果一位投资者持有1000份该基金，税后可以获得多少分红收益？",
+                "data_source_reasoning": "该问题需要基于已知的分红数据计算投资者的分红收益。虽然具体的税后计算需要额外的税率信息，但分红数据本身仍然可以从公募基金数据库的基金分红表中获取。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----92----13-2-3",
+                "question": "请结合该基金所属的债券型基金分类，分析2019年同类基金的平均分红次数和平均派现比例（四舍五入保留4位小数）",
+                "data_source_reasoning": "该问题需要分析同类基金的平均分红次数和平均派现比例。首先需要确定基金的分类信息，然后从公募基金数据库的基金分红表中获取同类基金的分红数据进行分析。",
+                "data_source": [
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_FundArchives"
+                    },
+                    {
+                        "database": "PublicFundDB",
+                        "table": "MF_Dividend"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 491,
+                "prompt_tokens": 9969,
+                "total_tokens": 10460,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1777
+            }
+        },
+        "time_usage": {
+            "stage_1": "23.61s"
+        }
+    },
+    {
+        "tid": "tttt----93",
+        "team": [
+            {
+                "id": "tttt----93----14-2-1",
+                "question": "中铁工业在2021年签订了哪些金额较大的重大合同？请列出前两大合同的发布日期(xxxx-xx-xx的格式)，合同标的和合同金额(四舍五入保留两位小数)。",
+                "data_source_reasoning": "该问题需要查询中铁工业在2021年签订的重大合同信息，包括合同发布日期、合同标的和合同金额。这些信息通常记录在上市公司公告资讯/重大事项数据库的公司重大经营合同明细表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----93----14-2-2",
+                "question": "中铁工业2021年重大合同的季度数量如何？",
+                "data_source_reasoning": "该问题需要统计中铁工业在2021年每个季度的重大合同数量。这些信息可以从上市公司公告资讯/重大事项数据库的公司重大经营合同明细表中获取，通过合同签订日期进行季度划分和统计。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----93----14-2-3",
+                "question": "分析2021年重大合同的交易对手特征：\n1. 重复交易的客户数量及其合同金额（保留两位小数）以及数量和金额占总量的占比（四舍五入保留两位小数，并以百分比形式表示）？\n2. 单一交易对手的合同总金额，最高是谁，总金额是多少（保留两位小数），全部交易对手合同总金额占比（四舍五入保留两位小数，并以百分比形式表示）？",
+                "data_source_reasoning": "该问题需要分析中铁工业在2021年重大合同的交易对手特征，包括重复交易的客户数量及其合同金额，以及单一交易对手的合同总金额。这些信息可以从上市公司公告资讯/重大事项数据库的公司重大经营合同明细表中获取，通过交易对手进行分类和统计。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_MajorContract"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 590,
+                "prompt_tokens": 10040,
+                "total_tokens": 10630,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1848
+            }
+        },
+        "time_usage": {
+            "stage_1": "27.80s"
+        }
+    },
+    {
+        "tid": "tttt----94",
+        "team": [
+            {
+                "id": "tttt----94----15-2-1",
+                "question": "华峰化学在2019年发生了哪些舆情事件？请列出事件发生时间(YYYY-MM-DD)、事件名称和情感方向。",
+                "data_source_reasoning": "该问题需要查询华峰化学在2019年的舆情事件，包括事件发生时间、事件名称和情感方向。这些信息通常记录在证券舆情表中。",
+                "data_source": [
+                    {
+                        "database": "InstitutionDB",
+                        "table": "PS_NewsSecurity"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----94----15-2-2",
+                "question": "在上述重大事件发生期间，华峰化学是否出现过停牌？如有，请列出停牌起止日期(YYYY-MM-DD)和具体原因。",
+                "data_source_reasoning": "问题涉及华峰化学在重大事件发生期间的停牌情况，包括停牌起止日期和具体原因。这些信息可以从上市公司股票行情数据库的停牌复牌表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "LC_SuspendResumption"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----94----15-2-3",
+                "question": "2019年期间，华峰化学发生的最大比例股权变动是在哪一天（xxxx-xx-xx）？这次变动前后5个交易日的股价累计涨跌幅是多少？（保留2位小数）",
+                "data_source_reasoning": "问题需要查询华峰化学在2019年的股权变动情况，包括最大比例股权变动的日期。这些信息可以从股东股权变动的记录中查询到。此外，还需要查询股价变动情况，涉及每日行情表。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareTransfer"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 525,
+                "prompt_tokens": 9988,
+                "total_tokens": 10513,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1796
+            }
+        },
+        "time_usage": {
+            "stage_1": "25.43s"
+        }
+    },
+    {
+        "tid": "tttt----95",
+        "team": [
+            {
+                "id": "tttt----95----16-2-1",
+                "question": "大北农在2019年第一季度末的资产负债率是多少？其中流动资产和非流动资产分别占总资产的比例是多少？（四舍五入保留2位小数）",
+                "data_source_reasoning": "该问题需要查询大北农在2019年第一季度末的财务数据，包括资产负债率、流动资产和非流动资产占总资产的比例。这些信息通常记录在上市公司财务指标/财务报表/融资与分红数据库的资产负债表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----95----16-2-2",
+                "question": "基于上述资产结构特征，该公司在2019年为其子公司提供担保的总金额是多少？(保留2位小数)最长担保期限为多少个月？（保留整数）",
+                "data_source_reasoning": "问题涉及大北农在2019年为其子公司提供的担保情况，包括总金额和最长担保期限。这些信息可以从上市公司公告资讯/重大事项数据库的公司担保明细表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_Warrant"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----95----16-2-3",
+                "question": "针对上述担保事项，公司在2019年召开的股东大会的具体日期以及参会股东所持表决权占公司总股本的比例是多少？(可以使用最近一次可查总股本的数据)（四舍五入保留2位小数）",
+                "data_source_reasoning": "问题需要获取大北农在2019年召开的股东大会的具体日期和参会股东所持表决权占公司总股本的比例。这些信息可以从上市公司股东与股本/公司治理数据库的股东大会出席信息表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_SMAttendInfo"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 553,
+                "prompt_tokens": 10010,
+                "total_tokens": 10563,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1818
+            }
+        },
+        "time_usage": {
+            "stage_1": "26.96s"
+        }
+    },
+    {
+        "tid": "tttt----96",
+        "team": [
+            {
+                "id": "tttt----96----17-2-1",
+                "question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)",
+                "data_source_reasoning": "该问题需要查询梅花生物在2019年的股票回购次数和总金额，这些信息通常记录在上市公司股东与股本相关的股份回购表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----96----17-2-2",
+                "question": "在上述回购计划中，最大单笔回购的具体时间(xxxx-xx-xx的格式)和金额是多少？(四舍五入保留2位小数)",
+                "data_source_reasoning": "问题涉及2019年最大单笔回购的具体时间和金额，这些信息可以在股份回购表中找到。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----96----17-2-3",
+                "question": "该公司2019年的平均回购时间跨度是多少？(天为单位，2位小数)平均回购金额是多少？(四舍五入保留2位小数)",
+                "data_source_reasoning": "问题需要计算2019年回购的平均时间跨度和平均金额，这些数据可以从股份回购表中获取并进行计算。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_Buyback"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 450,
+                "prompt_tokens": 9975,
+                "total_tokens": 10425,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1783
+            }
+        },
+        "time_usage": {
+            "stage_1": "27.46s"
+        }
+    },
+    {
+        "tid": "tttt----97",
+        "team": [
+            {
+                "id": "tttt----97----18-2-1",
+                "question": "深科技在2021年12月24日的交易数据如何?具体包括收盘价、成交量、换手率，保留2位小数。",
+                "data_source_reasoning": "该问题需要查询特定日期的交易数据，包括收盘价、成交量和换手率，这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----97----18-2-2",
+                "question": "基于上述交易数据，该股当日是否创出了近一周、近一月的新高?如果不是,最高价分别是多少?",
+                "data_source_reasoning": "问题涉及判断股票是否创出近一周和近一月的新高，这需要查询股票技术形态表中的相关数据，包括近一周和近一月的最高价信息。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----97----18-2-3",
+                "question": "结合该股当日的MACD指标(考虑成交量)以及均线排列情况,从技术面分析其走势特征。",
+                "data_source_reasoning": "问题需要分析股票的技术指标，包括MACD指标和均线排列情况，这些信息可以从股票技术形态表和成交量技术指标表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    },
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_TurnoverVolTecIndex"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 473,
+                "prompt_tokens": 9954,
+                "total_tokens": 10427,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1762
+            }
+        },
+        "time_usage": {
+            "stage_1": "22.98s"
+        }
+    },
+    {
+        "tid": "tttt----98",
+        "team": [
+            {
+                "id": "tttt----98----19-2-1",
+                "question": "安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？",
+                "data_source_reasoning": "该问题需要查询安井食品在2019年第一季度的每日行情数据，包括最高价、最低价和成交量。这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----98----19-2-2",
+                "question": "在上述成交量最大的那天，该股票是否创下了近一周、近一月或近一季度的新高？如果是，分别创下了哪些新高？",
+                "data_source_reasoning": "该问题需要查询安井食品在成交量最大那天的技术形态表现，判断是否创下了近一周、近一月或近一季度的新高。这些信息通常记录在上市公司股票行情数据库的股票技术形态表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "CS_StockPatterns"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----98----19-2-3",
+                "question": "分析该股票2019年1月份的成交量特征：哪几天的成交量超过月均量的2倍？具体是多少比例？这些放量日的收盘价相比前一日分别上涨/下跌了多少？(四舍五入保留两位小数)",
+                "data_source_reasoning": "该问题需要查询安井食品在2019年1月份的每日行情数据，包括成交量和收盘价，并进行统计分析。这些信息通常记录在上市公司股票行情数据库的日行情表中。",
+                "data_source": [
+                    {
+                        "database": "AStockMarketQuotesDB",
+                        "table": "QT_DailyQuote"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 515,
+                "prompt_tokens": 9988,
+                "total_tokens": 10503,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1796
+            }
+        },
+        "time_usage": {
+            "stage_1": "28.36s"
+        }
+    },
+    {
+        "tid": "tttt----99",
+        "team": [
+            {
+                "id": "tttt----99----20-2-1",
+                "question": "美年健康在2019年发生的股权质押中，质押比例最大的一笔是哪个股东质押给了谁？质押股数和占总股本比例是多少，保留4位小数？",
+                "data_source_reasoning": "该问题需要查询美年健康在2019年的股权质押情况，特别是质押比例最大的一笔。这些信息通常记录在股东股权质押和质押统计表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareFP"
+                    },
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareFPSta"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----99----20-2-2",
+                "question": "在上述最大比例质押发生时，该公司的短期借款余额是多少？(保留两位小数)",
+                "data_source_reasoning": "问题涉及公司在特定时间点的短期借款余额，这些财务信息通常记录在财务报表中的资产负债表中。",
+                "data_source": [
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----99----20-2-3",
+                "question": "该公司2019年全年累计发生几笔股权质押？质押融资总额占其年末总资产的比例是多少？(保留两位小数)",
+                "data_source_reasoning": "问题需要统计2019年全年的股权质押次数和质押融资总额占年末总资产的比例。这些信息可以从股东股权质押和质押统计表中获取，同时需要查询年末总资产数据。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareFP"
+                    },
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareFPSta"
+                    },
+                    {
+                        "database": "AStockFinanceDB",
+                        "table": "LC_BalanceSheetAll"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 527,
+                "prompt_tokens": 9965,
+                "total_tokens": 10492,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1773
+            }
+        },
+        "time_usage": {
+            "stage_1": "26.41s"
+        }
+    },
+    {
+        "tid": "tttt----100",
+        "team": [
+            {
+                "id": "tttt----100----21-2-1",
+                "question": "横店东磁在2019年1月份进行了多少次投资者关系活动？这些活动中参与机构最多的一次活动发生在哪天(xxxx-xx-xx的格式)，有多少家机构参与？",
+                "data_source_reasoning": "该问题需要查询横店东磁在2019年1月份的投资者关系活动次数以及参与机构最多的活动详情。这些信息通常记录在上市公司公告资讯/重大事项数据库的投资者关系活动表中。",
+                "data_source": [
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----100----21-2-2",
+                "question": "该公司高管的年度薪酬总额是多少？一年后呢？变化比例是(四舍五入保留到小数点两位)？",
+                "data_source_reasoning": "问题涉及公司高管的年度薪酬总额及其变化情况，这些信息可以从产品供销与人力资源数据库的公司管理层报酬统计表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----100----21-2-3",
+                "question": "请结合该公司所属的概念板块，列出2021年该公司所属的各个概念板块的平均高管薪酬和投资者关系活动频次是多少？（四舍五入保留两位小数）",
+                "data_source_reasoning": "该问题需要结合横店东磁所属的概念板块，查询2021年各概念板块的平均高管薪酬和投资者关系活动频次。涉及到的表包括上市公司行业板块数据库的概念所属公司表和产品供销与人力资源数据库的公司管理层报酬统计表。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    },
+                    {
+                        "database": "AStockOperationsDB",
+                        "table": "LC_RewardStat"
+                    },
+                    {
+                        "database": "AStockEventsDB",
+                        "table": "LC_InvestorRa"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 551,
+                "prompt_tokens": 9990,
+                "total_tokens": 10541,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1798
+            }
+        },
+        "time_usage": {
+            "stage_1": "27.02s"
+        }
+    },
+    {
+        "tid": "tttt----101",
+        "team": [
+            {
+                "id": "tttt----101----22-2-1",
+                "question": "中直股份在2021年12月31日的总股本是多少？其中有限售条件的流通股占比是多少？(保留两位小数)",
+                "data_source_reasoning": "该问题需要查询中直股份在特定日期的总股本和有限售条件的流通股占比，这些信息通常记录在上市公司股东与股本相关的公司股本结构变动表中。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_ShareStru"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----101----22-2-2",
+                "question": "在这个时间点，该股票的境内自然人持股和境外自然人持股比例分别是多少？两者相差多少个百分点？(保留两位小数)",
+                "data_source_reasoning": "问题涉及特定日期的境内自然人持股和境外自然人持股比例，这些信息可以从股东持股统计表中获取。",
+                "data_source": [
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            },
+            {
+                "id": "tttt----101----22-2-3",
+                "question": "该股票属于哪些概念板块？在这些概念板块中，其他公司2021年12月31日的平均有限售股比例是多少？该股票是高于还是低于板块平均水平，偏离了多少个百分点？(保留两位小数)",
+                "data_source_reasoning": "问题需要查询中直股份所属的概念板块，以及这些板块中其他公司在特定日期的平均有限售股比例。涉及到的表包括概念所属公司表和股东持股统计表。",
+                "data_source": [
+                    {
+                        "database": "AStockIndustryDB",
+                        "table": "LC_COConcept"
+                    },
+                    {
+                        "database": "AStockShareholderDB",
+                        "table": "LC_StockHoldingSt"
+                    }
+                ]
+            }
+        ],
+        "token_usage": {
+            "stage_1": {
+                "completion_tokens": 509,
+                "prompt_tokens": 9991,
+                "total_tokens": 10500,
+                "prompt_cache_hit_tokens": 8192,
+                "prompt_cache_miss_tokens": 1799
+            }
+        },
+        "time_usage": {
+            "stage_1": "24.05s"
+        }
+    }
+]
