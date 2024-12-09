@@ -1,4 +1,4 @@
-#### **Database and Table Schema**
+## **Database and Table Schema**
 ```markdown table
 |库名中文|库名英文|表英文|表中文|表描述|
 | 上市公司基本资料| AStockBasicInfoDB| LC_StockArchives| 公司概况| 收录上市公司的基本情况，包括：联系方式、注册信息、中介机构、行业和产品、公司证券品种及背景资料等内容。 |
@@ -80,11 +80,11 @@
 | 机构数据库 | InstitutionDB | PS_NewsSecurity| 证券舆情表| 收录了全网披露的舆情信息涉及的相关证券，对对应的事件信息，并对相应的事件的正负面情感及情感重要性进行等级划分。|
 ```
 
-#### **Current Query**
+## **Current Query**
 
 天顺风能披露了多少次担保信息？
 
-#### **Task Description**
+## **Task Description**
 
 **Role:** You are a **Bilingual Financial Data Analyst** proficient in both **English and Chinese**. You have extensive knowledge of the provided database schema, which includes data on various markets, including A-shares, B-shares, H-shares, and others. You are skilled at understanding complex financial queries in both languages and accurately identifying the database(s) and table(s) required to answer them.
 
@@ -99,7 +99,7 @@
 
 3. **Determine Dependency:** Based on the `data_source`, infer whether the user query depends on the `data_source` to answer the question. If the `data_source` is empty, set `database_dependency` to `false`; otherwise, set it to `true`.
 
-4. **Provide Chain-of-Thought Reasoning:** In the `data_source_reasoning` field, provide a clear, step-by-step, and logical explanation in **Chinese** of how you inferred the relevant database(s) and table(s). This reasoning should be detailed enough for a human to understand your thought process, including why certain tables were chosen or excluded, and how ambiguities were resolved (if any).
+4. **Provide Chain-of-Thought Reasoning:** In the `data_source_reasoning` field, provide a clear, step-by-step, and logical explanation in **Chinese** of how you inferred the relevant database(s) and table(s). This reasoning should be detailed enough for a human to understand your thought process, including why certain tables were chosen or excluded, and how ambiguities were resolved (if any). **Do not use line breaks within this field; use spaces or semicolons to separate sentences.**
 
 **Output Format:**
 
@@ -115,54 +115,38 @@ The return JSON format:
     "database_dependency": boolean
 }
 
-#### **Shots**
+## **Shots**
 
 **Shot 1**
 ```json
 {
     "question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？",
-    "data_source_reasoning": "这个问题询问的是股票代码为600872的公司的全称、A股简称、法人、法律顾问、会计师事务所和董秘。我们可以这样分析：
-    1. **识别实体：** 问题中使用了股票代码（600872）明确指出了一个特定的公司。这意味着我们需要与特定上市公司相关的信息。
-    2. **信息类型：** 问题寻求多种信息：公司全称、A股简称、法人等。这些都是上市公司的基本属性。
-    3. **定位数据：** 查看数据库架构，'上市公司基本资料' (AStockBasicInfoDB) 数据库似乎与基本公司信息最为相关。在这个数据库中，'公司概况' (LC_StockArchives) 表被描述为包含上市公司的基本信息，包括联系方式、注册信息等。这张表很可能包含问题中要求的具体属性。
-    4. **结论：** 因此，要回答这个问题，我们需要查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表。",
+    "data_source_reasoning": "这个问题询问的是股票代码为600872的公司的全称、A股简称、法人、法律顾问、会计师事务所和董秘。我们可以这样分析：    1. **识别实体：** 问题中使用了股票代码（600872）明确指出了一个特定的公司。这意味着我们需要与特定上市公司相关的信息。    2. **信息类型：** 问题寻求多种信息：公司全称、A股简称、法人等。这些都是上市公司的基本属性。    3. **定位数据：** 查看数据库架构，'上市公司基本资料' (AStockBasicInfoDB) 数据库似乎与基本公司信息最为相关。在这个数据库中，'公司概况' (LC_StockArchives) 表被描述为包含上市公司的基本信息，包括联系方式、注册信息等。这张表很可能包含问题中要求的具体属性。    4. **结论：** 因此，要回答这个问题，我们需要查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表。",
     "data_source": [
         {"database": "AStockBasicInfoDB", "table": "LC_StockArchives"}
     ],
     "database_dependency": true
 }
-
 ```
 
 **Shot 2**
 ```json
 {
     "question": "今天是2021年12月24日，创近半年新高的股票有几只？",
-    "data_source_reasoning": "这个问题询问的是截至2021年12月24日，在过去六个月内创下新高的股票数量。我们可以这样分析：
-    1. **时间范围：** 问题指定了一个时间范围：'近半年'（过去六个月）和一个特定日期（2021年12月24日）。这意味着我们需要历史股票价格数据。
-    2. **条件：** 问题关注的是达到'新高'的股票。这表明我们需要分析股票价格走势并识别峰值。
-    3. **数据类型：** 识别新高需要分析股票价格随时间的趋势和模式。这种分析属于技术分析的范畴。
-    4. **定位数据：** 数据库架构表明，'上市公司股票行情' (AStockMarketQuotesDB) 数据库包含与股票行情和技术指标相关的表格。'股票技术形态表' (CS_StockPatterns) 表特别提到了包含股票在各个时期（包括过去六个月）的表现信息以及诸如新高等技术形态。
-    5. **结论：** 因此，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 CS_StockPatterns 表，筛选出2021年12月24日的数据，并识别出在过去六个月内创下新高的股票。",
+    "data_source_reasoning": "这个问题询问的是截至2021年12月24日，在过去六个月内创下新高的股票数量。我们可以这样分析：    1. **时间范围：** 问题指定了一个时间范围：'近半年'（过去六个月）和一个特定日期（2021年12月24日）。这意味着我们需要历史股票价格数据。    2. **条件：** 问题关注的是达到'新高'的股票。这表明我们需要分析股票价格走势并识别峰值。    3. **数据类型：** 识别新高需要分析股票价格随时间的趋势和模式。这种分析属于技术分析的范畴。    4. **定位数据：** 数据库架构表明，'上市公司股票行情' (AStockMarketQuotesDB) 数据库包含与股票行情和技术指标相关的表格。'股票技术形态表' (CS_StockPatterns) 表特别提到了包含股票在各个时期（包括过去六个月）的表现信息以及诸如新高等技术形态。    5. **结论：** 因此，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 CS_StockPatterns 表，筛选出2021年12月24日的数据，并识别出在过去六个月内创下新高的股票。",
     "data_source": [
         {"database": "AStockMarketQuotesDB", "table": "CS_StockPatterns"}
     ],
     "database_dependency": true
 }
-
 ```
 
 **Shot 3**
 ```json
 {
     "question": "今天天气怎么样？",
-    "data_source_reasoning": "这个问题询问的是今天的天气情况。我们可以这样分析：
-    1. **问题类型：** 这是一个关于当前天气状况的问题。
-    2. **数据相关性：** 提供的数据库架构主要关注与上市公司相关的财务和股票市场数据。没有与天气相关的信息。
-    3. **结论：** 提供的数据库架构中不包含任何可以回答这个关于天气的问题的信息。因此，没有任何数据库或表格与此相关，并且无法使用此数据集回答该查询。
-    4. **备注：** 原始提示错误地将此问题映射到 LC_Staff 表。现已更正，以反映数据库与查询无关。",
+    "data_source_reasoning": "这个问题询问的是今天的天气情况。我们可以这样分析：    1. **问题类型：** 这是一个关于当前天气状况的问题。    2. **数据相关性：** 提供的数据库架构主要关注与上市公司相关的财务和股票市场数据。没有与天气相关的信息。    3. **结论：** 提供的数据库架构中不包含任何可以回答这个关于天气的问题的信息。因此，没有任何数据库或表格与此相关，并且无法使用此数据集回答该查询。    4. **备注：** 原始提示错误地将此问题映射到 LC_Staff 表。现已更正，以反映数据库与查询无关。",
     "data_source": [],
     "database_dependency": false
 }
-
 ```
