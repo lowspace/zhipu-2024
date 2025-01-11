@@ -11,3 +11,5 @@ notebook
 tqdm
 google-generativeai
 anthropic
+openpyxl
+tabulate
