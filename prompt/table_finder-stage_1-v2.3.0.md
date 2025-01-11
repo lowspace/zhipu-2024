@@ -68,8 +68,8 @@
 |上市公司股东与股本/公司治理|AStockShareholderDB|LC_TransferPlan|股东增减持计划表|1.内容说明：收录上市公司(包含科创板)股东增持计划、减持计划、被动减持计划、不减持类别指标。<br>2.数据范围：2005-至今。<br>3.信息来源：上市公司公告。|
 |上市公司股东与股本/公司治理|AStockShareholderDB|LC_SMAttendInfo|股东大会出席信息|1.收录股东大会召开时间，地点，类别；投票方式；见证律师事务所及经办律师；全体股东出席情况；非流通股东出席情况；流通股东出席情况。<br>2.数据范围：1999-1-28至今。|
 -----
-|港股数据库|HKStockDB|HK_StockArchives|港股公司概况|1.收录港股上市公司的基础信息，包括名称、成立日期、注册地点、注册资本、公司业务、所属行业分类、主席、公司秘书、联系方式等信息。<br>2.信息来源：港交所等。|
 |港股数据库|HKStockDB|HK_EmployeeChange|港股公司员工数量变动表|1.记录港股公司员工数量的变动历史记录数据，包括信息发布日期、信息来源、生效日期、变更前员工数量、变更后员工数量等。<br>2.数据范围：2001年至今。<br>3.信息来源：港交所。|
+|港股数据库|HKStockDB|HK_StockArchives|港股公司概况|1.收录港股上市公司的基础信息，包括名称、成立日期、注册地点、注册资本、公司业务、所属行业分类、主席、公司秘书、联系方式等信息。<br>2.信息来源：港交所等。|
 |港股数据库|HKStockDB|CS_HKStockPerformance|港股行情表现|1.内容说明：收录股票从最近一个交易日往前追溯一段时期的行情表现信息，包括近1周、1周以来、近1月、1月以来、近3月、近半年、近1年、今年以来、上市以来的表现情况，本表包含停牌数据。<br>2.数据范围：2005年至今。<br>3.数据来源：根据港交所披露数据聚源衍生计算。|
 -----
 |美股数据库|USStockDB|US_CompanyInfo|美股公司概况|本表主要收录美国市场上市公司的基本情况，包括公司名称、地址、电话、所属国家、公司简介等信息。|
@@ -89,12 +89,12 @@
 |机构数据库|InstitutionDB|LC_InstiArchive|机构基本资料|1.收录市场上重要机构的基本资料情况，如证券公司、信托公司、保险公司等；包含机构名称、机构信息、联系方式、机构背景等信息。<br>2.数据源：国家企业信用信息公示系统等。|
 |机构数据库|InstitutionDB|PS_NewsSecurity|证券舆情表|收录了全网披露的舆情信息涉及的相关证券，对对应的事件信息，并对相应的事件的正负面情感及情感重要性进行等级划分。|
 -----
-|常量库|ConstantDB|HK_SecuMain|港股证券主表|本表收录港股单个证券品种的简称、上市交易所等基础信息。|
-|常量库|ConstantDB|US_SecuMain|美股证券主表|本表收录美国等境外市场单个证券品种的简称、上市交易所等基础信息。|
 |常量库|ConstantDB|SecuMain|证券主表|本表收录单个证券品种（股票、基金、债券）的代码、简称、上市交易所等基础信息。|
+|常量库|ConstantDB|HK_SecuMain|港股证券主表|本表收录港股单个证券品种的简称、上市交易所等基础信息。|
 |常量库|ConstantDB|CT_SystemConst|系统常量表|本表收录数据库中各种常量值的具体分类和常量名称描述。|
-|常量库|ConstantDB|LC_AreaCode|国家城市代码表|本表收录世界所有国家层面的数据信息和我国不同层级行政区域的划分信息。|
 |常量库|ConstantDB|QT_TradingDayNew|交易日表(新)|本表收录各个市场的交易日信息，包括每个日期是否是交易日，是否周、月、季、年最后一个交易日。|
+|常量库|ConstantDB|LC_AreaCode|国家城市代码表|本表收录世界所有国家层面的数据信息和我国不同层级行政区域的划分信息。|
+|常量库|ConstantDB|US_SecuMain|美股证券主表|本表收录美国等境外市场单个证券品种的简称、上市交易所等基础信息。|
 ```
 
 ## **Task Description**
@@ -107,12 +107,12 @@
     *   **Important:** You must understand the nuances of financial terminology in both English and Chinese and consider the context of the query to accurately identify the relevant data source.
     *   **Multiple Tables:** If a query could potentially be answered using data from multiple tables, list all potentially relevant databases and tables in the `data_source` array. Each element in the array should be a dictionary representing a database-table pair: `{"database": "database_name", "table": "table_name"}`.
     *   **Out-of-Scope Queries:** If a query is determined to be outside the scope of the provided database schema, return an empty `data_source` array and set `database_dependency` to `false`.
-    *   **Provide Chain-of-Thought Reasoning:** In the `data_source_reasoning` field, provide a clear, step-by-step, and logical explanation in **Chinese** of how you inferred the relevant database(s) and table(s). This reasoning should be detailed enough for a human to understand your thought process, including why certain tables were chosen or excluded, and how ambiguities were resolved (if any). Meanwhile, this reasoning should be professinal enough for an expert to obtain the corrent background and information. **Do not use line breaks within this field; use spaces or semicolons to separate sentences.** 
 
 2. **Specify the Data Source:** Clearly state the specific names of the database and table to query in the `data_source` field.
 
 3. **Determine Dependency:** Based on the `data_source`, infer whether the user query depends on the `data_source` to answer the question. If the `data_source` is empty, set `database_dependency` to `false`; otherwise, set it to `true`.
 
+4. **Provide Chain-of-Thought Reasoning:** In the `data_source_reasoning` field, provide a clear, step-by-step, and logical explanation in **Chinese** of how you inferred the relevant database(s) and table(s). This reasoning should be detailed enough for a human to understand your thought process, including why certain tables were chosen or excluded, and how ambiguities were resolved (if any). **Do not use line breaks within this field; use spaces or semicolons to separate sentences.**
 
 **Output Format:**
 
@@ -127,11 +127,6 @@ The return JSON format:
     ],
     "database_dependency": boolean
 }
-```
-
-**Tips**:
-
-1. If the raw_question can be asked in one table, don't split it into multiple questions.
 
 ## **Shots**
 
@@ -139,7 +134,7 @@ The return JSON format:
 ```json
 {
     "raw_question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？",
-    "data_source_reasoning": "这个问题询问的是股票代码为600872的公司的全称、A股简称、法人、法律顾问、会计师事务所和董秘。我们可以这样逐步分析： 1. **识别实体：** 问题中使用了股票代码（600872）明确指出了一个特定的公司，这意味着我们需要与特定上市公司相关的信息。 2. **信息类型：** 问题寻求多种信息：公司全称、A股简称、法人、法律顾问、会计师事务所及董秘。这些都是上市公司的基本属性。 3. **定位数据：** 问题中提到A股简称，所以需要查询A股相关的数据库。查看数据库架构，'上市公司基本资料' (AStockBasicInfoDB) 数据库似乎与A股的基本公司信息最为相关。在这个数据库中，'公司概况' (LC_StockArchives) 表被描述为包含上市公司的基本情况，包括联系方式、注册信息、中介机构等。这张表很可能包含问题中要求的具体属性。 4. **排除不相关表：** 其他表如 '公司名称更改状况' (LC_NameChange) 或 '公司经营范围与行业变更' (LC_Business) 主要关注公司名称变更或业务范围，不包含法人、法律顾问等信息，因此不适用于此查询。 5. **结论：** 因此，要回答这个问题，我们需要查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表，获取股票代码为600872的公司的全称、A股简称、法人、法律顾问、会计师事务所及董秘信息。",
+    "data_source_reasoning": "这个问题询问的是股票代码为600872的公司的全称、A股简称、法人、法律顾问、会计师事务所和董秘。我们可以这样逐步分析： 1. **识别实体：** 问题中使用了股票代码（600872）明确指出了一个特定的公司，这意味着我们需要与特定上市公司相关的信息。 2. **信息类型：** 问题寻求多种信息：公司全称、A股简称、法人、法律顾问、会计师事务所及董秘。这些都是上市公司的基本属性。 3. **定位数据：** 查看数据库架构，'上市公司基本资料' (AStockBasicInfoDB) 数据库似乎与基本公司信息最为相关。在这个数据库中，'公司概况' (LC_StockArchives) 表被描述为包含上市公司的基本情况，包括联系方式、注册信息、中介机构等。这张表很可能包含问题中要求的具体属性。 4. **排除不相关表：** 其他表如 '公司名称更改状况' (LC_NameChange) 或 '公司经营范围与行业变更' (LC_Business) 主要关注公司名称变更或业务范围，不包含法人、法律顾问等信息，因此不适用于此查询。 5. **结论：** 因此，要回答这个问题，我们需要查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表，获取股票代码为600872的公司的全称、A股简称、法人、法律顾问、会计师事务所及董秘信息。",
     "data_source": [
         {"question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？", "database": "AStockBasicInfoDB", "table": "LC_StockArchives"}
     ],
@@ -151,7 +146,7 @@ The return JSON format:
 ```json
 {
     "raw_question": "2023年4月13日A股涨幅最大的公司的法人是谁？",
-    "data_source_reasoning": "这个问题询问的是2023年4月13日A股涨幅最大的公司的法人。我们可以这样逐步分析： 1. **关联信息：** 查询到涨幅最大的公司后，需要获取该公司的法人信息。 2. **时间范围：** 问题指定了一个特定日期（2023年4月13日），因此需要查询该日期的股票行情数据。 3. **条件：** 问题关注的是'涨幅最大'的公司，这意味着需要比较该日期所有股票的涨跌幅。 4. **数据类型：** 涨跌幅是股票行情数据的一部分，属于技术指标范畴。 5. **定位数据：** 问题中提到A股涨幅，所以需要查询A股相关的数据库。查看数据库架构，'上市公司股票行情' (AStockMarketQuotesDB) 数据库包含与股票行情和技术指标相关的表格。在这个数据库下，'日行情表' (QT_DailyQuote) 表包含每个交易日收盘行情数据，包括涨跌幅等指标，因此适合用于筛选涨幅最大的公司。同时，问题需要查询法人，因为公司是A股相关的公司，所以也是查询A股相关的数据库。查看数据库架构，'上市公司基本资料' (AStockBasicInfoDB) 数据库中的'公司概况' (LC_StockArchives) 表包含上市公司的基本信息，包括法人，因此适合用于查询法人信息。  6. **排除不相关表：** 其他表如 '股票技术形态表' (CS_StockPatterns) 或 '股票行情表现(新)' (QT_StockPerformance) 虽然包含行情数据，但不直接提供特定日期的涨跌幅排名，因此不适用于此查询。 7. **结论：** 因此，要回答这个问题，我们需要先查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出2023年4月13日的数据，并找出涨幅最大的公司。然后，再查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表，获取该公司的法人信息。",
+    "data_source_reasoning": "这个问题询问的是2023年4月13日A股涨幅最大的公司的法人。我们可以这样逐步分析： 1. **时间范围：** 问题指定了一个特定日期（2023年4月13日），因此需要查询该日期的股票行情数据。 2. **条件：** 问题关注的是'涨幅最大'的公司，这意味着需要比较该日期所有股票的涨跌幅。 3. **数据类型：** 涨跌幅是股票行情数据的一部分，属于技术指标范畴。 4. **定位数据：** 查看数据库架构，'上市公司股票行情' (AStockMarketQuotesDB) 数据库包含与股票行情和技术指标相关的表格。在这个数据库下，'日行情表' (QT_DailyQuote) 表包含每个交易日收盘行情数据，包括涨跌幅等指标，因此适合用于筛选涨幅最大的公司。 5. **关联信息：** 查询到涨幅最大的公司后，需要获取该公司的法人信息。'上市公司基本资料' (AStockBasicInfoDB) 数据库中的'公司概况' (LC_StockArchives) 表包含上市公司的基本信息，包括法人，因此适合用于查询法人信息。 6. **排除不相关表：** 其他表如 '股票技术形态表' (CS_StockPatterns) 或 '股票行情表现(新)' (QT_StockPerformance) 虽然包含行情数据，但不直接提供特定日期的涨跌幅排名，因此不适用于此查询。 7. **结论：** 因此，要回答这个问题，我们需要先查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出2023年4月13日的数据，并找出涨幅最大的公司。然后，再查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表，获取该公司的法人信息。",
     "data_source": [
         {"question": "2023年4月13日A股涨幅最大的公司是什么？", "database": "AStockMarketQuotesDB", "table": "QT_DailyQuote"},
         {"question": "2023年4月13日A股涨幅最大的公司的法人是谁？", "database": "AStockBasicInfoDB", "table": "LC_StockArchives"}
@@ -163,18 +158,6 @@ The return JSON format:
 **Shot 3**
 ```json
 {
-    "raw_question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)",
-    "data_source_reasoning": "这个问题询问的是梅花生物在2019年进行的股票回购次数及回购金额合计，且返回的结果需要保留两位小数。我们可以这样逐步分析： 1. **识别实体：** 问题中提到了'梅花生物'，这是一家在上海上市的公司，因此需要查询与A股上市公司相关的数据。 2. **信息类型：** 问题关注的是股票回购的次数和金额，这些信息通常记录在公司的股票回购相关表格中。 3. **定位数据：** 查看数据库架构，'上市公司股东与股本/公司治理' (AStockShareholderDB) 数据库包含A股中与股东和股本相关的表格。在这个数据库下，'股份回购' (LC_Buyback) 表记录了上市公司股份回购的相关方案信息，包括回购数量、回购金额等，因此适合用于查询回购次数和金额。 4. **排除不相关表：** 其他表如 '股东股权变动' (LC_ShareTransfer) 或 '股东股权冻结和质押' (LC_ShareFP) 主要关注股东股权的变动或冻结质押情况，不包含股票回购信息，因此不适用于此查询。 5. **结论：** 因此，要回答这个问题，我们需要查询 AStockShareholderDB 数据库中的 LC_Buyback 表，筛选出梅花生物在2019年的股票回购记录，并统计回购次数和回购金额合计。",
-    "data_source": [
-        {"question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)", "database": "AStockShareholderDB", "table": "LC_Buyback"}
-    ],
-    "database_dependency": true
-}
-```
-
-**Shot 4**
-```json
-{
     "raw_question": "今天天气怎么样？",
     "data_source_reasoning": "这个问题询问的是今天的天气情况。我们可以这样逐步分析： 1. **问题类型：** 这是一个关于当前天气状况的问题，属于气象信息范畴。 2. **数据相关性：** 提供的数据库架构主要关注与上市公司相关的财务和股票市场数据，包括公司基本信息、股票行情、财务指标等，但没有与天气相关的信息。 3. **定位数据：** 查看数据库架构，所有数据库和表格均未涉及气象数据或天气信息。 4. **结论：** 提供的数据库架构中不包含任何可以回答这个关于天气的问题的信息。因此，没有任何数据库或表格与此相关，并且无法使用此数据集回答该查询。",
     "data_source": [],
@@ -183,5 +166,3 @@ The return JSON format:
 ```
 
 ## **Current Query**
-
-123321的2023年的员工数量是多少（回答简称）？
