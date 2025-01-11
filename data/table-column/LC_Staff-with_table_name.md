@@ -1,0 +1,18 @@
+| table_name | column_name | column_description | 注释 | Annotation|
+|---|---|---|---|---|
+| LC_Staff | ID| ID || |
+| LC_Staff | CompanyCode | 公司代码 || |
+| LC_Staff | EndDate | 日期 || |
+| LC_Staff | InfoSource| 信息来源 || |
+| LC_Staff | MergeMark | 合并标志 | 合并标志(MergeMark)与(CT_SystemConst)表中的DM字段关联，令LB = 1189 AND DM IN (1,2)，得到合并标志的具体描述：1-合并，2-母公司。 | Merge the "MergeMark" and "CT_SystemConst" tables by associating the "DM" field, where LB = 1189 AND DM IN (1,2), to obtain the specific description of the merge mark: 1-merge, 2-parent company.|
+| LC_Staff | ClassfiedMethod | 分类方式 | 分类方式(ClassfiedMethod)与(CT_SystemConst)表中的DM字段关联，令LB = 1050 AND DM IN (1000,3000,5000,7000,9000,9300,9800,9900)，得到分类方式的具体描述：1000-技术职称，3000-专业构成，5000-教育程度，7000-年龄结构，9000-职工总数，9300-离退人数，9800-其他分类，9900-未分类人员。 | The classification method (ClassfiedMethod) is associated with the DM field in the (CT_SystemConst) table, with LB = 1050 AND DM IN (1000,3000,5000,7000,9000,9300,9800,9900), yielding the specific description of the classification method: 1000-Technical Title, 3000-Professional Composition, 5000-Educational Level, 7000-Age Structure, 9000-Total Number of Employees, 9300-Number of Retirees, 9800-Other Categories, 9900-Unclassified Personnel.|
+| LC_Staff | TypeName| 类别名称 || |
+| LC_Staff | YoungestAge | 最低年龄 || |
+| LC_Staff | OldestAge | 最高年龄 || |
+| LC_Staff | EmployeeSum | 员工数量 || |
+| LC_Staff | RatioInSum| 占总数比例 || |
+| LC_Staff | Statement | 备注说明 || |
+| LC_Staff | XGRQ| 修改日期 || |
+| LC_Staff | JSID| JSID || |
+| LC_Staff | TypeCode| 分类代码 | 项目代码(TypeCode)：与”分类方式 (ClassfiedMethod )“字段结合使用，并关联(系统常量表)，LB=1050。 当分类方式=1000-技术职称，则项目代码的具体描述：1012-高级职称及以上,1014-副高级职称及以上,1016-中级职称及以上,1018-初级职称及以上,1099-其他职称分类。当分类方式=3000-专业构成，则项目代码的具体描述：3010-行政管理人员，3013-管理人员，3015-行政人员，3030-业务人员，3031-生产人员，3032-采购人员，3033-市场人员，3034-销售人员，3035-技术人员，3036-仓储物流，3037-研发人员，3050-财务人员，3060-客服人员，3070-风控稽核，3090-综合分类人员，3099-其他岗位人员；其中（3032、3034、3036、3060与3070均为2018年新增分类，不建议与历史对比）。当分类方式=5000-教育程度，则项目代码的具体描述：5005-博士后，5010-博士，5015-硕士，5020-本科，5025-大专，5030-高中中专，5050-初中，5060-小学，5099-其他学历。当分类方式=7000-年龄结构时，则项目代码的具体描述：7099-平均年龄。 | Project Code (TypeCode): Used in conjunction with the "Classification Method (ClassfiedMethod)" field and associated with (System Constants Table), LB=1050. When Classification Method = 1000-Technical Title, the specific description of the Project Code is: 1012-Senior Title and Above, 1014-Associate Senior Title and Above, 1016-Middle Level Title and Above, 1018-Junior Level Title and Above, 1099-Other Title Classification. When Classification Method = 3000-Professional Composition, the specific description of the Project Code is: 3010-Administrative Manager, 3013-Manager, 3015-Administrative Staff, 3030-Business Personnel, 3031-Production Personnel, 3032-Purchasing Personnel, 3033-Market Personnel, 3034-Sales Personnel, 3035-Technical Personnel, 3036-Warehouse Logistics, 3037-R&D Personnel, 3050-Finance Personnel, 3060-Customer Service Personnel, 3070-Risk Control Audit, 3090-Comprehensive Classification Personnel, 3099-Other Position Personnel; among them (3032, 3034, 3036, 3060, and 3070 are new classifications added in 2018 and are not recommended for comparison with history). When Classification Method = 5000-Education Level, the specific description of the Project Code is: 5005-Postdoctoral, 5010-Doctor, 5015-Master, 5020-Bachelor, 5025-Associate Degree, 5030-High School/Technical Secondary School, 5050-Junior High School, 5060-Primary School, 5099-Other Education. When Classification Method = 7000-Age Structure, the specific description of the Project Code is: 7099-Average Age. |
+| LC_Staff | InfoPublDate| 信息发布日期 || |

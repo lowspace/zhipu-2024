@@ -1,0 +1,34 @@
+| column_name | column_description | 注释 | Annotation |
+|---|---|---|---|---|
+| ID| ID |||
+| CompanyCode | 公司代码 |||
+| InitialInfoPunlDate | 首次信息发布日期 |||
+| InfoPublDate| 信息发布日期 |||
+| InfoSource| 信息来源 |||
+| RaisingMethod | 募资方式 | 募资方式(RaisingMethod)与(CT_SystemConst)表中的DM字段关联，令LB = 1021 AND DM NOT IN (13,14,19,20,21,22,31,23)，得到募资方式的具体描述：1-新股发行，2-历史遗留，3-增发新股，4-配股，5-发行可转换债券，6-发行企业债券，7-募资改投，8-非募集资金，9-发行权证，10-吸收合并，11-发行分离可转债，12-发行金融债，15-CDR首发，16-CDR增发，17-CDR配股，32-优先股发行，33-地方政府债发行，34-后续发行，99-其他。| The fundraising method (RaisingMethod) is associated with the DM field in the (CT_SystemConst) table, with LB = 1021 and DM NOT IN (13,14,19,20,21,22,31,23), resulting in the specific description of the fundraising method: 1-Initial Public Offering, 2-Historical Residuals, 3-Additional Issue of Shares, 4-Right Issue, 5-Issue of Convertible Bonds, 6-Issue of Corporate Bonds, 7-Fundraising Change Investment, 8-Non-raised Funds, 9-Issue of Warrants, 10-Absorption Merger, 11-Issue of Detachable Convertible Bonds, 12-Issue of Financial Bonds, 15-CDR IPO, 16-CDR Additional Issue, 17-CDR Right Issue, 32-Issue of Preferred Shares, 33-Issue of Local Government Bonds, 34-Subsequent Issue, 99-Other.|
+| InvestProject | 募资投向项目名称 |||
+| ProjectStatement| 项目内容 |||
+| PlannedSum| 计划投入金额(元) |||
+| ActualInvestEndDate | 实际投入截至日期 |||
+| ActualSum | 实际配售股票数量(股) |||
+| Industry| 投向行业 | 关联行业表【CT_Industry】的行业编码[IndustryNum]，获取对应的行业信息 | Retrieve the industry information corresponding to the industry code [IndustryNum] in the associated industry table [CT_Industry]. |
+| InvestField | 投向领域 |||
+| ProceedingStatement | 进展和收益说明 |||
+| IfSwitched| 改投与否 | 改投与否(IfSwitched)与(CT_SystemConst)表中的DM字段关联，令LB = 1219，得到改投与否的具体描述：1-否，2-全部改投，3-部分改投。| Whether to switch (IfSwitched) is associated with the DM field in the (CT_SystemConst) table, setting LB = 1219, the specific description of whether to switch is obtained: 1 - No, 2 - Full switch, 3 - Partial switch. |
+| ProjectSwitchedTo | 改投项目 |||
+| SumSwitched | 改投金额(元) |||
+| XGRQ| 修改日期 |||
+| JSID| JSID |||
+| InnerCode | 证券内部编码 | 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。 | Security Internal Code (InnerCode): Associated with the "Security Main Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security's trading code, abbreviation, etc. |
+| PurchaseType| 收购兼并类型 | 收购兼并类型(PurchaseType)与(CT_SystemConst)表中的DM字段关联，令LB = 1304，得到收购兼并类型的具体描述：1-兼并，2-收购无形资产，3-收购实物资产，4-收购股权，5-其他收购。| The acquisition and merger type (PurchaseType) is associated with the DM field in the (CT_SystemConst) table, with LB set to 1304, the specific description of the acquisition and merger type is as follows: 1-merger, 2-acquisition of intangible assets, 3-acquisition of tangible assets, 4-acquisition of equity, 5-other acquisitions. |
+| BookValue | 收购资产账面价值(元) |||
+| AppraisalValue| 收购资产评估价值(元) |||
+| PurchasePrice | 收购资产价格(元) |||
+| EquityRatio | 收购权益比例(%)|||
+| Transferor| 项目出让方 |||
+| Relationship| 与出让方关联关系 | 与出让方关联关系(Relationship)与(CT_SystemConst)表中的DM字段关联，令LB = 1036，得到与出让方关联关系的具体描述：1-本公司，2-母公司，3-控股股东，4-非控股股东，5-兄弟企业，8-间接非控股股东，9-同一领导人、亲属关系，10-下属子公司、参股公司，11-项目合作合资方，12-其他关联关系，51-间接兄弟企业，80-间接控股股东，83-潜在控股股东，84-潜在非控股股东，86-转让前控股股东，87-转让前非控股股东，121-股权受托管理人，122-受同一方控制，999-无关联关系。 | The relationship with the transferor is associated with the DM field in the (CT_SystemConst) table, setting LB = 1036, to obtain the specific description of the relationship with the transferor: 1 - This company, 2 - Parent company, 3 - Controlling shareholder, 4 - Non-controlling shareholder, 5 - Sister company, 8 - Indirect non-controlling shareholder, 9 - Same leader, family relationship, 10 - Subsidiary company, equity joint venture, 11 - Project cooperation joint venture, 12 - Other related relationships, 51 - Indirect sister company, 80 - Indirect controlling shareholder, 83 - Potential controlling shareholder, 84 - Potential non-controlling shareholder, 86 - Controlling shareholder before transfer, 87 - Non-controlling shareholder before transfer, 121 - Equity trustee manager, 122 - Controlled by the same party, 999 - No related relationship.|
+| InvolvedStock | 出让方相关股票 | 出让方相关股票（InvolvedStock）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到出让方相关股票的交易代码、简称等。 | Related shares of the transferor (InvolvedStock): associated with the "InnerCode" in the "SecuMain", to obtain the trading code, abbreviation, etc. of the related shares of the transferor. |
+| TransferorNature| 出让方企业性质 | 出让方企业性质(TransferorNature)与(CT_SystemConst)表中的DM字段关联，令LB = 1112，得到出让方企业性质的具体描述：1-上市公司，2-金融机构—证券信托公司，3-金融机构—银行，4-金融机构—保险公司，5-金融机构—期货公司，6-投资咨询公司，7-院校—高校，8-院校—研究院，9-院校—院校企业，10-风险与创业投资公司，11-金融机构—财务公司，12-资产管理公司，13-外资独资企业，14-中外合资企业，15-国家单位，16-国有独资，17-国有控股，18-民营企业。 | The Transferor Nature is associated with the DM field in the CT_SystemConst table, with LB set to 1112, the specific description of the Transferor Nature is as follows: 1-Listed Company, 2-Financial Institution - Securities Trust Company, 3-Financial Institution - Bank, 4-Financial Institution - Insurance Company, 5-Financial Institution - Futures Company, 6-Investment Consulting Company, 7-Educational Institution - University, 8-Educational Institution - Research Institute, 9-Educational Institution - Educational Enterprise, 10-Venture and Entrepreneurial Investment Company, 11-Financial Institution - Financial Company, 12-Asset Management Company, 13-Foreign-Owned Enterprise, 14-Sino-Foreign Joint Venture, 15-State Institution, 16-State-Owned Exclusive Enterprise, 17-State-Controlled Enterprise, 18-Private Enterprise.|
+| TargetName| 收购标的名称 |||
+| TargetNature| 收购标的企业性质 | 收购标的企业性质(TargetNature)与(CT_SystemConst)表中的DM字段关联，令LB = 1112，得到收购标的企业性质的具体描述：1-上市公司，2-金融机构—证券信托公司，3-金融机构—银行，4-金融机构—保险公司，5-金融机构—期货公司，6-投资咨询公司，7-院校—高校，8-院校—研究院，9-院校—院校企业，10-风险与创业投资公司，11-金融机构—财务公司，12-资产管理公司，13-外资独资企业，14-中外合资企业，15-国家单位，16-国有独资，17-国有控股，18-民营企业。 | The nature of the acquired target enterprise (TargetNature) is associated with the DM field in the (CT_SystemConst) table. Setting LB = 1112, the specific description of the nature of the acquired target enterprise is obtained: 1-Listed Company, 2-Financial Institution - Securities Trust Company, 3-Financial Institution - Bank, 4-Financial Institution - Insurance Company, 5-Financial Institution - Futures Company, 6-Investment Consulting Company, 7-Educational Institution - University, 8-Educational Institution - Research Institute, 9-Educational Institution - Educational Enterprise, 10-Venture and Entrepreneurial Investment Company, 11-Financial Institution - Financial Company, 12-Asset Management Company, 13-Foreign-Owned Enterprise, 14-Sino-Foreign Joint Venture, 15-State Unit, 16-State-Owned Enterprise, 17-State-Controlled, 18-Private Enterprise. |
+| InsertTime| 发布时间 |||
