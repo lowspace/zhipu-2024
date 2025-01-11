@@ -1,0 +1,51 @@
+[
+    {
+        "tid": "tttt----13",
+        "team": [
+            {
+                "id": "tttt----13----13-2-1",
+                "question": "今天是2020年10月27日，当日收盘价第3高的港股是？(以下都回答简称)"
+            },
+            {
+                "id": "tttt----13----13-2-2",
+                "question": "成交量第3高的是？"
+            },
+            {
+                "id": "tttt----13----13-2-3",
+                "question": "换手率第3高的是？"
+            }
+        ],
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "今天是2020年10月27日，当日收盘价第3高的港股是？(以下都回答简称)",
+                    "data_source_reasoning": "这个问题询问的是2020年10月27日港股市场中收盘价第3高的股票简称。我们可以这样逐步分析： 1. **时间范围：** 问题指定了一个特定日期（2020年10月27日），因此需要查询该日期的港股行情数据。 2. **条件：** 问题关注的是'收盘价第3高'的港股，这意味着需要比较该日期所有港股的收盘价。 3. **数据类型：** 收盘价是股票行情数据的一部分，属于日行情数据范畴。 4. **定位数据：** 查看数据库架构，'港股数据库' (HKStockDB) 数据库包含与港股相关的表格。在这个数据库下，'港股行情表现' (CS_HKStockPerformance) 表包含港股从最近一个交易日往前追溯一段时期的行情表现信息，包括收盘价等指标，因此适合用于筛选收盘价第3高的港股。 5. **排除不相关表：** 其他表如 '港股公司概况' (HK_StockArchives) 或 '港股公司员工数量变动表' (HK_EmployeeChange) 主要关注公司基本信息或员工变动，不包含收盘价数据，因此不适用于此查询。 6. **结论：** 因此，要回答这个问题，我们需要查询 HKStockDB 数据库中的 CS_HKStockPerformance 表，筛选出2020年10月27日的数据，并找出收盘价第3高的港股简称。",
+                    "data_source": [
+                        {
+                            "question": "2020年10月27日收盘价第3高的港股简称是？",
+                            "database": "HKStockDB",
+                            "table": "CS_HKStockPerformance"
+                        }
+                    ],
+                    "database_dependency": true
+                }
+            ]
+        },
+        "token_usage": {
+            "table_finder-stage_1": [
+                {
+                    "completion_tokens": 408,
+                    "prompt_tokens": 9403,
+                    "total_tokens": 9811,
+                    "prompt_cache_hit_tokens": 9344,
+                    "prompt_cache_miss_tokens": 59
+                }
+            ]
+        },
+        "time_usage": {
+            "table_finder-stage_1": [
+                "6.38s"
+            ]
+        }
+    }
+]
