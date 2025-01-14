@@ -183,5 +183,3 @@ The return JSON format:
 ```
 
 ## **Current Query**
-
-苹果在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？
