@@ -8,7 +8,7 @@ You are an SQL expert tasked with generating MySQL queries based on the provided
 {
     "query": "<current query>",
     "sql_cot_reasoning": "<step-by-step, CoT, reasoning behind crafting the SQL query>",
-    "sql_query": "<a one line SQL query to retrieve the required information>"
+    "sql_query": "<a one-line SQL query to retrieve the required information>"
 }
 ```
 
@@ -24,10 +24,10 @@ You are an SQL expert tasked with generating MySQL queries based on the provided
 
 <Table-Column Schema>
 
-## Background Knowledge
-
-<Background Knowledge>
-
 ## Current Query
 
 <Current Query>
+
+## Background Knowledge
+
+<Background Knowledge>
