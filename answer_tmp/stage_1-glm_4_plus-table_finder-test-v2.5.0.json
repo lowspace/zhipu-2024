@@ -1,0 +1,54 @@
+[
+    {
+        "tid": "tttt----13",
+        "team": [
+            {
+                "id": "tttt----13----13-2-1",
+                "question": "今天是2020年10月27日，当日收盘价第3高的港股是？(以下都回答简称)"
+            },
+            {
+                "id": "tttt----13----13-2-2",
+                "question": "成交量第3高的是？"
+            },
+            {
+                "id": "tttt----13----13-2-3",
+                "question": "换手率第3高的是？"
+            }
+        ],
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "今天是2020年10月27日，当日收盘价第3高的港股是？(以下都回答简称)",
+                    "data_source_reasoning": "这个问题需要查询2020年10月27日港股收盘价第3高的股票，并返回其简称。以下是详细推理： 1. **解析特定要求**：需要找到港股2020年10月27日收盘价第3高的股票，并返回其简称。 2. **明确数据库范围**：问题提到港股，因此需要从港股相关数据库 HKStockDB 中筛选。 3. **分析选择 HKStockDB**：HKStockDB 专注于港股数据，其中包含港股行情与公司基本信息。 4. **明确表范围**：在 HKStockDB 中，CS_HKStockPerformance 表记录了每日行情数据，包括收盘价等关键字段，适合用于筛选收盘价第3高的股票；HK_StockArchives 记录公司概况，与行情数据无关。要获取简称，HK_SecuMain 表是专门存储港股证券简称的表，与问题需求匹配。 5. **结论**：先查询 HKStockDB 的 CS_HKStockPerformance 表，筛选2020年10月27日收盘价第3高的股票；然后在 HKStockDB 的 HK_SecuMain 表中查询该股票的简称。",
+                    "data_source": [
+                        {
+                            "question": "2020年10月27日港股收盘价第3高的股票是什么？",
+                            "database": "HKStockDB",
+                            "table": "CS_HKStockPerformance"
+                        },
+                        {
+                            "question": "2020年10月27日港股收盘价第3高的股票简称是什么？",
+                            "database": "HKStockDB",
+                            "table": "HK_SecuMain"
+                        }
+                    ],
+                    "database_dependency": true
+                }
+            ]
+        },
+        "token_usage": {
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10442,
+                    "completion_tokens": 401,
+                    "total_tokens": 10843
+                }
+            ]
+        },
+        "time_usage": {
+            "table_finder-stage_1": [
+                "22.88s"
+            ]
+        }
+    }
+]
