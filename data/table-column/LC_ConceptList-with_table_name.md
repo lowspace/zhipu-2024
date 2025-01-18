@@ -9,7 +9,7 @@
 | LC_ConceptList | ConceptName| 概念名称 |||
 | LC_ConceptList | BeginDate| 起始日期 |||
 | LC_ConceptList | EndDate| 日期 |||
-| LC_ConceptList | ConceptState | 所属状态 | 所属状态(ConceptState)，该字段固定以下常量：1-正常，0-终止。 | Belonging state (ConceptState), this field is fixed with the following constants: 1-normal, 0-termination. |
+| LC_ConceptList | ConceptState | 所属状态 | 所属状态(ConceptState)，该字段固定以下数值型常量：1-正常，0-终止。 | Belonging state (ConceptState), this field is fixed with the following numeric constants: 1-normal, 0-termination. |
 | LC_ConceptList | Remark | 备注 |||
 | LC_ConceptList | InfoPublDate | 信息发布日期 |||
 | LC_ConceptList | UpdateTime | 更新时间 |||

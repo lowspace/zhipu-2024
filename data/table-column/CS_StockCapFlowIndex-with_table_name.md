@@ -138,8 +138,8 @@
 | CS_StockCapFlowIndex | MainSellVolume | 主力流出量(股) || |
 | CS_StockCapFlowIndex | MainBuyNum | 主力流入笔数 || |
 | CS_StockCapFlowIndex | MainSellNum| 主力流出笔数 || |
-| CS_StockCapFlowIndex | MainNetBuyValue| 主力净流入额(元)1|| |
-| CS_StockCapFlowIndex | MainNetBuyVolume | 主力净流入量(股)1|| |
+| CS_StockCapFlowIndex | MainNetBuyValue| 主力净流入额(元)|| |
+| CS_StockCapFlowIndex | MainNetBuyVolume | 主力净流入量(股)|| |
 | CS_StockCapFlowIndex | MainBValueRatio| 主力买入率(额) || |
 | CS_StockCapFlowIndex | MainSValueRatio| 主力卖出率(额) || |
 | CS_StockCapFlowIndex | MainBVolumeRatio | 主力买入率(量) || |

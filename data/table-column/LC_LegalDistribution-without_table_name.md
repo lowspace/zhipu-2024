@@ -31,11 +31,11 @@
 | InvestorType| 投资者类型| 投资者类型(InvestorType)与(CT_SystemConst)表中的DM字段关联，令LB = 1783 and DM in (1,2,3)，得到投资者类型的具体描述：1-自然人，2-企业，3-证券品种。 | The investor type (InvestorType) is associated with the DM field in the (CT_SystemConst) table, with LB = 1783 and DM in (1,2,3), yielding the specific description of the investor type: 1 - Natural person, 2 - Enterprise, 3 - Securities variety. |
 | InvestorCode| 投资者编号| 当投资者类型(InvestorType)=2时，与“企业码表(EP_CompanyMain)”中的“企业编号(CompanyCode)”关联,得到事件主体企业的基本信息; 当投资者类型(InvestorType)=3时,与“证券码表总表(SecuMainAll)”中的“证券内部编码(InnerCode)”关联,得到事件主体证券品种的基本信息。| When InvestorType equals 2, it is associated with the "CompanyCode" in the "EP_CompanyMain" table to obtain the basic information of the event subject company; when InvestorType equals 3, it is associated with the "InnerCode" in the "SecuMainAll" table to obtain the basic information of the event subject security variety. |
 | InsertTime| 发布时间| | |
-| CoreStaffsStraSHVal | 其中:高管、员工参与战略配售股份金额(万元) | | |
-| SponsorStraSharesHVal | 其中:保荐机构及相关子公司参与战略配售股份金额(万元) | | |
-| OtherStraSHVol| 其中:其他参与战略配售计划数量(万股) | | |
-| OtherStraSHVal| 其中:其他参与战略配售计划金额(万元) | | |
-| OtherStraSHRat| 其中:其他计划参与战略配售占比(%)| | |
+| CoreStaffsStraSHVal | 高管、员工参与战略配售股份金额(万元) | | |
+| SponsorStraSharesHVal | 保荐机构及相关子公司参与战略配售股份金额(万元) | | |
+| OtherStraSHVol| 其他参与战略配售计划数量(万股) | | |
+| OtherStraSHVal| 其他参与战略配售计划金额(万元) | | |
+| OtherStraSHRat| 其他计划参与战略配售占比(%)| | |
 | BidderCode| 配售对象代码| | |
 | AquirerAmount | 获配金额(元)| | |
 | StandardInvestorName| 投资者名称(标准)| | |

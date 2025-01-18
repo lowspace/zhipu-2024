@@ -7,10 +7,10 @@
 | SHID | 股东ID | 股东ID（SHID）：与机构基本资料（LC_InstiArchive）中的企业编号（CompanyCode）关联 | Shareholder ID (SHID): associated with the Company Code in the Institutional Basic Information (LC_InstiArchive)|
 | SHName | 股东名称 || |
 | HoldAShareSum| 持有A股总数(股)|| |
-| RestrainedAShare | 其中:有限售A股数 || |
-| UnstintedAShare| 其中:无限售A股数 || |
+| RestrainedAShare | 有限售A股数 || |
+| UnstintedAShare| 无限售A股数 || |
 | PCTOfTotalShares | 占总股本比例(%)|| |
-| PCTOfFloatShares | 占流通A股比例(%)111|| |
+| PCTOfFloatShares | 占流通A股比例(%)|| |
 | HoldASumChange | 持有A股数量增减(股)|| |
 | HoldASumChangeRate | 持有A股数量增减幅度(%) || |
 | InsertTime | 发布时间 || |

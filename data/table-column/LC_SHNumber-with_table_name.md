@@ -62,4 +62,4 @@
 | LC_SHNumber| CDRFPropGRQuarter| 无限售CDR户均持股比例季度增长率(%) || |
 | LC_SHNumber| CDRFAvgHoldSumGRHalfAY | 无限售CDR户均持股数半年增长率(%) || |
 | LC_SHNumber| CDRFPropGRHalfAYear| 无限售CDR户均持股比例半年增长率(%) || |
-| LC_SHNumber| NumApproxiMark | No description available || |
+| LC_SHNumber| NumApproxiMark | || |

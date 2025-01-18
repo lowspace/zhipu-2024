@@ -41,17 +41,17 @@
 | SHKindCode| 股东性质编码 | | |
 | GDID| 股东ID | | |
 | SHAttribute | 股东属性 | | |
-| RestrainedAShare| 其中:有限售A股数(股) | | |
-| UnstintedAShare | 其中:无限售A股数(股) | | |
+| RestrainedAShare| 有限售A股数(股) | | |
+| UnstintedAShare | 无限售A股数(股) | | |
 | HoldShareASum | 持有A类普通股数量(股)| | |
-| RestrainedShareA| 其中:有限售A类普通股数量(股) | | |
-| UnstintedShareA | 其中:无限售A类普通股数量(股) | | |
+| RestrainedShareA| 有限售A类普通股数量(股) | | |
+| UnstintedShareA | 无限售A类普通股数量(股) | | |
 | HoldShareBSum | 持有B类普通股数量(股)| | |
-| RestrainedShareB| 其中:有限售B类普通股数量(股) | | |
-| UnstintedShareB | 其中:无限售B类普通股数量(股) | | |
+| RestrainedShareB| 有限售B类普通股数量(股) | | |
+| UnstintedShareB | 无限售B类普通股数量(股) | | |
 | HoldShareCSum | 持有C类普通股数量(股)| | |
 | HoldShareDSum | 持有D类普通股数量(股)| | |
-| HoldOtherComShareSum| 持有其他类普通股数量(股)1| | |
+| HoldOtherComShareSum| 持有其他类普通股数量(股)| | |
 | InsertTime| 发布时间 | | |
 | HoldChangeType| 持股变动类型 | | |
 | PrefShareWithVotRight | 有投票权的优先股数量(股) | | |
@@ -59,4 +59,4 @@
 | VotingRightsRatio | 表决权比例(%)| | |
 | SpecialVotingRightsVol| 特别表决权数量(票) | | |
 | PCTOfNRShares | 占无限售股份比例(%)| | |
-| RefinanceLoanShare| No description available | | |
+| RefinanceLoanShare|  | | |

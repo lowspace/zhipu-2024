@@ -61,7 +61,7 @@
 | AdjustmentItemsNICF | ##投资活动现金流量净额调整项目 | | |
 | NetInvestCashFlow | 投资活动产生的现金流量净额(元) | | |
 | CashFromInvest| 吸收投资收到的现金(元) | | |
-| CashFromMinoSInvestSub| 其中:子公司吸收少数股东投资收到的现金| | |
+| CashFromMinoSInvestSub| 子公司吸收少数股东投资收到的现金| | |
 | CashFromBondsIssue| 发行债券收到的现金 | | |
 | CashFromBorrowing | 取得借款收到的现金 | | |
 | OtherFinanceActCash | 收到其他与筹资活动有关的现金 | | |
@@ -70,7 +70,7 @@
 | SubtotalFinanceCashInflow | 筹资活动现金流入小计(元) | | |
 | BorrowingRepayment| 偿还债务所支付的现金(元) | | |
 | DividendInterestPayment | 分配股利、利润或偿付利息支付的现金 | | |
-| ProceedsFromSubToMinoS| 其中:子公司支付给少数股东的股利、利润或偿付的利息| | |
+| ProceedsFromSubToMinoS| 子公司支付给少数股东的股利、利润或偿付的利息| | |
 | OtherFinanceActPayment| 支付的其他与筹资活动有关的现金(元) | | |
 | SpecialItemsFCOF| ##筹资活动现金流出特殊项目 | | |
 | AdjustmentItemsFCOF | ##筹资活动现金流出调整项目 | | |
@@ -160,15 +160,15 @@
 | OpeAndAdmExpForCash | 以现金支付的业务及管理费 | | |
 | NetIncFinancialAsset| 融出资金净增加额 | 融出资金净增加额（NetIncFinancialAsset）：一般为金融类企业披露科目| Net Increase in Funds Lent (NetIncFinancialAsset): This is generally a disclosure item for financial companies. |
 | NetDecBuyBackFin| 回购业务资金净减少额(筹资) | | |
-| NPParentCompanyOwners | 其中:归属于母公司所有者的净利润| | |
-| ProductBioAssetsDep | 其中:生产性生物资产折旧| | |
+| NPParentCompanyOwners | 归属于母公司所有者的净利润| | |
+| ProductBioAssetsDep | 生产性生物资产折旧| | |
 | InterestIncome| 利息收入 | | |
-| LeaseLiaIntExp| 其中:租赁负债利息支出| | |
-| BondIssueExpense| 其中:发行债券利息支出| | |
+| LeaseLiaIntExp| 租赁负债利息支出| | |
+| BondIssueExpense| 发行债券利息支出| | |
 | ExchangeLoss| 汇兑损失(收益以"-"号填列)| | |
-| DeferredTaxCredit | 递延税款贷项(减:借项)1 | | |
+| DeferredTaxCredit | 递延税款贷项(减:借项) | | |
 | SharePayment| 股份支付费用 | | |
 | DecreaseTradeAssets | 交易性金融资产的减少 | | |
 | DecAvailableSaleAssets| 可供出售金融资产的减少 | | |
 | DecreaseLoan| 贷款的减少 | | |
-| InvestPropertyDA| No description available | | |
+| InvestPropertyDA|  | | |

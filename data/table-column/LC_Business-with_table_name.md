@@ -5,7 +5,7 @@
 | LC_Business| InfoPublDate | 信息发布日期 |||
 | LC_Business| InfoSource | 信息来源 |||
 | LC_Business| SMDeciPublDate | 股东大会决议公告日期 |||
-| LC_Business| IfPassed | 是否否决 | 是否否决(IfPassed)，该字段固定以下常量：0-否；1-是 | Whether to veto (IfPassed), this field is fixed with the following constants: 0 - No; 1 - Yes|
+| LC_Business| IfPassed | 是否否决 |  是否否决(IfPassed)，该字段固定为字符常量："1"-是；"0"-否 | Whether to veto (IfPassed), this field is fixed with the following string constants: "1"-yes; "0"-no. |
 | LC_Business| BusinessMajor| 经营范围-主营|||
 | LC_Business| BusinessMinor| 经营范围-兼营|||
 | LC_Business| MainBusiness | 主要业务 |||

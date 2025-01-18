@@ -21,6 +21,6 @@
 | InsertTime | 发布时间 || |
 | UpdateTime | 修改时间 || |
 | JSID | JSID || |
-| IndustryName | No description available || |
-| Classification | No description available || |
-| ListedSecuNum| No description available || |
+| IndustryName |  || |
+| Classification |  || |
+| ListedSecuNum|  || |

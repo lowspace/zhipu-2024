@@ -5,8 +5,8 @@
 | LC_MainSHListNew | EndDate | 日期 | | |
 | LC_MainSHListNew | InfoPublDate| 信息发布日期 | | |
 | LC_MainSHListNew | InfoSource| 信息来源 | | |
-| LC_MainSHListNew | InfoTypeCode| 信息类别编码 | 信息类别编码(InfoTypeCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1025 AND DM IN (1,2,4,5,6)，得到信息类别编码的具体描述：1-前十大股东，2-前十流通股东，4-十大有限售条件股东，5-发行前股东，6-前十大表决权数量股东。 | The InfoTypeCode is associated with the DM field in the CT_SystemConst table, with LB = 1025 AND DM IN (1,2,4,5,6), the specific description of the InfoTypeCode is: 1 - Top ten shareholders, 2 - Top ten tradable shareholders, 4 - Top ten shareholders with restricted sale conditions, 5 - Shareholders before issuance, 6 - Top ten shareholders by voting rights quantity. |
-| LC_MainSHListNew | SHNo| 股东排名 | 股东排名（SHNo）：当“信息类别代码（InfoTypeCode）”=1时，“股东排名（SHNo）”表示股东排名；当“信息类别代码（InfoTypeCode）”=2时，“股东排名（SHNo）”表示流通股东排名。| Shareholder Ranking (SHNo): When "Information Type Code (InfoTypeCode)" equals 1, "Shareholder Ranking (SHNo)" indicates the ranking of shareholders; when "Information Type Code (InfoTypeCode)" equals 2, "Shareholder Ranking (SHNo)" indicates the ranking of circulating shareholders. |
+| LC_MainSHListNew | InfoTypeCode| 信息类别编码 | 数值型常量。信息类别编码(InfoTypeCode)与(CT_SystemConst)表中的DM字段关联，令LB = 1025 AND DM IN (1,2,4,5,6)，得到信息类别编码的具体描述：1-前十大股东，2-前十流通股东，4-十大有限售条件股东，5-发行前股东，6-前十大表决权数量股东。 | Numeric constant. The InfoTypeCode is associated with the DM field in the CT_SystemConst table, with LB = 1025 AND DM IN (1,2,4,5,6), the specific description of the InfoTypeCode is: 1 - Top ten shareholders, 2 - Top ten tradable shareholders, 4 - Top ten shareholders with restricted sale conditions, 5 - Shareholders before issuance, 6 - Top ten shareholders by voting rights quantity. |
+| LC_MainSHListNew | SHNo| 股东排名 | 股东排名（SHNo），数值型常量：当“信息类别代码（InfoTypeCode）”=1时，“股东排名（SHNo）”表示股东排名；当“信息类别代码（InfoTypeCode）”=2时，“股东排名（SHNo）”表示流通股东排名。| Shareholder Ranking (SHNo), numeric constant: When "Information Type Code (InfoTypeCode)" equals 1, "Shareholder Ranking (SHNo)" indicates the ranking of shareholders; when "Information Type Code (InfoTypeCode)" equals 2, "Shareholder Ranking (SHNo)" indicates the ranking of circulating shareholders. |
 | LC_MainSHListNew | SHSerial| 股东序号 | | |
 | LC_MainSHListNew | SHList| 股东名称 | 股东名称（SHList）：此字段为股东名称公告原始披露值；如期望获取股东标准名称，可使用股东ID与相关表单关联，具体关联方式详见注4 | Shareholder Name (SHList): This field is the original disclosure value of the shareholder name announcement; if you expect to obtain the standard shareholder name, you can use the shareholder ID to associate with the relevant forms, and the specific association method is detailed in Note 4. |
 | LC_MainSHListNew | SHKind| 股东性质 | | |
@@ -41,17 +41,17 @@
 | LC_MainSHListNew | SHKindCode| 股东性质编码 | | |
 | LC_MainSHListNew | GDID| 股东ID | | |
 | LC_MainSHListNew | SHAttribute | 股东属性 | | |
-| LC_MainSHListNew | RestrainedAShare| 其中:有限售A股数(股) | | |
-| LC_MainSHListNew | UnstintedAShare | 其中:无限售A股数(股) | | |
+| LC_MainSHListNew | RestrainedAShare| 有限售A股数(股) | | |
+| LC_MainSHListNew | UnstintedAShare | 无限售A股数(股) | | |
 | LC_MainSHListNew | HoldShareASum | 持有A类普通股数量(股)| | |
-| LC_MainSHListNew | RestrainedShareA| 其中:有限售A类普通股数量(股) | | |
-| LC_MainSHListNew | UnstintedShareA | 其中:无限售A类普通股数量(股) | | |
+| LC_MainSHListNew | RestrainedShareA| 有限售A类普通股数量(股) | | |
+| LC_MainSHListNew | UnstintedShareA | 无限售A类普通股数量(股) | | |
 | LC_MainSHListNew | HoldShareBSum | 持有B类普通股数量(股)| | |
-| LC_MainSHListNew | RestrainedShareB| 其中:有限售B类普通股数量(股) | | |
-| LC_MainSHListNew | UnstintedShareB | 其中:无限售B类普通股数量(股) | | |
+| LC_MainSHListNew | RestrainedShareB| 有限售B类普通股数量(股) | | |
+| LC_MainSHListNew | UnstintedShareB | 无限售B类普通股数量(股) | | |
 | LC_MainSHListNew | HoldShareCSum | 持有C类普通股数量(股)| | |
 | LC_MainSHListNew | HoldShareDSum | 持有D类普通股数量(股)| | |
-| LC_MainSHListNew | HoldOtherComShareSum| 持有其他类普通股数量(股)1| | |
+| LC_MainSHListNew | HoldOtherComShareSum| 持有其他类普通股数量(股)| | |
 | LC_MainSHListNew | InsertTime| 发布时间 | | |
 | LC_MainSHListNew | HoldChangeType| 持股变动类型 | | |
 | LC_MainSHListNew | PrefShareWithVotRight | 有投票权的优先股数量(股) | | |
@@ -59,4 +59,4 @@
 | LC_MainSHListNew | VotingRightsRatio | 表决权比例(%)| | |
 | LC_MainSHListNew | SpecialVotingRightsVol| 特别表决权数量(票) | | |
 | LC_MainSHListNew | PCTOfNRShares | 占无限售股份比例(%)| | |
-| LC_MainSHListNew | RefinanceLoanShare| No description available | | |
+| LC_MainSHListNew | RefinanceLoanShare|  | | |

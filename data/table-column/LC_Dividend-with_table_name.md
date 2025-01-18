@@ -24,7 +24,7 @@
 | LC_Dividend| DiviObject| 分红对象| 分红对象(DiviObject)与(CT_SystemConst)表中的DM字段关联，令LB = 1197 AND DM IN (1,2,3)，得到分红对象的具体描述：1-全体股东，2-发行前股东，3-部分股东。 | The dividend object (DiviObject) is associated with the DM field in the (CT_SystemConst) table, with LB = 1197 AND DM IN (1,2,3), resulting in the specific description of the dividend object: 1 - all shareholders, 2 - shareholders before issuance, 3 - partial shareholders.|
 | LC_Dividend| TotalCashDiviComRMB | 公司合计派现金额(人民币元) | | |
 | LC_Dividend| TotalCashDiviComFC| 公司合计派现金额(外币元) | | |
-| LC_Dividend| CashDiviAShare| 其中:A股派现金额(元) | | |
+| LC_Dividend| CashDiviAShare| A股派现金额(元) | | |
 | LC_Dividend| CashDiviBShareRMB | B股派现金额(人民币元)  | | |
 | LC_Dividend| CashDiviBShareFC| B股派现金额(外币元)  | | |
 | LC_Dividend| DiviStartDate | 红利发放起始日 | | |
@@ -64,4 +64,4 @@
 | LC_Dividend| DividendBaseDate| 分红派息股本基准日 | | |
 | LC_Dividend| ProposalSN| 议案编号 | | |
 | LC_Dividend| LatestInfoPublDate| 最新信息发布日期 | | |
-| LC_Dividend| SchemeStatement | No description available | | |
+| LC_Dividend| SchemeStatement |  | | |

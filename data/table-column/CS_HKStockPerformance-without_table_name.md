@@ -1,7 +1,7 @@
 | column_name| column_description | 注释| Annotation |
 |---|---|---|---|---|
 | ID | ID  | | |
-| InnerCode| 证券内部编码  | | |
+| InnerCode | 证券内部编码 | 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。 | Security Internal Code (InnerCode): Associated with the "Security Main Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security's trading code, abbreviation, etc. |
 | TradingDay | 交易日  | | |
 | PrevClosePrice | 昨收盘  | | |
 | OpenPrice| 今开盘  | | |

@@ -37,6 +37,6 @@
 | FundsSourceDesc| 资金总额及来源说明 |||
 | PurposeDesc| 回购目的说明 |||
 | InsertTime | 发布时间 |||
-| BuybackPurpose | No description available | 回购目的(BuybackPurpose)与(CT_SystemConst)表中的DM字段关联，令LB=2560，得到回购目的的具体描述：1-实施股权激励，2-实施员工持股计划，3-实施股权激励或员工持股计划，4-发行可转债，5-未达激励计划条件，6-市值管理，7-资产重组，8-吸收合并，9-业绩补偿，10-大股东资金占用，11-对价购买。| The buyback purpose (BuybackPurpose) is associated with the DM field in the (CT_SystemConst) table. Setting LB=2560, the specific description of the buyback purpose is obtained: 1-Implement equity incentive, 2-Implement employee stock ownership plan, 3-Implement equity incentive or employee stock ownership plan, 4-Issue convertible bonds, 5-Conditions for incentive plan not met, 6-Manage market value, 7-Asset restructuring, 8-Acquisition merger, 9-Performance compensation, 10-Major shareholder's fund occupation, 11-Purchase with consideration.|
-| CurrencyUnit | No description available |||
-| OverruledDate| No description available |||
+| BuybackPurpose | 回购目的 | 回购目的(BuybackPurpose)与(CT_SystemConst)表中的DM字段关联，令LB=2560，得到回购目的的具体描述：1-实施股权激励，2-实施员工持股计划，3-实施股权激励或员工持股计划，4-发行可转债，5-未达激励计划条件，6-市值管理，7-资产重组，8-吸收合并，9-业绩补偿，10-大股东资金占用，11-对价购买。| The buyback purpose (BuybackPurpose) is associated with the DM field in the (CT_SystemConst) table. Setting LB=2560, the specific description of the buyback purpose is obtained: 1-Implement equity incentive, 2-Implement employee stock ownership plan, 3-Implement equity incentive or employee stock ownership plan, 4-Issue convertible bonds, 5-Conditions for incentive plan not met, 6-Manage market value, 7-Asset restructuring, 8-Acquisition merger, 9-Performance compensation, 10-Major shareholder's fund occupation, 11-Purchase with consideration.|
+| CurrencyUnit | 货币单位 |||
+| OverruledDate|  |||

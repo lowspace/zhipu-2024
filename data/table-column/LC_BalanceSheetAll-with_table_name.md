@@ -11,7 +11,7 @@
 | LC_BalanceSheetAll | AccountingStandards | 会计准则| 会计准则(AccountingStandards)与(CT_SystemConst)表中的DM字段关联，令LB = 1455，得到会计准则的具体描述：1-新会计准则(2007)，9-旧会计准则。| Accounting Standards is associated with the DM field in the (CT_SystemConst) table, setting LB = 1455 yields the specific description of the accounting standards: 1 - New Accounting Standards (2007), 9 - Old Accounting Standards. |
 | LC_BalanceSheetAll | EnterpriseType| 工业企业类型| 报表格式类型(EnterpriseType)：关联系统常量表，LB=1414，DM IN (13-商业银行，31-证券公司，33-信托公司，35-保险公司，39-其他非银行金融机构，99-一般企业)。 本表报表格式类型(EnterpriseType)字段是参照公告原文财务报表披露形式判断得出，并不准确代表企业的实际性质，如需获取企业性质，可通过公司代码（CompanyCode）关联“机构基本资料（LC_InstiArchive）”的公司代码（CompanyCode）获取对应的企业性质(CompanyType)。| Report format type (EnterpriseType): associated with the system constant table, LB=1414, DM IN (13-Commercial Bank, 31-Securities Company, 33-Trust Company, 35-Insurance Company, 39-Other Non-Bank Financial Institutions, 99-General Enterprise). The EnterpriseType field in this table is determined by referring to the original text of the announcement on financial statement disclosure form and does not accurately represent the actual nature of the enterprise. If you need to obtain the nature of the enterprise, you can associate the CompanyCode with the CompanyCode in "Institution Basic Information (LC_InstiArchive)" to obtain the corresponding enterprise nature (CompanyType).|
 | LC_BalanceSheetAll | CashEquivalents | 货币资金/现金及存放中央银行款项(元) | | |
-| LC_BalanceSheetAll | ClientDeposit | 其中:客户资金存款(元) | 其中:货币资金:客户资金存款（ClientDeposit）：一般为金融类:证券公司披露科目| Currency funds: Client deposit (ClientDeposit): Generally refers to the financial category: securities companies disclose items |
+| LC_BalanceSheetAll | ClientDeposit | 客户资金存款(元) | 货币资金:客户资金存款（ClientDeposit）：一般为金融类:证券公司披露科目| Currency funds: Client deposit (ClientDeposit): Generally refers to the financial category: securities companies disclose items |
 | LC_BalanceSheetAll | TradingAssets | 交易性金融资产(元)| | |
 | LC_BalanceSheetAll | BillReceivable| 应收票据(元)| | |
 | LC_BalanceSheetAll | DividendReceivable| 应收股利(元)| | |
@@ -20,7 +20,7 @@
 | LC_BalanceSheetAll | OtherReceivable | 其他应收款(元)| | |
 | LC_BalanceSheetAll | AdvancePayment| 预付款项(元)| | |
 | LC_BalanceSheetAll | Inventories | 存货(元)| | |
-| LC_BalanceSheetAll | BearerBiologicalAssets| 其中:消耗性生物资产 | | |
+| LC_BalanceSheetAll | BearerBiologicalAssets| 消耗性生物资产 | | |
 | LC_BalanceSheetAll | DeferredExpense | 待摊费用(元)| | |
 | LC_BalanceSheetAll | NonCurrentAssetIn1Year| 一年内到期的非流动资产| | |
 | LC_BalanceSheetAll | OtherCurrentAssets| 其他流动资产| | |
@@ -39,7 +39,7 @@
 | LC_BalanceSheetAll | BiologicalAssets| 生产性生物资产| | |
 | LC_BalanceSheetAll | OilGasAssets| 油气资产(元)| | |
 | LC_BalanceSheetAll | IntangibleAssets| 无形资产(元)| | |
-| LC_BalanceSheetAll | SeatCosts | 其中:交易席位费(元) | | |
+| LC_BalanceSheetAll | SeatCosts | 交易席位费(元) | | |
 | LC_BalanceSheetAll | DevelopmentExpenditure| 开发支出| | |
 | LC_BalanceSheetAll | GoodWill| 商誉(元)| | |
 | LC_BalanceSheetAll | LongDeferredExpense | 长期待摊费用(元)| | |
@@ -50,7 +50,7 @@
 | LC_BalanceSheetAll | TotalNonCurrentAssets | 非流动资产合计| | |
 | LC_BalanceSheetAll | LoanAndAccountReceivables | 投资-贷款及应收款项(应收款项类投资) | | |
 | LC_BalanceSheetAll | SettlementProvi | 结算备付金(元)| 结算备付金（SettlementProvi）：一般为金融类企业披露科目 | Settlement Provision: Generally disclosed by financial companies as an account科目|
-| LC_BalanceSheetAll | ClientProvi | 其中:客户备付金(元) | 其中:客户备付金（ClientProvi）：一般为金融类:证券公司披露科目 | Client Provision (ClientProvi): Generally refers to financial categories: disclosed accounts by securities companies. |
+| LC_BalanceSheetAll | ClientProvi | 客户备付金(元) | 客户备付金（ClientProvi）：一般为金融类:证券公司披露科目 | Client Provision (ClientProvi): Generally refers to financial categories: disclosed accounts by securities companies. |
 | LC_BalanceSheetAll | DepositInInterbank| 存放同业(元)| 存放同业款项（DepositInInterbank）：一般为金融类:银行企业披露科目 | DepositInInterbank: Generally refers to financial categories: Bank enterprise disclosure subjects |
 | LC_BalanceSheetAll | RMetal| 贵金属(元)| 贵金属（RMetal）：一般为金融类企业披露科目| Precious metals (RMetal): Generally disclosed by financial companies as an item |
 | LC_BalanceSheetAll | LendCapital | 拆出资金(元)| 拆出资金（LendCapital）：一般为金融类企业披露科目 | "LendCapital: Generally disclosed by financial companies as an item"|
@@ -60,10 +60,10 @@
 | LC_BalanceSheetAll | InsuranceReceivables| 应收保费| 应收保费（InsuranceReceivables）：一般为金融类:保险公司披露科目 | Receivable insurance premiums (Insurance Receivables): Generally refers to financial categories: insurance companies disclose items |
 | LC_BalanceSheetAll | ReceivableSubrogationFee| 应收代位追偿款| 应收代位追偿款（ReceivableSubrogationFee）：一般为金融类:保险公司披露科目 | Receivable Subrogation Fee: Generally refers to a financial category: disclosed items by insurance companies|
 | LC_BalanceSheetAll | ReinsuranceReceivables| 应收分保账款| 应收分保账款（ReinsuranceReceivables）：一般为金融类:保险公司披露科目 | Reinsurance Receivables: Generally financial in nature: disclosed by insurance companies|
-| LC_BalanceSheetAll | ReceivableUnearnedR | 应收分保未到期责任准备金| 其中:应收分保未到期责任准备金（ReceivableUnearnedR）：一般为金融类:保险公司披露科目 | Receivable Unearned Premium Reserve (ReceivableUnearnedR): Generally refers to financial categories: Insurance companies disclose the account |
-| LC_BalanceSheetAll | ReceivableClaimsR | 应收分保未决赔款准备金| 其中:应收分保未决赔款准备金（ReceivableClaimsR）：一般为金融类:保险公司披露科目 | Receivable Claims Reserves (ReceivableClaimsR): Generally refers to financial categories: Insurance companies disclose items|
-| LC_BalanceSheetAll | ReceivableLifeR | 应收分保寿险责任准备金(元)| 其中:应收分保寿险责任准备金（ReceivableLifeR）：一般为金融类:保险公司披露科目 | Receivable Life Insurance Reserve Liability (ReceivableLifeR): Generally falls under the category of finance: disclosed items by insurance companies. |
-| LC_BalanceSheetAll | ReceivableLTHealthR | 应收分保长期健康险责任准备金| 其中:应收分保长期健康险责任准备金（ReceivableLTHealthR）：一般为金融类:保险公司披露科目 | Receivable LT Health Reserve (ReceivableLTHealthR): Generally refers to financial items: Insurance companies disclose the account subjects. |
+| LC_BalanceSheetAll | ReceivableUnearnedR | 应收分保未到期责任准备金| 应收分保未到期责任准备金（ReceivableUnearnedR）：一般为金融类:保险公司披露科目 | Receivable Unearned Premium Reserve (ReceivableUnearnedR): Generally refers to financial categories: Insurance companies disclose the account |
+| LC_BalanceSheetAll | ReceivableClaimsR | 应收分保未决赔款准备金| 应收分保未决赔款准备金（ReceivableClaimsR）：一般为金融类:保险公司披露科目 | Receivable Claims Reserves (ReceivableClaimsR): Generally refers to financial categories: Insurance companies disclose items|
+| LC_BalanceSheetAll | ReceivableLifeR | 应收分保寿险责任准备金(元)| 应收分保寿险责任准备金（ReceivableLifeR）：一般为金融类:保险公司披露科目 | Receivable Life Insurance Reserve Liability (ReceivableLifeR): Generally falls under the category of finance: disclosed items by insurance companies. |
+| LC_BalanceSheetAll | ReceivableLTHealthR | 应收分保长期健康险责任准备金| 应收分保长期健康险责任准备金（ReceivableLTHealthR）：一般为金融类:保险公司披露科目 | Receivable LT Health Reserve (ReceivableLTHealthR): Generally refers to financial items: Insurance companies disclose the account subjects. |
 | LC_BalanceSheetAll | InsurerImpawnLoan | 保户质押贷款| 保户质押贷款（InsurerImpawnLoan）：一般为金融类:保险公司披露科目| Insurer Impawn Loan: Generally financial: The insurance company discloses the subject |
 | LC_BalanceSheetAll | FixedDeposit| 定期存款(元)| | |
 | LC_BalanceSheetAll | RefundableDeposit | 存出保证金| | |
@@ -74,7 +74,7 @@
 | LC_BalanceSheetAll | AAdjustmentItems| ##资产调整项目| | |
 | LC_BalanceSheetAll | TotalAssets | 资产总计(元)| | |
 | LC_BalanceSheetAll | ShortTermLoan | 短期借款(元)| | |
-| LC_BalanceSheetAll | ImpawnedLoan| 其中:质押借款(元) | | |
+| LC_BalanceSheetAll | ImpawnedLoan| 质押借款(元) | | |
 | LC_BalanceSheetAll | TradingLiability| 交易性金融负债| | |
 | LC_BalanceSheetAll | NotesPayable| 应付票据(元)| | |
 | LC_BalanceSheetAll | AccountsPayable | 应付账款(元)| | |
@@ -103,11 +103,11 @@
 | LC_BalanceSheetAll | NCLAdjustmentItems| ##非流动负债调整项目| | |
 | LC_BalanceSheetAll | TotalNonCurrentLiability| 非流动负债合计| | |
 | LC_BalanceSheetAll | BorrowingFromCentralBank| 向中央银行借款| 向中央银行借款（BorrowingFromCentralBank）：一般为金融类:银行企业披露科目 | Borrowing from the Central Bank: Generally for financial institutions: Bank enterprises disclose items|
-| LC_BalanceSheetAll | DepositOfInterbank| 同业及其他金融机构存放款项| 其中:同业及其他金融机构存放款项（DepositOfInterbank）：一般为金融类企业披露科目 | Interbank and other financial institutions' deposits (DepositOfInterbank): This item is generally disclosed by financial companies. |
+| LC_BalanceSheetAll | DepositOfInterbank| 同业及其他金融机构存放款项| 同业及其他金融机构存放款项（DepositOfInterbank）：一般为金融类企业披露科目 | Interbank and other financial institutions' deposits (DepositOfInterbank): This item is generally disclosed by financial companies. |
 | LC_BalanceSheetAll | BorrowingCapital| 拆入资金(元)| 拆入资金（BorrowingCapital）：一般为金融类企业披露科目| Borrowing Capital: Generally disclosed by financial companies as an accounting item.|
 | LC_BalanceSheetAll | DerivativeLiability | 衍生金融负债| | |
 | LC_BalanceSheetAll | SoldBuybackSecuProceeds | 卖出回购证券款(元)| 卖出回购金融资产款（SoldBuybackSecuProceeds）：一般为金融类企业披露科目 | Sold Buyback Securities Proceeds: Generally disclosed by financial companies as an account title. |
-| LC_BalanceSheetAll | Deposit | 吸收存款(元)| 其中:吸收存款（Deposit）：一般为金融类:银行企业披露科目 | Absorption of deposits (Deposit): Generally refers to the financial category: bank enterprises disclose items |
+| LC_BalanceSheetAll | Deposit | 吸收存款(元)| 吸收存款（Deposit）：一般为金融类:银行企业披露科目 | Absorption of deposits (Deposit): Generally refers to the financial category: bank enterprises disclose items |
 | LC_BalanceSheetAll | ProxySecuProceeds | 代理买卖证券款| 代理买卖证券款（ProxySecuProceeds）：一般为金融类:证券公司披露科目| Proxy securities proceeds: Generally financial: securities company discloses the subject|
 | LC_BalanceSheetAll | SubIssueSecuProceeds| 代发行证券款(元)| 代理承销证券款（SubIssueSecuProceeds）：一般为金融类:证券公司披露科目 | Agency underwriting securities proceeds (SubIssueSecuProceeds): usually financial: securities companies disclose items|
 | LC_BalanceSheetAll | DepositsReceived| 存入保证金| 存入保证金（DepositsReceived）：一般为金融类:担保企业披露科目 | Deposit margin (DepositsReceived): usually for financial categories: guarantee enterprise discloses the subject |
@@ -119,8 +119,8 @@
 | LC_BalanceSheetAll | InsurerDepositInvestment| 保户储金及投资款| 保户储金及投资款（InsurerDepositInvestment）：一般为金融类:保险公司披露科目 | Insured's deposits and investment funds (Insurer Deposit Investment): Generally financial in nature: disclosed items by insurance companies |
 | LC_BalanceSheetAll | UnearnedPremiumReserve| 未到期责任准备金| | |
 | LC_BalanceSheetAll | OutstandingClaimReserve | 未决赔款准备金| | |
-| LC_BalanceSheetAll | LifeInsuranceReserve| 寿险责任准备金| 其中:寿险责任准备金（LifeInsuranceReserve）：一般为金融类:保险公司披露科目| Life Insurance Reserve: Generally refers to a financial category: disclosed items by insurance companies|
-| LC_BalanceSheetAll | LTHealthInsuranceLR | 长期健康险责任准备金| 其中:长期健康险责任准备金（LTHealthInsuranceLR）：一般为金融类:保险公司披露科目 | Long-term health insurance liability reserves (LTHealthInsuranceLR): Generally financial in nature: disclosed items by insurance companies|
+| LC_BalanceSheetAll | LifeInsuranceReserve| 寿险责任准备金| 寿险责任准备金（LifeInsuranceReserve）：一般为金融类:保险公司披露科目| Life Insurance Reserve: Generally refers to a financial category: disclosed items by insurance companies|
+| LC_BalanceSheetAll | LTHealthInsuranceLR | 长期健康险责任准备金| 长期健康险责任准备金（LTHealthInsuranceLR）：一般为金融类:保险公司披露科目 | Long-term health insurance liability reserves (LTHealthInsuranceLR): Generally financial in nature: disclosed items by insurance companies|
 | LC_BalanceSheetAll | IndependenceLiability | 独立账户负债| 独立账户负债（IndependenceLiability）：一般为金融类:保险公司披露科目| Independent account liability (IndependenceLiability): Generally refers to financial categories: insurance company disclosure items |
 | LC_BalanceSheetAll | OtherLiability| 其他负债(元)| 其他负债（OtherLiability）：一般为金融类企业披露科目| Other Liabilities: Generally disclosed items for financial companies|
 | LC_BalanceSheetAll | LExceptionalItems | ##负债特殊项目| | |
@@ -149,11 +149,11 @@
 | LC_BalanceSheetAll | UpdateTime| 更新时间| | |
 | LC_BalanceSheetAll | JSID| JSID| | |
 | LC_BalanceSheetAll | IfComplete| 完整标志| | |
-| LC_BalanceSheetAll | LPreferStock| 其中:优先股(应付债券)(元) | | |
-| LC_BalanceSheetAll | LPerpetualDebt| 其中:永续债(应付债券)(元) | | |
+| LC_BalanceSheetAll | LPreferStock| 优先股(应付债券)(元) | | |
+| LC_BalanceSheetAll | LPerpetualDebt| 永续债(应付债券)(元) | | |
 | LC_BalanceSheetAll | OtherEquityinstruments| 其他权益工具| | |
-| LC_BalanceSheetAll | EPreferStock| 其中:优先股(其他权益工具)(元) | | |
-| LC_BalanceSheetAll | EPerpetualDebt| 其中:永续债(其他权益工具)(元) | | |
+| LC_BalanceSheetAll | EPreferStock| 优先股(其他权益工具)(元) | | |
+| LC_BalanceSheetAll | EPerpetualDebt| 永续债(其他权益工具)(元) | | |
 | LC_BalanceSheetAll | OtherCompositeIncome| 其他综合收益| | |
 | LC_BalanceSheetAll | HoldAndFSAssets | 划分为持有待售的资产(元)| | |
 | LC_BalanceSheetAll | HoldAndFSLi | 划分为持有待售的负债(元)| | |
@@ -186,27 +186,27 @@
 | LC_BalanceSheetAll | DebitofAssociate| 联行存放款项| | |
 | LC_BalanceSheetAll | InfoSourceCode| 信息来源编码| | |
 | LC_BalanceSheetAll | InsertTime| 添加列InsertTime| | |
-| LC_BalanceSheetAll | Cash| 其中:货币资金 | | |
-| LC_BalanceSheetAll | DepositInCentralBank| 其中:现金及存放中央银行款项 | 其中:现金及存放中央银行款项（DepositInCentralBank）：：一般为金融类:银行企业披露科目| Cash and deposits in central bank accounts (DepositInCentralBank): usually financial in nature: bank enterprises disclose the account subjects. |
-| LC_BalanceSheetAll | AmongTradingAssets| 其中:交易性金融资产 | | |
-| LC_BalanceSheetAll | AmongFinAetAtFValTPL| 其中:以公允价值计量且其变动计入当期损益的金融资产 | | |
+| LC_BalanceSheetAll | Cash| 货币资金 | | |
+| LC_BalanceSheetAll | DepositInCentralBank| 现金及存放中央银行款项 | 现金及存放中央银行款项（DepositInCentralBank）：：一般为金融类:银行企业披露科目| Cash and deposits in central bank accounts (DepositInCentralBank): usually financial in nature: bank enterprises disclose the account subjects. |
+| LC_BalanceSheetAll | AmongTradingAssets| 交易性金融资产 | | |
+| LC_BalanceSheetAll | AmongFinAetAtFValTPL| 以公允价值计量且其变动计入当期损益的金融资产 | | |
 | LC_BalanceSheetAll | Receivables | 应收款项| 应收款项（Receivables）：一般为金融类企业披露科目 | Receivables: Generally disclosed items for financial companies|
 | LC_BalanceSheetAll | CashDepositReceive| 应收货币保证金| | |
 | LC_BalanceSheetAll | PledgDepositReceive | 应收质押保证金| | |
 | LC_BalanceSheetAll | SettlementReceive | 应收结算担保金| | |
 | LC_BalanceSheetAll | RiskOfLossReceive | 应收风险损失款| | |
 | LC_BalanceSheetAll | FeeCommissionReceive| 应收手续费及佣金| | |
-| LC_BalanceSheetAll | AmongDebtInvestment | 其中:债权投资 | | |
-| LC_BalanceSheetAll | AmongFinAetAtAmorCost | 其中:以摊余成本计量的金融资产 | | |
-| LC_BalanceSheetAll | AmongOthDebtInvest| 其中:其他债权投资 | | |
-| LC_BalanceSheetAll | AmongFinAetAtFValTOCI | 其中:以公允价值计量且其变动计入其他综合收益的金融投资 | | |
-| LC_BalanceSheetAll | AmongOthEquInstrument | 其中:其他权益工具投资 | | |
-| LC_BalanceSheetAll | AmongEquInsAtFValTOCI | 其中:以公允价值计量且其变动计入其他综合收益的非交易性权益工具投资 | | |
+| LC_BalanceSheetAll | AmongDebtInvestment | 债权投资 | | |
+| LC_BalanceSheetAll | AmongFinAetAtAmorCost | 以摊余成本计量的金融资产 | | |
+| LC_BalanceSheetAll | AmongOthDebtInvest| 其他债权投资 | | |
+| LC_BalanceSheetAll | AmongFinAetAtFValTOCI | 以公允价值计量且其变动计入其他综合收益的金融投资 | | |
+| LC_BalanceSheetAll | AmongOthEquInstrument | 其他权益工具投资 | | |
+| LC_BalanceSheetAll | AmongEquInsAtFValTOCI | 以公允价值计量且其变动计入其他综合收益的非交易性权益工具投资 | | |
 | LC_BalanceSheetAll | FutureMemberInvestment| 期货会员资格投资| 期货会员资格投资（FutureMemberInvestment）：一般为金融类:证券公司披露科目 | Future Member Investment: Generally financial in nature: Securities companies disclose subjects |
 | LC_BalanceSheetAll | FinancialInvestment | 金融投资| 金融投资（FinancialInvestment）：一般为金融类企业披露科目 | Financial investment (Financial Investment): Generally disclosed by financial companies as a subject|
 | LC_BalanceSheetAll | ShortTermBondPay| 应付短期融资款| 应付短期融资款（ShortTermBondPay）：一般为金融类:证券公司披露科目 | Payment for short-term financing bonds (Short-Term Bond Pay): Generally disclosed by financial institutions: securities companies disclose the account subjects.|
-| LC_BalanceSheetAll | AmongTradingLiability | 其中:交易性金融负债 | | |
-| LC_BalanceSheetAll | AmongFinLiaAtFValTPL| 其中:以公允价值计量且其变动计入当期损益的金融负债 | | |
+| LC_BalanceSheetAll | AmongTradingLiability | 交易性金融负债 | | |
+| LC_BalanceSheetAll | AmongFinLiaAtFValTPL| 以公允价值计量且其变动计入当期损益的金融负债 | | |
 | LC_BalanceSheetAll | Payables| 应付款项| 应付款项（Payables）：金融类企业专用| Payables (Accounts Payable): Specialized for financial companies|
 | LC_BalanceSheetAll | CashDepositPay| 应付货币保证金| | |
 | LC_BalanceSheetAll | PledgDepositPay | 应付质押保证金| | |
@@ -221,5 +221,5 @@
 | LC_BalanceSheetAll | SubLoan | 委托贷款| | |
 | LC_BalanceSheetAll | PubWBiologicalAssets| 公益性生物资产| | |
 | LC_BalanceSheetAll | AgencyBusLiability| 代理业务负债| | |
-| LC_BalanceSheetAll | SECParentCompanyOwners| 其中:归属于母公司普通股股东权益 | | |
+| LC_BalanceSheetAll | SECParentCompanyOwners| 归属于母公司普通股股东权益 | | |
 | LC_BalanceSheetAll | TSEExceptionalItems | ##所有者权益(或股东权益)特殊项目| | |

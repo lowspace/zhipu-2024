@@ -138,8 +138,8 @@
 | MainSellVolume | 主力流出量(股) || |
 | MainBuyNum | 主力流入笔数 || |
 | MainSellNum| 主力流出笔数 || |
-| MainNetBuyValue| 主力净流入额(元)1|| |
-| MainNetBuyVolume | 主力净流入量(股)1|| |
+| MainNetBuyValue| 主力净流入额(元)|| |
+| MainNetBuyVolume | 主力净流入量(股)|| |
 | MainBValueRatio| 主力买入率(额) || |
 | MainSValueRatio| 主力卖出率(额) || |
 | MainBVolumeRatio | 主力买入率(量) || |

@@ -157,8 +157,8 @@
 | LC_AShareSeasonedNewIssue | PlannedProceeds| 预计募集资金总额(元) || |
 | LC_AShareSeasonedNewIssue | CurrencyProceeds | 货币募集资金总额(元) || |
 | LC_AShareSeasonedNewIssue | NonCurrencyProceeds| 非货币募集资金总额(元) || |
-| LC_AShareSeasonedNewIssue | AssetProceeds| 其中:资产募集资金总额(元)|| |
-| LC_AShareSeasonedNewIssue | DebtProceeds | 其中:债权募集资金总额(元)|| |
+| LC_AShareSeasonedNewIssue | AssetProceeds| 资产募集资金总额(元)|| |
+| LC_AShareSeasonedNewIssue | DebtProceeds | 债权募集资金总额(元)|| |
 | LC_AShareSeasonedNewIssue | UWSponFee| 1)承销保荐费用合计(元) || |
 | LC_AShareSeasonedNewIssue | CPAAppraisalFee| 2)审计验资及评估费用合计(元) || |
 | LC_AShareSeasonedNewIssue | ParValueCurrencyUnit | 每股面值货币单位 || |
