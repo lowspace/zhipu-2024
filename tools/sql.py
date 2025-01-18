@@ -242,3 +242,9 @@ def process_ner_res(ner_res: dict) -> list:
             ner_res['sql'][f'{k}:{v}'] = tmp
     
     return ner_res
+
+def process_sql_generator_res(sql_res: dict) -> list:
+    
+    sql_res['sql_res'] = get_data_from_sql_query(sql_res['sql_query'])
+
+    return sql_res
