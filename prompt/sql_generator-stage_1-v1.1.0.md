@@ -7,7 +7,7 @@ You are an SQL expert tasked with generating MySQL queries based on the provided
 ```json
 {
     "query": "<current query>",
-    "sql_cot_reasoning": "<step-by-step, CoT, reasoning behind crafting the SQL query>",
+    "sql_cot_reasoning": "<step-by-step, CoT, reasoning behind crafting the SQL query. IN ENGLISH>",
     "sql_query": "<a one-line SQL query to retrieve the required information>"
 }
 ```
