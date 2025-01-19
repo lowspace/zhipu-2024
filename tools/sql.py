@@ -102,7 +102,7 @@ def get_data_from_sql_query(query: str) -> list:
         print(f"An unexpected error occurred: {e}")
         return []  # Return an empty list in case of any other unexpected errors
 
-def generate_sql_query_ner(data: list, value) -> str:
+def generate_sql_query_ner(data: list, value) -> list:
     """
     Generate SQL query through template.
     
@@ -144,7 +144,7 @@ def generate_sql_query_ner(data: list, value) -> str:
     
     return queries
 
-def get_bio_through_company_code(company_code: str) -> str:
+def get_bio_through_company_code(company_code: str) -> list:
     """
     Get the bio description from the company code
     """
@@ -175,7 +175,7 @@ def get_bio_through_company_code(company_code: str) -> str:
 
     return query_result_map
 
-def get_bio_through_name(name: str) -> str:
+def get_bio_through_name(name: str) -> list:
     """
     Get the bio description from the company name OR fund name
     """
@@ -205,7 +205,7 @@ def get_bio_through_name(name: str) -> str:
 
     return query_result_map
 
-def get_bio_through_fund_company_name(fund_company_name: str) -> str:
+def get_bio_through_fund_company_name(fund_company_name: str) -> list:
     """
     Get the bio description from the company name
     """
@@ -224,6 +224,14 @@ def get_bio_through_fund_company_name(fund_company_name: str) -> str:
 
     return query_result_map
 
+def get_bio_through_industry_name(industry_name: str) -> list:
+    
+    sql_query = f"SELECT FirstIndustryCode AS 一级行业代码, SecondIndustryCode AS 二级行业代码, ThirdIndustryCode AS 三级行业代码, FourthIndustryCode AS 四级行业代码, FirstIndustryName AS 一级行业名称, SecondIndustryName AS 二级行业名称, ThirdIndustryName AS 三级行业名称, FourthIndustryName AS 四级行业名称 FROM AStockIndustryDB.LC_ExgIndustry WHERE '{industry_name}' IN (FirstIndustryName, SecondIndustryName, ThirdIndustryName, FourthIndustryName)"
+
+    result = get_data_from_sql_query(sql_query)
+
+    return [{"query": sql_query, "result": result}]
+
 def process_ner_res(ner_res: dict) -> list:
     
     ner_res['sql'] = {}
@@ -236,6 +244,8 @@ def process_ner_res(ner_res: dict) -> list:
                 tmp = get_bio_through_name(v)
             elif k == "基金公司名称":
                 tmp = get_bio_through_fund_company_name(v)
+            elif k == "行业名称":
+                tmp = get_bio_through_industry_name(v)
             else:
                 print(f"NER failed:\n Query: {k}\nResult: {v}")
 
