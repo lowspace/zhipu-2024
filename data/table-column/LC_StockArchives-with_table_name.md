@@ -2,7 +2,7 @@
 |---|---|---|---|---|
 | LC_StockArchives | ID | ID |||
 | LC_StockArchives | CompanyCode| 公司代码 | 公司代码（CompanyCode）：与“证券主表（SecuMain）”中的“公司代码（CompanyCode）”关联，得到上市公司的交易代码、简称等。 | Company Code (CompanyCode): Associated with the "Company Code (CompanyCode)" in "Securities Main Table (SecuMain)", to obtain the trading code, abbreviation, etc. of the listed company.|
-| LC_StockArchives | State| 国别 | 省份（State）：与“国家城市代码表（LC_AreaCode）”中的“地区内部编码（AreaInnerCode）”关联，得到省份具体信息。| Province (State): Associated with the "AreaInnerCode" in the "LC_AreaCode" table, to obtain specific information about the province. |
+| LC_StockArchives | State| 省份 | 省份（State）：与“国家城市代码表（LC_AreaCode）”中的“地区内部编码（AreaInnerCode）”关联，得到省份具体信息。| Province (State): Associated with the "AreaInnerCode" in the "LC_AreaCode" table, to obtain specific information about the province. |
 | LC_StockArchives | SecretaryBD| 董事会秘书 |||
 | LC_StockArchives | SecuAffairsRepr| 证券/股证事务代表|||
 | LC_StockArchives | AuthReprSBD| 董秘授权代表 |||
