@@ -1,7 +1,7 @@
 | table_name | column_name| column_description | 注释| Annotation |
 |---|---|---|---|---|
 | SecuMain | ID | ID  | | |
-| SecuMain | InnerCode| 证券内部编码  | | |
+| SecuMain | InnerCode | 证券内部编码 | 证券内部编码（InnerCode）：与“证券主表（SecuMain）”中的“证券内部编码（InnerCode）”关联，得到证券的交易代码、简称等。 | Security Internal Code (InnerCode): Associated with the "Security Main Table (SecuMain)" "Security Internal Code (InnerCode)", to obtain the security's trading code, abbreviation, etc. |
 | SecuMain | CompanyCode| 公司代码 | 公司代码(CompanyCode)：当本表SecuCategory IN (8,13)即基金相关时，对应的基金管理人代码可通过本表InnerCode关联MF_FundArchives.InnerCode，取MF_FundArchives.InvestAdvisorCode| Company code (CompanyCode): When the SecuCategory in this table is IN (8,13), i.e., related to funds, the corresponding fund manager code can be associated with MF_FundArchives.InnerCode through this table's InnerCode, and the MF_FundArchives.InvestAdvisorCode is obtained.|
 | SecuMain | SecuCode | 证券代码  | | |
 | SecuMain | ChiName| 中文名称  | | |

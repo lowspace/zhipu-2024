@@ -15,7 +15,7 @@
 | StaffShares| 4.职工股(股)|| |
 | RightsIssueTransferred | 5.转配股(股)|| |
 | PreferredAndOtherShares| 6.优先股及其他(股)|| |
-| PreferredShares| 其中:优先股(股) || |
+| PreferredShares| 优先股(股) || |
 | FloatShare | 流通股本(股)|| |
 | AFloats| 1)流通A股(股) || |
 | AFloatListed | 1)已上市流通A股(包含高管股)(股) || |
@@ -35,12 +35,12 @@
 | ChangeReason | 简称变更原因|| |
 | XGRQ | 修改日期|| |
 | JSID | JSID|| |
-| SLegalPersonShares | 其中:国有法人股(股) || |
-| RaisedSLPShares| 其中:募集国有法人股(股) || |
+| SLegalPersonShares | 国有法人股(股) || |
+| RaisedSLPShares| 募集国有法人股(股) || |
 | OtherAFloatShares| 7)其他流通股份(股)|| |
 | RestrictedAFloatShares | 8)有限售流通A股(股) || |
-| RestrinctStaffShares | 其中:有限售流通股中职工股(股) || |
-| NonListedBShares | 其中:未流通B股_旧 || |
+| RestrinctStaffShares | 有限售流通股中职工股(股) || |
+| NonListedBShares | 未流通B股_旧 || |
 | InfoPublDate | 信息发布日期|| |
 | RestrictedShares | 有限售条件的流通股(股)|| |
 | StateHolding | A.国家持股(股)|| |
@@ -49,8 +49,8 @@
 | DLegalPersonHolding| a.境内法人持股(股)|| |
 | DNaturalPersonHolding| b.境内自然人持股(股)|| |
 | ForeignHolding | D.外资持股(股)|| |
-| FLegalPersonHolding| 其中:境外法人持股(股) || |
-| FNaturalPersonHolding| 其中:境外自然人持股(股) || |
+| FLegalPersonHolding| 境外法人持股(股) || |
+| FNaturalPersonHolding| 境外自然人持股(股) || |
 | OtherRestrictedShares| E.其他有限售(股)|| |
 | RestrictedBFloatShares | 有限售B股(股) || |
 | PerValue | 每股面值(元)|| |
@@ -65,7 +65,7 @@
 | NonResiSharesJY| 1.2)无限售条件流通A股(股)(计算) || |
 | RestrictAShareP| 1.3)有限售条件的流通A股(股)(披露) || |
 | SRUnlistedShare| 增发、配股未上市股份(股)(披露)|| |
-| NonResiBShares | 其中:无限售流通B股|| |
+| NonResiBShares | 无限售流通B股|| |
 | GDRshares| 5.GDR代表基础股票(股) || |
 | ParValueCurrencyUnit | 每股面值货币单位|| |
 | InsertTime | 发布时间|| |
@@ -73,4 +73,4 @@
 | RestrictedHShares| 有限售H股 || |
 | OUnListedShares| 其他未流通股(股)|| |
 | OtherNonListedShares | 8.其他未流通股(股)|| |
-| Dshares| No description available|| |
+| Dshares| || |

@@ -21,4 +21,4 @@
 | PenalTypeNew | 处罚类型(新) |||
 | ViolationStatement | 违规说明 |||
 | InsertTime | 发布时间 |||
-| AnnID| No description available |||
+| AnnID| |||

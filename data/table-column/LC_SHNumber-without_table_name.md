@@ -62,4 +62,4 @@
 | CDRFPropGRQuarter| 无限售CDR户均持股比例季度增长率(%) || |
 | CDRFAvgHoldSumGRHalfAY | 无限售CDR户均持股数半年增长率(%) || |
 | CDRFPropGRHalfAYear| 无限售CDR户均持股比例半年增长率(%) || |
-| NumApproxiMark | No description available || |
+| NumApproxiMark |  || |

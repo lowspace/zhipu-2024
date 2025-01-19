@@ -61,7 +61,7 @@
 | LC_CashFlowStatementAll | AdjustmentItemsNICF | ##投资活动现金流量净额调整项目 | | |
 | LC_CashFlowStatementAll | NetInvestCashFlow | 投资活动产生的现金流量净额(元) | | |
 | LC_CashFlowStatementAll | CashFromInvest| 吸收投资收到的现金(元) | | |
-| LC_CashFlowStatementAll | CashFromMinoSInvestSub| 其中:子公司吸收少数股东投资收到的现金| | |
+| LC_CashFlowStatementAll | CashFromMinoSInvestSub| 子公司吸收少数股东投资收到的现金| | |
 | LC_CashFlowStatementAll | CashFromBondsIssue| 发行债券收到的现金 | | |
 | LC_CashFlowStatementAll | CashFromBorrowing | 取得借款收到的现金 | | |
 | LC_CashFlowStatementAll | OtherFinanceActCash | 收到其他与筹资活动有关的现金 | | |
@@ -70,7 +70,7 @@
 | LC_CashFlowStatementAll | SubtotalFinanceCashInflow | 筹资活动现金流入小计(元) | | |
 | LC_CashFlowStatementAll | BorrowingRepayment| 偿还债务所支付的现金(元) | | |
 | LC_CashFlowStatementAll | DividendInterestPayment | 分配股利、利润或偿付利息支付的现金 | | |
-| LC_CashFlowStatementAll | ProceedsFromSubToMinoS| 其中:子公司支付给少数股东的股利、利润或偿付的利息| | |
+| LC_CashFlowStatementAll | ProceedsFromSubToMinoS| 子公司支付给少数股东的股利、利润或偿付的利息| | |
 | LC_CashFlowStatementAll | OtherFinanceActPayment| 支付的其他与筹资活动有关的现金(元) | | |
 | LC_CashFlowStatementAll | SpecialItemsFCOF| ##筹资活动现金流出特殊项目 | | |
 | LC_CashFlowStatementAll | AdjustmentItemsFCOF | ##筹资活动现金流出调整项目 | | |
@@ -160,15 +160,15 @@
 | LC_CashFlowStatementAll | OpeAndAdmExpForCash | 以现金支付的业务及管理费 | | |
 | LC_CashFlowStatementAll | NetIncFinancialAsset| 融出资金净增加额 | 融出资金净增加额（NetIncFinancialAsset）：一般为金融类企业披露科目| Net Increase in Funds Lent (NetIncFinancialAsset): This is generally a disclosure item for financial companies. |
 | LC_CashFlowStatementAll | NetDecBuyBackFin| 回购业务资金净减少额(筹资) | | |
-| LC_CashFlowStatementAll | NPParentCompanyOwners | 其中:归属于母公司所有者的净利润| | |
-| LC_CashFlowStatementAll | ProductBioAssetsDep | 其中:生产性生物资产折旧| | |
+| LC_CashFlowStatementAll | NPParentCompanyOwners | 归属于母公司所有者的净利润| | |
+| LC_CashFlowStatementAll | ProductBioAssetsDep | 生产性生物资产折旧| | |
 | LC_CashFlowStatementAll | InterestIncome| 利息收入 | | |
-| LC_CashFlowStatementAll | LeaseLiaIntExp| 其中:租赁负债利息支出| | |
-| LC_CashFlowStatementAll | BondIssueExpense| 其中:发行债券利息支出| | |
+| LC_CashFlowStatementAll | LeaseLiaIntExp| 租赁负债利息支出| | |
+| LC_CashFlowStatementAll | BondIssueExpense| 发行债券利息支出| | |
 | LC_CashFlowStatementAll | ExchangeLoss| 汇兑损失(收益以"-"号填列)| | |
-| LC_CashFlowStatementAll | DeferredTaxCredit | 递延税款贷项(减:借项)1 | | |
+| LC_CashFlowStatementAll | DeferredTaxCredit | 递延税款贷项(减:借项) | | |
 | LC_CashFlowStatementAll | SharePayment| 股份支付费用 | | |
 | LC_CashFlowStatementAll | DecreaseTradeAssets | 交易性金融资产的减少 | | |
 | LC_CashFlowStatementAll | DecAvailableSaleAssets| 可供出售金融资产的减少 | | |
 | LC_CashFlowStatementAll | DecreaseLoan| 贷款的减少 | | |
-| LC_CashFlowStatementAll | InvestPropertyDA| No description available | | |
+| LC_CashFlowStatementAll | InvestPropertyDA|  | | |

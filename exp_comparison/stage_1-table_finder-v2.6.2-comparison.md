@@ -447,6 +447,7 @@ glm_4_plus :
 ```
 
 Question ID: tttt----72
+comment: "SOLVED"
 deepseek_v3:
 ```
 [
@@ -579,6 +580,7 @@ glm_4_plus :
 ```
 
 Question ID: tttt----87
+comment: “有概率对“
 deepseek_v3:
 ```
 [

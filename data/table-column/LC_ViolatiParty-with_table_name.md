@@ -21,4 +21,4 @@
 | LC_ViolatiParty | PenalTypeNew | 处罚类型(新) |||
 | LC_ViolatiParty | ViolationStatement | 违规说明 |||
 | LC_ViolatiParty | InsertTime | 发布时间 |||
-| LC_ViolatiParty | AnnID| No description available |||
+| LC_ViolatiParty | AnnID| |||

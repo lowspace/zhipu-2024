@@ -23,8 +23,8 @@
 | ReceiverID| 接受股权质押方ID | 接受股权质押方ID(ReceiverID)：当接受股权质押方所属性质(ReceiverAttribute)=2时，与企业码表（EP_CompanyMain）中的企业编号（CompanyCode）关联 | Receiver ID (ReceiverID): When the attribute of the party accepting equity pledge (ReceiverAttribute) equals 2, it is associated with the company code (CompanyCode) in the enterprise code table (EP_CompanyMain). |
 | EventCode | 事项编码 || |
 | EventDate | 事项日期 || |
-| UnstintedTShare | 其中:无限售股数(股)|| |
-| RestrainedTShare| 其中:有限售股数(股)|| |
-| InitialInfoPublDate | No description available || |
-| InitialPledgeSum| No description available || |
-| EstimateReleaseDate | No description available || |
+| UnstintedTShare | 无限售股数(股)|| |
+| RestrainedTShare| 有限售股数(股)|| |
+| InitialInfoPublDate |  || |
+| InitialPledgeSum|  || |
+| EstimateReleaseDate |  || |

@@ -36,10 +36,10 @@
 | IfSPBlockTradeCode| 是否专场大宗交易代码| 是否专场大宗交易代码（IfSPBLockTradeCode），该字段固定以下常量：1-是；0-否 | Whether to set up a special bulk transaction code (IfSPBLockTradeCode), this field is fixed with the following constants: 1-yes; 0-no.|
 | IfSPBlockTrade| 是否专场大宗交易|| |
 | InnerCode | 证券内部编码|| |
-| ResSumAfterTran | 其中:出让后有限售股数(股) || |
-| NonResSumAfterTran| 其中:出让后无限售股数(股) || |
-| ResSumAfterRece | 其中:受让后有限售股数(股) || |
-| NonResSumAfterRece| 其中:受让后无限售股数(股) || |
+| ResSumAfterTran | 出让后有限售股数(股) || |
+| NonResSumAfterTran| 出让后无限售股数(股) || |
+| ResSumAfterRece | 受让后有限售股数(股) || |
+| NonResSumAfterRece| 受让后无限售股数(股) || |
 | InitialInfoPublDate | 首次信息发布日期|| |
 | TransfererAttribute | 股权出让方所属性质|| |
 | TransfererCode| 股权出让方编码|| |

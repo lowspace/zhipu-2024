@@ -157,8 +157,8 @@
 | PlannedProceeds| 预计募集资金总额(元) || |
 | CurrencyProceeds | 货币募集资金总额(元) || |
 | NonCurrencyProceeds| 非货币募集资金总额(元) || |
-| AssetProceeds| 其中:资产募集资金总额(元)|| |
-| DebtProceeds | 其中:债权募集资金总额(元)|| |
+| AssetProceeds| 资产募集资金总额(元)|| |
+| DebtProceeds | 债权募集资金总额(元)|| |
 | UWSponFee| 1)承销保荐费用合计(元) || |
 | CPAAppraisalFee| 2)审计验资及评估费用合计(元) || |
 | ParValueCurrencyUnit | 每股面值货币单位 || |
