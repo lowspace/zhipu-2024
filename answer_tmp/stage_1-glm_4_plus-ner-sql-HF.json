@@ -4706,6 +4706,29 @@
             {
               "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '天弘增利短债C' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
               "result": []
+            },
+            {
+              "query": "SELECT * FROM PublicFundDB.MF_FundProdName WHERE DisclName = '天弘增利短债C' LIMIT 1",
+              "result": [
+                {
+                  "ID": 638705929963,
+                  "InnerCode": 283029,
+                  "InfoPublDate": "2020-03-27 12:00:00.000",
+                  "InfoSource": "证监会官网",
+                  "InfoType": 4,
+                  "DisclName": "天弘增利短债C",
+                  "EffectiveDate": "2020-03-27 12:00:00.000",
+                  "ExpiryDate": null,
+                  "IfEffected": 1,
+                  "Remark": null,
+                  "UpdateTime": "2022-06-22 02:27:33.040",
+                  "JSID": 709194463907,
+                  "ChiSpelling": "THZLDZC",
+                  "TransCode": 283029,
+                  "InsertTime": "2020-03-28 10:18:49.670"
+                }
+              ],
+              "hf": true
             }
           ]
         }
@@ -5867,43 +5890,6 @@
             },
             {
               "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '光环新网' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
-              "result": []
-            }
-          ],
-          "代码:300383": [
-            {
-              "query": "SELECT * FROM ConstantDB.SecuMain WHERE 300383 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
-              "result": [
-                {
-                  "ID": 385456215625,
-                  "InnerCode": 16764,
-                  "CompanyCode": 170593,
-                  "SecuCode": "300383",
-                  "ChiName": "北京光环新网科技股份有限公司",
-                  "ChiNameAbbr": "光环新网",
-                  "EngName": "Beijing Sinnet Technology Co., Ltd",
-                  "EngNameAbbr": "Sinnet",
-                  "SecuAbbr": "光环新网",
-                  "ChiSpelling": "GHXW",
-                  "SecuMarket": 90,
-                  "SecuCategory": 1,
-                  "ListedDate": "2014-01-29 12:00:00.000",
-                  "ListedSector": 6,
-                  "ListedState": 1,
-                  "XGRQ": "2017-03-20 05:55:00.900",
-                  "JSID": 543347700903,
-                  "ISIN": "CNE100001S16",
-                  "ExtendedAbbr": null,
-                  "ExtendedSpelling": null
-                }
-              ]
-            },
-            {
-              "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE 300383 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
-              "result": []
-            },
-            {
-              "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE 300383 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
               "result": []
             }
           ]

@@ -4577,10 +4577,10 @@
                   "三级行业名称": "风电零部件",
                   "四级行业名称": null
                 }
-              ]
+              ],
+              "hf": true
             }
-          ],
-          "hf": true
+          ]
         }
       }
     },
@@ -4729,6 +4729,29 @@
             {
               "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '天弘增利短债C' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
               "result": []
+            },
+            {
+              "query": "SELECT * FROM PublicFundDB.MF_FundProdName WHERE DisclName = '天弘增利短债C' LIMIT 1",
+              "result": [
+                {
+                  "ID": 638705929963,
+                  "InnerCode": 283029,
+                  "InfoPublDate": "2020-03-27 12:00:00.000",
+                  "InfoSource": "证监会官网",
+                  "InfoType": 4,
+                  "DisclName": "天弘增利短债C",
+                  "EffectiveDate": "2020-03-27 12:00:00.000",
+                  "ExpiryDate": null,
+                  "IfEffected": 1,
+                  "Remark": null,
+                  "UpdateTime": "2022-06-22 02:27:33.040",
+                  "JSID": 709194463907,
+                  "ChiSpelling": "THZLDZC",
+                  "TransCode": 283029,
+                  "InsertTime": "2020-03-28 10:18:49.670"
+                }
+              ],
+              "hf": true
             }
           ]
         }

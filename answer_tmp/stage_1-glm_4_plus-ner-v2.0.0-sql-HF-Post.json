@@ -1219,8 +1219,7 @@
             {
               "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '科达制造' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
               "result": [],
-              "hf": true}
-              ]
+              "hf": true
             }
           ]
         }
@@ -2287,8 +2286,7 @@
             },
             {
               "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '波司登' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
-              "result": [
-              ],
+              "result": [],
               "hf": true
             }
           ]
@@ -4616,8 +4614,7 @@
             },
             {
               "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '软通动力' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
-              "result": [
-              ],
+              "result": [],
               "hf": true
             }
           ]
