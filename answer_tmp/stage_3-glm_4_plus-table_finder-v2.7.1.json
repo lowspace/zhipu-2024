@@ -1,0 +1,1984 @@
+[
+    {
+        "tid": "tttt----3",
+        "team": [
+            {
+                "id": "tttt----3----3-2-1",
+                "question": "2019年度（合并）常熟银行的职工总数有多少人？"
+            },
+            {
+                "id": "tttt----3----3-2-2",
+                "question": "该公司披露的硕士或研究生学历（及以上）的有多少人？"
+            },
+            {
+                "id": "tttt----3----3-2-3",
+                "question": "20201月1日至年底退休了多少人？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "从当前查询中，可以看出涉及到一个上市公司名称‘常熟银行’。查询内容询问的是该银行在2019年度的职工总数。‘常熟银行’是一个上市公司名称，而查询中并未提及其他实体，如股票代码、基金名称或基金公司名称。",
+                "result": [
+                    {
+                        "上市公司名称": "常熟银行"
+                    }
+                ],
+                "sql": {
+                    "上市公司名称:常熟银行": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE '常熟银行' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": [
+                                {
+                                    "ID": 457481701224,
+                                    "InnerCode": 36721,
+                                    "CompanyCode": 71598,
+                                    "SecuCode": "601128",
+                                    "ChiName": "江苏常熟农村商业银行股份有限公司",
+                                    "ChiNameAbbr": "常熟银行",
+                                    "EngName": "Jiangsu Changshu Rural Commercial Bank Co., Ltd.",
+                                    "EngNameAbbr": "Changshu Bank",
+                                    "SecuAbbr": "常熟银行",
+                                    "ChiSpelling": "CSYH",
+                                    "SecuMarket": 83,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "2016-09-30 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2017-12-19 02:25:04.003",
+                                    "JSID": 567008704003,
+                                    "ISIN": "CNE100002RJ6",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE '常熟银行' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '常熟银行' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 674,
+                "completion_tokens": 92,
+                "total_tokens": 766
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10534,
+                    "completion_tokens": 367,
+                    "total_tokens": 10901
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 10916,
+                    "completion_tokens": 401,
+                    "total_tokens": 11317
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11329,
+                    "completion_tokens": 435,
+                    "total_tokens": 11764
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "3.02s",
+            "table_finder-stage_1": [
+                "23.11s"
+            ],
+            "table_finder-stage_2": [
+                "22.88s"
+            ],
+            "table_finder-stage_3": [
+                "24.98s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "2019年度（合并）常熟银行的职工总数有多少人？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，常熟银行是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司在特定年份的职工总数。",
+                            "result": [
+                                "A股公司的职工总数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司的职工总数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司职工总数数据与'公司职工构成' (LC_Staff) 表相关。该表记录了公司职工构成情况，包括技术职称、专业、文化程度、年龄等信息，因此适合用于查询职工总数。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_Staff 在'上市公司产品供销/人力资源'（AStockOperationsDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockOperationsDB 数据库中的 LC_Staff 表，筛选出常熟银行在 2019 年的职工总数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockOperationsDB",
+                            "table": "LC_Staff"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "该公司披露的硕士或研究生学历（及以上）的有多少人？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，常熟银行是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司披露的硕士或研究生学历（及以上）的职工人数。",
+                            "result": [
+                                "A股公司硕士或研究生学历（及以上）的职工人数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司硕士或研究生学历（及以上）的职工人数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司职工学历数据与'公司职工构成' (LC_Staff) 表相关。该表记录了公司职工构成情况，包括技术职称、专业、文化程度、年龄等信息，因此适合用于查询硕士或研究生学历（及以上）的职工人数。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_Staff 在'上市公司产品供销/人力资源'（AStockOperationsDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockOperationsDB 数据库中的 LC_Staff 表，筛选出常熟银行披露的硕士或研究生学历（及以上）的职工人数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockOperationsDB",
+                            "table": "LC_Staff"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "2020年1月1日至年底退休了多少人？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，常熟银行是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司在特定时间段内退休的职工人数。",
+                            "result": [
+                                "A股公司特定时间段内退休的职工人数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司特定时间段内退休的职工人数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司职工退休数据可能与'公司职工构成' (LC_Staff) 表或'公司公告资讯/重大事项' (AStockEventsDB) 中的相关表格相关。LC_Staff 表记录了公司职工构成情况，但可能不包含退休人数的具体信息。AStockEventsDB 数据库中的相关表格可能记录了公司重大事项，包括人员变动等信息。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "由于 Database-Table Schema 中没有明确指出哪张表格包含职工退休信息，需要进一步查阅相关公告或咨询公司获取数据。",
+                            "cot_thinking": "综上所述，要回答这个问题，可能需要查阅常熟银行在 2020 年发布的公告或咨询公司获取退休职工人数的具体数据。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockOperationsDB",
+                            "table": "LC_Staff"
+                        },
+                        {
+                            "database": "AStockEventsDB",
+                            "table": "相关表格（具体表格需进一步确认）"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----5",
+        "team": [
+            {
+                "id": "tttt----5----5-2-1",
+                "question": "化工纳入过多少个子类概念？"
+            },
+            {
+                "id": "tttt----5----5-2-2",
+                "question": "2021年纳入过多少个？分别是？"
+            },
+            {
+                "id": "tttt----5----5-2-3",
+                "question": "2021年纳入的这些概念的股票有多少只？分别属于哪些三级行业（仅考虑2021年新纳入的行业数据）？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "该查询没有涉及任何具体的上市公司名称、股票代码、基金名称或基金公司名称。问题内容是关于'化工'（化学行业）及其子类概念的讨论，因此没有识别出命名实体。",
+                "result": [],
+                "sql": {}
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 668,
+                "completion_tokens": 65,
+                "total_tokens": 733
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10216,
+                    "completion_tokens": 333,
+                    "total_tokens": 10549
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 10561,
+                    "completion_tokens": 402,
+                    "total_tokens": 10963
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 10995,
+                    "completion_tokens": 529,
+                    "total_tokens": 11524
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "2.05s",
+            "table_finder-stage_1": [
+                "21.28s"
+            ],
+            "table_finder-stage_2": [
+                "23.16s"
+            ],
+            "table_finder-stage_3": [
+                "29.29s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "化工纳入过多少个子类概念？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问'化工'这个概念纳入了多少个子类概念。",
+                            "result": [
+                                "化工概念的子类概念数量"
+                            ]
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1：化工概念的子类概念数量）",
+                            "cot_thinking": "查看 Database-Table Schema，与概念层级相关的表格仅有'概念关系常量表' (LC_ConceptList)。该表记录 A 股市场中概念间的层级关系（如父概念与子概念的关系），因此 LC_ConceptList 表与需求最为相关。"
+                        },
+                        {
+                            "step_4": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，统计'化工'概念下有多少个子类概念。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_ConceptList"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "2021年纳入过多少个化工子类概念？分别是？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题要求列出2021年新增的化工子类概念，因此需要确保最终输出格式为列表形式，并包含概念名称。"
+                        },
+                        {
+                            "step_2": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问2021年新增了多少个化工子类概念，以及这些子类概念的具体名称。",
+                            "result": [
+                                "2021年新增的化工子类概念数量",
+                                "2021年新增的化工子类概念名称"
+                            ]
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1 & 2：2021年新增的化工子类概念数量和名称）",
+                            "cot_thinking": "查看 Database-Table Schema，与概念层级和概念名称相关的表格仅有'概念关系常量表' (LC_ConceptList)。该表记录 A 股市场中概念间的层级关系（如父概念与子概念的关系），以及概念的中英文名称，因此 LC_ConceptList 表与两个需求都相关。"
+                        },
+                        {
+                            "step_4": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，筛选出2021年新增的、属于'化工'概念的子类概念，并统计数量和列出名称。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_ConceptList"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "2021年纳入的这些化工子类概念的股票有多少只？分别属于哪些三级行业（仅考虑2021年新纳入的行业数据）？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题要求列出2021年新增的化工子类概念所对应的股票数量和所属三级行业，因此需要确保最终输出格式包含概念名称、股票数量和所属三级行业列表。"
+                        },
+                        {
+                            "step_2": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问2021年新增的化工子类概念所对应的股票数量，以及这些股票所属的三级行业分类。",
+                            "result": [
+                                "2021年新增化工子类概念对应的股票数量",
+                                "2021年新增化工子类概念所属的三级行业分类"
+                            ]
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1 & 2：股票数量和所属三级行业分类）",
+                            "cot_thinking": "查看 Database-Table Schema，与股票所属概念相关的表格是'公司所属概念表' (LC_COConcept)，与公司所属行业分类相关的表格是'公司行业划分表' (LC_ExgIndustry)。LC_COConcept 表记录A股上市公司所对应的概念代码，LC_ExgIndustry 表记录上市公司在各种划分标准下的所属行业情况，包括三级行业分类。因此，这两个表都与需求相关。"
+                        },
+                        {
+                            "step_4": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_COConcept 和 LC_ExgIndustry 都在'上市公司行业板块'（AStockIndustryDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_COConcept 表，筛选出2021年新增的化工子类概念所对应的股票。然后，再查询 LC_ExgIndustry 表，获取这些股票所属的三级行业分类。需要注意的是，由于问题要求仅考虑2021年新纳入的行业数据，因此需要确保 LC_ExgIndustry 表中查询的行业分类数据也来自2021年。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_COConcept"
+                        },
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_ExgIndustry"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----10",
+        "team": [
+            {
+                "id": "tttt----10----10-2-1",
+                "question": "000958公司2021年主营业务产品有哪些？（合并报表调整后的，金额保留2位小数）"
+            },
+            {
+                "id": "tttt----10----10-2-2",
+                "question": "公司2021年比2020年主营业务产品减少的有？"
+            },
+            {
+                "id": "tttt----10----10-2-3",
+                "question": "公司2021年度经营情况的信息发布日期是（XXXX-XX-XX）？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "从当前查询中，'000958' 是一个股票代码，指向了一个上市公司。查询内容询问的是该公司的主营业务产品及其金额。因此，'000958' 应该被识别为代码，而查询中并未提及其他实体，如上市公司名称、基金名称或基金公司名称。",
+                "result": [
+                    {
+                        "代码": "000958"
+                    }
+                ],
+                "sql": {
+                    "代码:000958": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE 958 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
+                            "result": [
+                                {
+                                    "ID": 305575850552,
+                                    "InnerCode": 578,
+                                    "CompanyCode": 515,
+                                    "SecuCode": "000958",
+                                    "ChiName": "国家电投集团产融控股股份有限公司",
+                                    "ChiNameAbbr": "电投产融",
+                                    "EngName": "SPIC Industry-Finance Holdings Co.,Ltd",
+                                    "EngNameAbbr": "SPIC IFH",
+                                    "SecuAbbr": "电投产融",
+                                    "ChiSpelling": "DTCR",
+                                    "SecuMarket": 90,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "1999-12-23 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2022-05-13 07:36:19.673",
+                                    "JSID": 705752719427,
+                                    "ISIN": "CNE000001154",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE 958 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE 958 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 683,
+                "completion_tokens": 96,
+                "total_tokens": 779
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10534,
+                    "completion_tokens": 600,
+                    "total_tokens": 11134
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 11149,
+                    "completion_tokens": 390,
+                    "total_tokens": 11539
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11559,
+                    "completion_tokens": 409,
+                    "total_tokens": 11968
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "4.06s",
+            "table_finder-stage_1": [
+                "34.19s"
+            ],
+            "table_finder-stage_2": [
+                "22.77s"
+            ],
+            "table_finder-stage_3": [
+                "23.60s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "000958公司2021年主营业务产品有哪些？（合并报表调整后的，金额保留2位小数）",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "用户要求输出主营业务产品信息，并需要保留2位小数，因此需要确保最终输出格式符合这一精度要求。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，000958是一家A股公司，名称为国家电投集团产融控股股份有限公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司在特定年份的主营业务产品有哪些，并需要合并报表调整后的数据。",
+                            "result": [
+                                "A股公司的主营业务产品",
+                                "合并报表调整后的数据"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：主营业务产品）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司主营业务产品数据与'公司主营业务构成' (LC_MainOperIncome) 表相关。该表收录公司主营业务的收入来源、成本构成；主营业务收入、成本和利润与上年同期的对比较，因此适合用于查询主营业务产品信息。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：合并报表调整后的数据）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司合并报表调整后的数据与'利润分配表_新会计准则' (LC_IncomeStatementAll) 表相关。该表反映企业依据2007年新会计准则在在年报、中报、季报中披露的利润表数据；并依据新旧会计准则的科目对应关系，收录主要科目的历史对应数据。因此适合用于查询合并报表调整后的数据。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_MainOperIncome 和 LC_IncomeStatementAll 都在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_MainOperIncome 表，筛选出 000958 公司在 2021 年的主营业务产品信息。然后，再从 LC_IncomeStatementAll 表，获取同一时间段内的合并报表调整后的数据，并保留2位小数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_MainOperIncome"
+                        },
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_IncomeStatementAll"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "公司2021年比2020年主营业务产品减少的有？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体范围",
+                            "cot_thinking": "问题没有指定具体公司，因此需要考虑所有A股上市公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问哪些公司在2021年主营业务产品比2020年有所减少。",
+                            "result": [
+                                "公司主营业务产品变化情况"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：公司主营业务产品变化情况）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司主营业务产品变化情况数据与'公司主营业务构成' (LC_MainOperIncome) 表相关。该表收录公司主营业务的收入来源、成本构成；主营业务收入、成本和利润与上年同期的对比较，因此适合用于查询主营业务产品变化情况。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_MainOperIncome 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要回答这个问题，我们需要查询 AStockFinanceDB 数据库中的 LC_MainOperIncome 表，对比2021年和2020年的数据，找出主营业务产品减少的公司。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_MainOperIncome"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "公司2021年度经营情况的信息发布日期是（XXXX-XX-XX）？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "用户要求返回特定格式的日期信息，因此需要确保最终输出格式符合这一要求。"
+                        },
+                        {
+                            "step_2": "分析实体范围",
+                            "cot_thinking": "问题没有指定具体公司，因此需要考虑所有A股上市公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问公司在2021年度经营情况的信息发布日期。",
+                            "result": [
+                                "公司年度经营情况信息发布日期"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：公司年度经营情况信息发布日期）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司年度经营情况信息发布日期数据与'公司经营情况述评' (LC_OperatingStatus) 表相关。该表收录公司管理层对季度、半年度、年度经营情况的自我评价，以及其后期发展计划和预测，本表涵盖了公司招股以来的历次纪录，因此适合用于查询年度经营情况信息发布日期。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_OperatingStatus 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要回答这个问题，我们需要查询 AStockFinanceDB 数据库中的 LC_OperatingStatus 表，筛选出2021年度经营情况的信息发布日期。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_OperatingStatus"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----9",
+        "team": [
+            {
+                "id": "tttt----9----9-2-1",
+                "question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）"
+            },
+            {
+                "id": "tttt----9----9-2-2",
+                "question": "费用化研发占比为？资本化研发占比为？"
+            },
+            {
+                "id": "tttt----9----9-2-3",
+                "question": "上一年度研发投入最高的三家公司是？（回答中文简称）"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "从当前查询中，可以看出涉及到一个上市公司名称‘新天绿能’。查询内容询问的是该公司的2020年年度研发投入和研发人员数量。‘新天绿能’是一个上市公司名称，而查询中并未提及其他实体，如股票代码、基金名称或基金公司名称。",
+                "result": [
+                    {
+                        "上市公司名称": "新天绿能"
+                    }
+                ],
+                "sql": {
+                    "上市公司名称:新天绿能": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE '新天绿能' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": [
+                                {
+                                    "ID": 594505726416,
+                                    "InnerCode": 199617,
+                                    "CompanyCode": 165649,
+                                    "SecuCode": "600956",
+                                    "ChiName": "新天绿色能源股份有限公司",
+                                    "ChiNameAbbr": "新天绿色能源",
+                                    "EngName": "China Suntien Green Energy Corporation Limited",
+                                    "EngNameAbbr": "China Suntien Green Energy",
+                                    "SecuAbbr": "新天绿能",
+                                    "ChiSpelling": "XTLN",
+                                    "SecuMarket": 83,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "2020-06-29 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2023-09-19 03:27:15.823",
+                                    "JSID": 748547225610,
+                                    "ISIN": "CNE100003ZJ7",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE '新天绿能' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '新天绿能' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 692,
+                "completion_tokens": 98,
+                "total_tokens": 790
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10550,
+                    "completion_tokens": 517,
+                    "total_tokens": 11067
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 11081,
+                    "completion_tokens": 493,
+                    "total_tokens": 11574
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11590,
+                    "completion_tokens": 485,
+                    "total_tokens": 12075
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "2.98s",
+            "table_finder-stage_1": [
+                "30.20s"
+            ],
+            "table_finder-stage_2": [
+                "27.46s"
+            ],
+            "table_finder-stage_3": [
+                "27.24s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "cot_thinking": "用户要求研发投入金额保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，新天绿能是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司在特定年份的年度研发投入合计金额以及研发人员数量。",
+                            "result": [
+                                "A股公司的年度研发投入合计金额",
+                                "A股公司的研发人员数量"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：年度研发投入合计金额）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表收录上市公司研发投入相关数据，主要包括研发费用投入总额、占比，研发人员构成、占比等信息，因此适合用于查询年度研发投入合计金额。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：研发人员数量）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司研发人员数量数据同样与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表收录上市公司研发人员构成、占比等信息，因此也适合用于查询研发人员数量。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，需要查询 AStockFinanceDB 数据库中的 LC_IntAssetsDetail 表，筛选出新天绿能2020年的年度研发投入合计金额和研发人员数量，并确保金额保留两位小数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_IntAssetsDetail"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "费用化研发占比为？资本化研发占比为？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "cot_thinking": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，新天绿能是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司研发投入中费用化和资本化的占比。",
+                            "result": [
+                                "A股公司研发投入费用化占比",
+                                "A股公司研发投入资本化占比"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：研发投入费用化占比）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司研发投入费用化占比数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表收录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息，因此适合用于查询研发投入费用化占比。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：研发投入资本化占比）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司研发投入资本化占比数据同样与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表收录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息，因此也适合用于查询研发投入资本化占比。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，需要查询 AStockFinanceDB 数据库中的 LC_IntAssetsDetail 表，筛选出新天绿能研发投入中费用化和资本化的占比。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_IntAssetsDetail"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "上一年度研发投入最高的三家公司是？（回答中文简称）",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "cot_thinking": "用户要求返回公司中文简称，因此需要确保最终输出格式为简称。"
+                        },
+                        {
+                            "step_2": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问上一年度研发投入最高的三家公司。",
+                            "result": [
+                                "上一年度研发投入排名",
+                                "公司中文简称"
+                            ]
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1：上一年度研发投入排名）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表收录上市公司研发投入相关数据，包括研发费用投入总额等信息，因此适合用于查询上一年度研发投入排名。"
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求2：公司中文简称）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司中文简称与 '证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询公司中文简称。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_IntAssetsDetail 表，筛选出上一年度的研发投入数据，并找出研发投入最高的三家公司。然后，再查询 SecuMain 表，获取这三家公司的中文简称。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_IntAssetsDetail"
+                        },
+                        {
+                            "database": "ConstantDB",
+                            "table": "SecuMain"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----7",
+        "team": [
+            {
+                "id": "tttt----7----7-2-1",
+                "question": "天顺风能属于哪个三级行业？"
+            },
+            {
+                "id": "tttt----7----7-2-2",
+                "question": "2021年发布的该行业的股票有多少只？"
+            },
+            {
+                "id": "tttt----7----7-2-3",
+                "question": "该行业8月公布的最高行业营业收入是多少万元？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "从当前查询中，可以看出涉及到一个上市公司名称‘天顺风能’。问题询问的是该公司属于哪个三级行业。‘天顺风能’是一个上市公司名称，而查询中并未提及其他实体，如股票代码、基金名称或基金公司名称。",
+                "result": [
+                    {
+                        "上市公司名称": "天顺风能"
+                    }
+                ],
+                "sql": {
+                    "上市公司名称:天顺风能": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE '天顺风能' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": [
+                                {
+                                    "ID": 342516517421,
+                                    "InnerCode": 12064,
+                                    "CompanyCode": 81722,
+                                    "SecuCode": "002531",
+                                    "ChiName": "天顺风能(苏州)股份有限公司",
+                                    "ChiNameAbbr": "天顺风能",
+                                    "EngName": "Titan Wind Energy (Suzhou) Co.,Ltd.",
+                                    "EngNameAbbr": "Titan Wind",
+                                    "SecuAbbr": "天顺风能",
+                                    "ChiSpelling": "TSFN",
+                                    "SecuMarket": 90,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "2010-12-31 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2021-04-03 02:03:11.480",
+                                    "JSID": 670773792800,
+                                    "ISIN": "CNE100000YH0",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE '天顺风能' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '天顺风能' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 670,
+                "completion_tokens": 89,
+                "total_tokens": 759
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10523,
+                    "completion_tokens": 409,
+                    "total_tokens": 10932
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 10944,
+                    "completion_tokens": 563,
+                    "total_tokens": 11507
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11520,
+                    "completion_tokens": 567,
+                    "total_tokens": 12087
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "3.03s",
+            "table_finder-stage_1": [
+                "24.85s"
+            ],
+            "table_finder-stage_2": [
+                "30.87s"
+            ],
+            "table_finder-stage_3": [
+                "31.33s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "天顺风能属于哪个三级行业？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，天顺风能是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司所属的三级行业。",
+                            "result": [
+                                "A股公司所属的三级行业"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司所属的三级行业）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司所属行业信息与'公司行业划分表' (LC_ExgIndustry) 表相关。该表记录了上市公司在各种划分标准下的所属行业情况，包括证监会行业划分、中信行业划分、GICS行业划分、申万行业划分等，其中申万行业划分标准包含了三级行业分类。因此，LC_ExgIndustry 表适合用于查询天顺风能所属的三级行业。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ExgIndustry 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ExgIndustry 表，筛选出天顺风能所属的申万三级行业。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_ExgIndustry"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "2021年发布的该行业的股票有多少只？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，该问题涉及的是A股市场。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问2021年发布的某特定行业的股票数量。",
+                            "result": [
+                                "特定年份发布的A股股票数量",
+                                "特定行业"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：特定年份发布的A股股票数量）",
+                            "cot_thinking": "查看 Database-Table Schema，A股股票上市信息与'证券主表' (SecuMain) 表相关。该表记录了A股单个证券品种的代码、简称、中英文名、上市交易所、上市板块、上市状态等基础信息，其中包含了上市日期。因此，SecuMain 表适合用于查询2021年发布的A股股票数量。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：特定行业）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司所属行业信息与'公司行业划分表' (LC_ExgIndustry) 表相关。该表记录了上市公司在各种划分标准下的所属行业情况，包括证监会行业划分、中信行业划分、GICS行业划分、申万行业划分等。因此，LC_ExgIndustry 表适合用于查询天顺风能所属的申万三级行业。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，SecuMain 在'常量库'（ConstantDB）数据库中；LC_ExgIndustry 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_ExgIndustry 表，筛选出天顺风能所属的申万三级行业。然后，再查询 SecuMain 表，筛选出2021年发布的股票，并统计该行业股票的数量。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_ExgIndustry"
+                        },
+                        {
+                            "database": "ConstantDB",
+                            "table": "SecuMain"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "该行业8月公布的最高行业营业收入是多少万元？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题要求返回行业营业收入，单位为万元，因此需要确保最终输出格式符合这一精度要求。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，该问题涉及的是A股市场。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某特定行业在8月份公布的最高行业营业收入。",
+                            "result": [
+                                "特定行业",
+                                "特定月份公布的行业营业收入"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：特定行业）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司所属行业信息与'公司行业划分表' (LC_ExgIndustry) 表相关。该表记录了上市公司在各种划分标准下的所属行业情况，包括证监会行业划分、中信行业划分、GICS行业划分、申万行业划分等。因此，LC_ExgIndustry 表适合用于查询天顺风能所属的申万三级行业。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：特定月份公布的行业营业收入）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司财务信息与'公司主营业务构成' (LC_MainOperIncome) 表相关。该表记录了公司主营业务的收入来源、成本构成；主营业务收入、成本和利润与上年同期的对比较。因此，LC_MainOperIncome 表适合用于查询特定月份公布的行业营业收入。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ExgIndustry 在'上市公司行业板块'（AStockIndustryDB）数据库中；LC_MainOperIncome 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_ExgIndustry 表，筛选出天顺风能所属的申万三级行业。然后，再查询 LC_MainOperIncome 表，筛选出8月份公布的行业营业收入，并找出最高值。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockIndustryDB",
+                            "table": "LC_ExgIndustry"
+                        },
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_MainOperIncome"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----2",
+        "team": [
+            {
+                "id": "tttt----2----2-1-1",
+                "question": "今天是2021年12月24日，创近半年新高的股票有几只？"
+            },
+            {
+                "id": "tttt----2----2-1-2",
+                "question": "哪些股票股价大于75，且同时当天创一年新高的是？"
+            },
+            {
+                "id": "tttt----2----2-1-3",
+                "question": "以上股票连续两日（今日与昨日）满足上述要求的是？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "当前查询中，询问的是在特定日期（2021年12月24日）创近半年新高的股票数量。问题中没有提及任何具体的上市公司名称、股票代码、基金名称或基金公司名称。因此，没有识别出任何命名实体。",
+                "result": [],
+                "sql": {}
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 678,
+                "completion_tokens": 75,
+                "total_tokens": 753
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10226,
+                    "completion_tokens": 438,
+                    "total_tokens": 10664
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 10680,
+                    "completion_tokens": 661,
+                    "total_tokens": 11341
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11358,
+                    "completion_tokens": 460,
+                    "total_tokens": 11818
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "2.82s",
+            "table_finder-stage_1": [
+                "26.20s"
+            ],
+            "table_finder-stage_2": [
+                "35.29s"
+            ],
+            "table_finder-stage_3": [
+                "26.28s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "今天是2021年12月24日，创近半年新高的股票有几只？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某特定日期，创近半年新高的股票数量。",
+                            "result": [
+                                "特定日期创近半年新高的股票数量"
+                            ]
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1：特定日期创近半年新高的股票数量）",
+                            "cot_thinking": "查看 Database-Table Schema，与股票技术形态相关的表格仅有'股票技术形态表' (CS_StockPatterns)。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括近1周、近1月、近3月（季度）、近6月（半年）、近1年、上市以来的创新高、创新低的情况，以及连涨跌天数、连续放量缩量天数、向上向下有效突破均线、N天M板、均线多空头排列看涨看跌等技术形态指标。因此，CS_StockPatterns 表适合用于查询2021年12月24日创近半年新高的股票数量。"
+                        },
+                        {
+                            "step_4": "结论",
+                            "identify_database": "查看 Database-Table Schema，CS_StockPatterns 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 CS_StockPatterns 表，筛选出2021年12月24日创近半年新高的股票数量。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockMarketQuotesDB",
+                            "table": "CS_StockPatterns"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "哪些股票股价大于75，且同时当天创一年新高的是？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问满足两个条件的股票：1) 当日收盘价大于75；2) 当日创一年新高。",
+                            "result": [
+                                "当日收盘价大于75的股票",
+                                "当日创一年新高的股票"
+                            ]
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1：当日收盘价大于75的股票）",
+                            "cot_thinking": "查看 Database-Table Schema，当日收盘价数据与'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括收盘价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括收盘价。但第一个信息需求核心是在于'当日收盘价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选当日收盘价大于75的股票。"
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求2：当日创一年新高的股票）",
+                            "cot_thinking": "查看 Database-Table Schema，与股票技术形态相关的表格仅有'股票技术形态表' (CS_StockPatterns)。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括近1周、近1月、近3月（季度）、近6月（半年）、近1年、上市以来的创新高、创新低的情况，以及连涨跌天数、连续放量缩量天数、向上向下有效突破均线、N天M板、均线多空头排列看涨看跌等技术形态指标。因此，CS_StockPatterns 表适合用于查询当日创一年新高的股票。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，QT_DailyQuote 和 CS_StockPatterns 都在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 QT_DailyQuote 表，筛选出当日收盘价大于75的股票。然后，再查询 CS_StockPatterns 表，筛选出当日创一年新高的股票。最后，将两个结果集进行交集操作，即可得到满足条件的股票列表。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockMarketQuotesDB",
+                            "table": "QT_DailyQuote"
+                        },
+                        {
+                            "database": "AStockMarketQuotesDB",
+                            "table": "CS_StockPatterns"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "以上股票连续两日（今日与昨日）满足上述要求的是？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析前序查询结果",
+                            "cot_thinking": "前序查询已经得到满足条件的股票列表，即当日收盘价大于75且创一年新高的股票。本查询需要在此基础上进一步筛选，找出连续两日都满足上述条件的股票。"
+                        },
+                        {
+                            "step_3": "定位所有的相关表格（需求1：连续两日满足条件的股票）",
+                            "cot_thinking": "查看 Database-Table Schema，与股票技术形态相关的表格仅有'股票技术形态表' (CS_StockPatterns)。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括近1周、近1月、近3月（季度）、近6月（半年）、近1年、上市以来的创新高、创新低的情况，以及连涨跌天数、连续放量缩量天数、向上向下有效突破均线、N天M板、均线多空头排列看涨看跌等技术形态指标。因此，CS_StockPatterns 表适合用于查询连续两日创一年新高的股票。"
+                        },
+                        {
+                            "step_4": "结论",
+                            "identify_database": "查看 Database-Table Schema，CS_StockPatterns 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+                            "cot_thinking": "要满足查询需求，首先需要使用前序查询得到的股票列表，作为 CS_StockPatterns 表的筛选条件，查询这些股票在昨日是否也创一年新高。然后，将满足条件的股票列表与前序查询结果进行交集操作，即可得到连续两日都满足条件的股票列表。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockMarketQuotesDB",
+                            "table": "CS_StockPatterns"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----6",
+        "team": [
+            {
+                "id": "tttt----6----6-2-1",
+                "question": "天顺风能披露了多少次担保信息？"
+            },
+            {
+                "id": "tttt----6----6-2-2",
+                "question": "他一共披露过多少次借贷信息？2021年披露了多少次？"
+            },
+            {
+                "id": "tttt----6----6-2-3",
+                "question": "他一共披露了多少次重大资产重组信息？2021年披露了多少次？2020年披露了多少次？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "从当前查询中，可以看出涉及到一个上市公司名称‘天顺风能’。查询内容是关于该公司披露担保信息的次数。‘天顺风能’是一个上市公司名称，而查询中并未提及其他实体，如股票代码、基金名称或基金公司名称。",
+                "result": [
+                    {
+                        "上市公司名称": "天顺风能"
+                    }
+                ],
+                "sql": {
+                    "上市公司名称:天顺风能": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE '天顺风能' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": [
+                                {
+                                    "ID": 342516517421,
+                                    "InnerCode": 12064,
+                                    "CompanyCode": 81722,
+                                    "SecuCode": "002531",
+                                    "ChiName": "天顺风能(苏州)股份有限公司",
+                                    "ChiNameAbbr": "天顺风能",
+                                    "EngName": "Titan Wind Energy (Suzhou) Co.,Ltd.",
+                                    "EngNameAbbr": "Titan Wind",
+                                    "SecuAbbr": "天顺风能",
+                                    "ChiSpelling": "TSFN",
+                                    "SecuMarket": 90,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "2010-12-31 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2021-04-03 02:03:11.480",
+                                    "JSID": 670773792800,
+                                    "ISIN": "CNE100000YH0",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE '天顺风能' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '天顺风能' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 669,
+                "completion_tokens": 88,
+                "total_tokens": 757
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10522,
+                    "completion_tokens": 396,
+                    "total_tokens": 10918
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 10936,
+                    "completion_tokens": 532,
+                    "total_tokens": 11468
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11494,
+                    "completion_tokens": 666,
+                    "total_tokens": 12160
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "3.26s",
+            "table_finder-stage_1": [
+                "24.29s"
+            ],
+            "table_finder-stage_2": [
+                "29.33s"
+            ],
+            "table_finder-stage_3": [
+                "35.83s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "天顺风能披露了多少次担保信息？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，天顺风能是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司披露的担保信息的次数。",
+                            "result": [
+                                "A股公司的担保信息次数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司的担保信息次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司担保信息数据与'公司担保明细' (LC_Warrant) 表相关。该表记录上市公司公告中披露的担保等重大事项，包括时间内容、最新进展、事件主体/交易对象名称、企业编号、与上市公司关联关系、担保原因等指标。因此，LC_Warrant 表适合用于查询天顺风能披露的担保信息次数。"
+                        },
+                        {
+                            "step_5": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_Warrant 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+                            "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockEventsDB 数据库中的 LC_Warrant 表，筛选出天顺风能的担保信息记录，并统计记录数量。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockEventsDB",
+                            "table": "LC_Warrant"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "他一共披露过多少次借贷信息？2021年披露了多少次？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，天顺风能是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司披露的借贷信息的总次数，以及2021年的次数。",
+                            "result": [
+                                "A股公司的借贷信息总次数",
+                                "A股公司2021年的借贷信息次数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司的借贷信息总次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司借贷信息数据与'公司借贷明细' (LC_Credit) 表相关。该表记录上市公司公告中披露的公司借贷等重大事项描述，包括时间内容、时间主体、交易对象名称、借贷金额、还款金额、借贷利率、借贷期限等指标。因此，LC_Credit 表适合用于查询天顺风能披露的借贷信息总次数。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：A股公司2021年的借贷信息次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司2021年的借贷信息数据同样与'公司借贷明细' (LC_Credit) 表相关。该表记录了借贷信息的时间内容，因此可以通过筛选时间范围来获取2021年的借贷信息次数。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_Credit 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_Credit 表，筛选出天顺风能的借贷信息记录，并统计记录数量以获取总次数。然后，再筛选出2021年的借贷信息记录，并统计记录数量以获取2021年的次数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockEventsDB",
+                            "table": "LC_Credit"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "他一共披露了多少次重大资产重组信息？2021年披露了多少次？2020年披露了多少次？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，天顺风能是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司披露的重大资产重组信息的总次数，以及2021年和2020年的次数。",
+                            "result": [
+                                "A股公司的重大资产重组信息总次数",
+                                "A股公司2021年的重大资产重组信息次数",
+                                "A股公司2020年的重大资产重组信息次数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司的重大资产重组信息总次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司重大资产重组信息数据与'公司资产重组明细' (LC_Regroup) 表相关。该表记录公司资产重组，如资产出售与转让、资产置换、债权债务重组等重大事项描述说明。因此，LC_Regroup 表适合用于查询天顺风能披露的重大资产重组信息总次数。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：A股公司2021年的重大资产重组信息次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司2021年的重大资产重组信息数据同样与'公司资产重组明细' (LC_Regroup) 表相关。该表记录了重大资产重组信息的时间内容，因此可以通过筛选时间范围来获取2021年的重大资产重组信息次数。"
+                        },
+                        {
+                            "step_6": "定位所有的相关表格（需求3：A股公司2020年的重大资产重组信息次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司2020年的重大资产重组信息数据同样与'公司资产重组明细' (LC_Regroup) 表相关。该表记录了重大资产重组信息的时间内容，因此可以通过筛选时间范围来获取2020年的重大资产重组信息次数。"
+                        },
+                        {
+                            "step_7": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_Regroup 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+                            "cot_thinking": "要同时满足三个需求，首先需要查询 LC_Regroup 表，筛选出天顺风能的重大资产重组信息记录，并统计记录数量以获取总次数。然后，再分别筛选出2021年和2020年的重大资产重组信息记录，并统计记录数量以获取对应年份的次数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockEventsDB",
+                            "table": "LC_Regroup"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----1",
+        "team": [
+            {
+                "id": "tttt----1----1-1-1",
+                "question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？"
+            },
+            {
+                "id": "tttt----1----1-1-2",
+                "question": "该公司实控人是否发生改变？如果发生变化，什么时候变成了谁？是哪国人？是否有永久境外居留权？（回答时间用XXXX-XX-XX）"
+            },
+            {
+                "id": "tttt----1----1-1-3",
+                "question": "在实控人发生变化的当年股权发生了几次转让？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "根据查询内容，'600872' 是一个股票代码，指向了一个上市公司，因此应该识别为一个代码。而'全称'、'A股简称'、'法人'、'法律顾问'、'会计师事务所'及'董秘'等词汇虽然出现在查询中，但它们并不构成独立的实体，而是与'600872'相关的属性或角色，因此不需要作为实体识别。所以，我们只需识别'600872'作为代码实体。",
+                "result": [
+                    {
+                        "代码": "600872"
+                    }
+                ],
+                "sql": {
+                    "代码:600872": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE 600872 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
+                            "result": [
+                                {
+                                    "ID": 315934536696,
+                                    "InnerCode": 2120,
+                                    "CompanyCode": 1805,
+                                    "SecuCode": "600872",
+                                    "ChiName": "中炬高新技术实业(集团)股份有限公司",
+                                    "ChiNameAbbr": "中炬高新",
+                                    "EngName": "Jonjee Hi-Tech Industrial And Commercial Holding Co.,Ltd",
+                                    "EngNameAbbr": "JONJEE",
+                                    "SecuAbbr": "中炬高新",
+                                    "ChiSpelling": "ZJGX",
+                                    "SecuMarket": 83,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "1995-01-24 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2019-08-22 06:42:02.380",
+                                    "JSID": 619815689135,
+                                    "ISIN": "CNE000000HK0",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE 600872 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE 600872 IN (InnerCode, CompanyCode, SecuCode, ISIN, JSID)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 680,
+                "completion_tokens": 131,
+                "total_tokens": 811
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10534,
+                    "completion_tokens": 563,
+                    "total_tokens": 11097
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 11134,
+                    "completion_tokens": 618,
+                    "total_tokens": 11752
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11766,
+                    "completion_tokens": 488,
+                    "total_tokens": 12254
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "3.98s",
+            "table_finder-stage_1": [
+                "32.58s"
+            ],
+            "table_finder-stage_2": [
+                "33.69s"
+            ],
+            "table_finder-stage_3": [
+                "27.74s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "600872的全称、A股简称、法人、法律顾问、会计师事务所及董秘是？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题要求返回公司全称、A股简称、法人、法律顾问、会计师事务所及董秘，因此需要确保最终输出格式包含这些信息。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，600872是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司的全称、A股简称、法人、法律顾问、会计师事务所及董秘。",
+                            "result": [
+                                "A股公司基本信息",
+                                "A股公司治理信息"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司基本信息）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司基本信息与 '证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名、上市交易所、上市状态等基础信息，因此适合用于查询公司全称和A股简称。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：A股公司治理信息）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司治理信息与 '公司概况' (LC_StockArchives) 表相关。该表收录上市公司的基本情况，包括：联系方式、地址邮编、注册信息、中介机构、行业和产品、公司证券品种及背景资料等内容，因此适合用于查询法人、法律顾问、会计师事务所及董秘。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，SecuMain 在 '常量库'（ConstantDB）数据库中；LC_StockArchives 在 '上市公司基本资料'（AStockBasicInfoDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 SecuMain 表，获取 600872 的全称和A股简称。然后，再查询 LC_StockArchives 表，获取该公司的法人、法律顾问、会计师事务所及董秘信息。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "ConstantDB",
+                            "table": "SecuMain"
+                        },
+                        {
+                            "database": "AStockBasicInfoDB",
+                            "table": "LC_StockArchives"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "该公司实控人是否发生改变？如果发生变化，什么时候变成了谁？是哪国人？是否有永久境外居留权？（回答时间用XXXX-XX-XX）",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题要求返回公司实控人是否发生改变，如果发生变化，需要提供变化时间、新实控人姓名、国籍以及是否拥有永久境外居留权。时间格式需要为XXXX-XX-XX。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，该公司为A股上市公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司实控人是否发生改变，以及变化的具体信息。",
+                            "result": [
+                                "A股公司实控人变更情况",
+                                "A股公司实控人基本信息"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司实控人变更情况）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司实控人变更情况与 '公司实际控制人' (LC_ActualController) 表相关。该表收录根据上市公司在招投说明书、定期报告、及临时公告中披露的实际控制人结构图判断的上市公司实际控制人信息，因此适合用于查询实控人是否发生改变以及变化时间。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：A股公司实控人基本信息）",
+                            "cot_thinking": "查看 Database-Table Schema，A股公司实控人基本信息与 '大股东介绍' (LC_Mshareholder) 表相关。该表收录上市公司及发债企业大股东的基本资料，包括直接持股和间接持股，以及持股比例、背景介绍等内容，因此适合用于查询实控人姓名、国籍以及是否拥有永久境外居留权。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ActualController 和 LC_Mshareholder 都在 '上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_ActualController 表，获取该公司实控人是否发生改变以及变化时间。然后，再查询 LC_Mshareholder 表，获取新实控人姓名、国籍以及是否拥有永久境外居留权。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockShareholderDB",
+                            "table": "LC_ActualController"
+                        },
+                        {
+                            "database": "AStockShareholderDB",
+                            "table": "LC_Mshareholder"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "在实控人发生变化的当年股权发生了几次转让？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题要求返回实控人发生变化的当年股权发生转让的次数。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，该公司为A股上市公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问在实控人发生变化的当年，该公司股权发生转让的次数。",
+                            "result": [
+                                "实控人变化时间",
+                                "股权转让次数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：实控人变化时间）",
+                            "cot_thinking": "查看 Database-Table Schema，实控人变化时间与 '公司实际控制人' (LC_ActualController) 表相关。该表记录了上市公司实控人变化的信息，因此适合用于查询实控人变化时间。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：股权发生转让次数）",
+                            "cot_thinking": "查看 Database-Table Schema，股权发生转让次数与 '股东股权变动' (LC_ShareTransfer) 表相关。该表记录了公司股东的股权转让信息，因此适合用于查询股权发生转让的次数。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ActualController 和 LC_ShareTransfer 都在 '上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，首先需要查询 LC_ActualController 表，获取实控人变化时间。然后，再查询 LC_ShareTransfer 表，获取该时间段内股权发生转让的次数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockShareholderDB",
+                            "table": "LC_ActualController"
+                        },
+                        {
+                            "database": "AStockShareholderDB",
+                            "table": "LC_ShareTransfer"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "tid": "tttt----8",
+        "team": [
+            {
+                "id": "tttt----8----8-2-1",
+                "question": "首钢股份发布增发和配股次数分别是多少次？"
+            },
+            {
+                "id": "tttt----8----8-2-2",
+                "question": "该股每次增发预计募集资金总额分别是？增发预计募集资金总额最高的公司中文全称是？金额是？"
+            },
+            {
+                "id": "tttt----8----8-2-3",
+                "question": "该股每次配股发行费用总额分别是？配股发行费用总额最高的中文全称是？金额是？"
+            }
+        ],
+        "ner": {
+            "stage_1": {
+                "reasoning_process_cot": "从当前查询中，可以看出涉及到一个上市公司名称‘首钢股份’。查询内容是关于该公司的增发和配股次数。‘首钢股份’是一个上市公司名称，而查询中并未提及其他实体，如股票代码、基金名称或基金公司名称。",
+                "result": [
+                    {
+                        "上市公司名称": "首钢股份"
+                    }
+                ],
+                "sql": {
+                    "上市公司名称:首钢股份": [
+                        {
+                            "query": "SELECT * FROM ConstantDB.SecuMain WHERE '首钢股份' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": [
+                                {
+                                    "ID": 322906773381,
+                                    "InnerCode": 579,
+                                    "CompanyCode": 516,
+                                    "SecuCode": "000959",
+                                    "ChiName": "北京首钢股份有限公司",
+                                    "ChiNameAbbr": "首钢股份",
+                                    "EngName": "Beijing Shougang Co.,Ltd.",
+                                    "EngNameAbbr": "Shougang",
+                                    "SecuAbbr": "首钢股份",
+                                    "ChiSpelling": "SGGF",
+                                    "SecuMarket": 90,
+                                    "SecuCategory": 1,
+                                    "ListedDate": "1999-12-16 12:00:00.000",
+                                    "ListedSector": 1,
+                                    "ListedState": 1,
+                                    "XGRQ": "2017-04-15 12:05:01.130",
+                                    "JSID": 545573101153,
+                                    "ISIN": "CNE000001196",
+                                    "ExtendedAbbr": null,
+                                    "ExtendedSpelling": null
+                                }
+                            ]
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.HK_SecuMain WHERE '首钢股份' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling)",
+                            "result": []
+                        },
+                        {
+                            "query": "SELECT * FROM ConstantDB.US_SecuMain WHERE '首钢股份' IN (SecuCode, SecuAbbr, ChiSpelling, EngName, ChiName)",
+                            "result": []
+                        }
+                    ]
+                }
+            }
+        },
+        "token_usage": {
+            "ner-stage_1": {
+                "prompt_tokens": 674,
+                "completion_tokens": 91,
+                "total_tokens": 765
+            },
+            "table_finder-stage_1": [
+                {
+                    "prompt_tokens": 10518,
+                    "completion_tokens": 607,
+                    "total_tokens": 11125
+                }
+            ],
+            "table_finder-stage_2": [
+                {
+                    "prompt_tokens": 11152,
+                    "completion_tokens": 678,
+                    "total_tokens": 11830
+                }
+            ],
+            "table_finder-stage_3": [
+                {
+                    "prompt_tokens": 11856,
+                    "completion_tokens": 603,
+                    "total_tokens": 12459
+                }
+            ]
+        },
+        "time_usage": {
+            "ner-stage_1": "2.75s",
+            "table_finder-stage_1": [
+                "34.46s"
+            ],
+            "table_finder-stage_2": [
+                "36.25s"
+            ],
+            "table_finder-stage_3": [
+                "32.93s"
+            ]
+        },
+        "table_finder": {
+            "stage_1": [
+                {
+                    "raw_question": "首钢股份发布增发和配股次数分别是多少次？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，首钢股份是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司发布增发和配股的次数。",
+                            "result": [
+                                "A股公司的增发次数",
+                                "A股公司的配股次数"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：增发次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A 股增发数据与'A股增发' (LC_AShareSeasonedNewIssue) 表相关。该表记录A股增发A股、B股增发A股、H股增发A股等的明细情况，包括历次增发预案、进程日期、预案有效期、发行属性、发行价区间、发行量区间、发行日期、上网发行情况、网下配售申购情况和募集资金与费用等内容。因此，LC_AShareSeasonedNewIssue 表适合用于查询首钢股份的增发次数。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：配股次数）",
+                            "cot_thinking": "查看 Database-Table Schema，A 股配股数据与'A股配股' (LC_ASharePlacement) 表相关。该表记录A股历次配股预案及实施进展明细，包括预案有效期、配股价格区间、配股说明书、募集资金和配股交款日等内容。因此，LC_ASharePlacement 表适合用于查询首钢股份的配股次数。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_AShareSeasonedNewIssue 和 LC_ASharePlacement 都在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，需要分别查询 AStockFinanceDB 数据库中的 LC_AShareSeasonedNewIssue 表和 LC_ASharePlacement 表，统计首钢股份的增发和配股次数。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_AShareSeasonedNewIssue"
+                        },
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_ASharePlacement"
+                        }
+                    ]
+                }
+            ],
+            "stage_2": [
+                {
+                    "raw_question": "该股每次增发预计募集资金总额分别是？增发预计募集资金总额最高的公司中文全称是？金额是？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，该股指的是首钢股份，是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司每次增发的预计募集资金总额，以及增发预计募集资金总额最高的公司中文全称和金额。",
+                            "result": [
+                                "A股公司每次增发的预计募集资金总额",
+                                "增发预计募集资金总额最高的公司中文全称和金额"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司每次增发的预计募集资金总额）",
+                            "cot_thinking": "查看 Database-Table Schema，A 股增发数据与'A股增发' (LC_AShareSeasonedNewIssue) 表相关。该表记录A股增发A股、B股增发A股、H股增发A股等的明细情况，包括历次增发预案、进程日期、预案有效期、发行属性、发行价区间、发行量区间、发行日期、上网发行情况、网下配售申购情况和募集资金与费用等内容。因此，LC_AShareSeasonedNewIssue 表适合用于查询首钢股份每次增发的预计募集资金总额。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：增发预计募集资金总额最高的公司中文全称和金额）",
+                            "cot_thinking": "查看 Database-Table Schema，A 股增发数据与'A股增发' (LC_AShareSeasonedNewIssue) 表相关。该表记录A股增发A股、B股增发A股、H股增发A股等的明细情况，包括历次增发预案、进程日期、预案有效期、发行属性、发行价区间、发行量区间、发行日期、上网发行情况、网下配售申购情况和募集资金与费用等内容。因此，LC_AShareSeasonedNewIssue 表也适合用于查询增发预计募集资金总额最高的公司中文全称和金额。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_AShareSeasonedNewIssue 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，需要查询 AStockFinanceDB 数据库中的 LC_AShareSeasonedNewIssue 表，获取首钢股份每次增发的预计募集资金总额，并找出增发预计募集资金总额最高的公司中文全称和金额。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_AShareSeasonedNewIssue"
+                        }
+                    ]
+                }
+            ],
+            "stage_3": [
+                {
+                    "raw_question": "该股每次配股发行费用总额分别是？配股发行费用总额最高的中文全称是？金额是？",
+                    "data_source_reasoning": [
+                        {
+                            "step_1": "解析输出格式要求",
+                            "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+                        },
+                        {
+                            "step_2": "分析实体属于的证券市场",
+                            "result": "参考NER Result，该股指的是首钢股份，是一家A股公司。"
+                        },
+                        {
+                            "step_3": "抽象化问题的信息意图",
+                            "cot_thinking": "用户的问题是询问某A股公司每次配股的发行费用总额，以及配股发行费用总额最高的公司中文全称和金额。",
+                            "result": [
+                                "A股公司每次配股的发行费用总额",
+                                "配股发行费用总额最高的公司中文全称和金额"
+                            ]
+                        },
+                        {
+                            "step_4": "定位所有的相关表格（需求1：A股公司每次配股的发行费用总额）",
+                            "cot_thinking": "查看 Database-Table Schema，A 股配股数据与'A股配股' (LC_ASharePlacement) 表相关。该表记录A股历次配股预案及实施进展明细，包括预案有效期、配股价格区间、配股说明书、募集资金和配股交款日等内容。因此，LC_ASharePlacement 表适合用于查询首钢股份每次配股的发行费用总额。"
+                        },
+                        {
+                            "step_5": "定位所有的相关表格（需求2：配股发行费用总额最高的公司中文全称和金额）",
+                            "cot_thinking": "查看 Database-Table Schema，A 股配股数据与'A股配股' (LC_ASharePlacement) 表相关。该表记录A股历次配股预案及实施进展明细，包括预案有效期、配股价格区间、配股说明书、募集资金和配股交款日等内容。因此，LC_ASharePlacement 表也适合用于查询配股发行费用总额最高的公司中文全称和金额。"
+                        },
+                        {
+                            "step_6": "结论",
+                            "identify_database": "查看 Database-Table Schema，LC_ASharePlacement 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
+                            "cot_thinking": "要同时满足两个需求，需要查询 AStockFinanceDB 数据库中的 LC_ASharePlacement 表，获取首钢股份每次配股的发行费用总额，并找出配股发行费用总额最高的公司中文全称和金额。"
+                        }
+                    ],
+                    "data_source": [
+                        {
+                            "database": "AStockFinanceDB",
+                            "table": "LC_ASharePlacement"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

@@ -4,8 +4,8 @@
 
 |库名中文|库名英文|表英文|表中文|表描述|数据范围|信息来源|
 |---|---|---|---|---|---|---|
-| 常量库| ConstantDB| HK_SecuMain| 港股证券主表 | 记录港股单个证券品种的代码、简称、中英文名、上市交易、上市状态所等基础信息。 || 
-| 常量库 | ConstantDB| US_SecuMain| 美股证券主表 | 记录美国等境外市场单个证券品种的代码、简称、中英文名、上市交易所、上市状态等基础信息。|||
+| 常量库| ConstantDB| HK_SecuMain| 港股证券主表 | 记录港股单个证券品种的简称、中英文名、上市交易、上市状态所等基础信息。 || 
+| 常量库 | ConstantDB| US_SecuMain| 美股证券主表 | 记录美国等境外市场单个证券品种的简称、中英文名、上市交易所、上市状态等基础信息。|||
 | 常量库 | ConstantDB| SecuMain | 证券主表 | 记录A股单个证券品种（股票、基金、债券）的代码、简称、中英文名、上市交易所、上市板块、上市状态等基础信息。 |||
 | 常量库 | ConstantDB| CT_SystemConst | 系统常量表 | 本表收录数据库中各种常量值的具体分类和常量名称描述。 |||
 | 常量库 | ConstantDB| LC_AreaCode | 国家城市代码表 | 本表收录世界所有国家层面的数据信息和我国不同层级行政区域的划分信息。 |||
@@ -54,8 +54,8 @@
 | 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_StockHoldingSt| 股东持股统计 | 1. 收录上市公司中各类机构投资者，以及前十大股东合计持无限售流通股、普通股的统计数据。<br>2. 机构持股统计中，基金持股综合考虑了上市公司披露的十大股东数据以及基金报告中披露的基金持股数据；机构持股合计包含上市公司披露的股东持股以及在同一截止时点上基金披露的所持股票数据。<br>3. 计算公式：<br>\t1)机构持有无限售流通股数量＝机构持有无限售流通A股之和。<br>\t2)机构持有无限售流通股比例＝(机构持有无限售流通股数量/无限售A股)*100%。<br>\t3)机构持有A股数量＝机构持有A股之和。<br>4)机构持有A股比例＝(机构持有A股数量/A股总数)*100%。<br>\t5)机构持有股票数量＝机构持有股票之和。<br>\t6)机构持有股票比例＝(机构持有股票数量/总股本)*100%。 | 1992年 ~ 至今 | 招股说明书、上市公告书、定报、临时公告等 |
 | 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_NationalStockHoldSt| A股国家持股统计 | 本表记录国有资本持有A股的相关信息，包含：持有A股总数，占总股本比例，持有A股数量增减，持有A股数量增减幅度等。 | 2003-01-01 ~ 至今 | 聚源 |
 | 上市公司股东与股本/公司治理 | AStockShareholderDB| CS_ForeignHoldingSt | 外资持股统计 | 境外投资者持股统计，包含持股总数、持股比例，境外投资者指QFII/RQFII/深股通/全球存托凭证跨境转换机构/全球存托凭证存托人。 | 2007年 ~ 至今 | 深交所、上交所 |
-| 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_Buyback| 股份回购 | 介绍上市公司(包含科创板)发生股份回购的相关方案信息，包括股份类别、股东大会通过日期、首次信息发布日期、回购协议签署日、事件进程、股份被回购方、回购数量上限与下限、回购价格上限与下限、回购期限起始与截止日等内容。 | 1994-06-23 ~ 至今 | 回购公告、董事会公告等 |
-| 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_BuybackAttach| 股份回购补充说明表 | 1. 内容与LC_Buyback互斥。<br> 2. 补充上市公司(包含科创板)发生股份回购的相关信息，包括累计回购数量、累计回购数量占总股本的比例、最高价、最低价、本次回购资金、累计回购资金总额(元)这些独特的内容。<br>3. LC_BuybackAttach 通过 BuybackID 与LC_BuyBack 关联。| 1994-09-27 ~ 至今 | 回购公告、董事会公告等 |
+| 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_Buyback| 股份回购 | 介绍上市公司(包含科创板)发生股份回购的相关方案信息，包括股份类别、股东大会通过日期、首次信息发布日期、回购协议签署日、事件进程、股份被回购方、回购数量上限与下限、回购价格上限与下限、回购金额、回购期限起始与截止日等内容。 | 1994-06-23 ~ 至今 | 回购公告、董事会公告等 |
+| 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_BuybackAttach| 股份回购补充说明表 | 1. 内容与LC_Buyback互斥。<br> 2. 补充上市公司(包含科创板)发生股份回购的相关信息，包括累计回购数量、累计回购数量占总股本的比例、最高价、最低价、本次回购资金、累计回购资金总额(元)这些独特的内容。<br>3. 该表需要LC_BuyBack才能进行索引。| 1994-09-27 ~ 至今 | 回购公告、董事会公告等 |
 | 上市公司股东与股本/公司治理 | AStockShareholderDB | LC_LegalDistribution| 合法配售 | 收录A股公司在证券配售上的详细信息，包括配售对象、配售股数、配售原因、投资者类型等。 | 1994-04-23 ~ 至今 | 上市公司公告 |
 
 ### AStockFinanceDB
@@ -99,13 +99,13 @@
 | 上市公司公告资讯/重大事项 | AStockEventsDB | LC_Regroup | 公司资产重组明细 | 公司资产重组，如资产出售与转让、资产置换、债权债务重组等重大事项描述说明。| 2001年 ~ 至今 | 上市公司公告 |
 | 上市公司公告资讯/重大事项 | AStockEventsDB | LC_MajorContract | 公司重大经营合同明细 | 本表存放公司重大经营合同的事项，包括事件主体/交易对象名称、企业编号、与上市公司关联关系、合同标的、合同获得方式、涉及金额、合同起始日、合同截止日、合同期限等指标。| 2012 ~ 至今 | 上市公司公告 |
 | 上市公司公告资讯/重大事项 | AStockEventsDB | LC_InvestorRa| 投资者关系活动 | 收录各调研机构对上市公司调研的详情，包括调研日期、参与单位、调研人员、调研主要内容等信息。| 2012 ~ 至今 | 巨潮，上交所互动易和深交所互动易 |
-| 上市公司公告资讯/重大事项 | AStockEventsDB | LC_InvestorDetail| 投资者关系活动调研明细 | 1. 收录参与上市公司调研活动的调研机构明细数据，包括调研单位、调研人员等指标。<br> 2. LC_InvestorDetail 通过 RID 与LC_InvestorRa 关联。| 2016 ~ 至今 | 交易所，上交所互动易和深交所互动易 |
+| 上市公司公告资讯/重大事项 | AStockEventsDB | LC_InvestorDetail| 投资者关系活动调研明细 | 收录参与上市公司调研活动的调研机构明细数据，包括调研单位、调研人员等指标。| 2016 ~ 至今 | 交易所，上交所互动易和深交所互动易 |
 
 ### HKStockDB
 
 |库名中文|库名英文|表英文|表中文|表描述|数据范围|信息来源|
 |---|---|---|---|---|---|---|
-| 港股数据库 | HKStockDB | HK_StockArchives| 港股公司概况 | 收录港股上市公司的基础信息，包括成立日期、注册地点、注册资本、公司业务、所属行业分类、主席、公司秘书、联系方式等信息。|| 港交所等 |
+| 港股数据库 | HKStockDB | HK_StockArchives| 港股公司概况 | 收录港股上市公司的基础信息，包括名称、成立日期、注册地点、注册资本、公司业务、所属行业分类、主席、公司秘书、联系方式等信息。|| 港交所等 |
 | 港股数据库 | HKStockDB | HK_EmployeeChange | 港股公司员工数量变动表 | 记录港股公司员工数量的变动历史记录数据，包括信息发布日期、信息来源、生效日期、变更前员工数量、变更后员工数量等。| 2001年 ~ 至今| 港交所 |
 | 港股数据库 | HKStockDB | CS_HKStockPerformance | 港股行情表现 | 收录股票从最近一个交易日往前追溯一段时期的行情表现信息，包括近1周、1周以来、近1月、1月以来、近3月、近半年、近1年、今年以来、上市以来的表现情况，本表包含停牌数据。 | 2005年 ~ 至今| 根据港交所披露数据聚源衍生计算。 |
 
@@ -113,7 +113,7 @@
 
 |库名中文|库名英文|表英文|表中文|表描述|数据范围|信息来源|
 |---|---|---|---|---|---|---|
-| 美股数据库 | USStockDB | US_CompanyInfo| 美股公司概况 | 本表主要收录美国市场上市公司的基本情况，包括地址、电话、所属国家、公司简介等信息。|||
+| 美股数据库 | USStockDB | US_CompanyInfo| 美股公司概况 | 本表主要收录美国市场上市公司的基本情况，包括公司名称、地址、电话、所属国家、公司简介等信息。|||
 | 美股数据库 | USStockDB | US_DailyQuote| 美股日行情 | 收录美国市场证券的日收盘行情。| 2000-02 ~ 至今||
 
 ### PublicFundDB
@@ -145,7 +145,6 @@
 | 机构数据库| InstitutionDB | PS_EventStru | 事件体系指引表 | 收录聚源最新制定的事件分类体系。 |||
 | 机构数据库| InstitutionDB | LC_InstiArchive| 机构基本资料 | 收录市场上重要机构的基本资料情况，如证券公司、信托公司、保险公司等；包含机构名称、机构信息、联系方式、机构背景等信息。|| 国家企业信用信息公示系统等 |
 | 机构数据库| InstitutionDB | PS_NewsSecurity | 证券舆情表 | 收录了全网披露的舆情信息涉及的相关证券，对对应的事件信息，并对相应的事件的正负面情感及情感重要性进行等级划分。|||
-
 
 ## **Task Description**
 
@@ -180,36 +179,32 @@ The return JSON format:
   "raw_question": "互联网金融属于科技概念的什么分支？这个概念的英文名称是什么？",
   "data_source_reasoning": [
     {
-      "step": "解析格式要求",
-      "instruction": "识别用户对最终输出格式或数据精度的任何明确要求。",
+      "step_1": "解析输出格式要求",
       "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
     },
     {
-      "step": "识别信息需求",
-      "instruction": "提取用户 query 的核心意图，即用户希望获取什么类型的信息。",
-      "cot_thinking": "用户的问题是询问概念A属于概念B的什么分支，并希望获取概念A的英文名称。核心意图是获取概念之间的层级关系以及概念的英文名称。",
-      "result": ["概念之间的层级关系", "概念的英文名称"]
+      "step_2": "抽象化问题的信息意图",
+      "cot_thinking": "问题关注两个概念之间的层级关系，同时想要获取某一个概念的英文名。",
+      "result": ["概念层级关系", "概念的英文名称"]
     },
     {
-      "step": "定位相关数据库和表格（需求1：概念层级关系）",
+      "step_3": "定位所有的相关表格（需求1：概念层级关系系）",
       "instruction": "根据第一个信息需求（概念层级关系），依次、逐步罗列**所有**可能包含相关数据的数据库和表格，再根据需求确定合适的表格。",
       "cot_thinking": "查看 Database-Table Schema，与概念层级相关的表格仅有'概念关系常量表' (LC_ConceptList)。该表记录 A 股市场中概念间的层级关系（如父概念与子概念的关系），因此 LC_ConceptList 表与第一个需求最为相关。"
     },
     {
-      "step": "定位相关数据库和表格（需求2：概念英文名称）",
+      "step_4": "定位所有的相关表格（需求2：概念英文名称）",
       "instruction": "根据第二个信息需求（概念英文名称），依次、逐步罗列**所有**可能包含相关数据的数据库和表格，再根据需求确定合适的表格。",
       "cot_thinking": "查看 Database-Table Schema，与概念英文名称相关的表格同样仅有'概念关系常量表' (LC_ConceptList)。该表记录概念的中英文名称，因此 LC_ConceptList 表也与第二个需求相关。"
     },
     {
-      "step": "明确查询策略",
-      "instruction": "基于识别出的两个信息需求和定位到的表格，依次确定具体的查询方法，并提供所必须的数据关系。",
-      "cot_thinking": "要同时满足两个需求，需要查询 LC_ConceptList 表中的概念层级关系字段（如父概念与子概念的关系）以及概念的中英文名称字段。通过一次查询，可以获取 '互联网金融' 在 '科技概念' 中的分支及其英文名称。",
-      "identify_database": "查看 Database-Table，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。"
+      "step_5": "结论",
+      "identify_database": "查看 Database-Table，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
+      "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，获取互联网金融在科技概念中的分支及其英文名称。",
     }
   ],
   "data_source": [
     {
-      "question": "互联网金融属于科技概念的什么分支？这个概念的英文名称是什么？",
       "database": "AStockIndustryDB",
       "table": "LC_ConceptList"
     }
@@ -224,41 +219,35 @@ The return JSON format:
   "raw_question": "今天是2020年10月27日，当日收盘价第3高的A股是？(以下都回答简称)",
   "data_source_reasoning": [
     {
-      "step": "解析格式要求",
-      "instruction": "识别用户对最终输出格式或数据精度的任何明确要求。",
+      "step_1": "解析输出格式要求",
       "cot_thinking": "用户要求返回公司简称，因此需要确保最终输出格式为简称，且无需额外的数据精度处理。"
     },
     {
-      "step": "识别信息需求",
-      "instruction": "提取 query 的核心意图，即用户希望获取什么类型的信息。",
-      "cot_thinking": "用户的问题是询问某日A股收盘价第 3 高的股票简称。核心意图是获取特定日期的A股收盘价排名信息以及对应的A股股票简称。",
+      "step_2": "抽象化问题的信息意图",
+      "cot_thinking": "用户的问题是询问某日A股收盘价第3高的股票简称。",
       "result": ["特定日期的A股收盘价排名", "A股股票简称"]
     },
     {
-      "step": "定位相关数据库和表格（需求1：特定日期的A股收盘价排名）",
-      "instruction": "根据第一个信息需求（收盘价排名），依次、逐步罗列**所有**可能包含相关数据的数据库和表格，再根据需求确定合适的表格。",
+      "step_3": "定位所有的相关表格（需求1：特定日期的A股收盘价排名）",
       "cot_thinking": "查看 Database-Table Schema，A股收盘价数据'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括收盘价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括收盘价。但第一个信息需求核心是在于'特定日期的收盘价排名'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2020 年 10 月 27 日收盘价第 3 高的A股。"
     },
     {
-      "step": "定位相关数据库和表格（需求2：A股股票简称）",
-      "instruction": "根据第二个信息需求（股票简称），依次、逐步罗列**所有**可能包含相关数据的数据库和表格，再根据需求确定合适的表格。",
+      "step_4": "定位所有的相关表格（需求2：A股股票简称）",
       "cot_thinking": "查看 Database-Table Schema，A股股票简称仅与 '证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询A股简称。"
     },
     {
-      "step": "明确查询策略",
-      "instruction": "基于识别出的两个信息需求和定位到的表格，依次确定具体的查询方法，并提供所必须的数据关系。",
-      "cot_thinking": "要同时满足两个需求，首先需要查询 QT_DailyQuote 表，筛选出 2020 年 10 月 27 日的A股收盘价数据，并找出收盘价第 3 高的A股。然后，再查询 SecuMain 表，获取该A股的简称。根据Database-Table Schema, QT_DailyQuote 表与 SecuMain 表不关联，所以先后进行查询。",
-      "identify_database": "查看 Database-Table，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。"
+      "step_5": "结论",
+      "identify_database": "查看 Database-Table，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
+      "cot_thinking": "因此，要同时满足两个需求，首先需要查询 QT_DailyQuote 表，筛选出 2020 年 10 月 27 日的A股收盘价数据，并找出收盘价第 3 高的A股。然后，再查询 SecuMain 表，获取该A股的简称。",
+
     }
   ],
   "data_source": [
     {
-      "question": "2020年10月27日A股收盘价第3高的股票是什么？",
       "database": "AStockMarketQuotesDB",
       "table": "QT_DailyQuote"
     },
     {
-      "question": "2020年10月27日A股收盘价第3高的股票简称是什么？",
       "database": "ConstantDB",
       "table": "SecuMain"
     }
@@ -266,51 +255,83 @@ The return JSON format:
 }
 ```
 
-**shot 3**
+**shot 3***
+
+```json
+{
+  "raw_question": "2020年4月涨幅前10的港股股票有哪些",
+  "data_source_reasoning": [
+      {
+          "step_1": "解析输出格式要求",
+          "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+      },
+      {
+          "step_2": "抽象化问题的信息意图",
+          "cot_thinking": "用户的问题是询问某一时间段下港股股票的涨幅的排名信息。",
+          "result": ["特定时间段的港股涨幅排名"]
+      },
+      {
+          "step_3": "定位所有的相关表格（需求1：特定时间段的港股涨幅排名）",
+          "cot_thinking": "查看 Database-Table Schema，港股涨幅数据与'港股行情表现' (CS_HKStockPerformance) 表相关。该表记录港股股票从最近一个交易日往前追溯一段时期的行情表现信息，包括涨幅、成交量、换手率等指标。因此，CS_HKStockPerformance 表适合用于查询2020年4月涨幅前10的港股股票。"
+      },
+      {
+          "step_4": "结论",
+          "identify_database": "查看 Database-Table Schema，CS_HKStockPerformance 在'港股数据库'（HKStockDB）数据库中。",
+          "cot_thinking": "综上所述，要回答这个问题，我们需要查询 HKStockDB 数据库中的 CS_HKStockPerformance 表，筛选出2020年4月涨幅前10的港股股票。"
+      }
+  ],
+  "data_source": [
+      {
+          "database": "HKStockDB",
+          "table": "CS_HKStockPerformance"
+      }
+  ]
+}
+```
+
+**shot 4**
 
 ```json
 {
   "raw_question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)",
   "data_source_reasoning": [
     {
-      "step": "解析格式要求",
-      "instruction": "识别用户对最终输出格式或数据精度的任何明确要求。",
+      "step_1": "解析输出格式要求",
       "result": "用户要求回购金额合计需要四舍五入保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
     },
     {
-      "step": "分析实体",
-      "instruction": "根据NER Result分析实体属于的证券市场：A股、港股、美股。",
-      "result": "查看NER Result，梅花生物是一家A股公司。"
+      "step_2": "分析实体属于的证券市场",
+      "result": "参考NER Result，梅花生物是一家A股公司。"
     },
     {
-      "step": "识别信息需求",
-      "instruction": "提取用户 query 的核心意图，即用户希望获取什么类型的信息。",
-      "cot_thinking": "用户的问题是询问某A股公司在特定年份进行的股票回购的次数，以及每次进行回购金额的合计是多少。核心意图是A股公司在特定年份的股票回购次数和回购金额合计。",
+      "step_3": "抽象化问题的信息意图",
+      "cot_thinking": "用户的问题是询问某A股公司在特定年份进行的股票回购的次数，以及每次进行回购金额的合计是多少。",
       "result": ["A股公司的股票回购次数", "A股公司的回购金额合计"]
     },
     {
-      "step": "定位相关数据库和表格（需求1：股票回购次数）",
-      "instruction": "根据第一个信息需求（股票回购次数），依次、逐步罗列**所有**可能包含相关数据的数据库和表格，再根据需求确定合适的表格。",
+      "step_4": "定位所有的相关表格（需求1：股票回购次数）",
       "cot_thinking": "查看 Database-Table Schema，A 股股票回购数据与'股份回购' (LC_Buyback) 表和'股份回购补充说明表' (LC_BuybackAttach) 表相关。LC_Buyback表记录上市公司股份回购的相关方案信息，包括回购数量、回购价格、回购期限等；LC_BuybackAttach的内容与LC_Buyback互斥，补充记录了关于累计回购数量、累计回购金额等信息。因为LC_Buyback主要记录了回购方案，而LC_BuybackAttach的内容偏向于回购相关的数据统计，相比之下，LC_Buyback更适合用于查询股票回购次数。"
     },
     {
-      "step": "定位相关数据库和表格（需求2：回购金额合计）",
-      "instruction": "根据第二个信息需求（回购金额合计），依次、逐步罗列*所有**可能包含相关数据的数据库和表格，再根据需求确定合适的表格。",
-      "cot_thinking": "查看 Database-Table Schema，A 股股票回购金额合计数据与 '上市公司股东与股本/公司治理' (AStockShareholderDB) 数据库中的 '股份回购补充说明表' (LC_BuybackAttach) 表相关。该表补充记录了累计回购数量、累计回购金额等信息，因此适合用于查询回购金额合计。"
+      "step_5": "定位所有的相关表格（需求2：回购金额合计）",
+      "cot_thinking": "查看 Database-Table Schema，A 股股票回购金额合计数据与'股份回购补充说明表' (LC_BuybackAttach) 表相关。该表补充记录了累计回购数量、累计回购金额等信息，因此适合用于查询回购金额合计。"
     },
     {
-      "step": "明确查询策略",
-      "instruction": "基于识别出的两个信息需求和定位到的表格，依次确定具体的查询方法，并提供所必须的数据关系。",
-      "cot_thinking": "要同时满足两个需求，首先的 LC_Buyback 表，筛选出梅花生物在 2019 年的股票回购记录，统计回购次数。然后，再从  LC_BuybackAttach 表，获取同一时间段内的累计回购金额合计，并四舍五入保留两位小数。根据Database-Table Schema, LC_BuybackAttach 表与 LC_Buyback 表通过 BuyBackID 关联，所以需要两表协同进行查询。通过一次查询，可以获取梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)。",
-      "identify_database": "查看 Database-Table Schema，LC_Buyback 和 LC_BuybackAttach 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。"
+      "step_6": "结论",
+      "identify_database": "查看 Database-Table Schema，LC_Buyback 和 LC_BuybackAttach 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+      "cot_thinking": "要同时满足两个需求，首先的 LC_Buyback 表，筛选出梅花生物在 2019 年的股票回购记录，统计回购次数。然后，再从  LC_BuybackAttach 表，获取同一时间段内的累计回购金额合计，并四舍五入保留两位小数。",
+
     },
   ],
   "data_source": [
     {
-      "question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)",
       "database": "AStockShareholderDB",
-      "table": ["LC_Buyback", "LC_BuybackAttach"]
+      "table": "LC_Buyback"
     },
+    {
+      "database": "AStockShareholderDB",
+      "table": "LC_BuybackAttach"
+    }
   ]
 }
 ```
