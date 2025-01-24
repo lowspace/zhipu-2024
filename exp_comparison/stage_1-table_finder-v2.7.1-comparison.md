@@ -3,43 +3,43 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？",
+    "raw_question": "横店东磁在2019年1月份进行了多少次投资者关系活动？这些活动中参与机构最多的一次活动发生在哪天(xxxx-xx-xx的格式)，有多少家机构参与？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题要求返回最高价、最低价以及成交量最大的一天的日期，且日期格式为XXXX-XX-XX，因此需要确保最终输出格式符合这一要求。"
+        "result": "问题要求回答投资者关系活动的次数、参与机构最多的一次活动的日期（格式为xxxx-xx-xx），以及参与机构的数量。"
       },
       {
-        "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，安井食品是一家A股公司，股票代码为603345。"
-      },
-      {
-        "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定时间段内的最高价、最低价以及成交量最大的一天的日期。",
+        "step_2": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定时间段内进行的投资者关系活动的次数，以及这些活动中参与机构最多的一次活动的日期和参与机构数量。",
         "result": [
-          "特定时间段的A股最高价",
-          "特定时间段的A股最低价",
-          "特定时间段的A股成交量最大的一天"
+          "A股公司的投资者关系活动次数",
+          "参与机构最多的一次活动的日期",
+          "参与机构数量"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：特定时间段的A股最高价、最低价）",
-        "cot_thinking": "查看 Database-Table Schema，A股的最高价、最低价数据与'日行情表' (QT_DailyQuote) 表和 '股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括最高价、最低价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括最高价、最低价。但第一个信息需求核心是在于'特定时间段内的最高价、最低价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2019 年第一季度的最高价、最低价。"
+        "step_3": "定位所有的相关表格（需求1：投资者关系活动次数）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的投资者关系活动数据与'投资者关系活动' (LC_InvestorRa) 表相关。该表记录各调研机构对上市公司调研的详情，包括调研日期、参与单位、调研人员、调研主要内容等信息。因此，LC_InvestorRa 表适合用于查询横店东磁在2019年1月份的投资者关系活动次数。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：特定时间段的A股成交量最大的一天）",
-        "cot_thinking": "查看 Database-Table Schema，A股的成交量数据与'日行情表' (QT_DailyQuote) 表和 '股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括成交量；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括成交量。但第二个信息需求核心是在于'特定时间段内的成交量最大的一天'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2019 年第一季度成交量最大的一天。"
+        "step_4": "定位所有的相关表格（需求2：参与机构最多的一次活动的日期和参与机构数量）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的投资者关系活动参与机构数据与'投资者关系活动调研明细' (LC_InvestorDetail) 表相关。该表记录参与上市公司调研活动的调研机构明细数据，包括调研单位、调研人员等指标。因此，LC_InvestorDetail 表适合用于查询参与机构最多的一次活动的日期和参与机构数量。"
       },
       {
-        "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出安井食品在2019年第一季度的最高价、最低价以及成交量最大的一天的日期。"
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_InvestorRa 和 LC_InvestorDetail 都在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockEventsDB 数据库中的 LC_InvestorRa 表，筛选出横店东磁在2019年1月份的投资者关系活动次数。然后，再查询 LC_InvestorDetail 表，获取参与机构最多的一次活动的日期和参与机构数量。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockMarketQuotesDB",
-        "table": "QT_DailyQuote"
+        "database": "AStockEventsDB",
+        "table": "LC_InvestorRa"
+      },
+      {
+        "database": "AStockEventsDB",
+        "table": "LC_InvestorDetail"
       }
     ]
   }
@@ -49,43 +49,47 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？",
+    "raw_question": "横店东磁在2019年1月份进行了多少次投资者关系活动？这些活动中参与机构最多的一次活动发生在哪天(xxxx-xx-xx的格式)，有多少家机构参与？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "cot_thinking": "问题要求返回安井食品在2019年第一季度的最高价、最低价和成交量最大的一天日期。"
+        "cot_thinking": "用户要求返回投资者关系活动的次数、日期以及参与机构数量，因此需要确保最终输出格式包含这些信息，并无需额外的数据精度处理。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，安井食品是一家A股公司。"
+        "result": "参考NER Result，横店东磁是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定时间段的股价最高值、最低值和成交量最大的一天日期。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定月份进行的投资者关系活动的次数，以及参与机构最多的一次活动的日期和参与机构数量。",
         "result": [
-          "特定时间段的A股最高价",
-          "特定时间段的A股最低价",
-          "特定时间段的A股成交量最大的一天日期"
+          "A股公司的投资者关系活动次数",
+          "A股公司投资者关系活动中参与机构数量最多的活动日期",
+          "A股公司投资者关系活动中参与机构数量最多的活动参与机构数量"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：特定时间段的A股最高价和最低价）",
-        "cot_thinking": "查看 Database-Table Schema，A股最高价和最低价数据与'日行情股票行情表现(新)' (QT_StockPerformance) 表相关。该表记录A股股票从最近一个交易日往前追溯一段时期的行情表现信息，包括最高价、最低价、成交量等指标。因此，QT_StockPerformance 表适合用于查询安井食品在2019年第一季度的最高价和最低价。"
+        "step_4": "定位所有的相关表格（需求1：投资者关系活动次数）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司投资者关系活动数据与'投资者关系活动' (LC_InvestorRa) 表相关。该表记录了各调研机构对上市公司调研的详情，包括调研日期、参与单位、调研人员、调研主要内容等信息。因此，LC_InvestorRa 表适合用于查询横店东磁在 2019 年 1 月份的投资者关系活动次数。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：特定时间段的A股成交量最大的一天日期）",
-        "cot_thinking": "查看 Database-Table Schema，A股成交量数据与'日行情股票行情表现(新)' (QT_StockPerformance) 表相关。该表记录A股股票从最近一个交易日往前追溯一段时期的行情表现信息，包括最高价、最低价、成交量等指标。因此，QT_StockPerformance 表也适合用于查询安井食品在2019年第一季度成交量最大的一天日期。"
+        "step_5": "定位所有的相关表格（需求2：参与机构数量最多的活动日期）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司投资者关系活动中参与机构数量最多的活动日期同样与'投资者关系活动' (LC_InvestorRa) 表相关。该表记录了调研日期和参与单位，因此可以用来查询参与机构数量最多的活动日期。"
       },
       {
-        "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，QT_StockPerformance 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_StockPerformance 表，筛选出安井食品在2019年第一季度的最高价、最低价和成交量最大的一天日期。"
+        "step_6": "定位所有的相关表格（需求3：参与机构数量最多的活动参与机构数量）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司投资者关系活动中参与机构数量最多的活动参与机构数量同样与'投资者关系活动' (LC_InvestorRa) 表相关。该表记录了参与单位，因此可以用来查询参与机构数量最多的活动参与机构数量。"
+      },
+      {
+        "step_7": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_InvestorRa 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+        "cot_thinking": "要同时满足三个需求，需要查询 AStockEventsDB 数据库中的 LC_InvestorRa 表，筛选出横店东磁在 2019 年 1 月份的投资者关系活动记录，统计活动次数。然后，再从这些记录中找出参与机构数量最多的活动，并获取该活动的日期和参与机构数量。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockMarketQuotesDB",
-        "table": "QT_StockPerformance"
+        "database": "AStockEventsDB",
+        "table": "LC_InvestorRa"
       }
     ]
   }
@@ -97,33 +101,38 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "000932的英文名称是什么？",
+    "raw_question": "科达制造2021年8月4日当天的最高价与最低价分别是多少",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
         "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某股票的英文名称。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "根据NER Result，科达制造是一家美股公司。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某美股公司在特定日期的最高价与最低价。",
         "result": [
-          "股票的英文名称"
+          "特定日期的美股最高价",
+          "特定日期的美股最低价"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：股票的英文名称）",
-        "cot_thinking": "查看 Database-Table Schema，股票的英文名称与'证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询股票的英文名称。"
+        "step_4": "定位所有的相关表格（需求1：特定日期的美股最高价与最低价）",
+        "cot_thinking": "查看 Database-Table Schema，美股日行情数据与'美股日行情' (US_DailyQuote) 表相关。该表记录美国市场证券的日收盘行情，包括最高价和最低价。因此，US_DailyQuote 表适合用于查询2021年8月4日科达制造的最高价与最低价。"
       },
       {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 ConstantDB 数据库中的 SecuMain 表，获取000932的英文名称。"
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，US_DailyQuote 在'美股数据库'（USStockDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 USStockDB 数据库中的 US_DailyQuote 表，获取2021年8月4日科达制造的最高价与最低价。"
       }
     ],
     "data_source": [
       {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "database": "USStockDB",
+        "table": "US_DailyQuote"
       }
     ]
   }
@@ -133,7 +142,7 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "000932的英文名称是什么？",
+    "raw_question": "科达制造2021年8月4日当天的最高价与最低价分别是多少",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
@@ -141,29 +150,34 @@ glm_4_plus :
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "参考NER Result，000932 是一家A股公司。"
+        "cot_thinking": "根据NER Result，科达制造是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司的英文名称。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定日期的最高价和最低价。",
         "result": [
-          "A股公司的英文名称"
+          "特定日期的A股最高价",
+          "特定日期的A股最低价"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：A股公司的英文名称）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司英文名称仅与 '证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询A股公司的英文名称。"
+        "step_4": "定位所有的相关表格（需求1：特定日期的A股最高价）",
+        "cot_thinking": "查看 Database-Table Schema，A股最高价数据与'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括最高价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括最高价。但第一个信息需求核心是在于'特定日期的最高价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2021 年 8 月 4 日科达制造的最高价。"
       },
       {
-        "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 ConstantDB 数据库中的 SecuMain 表，获取 000932 的英文名称。"
+        "step_5": "定位所有的相关表格（需求2：特定日期的A股最低价）",
+        "cot_thinking": "查看 Database-Table Schema，A股最低价数据同样与'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括最低价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括最低价。但第二个信息需求核心是在于'特定日期的最低价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2021 年 8 月 4 日科达制造的最低价。"
+      },
+      {
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "因此，要同时满足两个需求，需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出 2021 年 8 月 4 日科达制造的最高价和最低价。"
       }
     ],
     "data_source": [
       {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
       }
     ]
   }
@@ -171,6 +185,93 @@ glm_4_plus :
 ```
 
 Question ID: tttt----41
+deepseek_v3:
+```
+[
+  {
+    "raw_question": "2020年成立的CN公司有多少家？",
+    "data_source_reasoning": [
+      {
+        "step_1": "解析输出格式要求",
+        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+      },
+      {
+        "step_2": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问2020年成立的CN（中国）公司的数量。",
+        "result": [
+          "2020年成立的公司数量",
+          "公司所属国家为中国"
+        ]
+      },
+      {
+        "step_3": "定位所有的相关表格（需求1：2020年成立的公司数量）",
+        "cot_thinking": "查看 Database-Table Schema，公司成立日期信息与'公司概况' (LC_StockArchives) 表相关。该表记录上市公司的基本情况，包括成立日期、注册信息等。因此，LC_StockArchives 表适合用于查询2020年成立的公司数量。"
+      },
+      {
+        "step_4": "定位所有的相关表格（需求2：公司所属国家为中国）",
+        "cot_thinking": "查看 Database-Table Schema，公司所属国家信息与'国家城市代码表' (LC_AreaCode) 表相关。该表记录世界所有国家层面的数据信息，因此适合用于筛选公司所属国家为中国的公司。"
+      },
+      {
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_StockArchives 在'上市公司基本资料'（AStockBasicInfoDB）数据库中；LC_AreaCode 在'常量库'（ConstantDB）数据库中。",
+        "cot_thinking": "因此，要同时满足两个需求，首先需要查询 LC_StockArchives 表，筛选出2020年成立的公司。然后，再查询 LC_AreaCode 表，筛选出所属国家为中国的公司。最后，统计符合条件的公司数量。"
+      }
+    ],
+    "data_source": [
+      {
+        "database": "AStockBasicInfoDB",
+        "table": "LC_StockArchives"
+      },
+      {
+        "database": "ConstantDB",
+        "table": "LC_AreaCode"
+      }
+    ]
+  }
+]
+```
+glm_4_plus :
+```
+[
+  {
+    "raw_question": "2020年成立的CN公司有多少家？",
+    "data_source_reasoning": [
+      {
+        "step_1": "解析输出格式要求",
+        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+      },
+      {
+        "step_2": "分析实体属于的证券市场",
+        "result": "参考NER Result，CN公司指的是中国公司，因此我们需要在 AStockBasicInfoDB 数据库中寻找相关信息。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问在特定年份成立的中国公司的数量。",
+        "result": [
+          "特定年份成立的中国公司数量"
+        ]
+      },
+      {
+        "step_4": "定位所有的相关表格（需求1：特定年份成立的中国公司数量）",
+        "cot_thinking": "查看 Database-Table Schema，中国公司成立年份信息与 '公司概况' (LC_StockArchives) 表相关。该表收录上市公司的基本情况，包括成立日期、注册信息等，因此适合用于查询2020年成立的中国公司数量。"
+      },
+      {
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_StockArchives 在 '上市公司基本资料' (AStockBasicInfoDB) 数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockBasicInfoDB 数据库中的 LC_StockArchives 表，筛选出2020年成立的中国公司，并统计数量。"
+      }
+    ],
+    "data_source": [
+      {
+        "database": "AStockBasicInfoDB",
+        "table": "LC_StockArchives"
+      }
+    ]
+  }
+]
+```
+
+Question ID: tttt----44
 deepseek_v3:
 ```
 [
@@ -257,116 +358,47 @@ glm_4_plus :
 ]
 ```
 
-Question ID: tttt----44
-deepseek_v3:
-```
-[
-  {
-    "raw_question": "中证指数有限公司发布了多少种指数？",
-    "data_source_reasoning": [
-      {
-        "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
-      },
-      {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问中证指数有限公司发布的指数数量。",
-        "result": [
-          "中证指数有限公司发布的指数数量"
-        ]
-      },
-      {
-        "step_3": "定位所有的相关表格（需求1：中证指数有限公司发布的指数数量）",
-        "cot_thinking": "查看 Database-Table Schema，与指数发布相关的表格是'指数基本情况' (LC_IndexBasicInfo) 表。该表记录了市场上主要指数的基本情况，包括指数类别、成份证券类别、发布机构等信息。因此，LC_IndexBasicInfo 表适合用于查询中证指数有限公司发布的指数数量。"
-      },
-      {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_IndexBasicInfo 在'指数数据库'（IndexDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 IndexDB 数据库中的 LC_IndexBasicInfo 表，筛选出发布机构为中证指数有限公司的指数数量。"
-      }
-    ],
-    "data_source": [
-      {
-        "database": "IndexDB",
-        "table": "LC_IndexBasicInfo"
-      }
-    ]
-  }
-]
-```
-glm_4_plus :
-```
-[
-  {
-    "raw_question": "中证指数有限公司发布了多少种指数？",
-    "data_source_reasoning": [
-      {
-        "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
-      },
-      {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问中证指数有限公司发布的指数种类数量。",
-        "result": [
-          "中证指数有限公司发布的指数种类数量"
-        ]
-      },
-      {
-        "step_3": "定位所有的相关表格（需求1：中证指数有限公司发布的指数种类数量）",
-        "cot_thinking": "查看 Database-Table Schema，与指数种类数量相关的表格是'指数基本情况' (LC_IndexBasicInfo) 表。该表记录了市场上主要指数的基本情况，包括指数类别、成份证券类别、发布机构、发布日期、基期基点、指数发布的币种等信息。因此，LC_IndexBasicInfo 表适合用于查询中证指数有限公司发布的指数种类数量。"
-      },
-      {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_IndexBasicInfo 在'指数数据库'（IndexDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 IndexDB 数据库中的 LC_IndexBasicInfo 表，筛选出中证指数有限公司发布的指数种类数量。"
-      }
-    ],
-    "data_source": [
-      {
-        "database": "IndexDB",
-        "table": "LC_IndexBasicInfo"
-      }
-    ]
-  }
-]
-```
-
 Question ID: tttt----58
 deepseek_v3:
 ```
 [
   {
-    "raw_question": "天顺风能披露了多少次担保信息？",
+    "raw_question": "2021年1月11日，正常交易且跳空低开的股票一共有几只？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
         "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
       },
       {
-        "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，天顺风能是一家A股公司。"
-      },
-      {
-        "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司披露的担保信息的次数。",
+        "step_2": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某日正常交易且跳空低开的股票数量。",
         "result": [
-          "A股公司的担保信息披露次数"
+          "特定日期的股票交易状态",
+          "跳空低开的股票数量"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：担保信息披露次数）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司的担保信息与'公司担保明细' (LC_Warrant) 表相关。该表记录上市公司公告中披露的担保等重大事项，包括时间内容、最新进展、事件主体/交易对象名称、企业编号、与上市公司关联关系、担保原因等指标。因此，LC_Warrant 表适合用于查询天顺风能披露的担保信息次数。"
+        "step_3": "定位所有的相关表格（需求1：特定日期的股票交易状态）",
+        "cot_thinking": "查看 Database-Table Schema，股票交易状态与'停牌复牌表' (LC_SuspendResumption) 表相关。该表记录上市公司/基金/债券的停牌复牌信息，包括停牌日期、停牌原因、复牌日期等。因此，LC_SuspendResumption 表适合用于筛选2021年1月11日正常交易的股票。"
+      },
+      {
+        "step_4": "定位所有的相关表格（需求2：跳空低开的股票数量）",
+        "cot_thinking": "查看 Database-Table Schema，跳空低开的股票数据与'日行情表' (QT_DailyQuote) 表相关。该表记录A股当日行情数据，包括昨收盘、今开盘、最高价、最低价、收盘价等。跳空低开的条件可以通过比较昨收盘价和今开盘价来判断，因此 QT_DailyQuote 表适合用于筛选跳空低开的股票。"
       },
       {
         "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_Warrant 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockEventsDB 数据库中的 LC_Warrant 表，统计天顺风能披露的担保信息次数。"
+        "identify_database": "查看 Database-Table Schema，LC_SuspendResumption 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；QT_DailyQuote 也在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "因此，要同时满足两个需求，首先需要查询 LC_SuspendResumption 表，筛选出2021年1月11日正常交易的股票。然后，再查询 QT_DailyQuote 表，筛选出跳空低开的股票，并统计数量。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockEventsDB",
-        "table": "LC_Warrant"
+        "database": "AStockMarketQuotesDB",
+        "table": "LC_SuspendResumption"
+      },
+      {
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
       }
     ]
   }
@@ -376,37 +408,42 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "天顺风能披露了多少次担保信息？",
+    "raw_question": "2021年1月11日，正常交易且跳空低开的股票一共有几只？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
         "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
       },
       {
-        "step_2": "分析实体属于的证券市场",
-        "result": "参考NER Result，天顺风能是一家A股公司。"
-      },
-      {
-        "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司披露担保信息的次数。",
+        "step_2": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问特定日期下正常交易且跳空低开的股票数量。",
         "result": [
-          "A股公司的担保信息披露次数"
+          "特定日期的正常交易股票",
+          "跳空低开的股票"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：A股公司的担保信息披露次数）",
-        "cot_thinking": "查看 Database-Table Schema，A 股公司担保信息披露数据与'公司担保明细' (LC_Warrant) 表相关。该表记录上市公司公告中披露的担保等重大事项，包括时间内容、最新进展、事件主体/交易对象名称、企业编号、与上市公司关联关系、担保原因等指标。因此，LC_Warrant 表适合用于查询天顺风能披露担保信息的次数。"
+        "step_3": "定位所有的相关表格（需求1：特定日期的正常交易股票）",
+        "cot_thinking": "查看 Database-Table Schema，正常交易股票数据与'日行情表' (QT_DailyQuote) 表相关。该表收录A股当日行情数据，包括是否停牌等信息，因此适合用于筛选特定日期正常交易的股票。"
+      },
+      {
+        "step_4": "定位所有的相关表格（需求2：跳空低开的股票）",
+        "cot_thinking": "查看 Database-Table Schema，跳空低开数据与'股票技术形态表' (CS_StockPatterns) 表相关。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括是否跳空高开或跳空低开等信息，因此适合用于筛选跳空低开的股票。"
       },
       {
         "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_Warrant 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockEventsDB 数据库中的 LC_Warrant 表，筛选出天顺风能的担保信息记录，并统计其数量。"
+        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；CS_StockPatterns 也在 AStockMarketQuotesDB 数据库中。",
+        "cot_thinking": "因此，要同时满足两个需求，首先需要查询 QT_DailyQuote 表，筛选出 2021 年 1 月 11 日正常交易的股票。然后，再查询 CS_StockPatterns 表，筛选出这些股票中跳空低开的股票，并统计数量。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockEventsDB",
-        "table": "LC_Warrant"
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
+      },
+      {
+        "database": "AStockMarketQuotesDB",
+        "table": "CS_StockPatterns"
       }
     ]
   }
@@ -414,6 +451,98 @@ glm_4_plus :
 ```
 
 Question ID: tttt----59
+deepseek_v3:
+```
+[
+  {
+    "raw_question": "2019下半年，成交量创近一季度新高的证券数量最多的交易日是哪一天？",
+    "data_source_reasoning": [
+      {
+        "step_1": "解析输出格式要求",
+        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+      },
+      {
+        "step_2": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问2019年下半年中，成交量创近一季度新高的证券数量最多的交易日是哪一天。",
+        "result": [
+          "2019年下半年成交量创近一季度新高的证券数量",
+          "成交量创近一季度新高的证券数量最多的交易日"
+        ]
+      },
+      {
+        "step_3": "定位所有的相关表格（需求1：成交量创近一季度新高的证券数量）",
+        "cot_thinking": "查看 Database-Table Schema，成交量数据与'股票技术形态表' (CS_StockPatterns) 表相关。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括近1周、近1月、近3月（季度）、近6月（半年）、近1年、上市以来的创新高、创新低的情况。因此，CS_StockPatterns 表适合用于查询成交量创近一季度新高的证券数量。"
+      },
+      {
+        "step_4": "定位所有的相关表格（需求2：成交量创近一季度新高的证券数量最多的交易日）",
+        "cot_thinking": "查看 Database-Table Schema，交易日数据与'日行情表' (QT_DailyQuote) 表相关。该表收录A股当日行情数据，包括成交量、成交金额等指标。因此，QT_DailyQuote 表适合用于查询成交量创近一季度新高的证券数量最多的交易日。"
+      },
+      {
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，CS_StockPatterns 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；QT_DailyQuote 也在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 CS_StockPatterns 表，筛选出2019年下半年成交量创近一季度新高的证券数量，然后结合 QT_DailyQuote 表，找出成交量创近一季度新高的证券数量最多的交易日。"
+      }
+    ],
+    "data_source": [
+      {
+        "database": "AStockMarketQuotesDB",
+        "table": "CS_StockPatterns"
+      },
+      {
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
+      }
+    ]
+  }
+]
+```
+glm_4_plus :
+```
+[
+  {
+    "raw_question": "2019下半年，成交量创近一季度新高的证券数量最多的交易日是哪一天？",
+    "data_source_reasoning": [
+      {
+        "step_1": "解析输出格式要求",
+        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+      },
+      {
+        "step_2": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问在2019下半年，哪一天的证券成交量创近一季度新高，且该数量为最多。",
+        "result": [
+          "2019下半年证券成交量创近一季度新高的日期",
+          "成交量创近一季度新高的证券数量最多的日期"
+        ]
+      },
+      {
+        "step_3": "定位所有的相关表格（需求1：证券成交量创近一季度新高的日期）",
+        "cot_thinking": "查看 Database-Table Schema，与证券成交量相关的表格有'境内股票成交量技术指标' (CS_TurnoverVolTecIndex) 表和 '股票行情表现(新)' (QT_StockPerformance) 表。CS_TurnoverVolTecIndex 表记录境内股票上市之日起基于日、周、月、季、半年、年的K线行情衍生计算的成交量技术指标，包括近1季度新高；QT_StockPerformance 表则包含股票每个交易日往前追溯一段时期的行情表现信息，也包括成交量指标。因为第一个信息需求关注的是'近一季度新高'，CS_TurnoverVolTecIndex 表直接提供了这个指标，因此更适合用于筛选 2019 下半年成交量创近一季度新高的日期。"
+      },
+      {
+        "step_4": "定位所有的相关表格（需求2：成交量创近一季度新高的证券数量最多的日期）",
+        "cot_thinking": "查看 Database-Table Schema，与证券数量相关的表格仅有 '股票行情表现(新)' (QT_StockPerformance) 表。该表包含股票每个交易日往前追溯一段时期的行情表现信息，包括成交量指标，因此适合用于统计成交量创近一季度新高的证券数量最多的日期。"
+      },
+      {
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，CS_TurnoverVolTecIndex 和 QT_StockPerformance 都在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "要同时满足两个需求，首先需要查询 CS_TurnoverVolTecIndex 表，筛选出 2019 下半年成交量创近一季度新高的日期。然后，再查询 QT_StockPerformance 表，统计这些日期中成交量创近一季度新高的证券数量，并找出数量最多的日期。"
+      }
+    ],
+    "data_source": [
+      {
+        "database": "AStockMarketQuotesDB",
+        "table": "CS_TurnoverVolTecIndex"
+      },
+      {
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_StockPerformance"
+      }
+    ]
+  }
+]
+```
+
+Question ID: tttt----60
 deepseek_v3:
 ```
 [
@@ -504,121 +633,38 @@ glm_4_plus :
 ]
 ```
 
-Question ID: tttt----60
-deepseek_v3:
-```
-[
-  {
-    "raw_question": "2020上半年共上市多少只基金？",
-    "data_source_reasoning": [
-      {
-        "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
-      },
-      {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问2020年上半年新上市的基金数量。",
-        "result": [
-          "2020年上半年新上市的基金数量"
-        ]
-      },
-      {
-        "step_3": "定位所有的相关表格（需求1：2020年上半年新上市的基金数量）",
-        "cot_thinking": "查看 Database-Table Schema，基金上市数据与'公募基金概况' (MF_FundArchives) 表相关。该表记录了基金的基本情况，包括成立日期、投资类型、管理人、托管人等信息。因此，MF_FundArchives 表适合用于查询2020年上半年新上市的基金数量。"
-      },
-      {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，MF_FundArchives 在'公募基金数据库'（PublicFundDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 PublicFundDB 数据库中的 MF_FundArchives 表，筛选出2020年上半年新上市的基金数量。"
-      }
-    ],
-    "data_source": [
-      {
-        "database": "PublicFundDB",
-        "table": "MF_FundArchives"
-      }
-    ]
-  }
-]
-```
-glm_4_plus :
-```
-[
-  {
-    "raw_question": "2020上半年共上市多少只基金？",
-    "data_source_reasoning": [
-      {
-        "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
-      },
-      {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某一时间段内新上市的基金数量。",
-        "result": [
-          "特定时间段的基金上市数量"
-        ]
-      },
-      {
-        "step_3": "定位所有的相关表格（需求1：特定时间段的基金上市数量）",
-        "cot_thinking": "查看 Database-Table Schema，基金上市数据与'公募基金概况' (MF_FundArchives) 表相关。该表记录了基金基本情况，包括基金规模、成立日期、投资类型、管理人、托管人、存续期、历史简介等。因此，MF_FundArchives 表适合用于查询2020上半年新上市的基金数量。"
-      },
-      {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，MF_FundArchives 在'公募基金数据库'（PublicFundDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 PublicFundDB 数据库中的 MF_FundArchives 表，筛选出2020上半年新上市的基金，并统计数量。"
-      }
-    ],
-    "data_source": [
-      {
-        "database": "PublicFundDB",
-        "table": "MF_FundArchives"
-      }
-    ]
-  }
-]
-```
-
 Question ID: tttt----62
 deepseek_v3:
 ```
 [
   {
-    "raw_question": "最新更新的2019年度报告中，机构持有无限售流通A股数量合计最多的公司简称是？",
+    "raw_question": "博时基金公司成立于（XXXX年XX月XX日）？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+        "result": "问题要求返回博时基金公司的成立日期，格式为XXXX年XX月XX日，因此需要确保最终输出格式符合这一要求。"
       },
       {
         "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问在2019年度报告中，机构持有无限售流通A股数量合计最多的公司简称。",
+        "cot_thinking": "用户的问题是询问博时基金公司的成立日期。",
         "result": [
-          "2019年度报告中机构持有无限售流通A股数量合计最多的公司",
-          "公司简称"
+          "基金公司的成立日期"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：2019年度报告中机构持有无限售流通A股数量合计最多的公司）",
-        "cot_thinking": "查看 Database-Table Schema，机构持有无限售流通A股数量合计数据与'股东持股统计' (LC_StockHoldingSt) 表相关。该表记录上市公司中各类机构投资者，以及前十大股东合计持无限售流通股、普通股的统计数据，包括机构持有无限售流通A股数量合计等信息。因此，LC_StockHoldingSt 表适合用于查询2019年度报告中机构持有无限售流通A股数量合计最多的公司。"
+        "step_3": "定位所有的相关表格（需求1：基金公司的成立日期）",
+        "cot_thinking": "查看 Database-Table Schema，基金公司的成立日期与'机构基本资料' (LC_InstiArchive) 表相关。该表记录市场上重要机构的基本资料情况，包括成立日期、注册资本、法人代表等信息。因此，LC_InstiArchive 表适合用于查询博时基金公司的成立日期。"
       },
       {
-        "step_4": "定位所有的相关表格（需求2：公司简称）",
-        "cot_thinking": "查看 Database-Table Schema，公司简称与'证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询公司简称。"
-      },
-      {
-        "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_StockHoldingSt 在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "因此，要同时满足两个需求，首先需要查询 LC_StockHoldingSt 表，筛选出2019年度报告中机构持有无限售流通A股数量合计最多的公司。然后，再查询 SecuMain 表，获取该公司的简称。"
+        "step_4": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_InstiArchive 在'机构数据库'（InstitutionDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 InstitutionDB 数据库中的 LC_InstiArchive 表，获取博时基金公司的成立日期。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockShareholderDB",
-        "table": "LC_StockHoldingSt"
-      },
-      {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "database": "InstitutionDB",
+        "table": "LC_InstiArchive"
       }
     ]
   }
@@ -628,42 +674,37 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "最新更新的2019年度报告中，机构持有无限售流通A股数量合计最多的公司简称是？",
+    "raw_question": "博时基金公司成立于（XXXX年XX月XX日）？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "用户要求返回公司简称，因此需要确保最终输出格式为简称，且无需额外的数据精度处理。"
+        "result": "问题要求输出博时基金公司的成立日期，格式为XXXX年XX月XX日。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问2019年度报告中，机构持有无限售流通A股数量合计最多的公司简称。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "参考NER Result，博时基金公司是一家公募基金公司。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问公募基金公司的成立日期。",
         "result": [
-          "2019年度报告中机构持股数据",
-          "A股公司简称"
+          "公募基金公司成立日期"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：2019年度报告中机构持股数据）",
-        "cot_thinking": "查看 Database-Table Schema，机构持股数据与'股东持股统计' (LC_StockHoldingSt) 表相关。该表记录了上市公司中各类机构投资者，以及前十大股东合计持无限售流通股、普通股的统计数据，因此适合用于查询2019年度报告中机构持股数据。"
-      },
-      {
-        "step_4": "定位所有的相关表格（需求2：A股公司简称）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司简称仅与 '证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询A股简称。"
+        "step_4": "定位所有的相关表格（需求1：公募基金公司成立日期）",
+        "cot_thinking": "查看 Database-Table Schema，公募基金公司成立日期与'公募基金管理人概况' (MF_InvestAdvisorOutline) 表相关。该表记录了基金管理人的基本情况介绍，包括成立日期、注册资本、法人代表、联系方式、背景简介等。因此，MF_InvestAdvisorOutline 表适合用于查询博时基金公司的成立日期。"
       },
       {
         "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_StockHoldingSt 在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "因此，要同时满足两个需求，首先需要查询 LC_StockHoldingSt 表，筛选出2019年度报告中机构持有无限售流通A股数量合计最多的公司。然后，再查询 SecuMain 表，获取该公司的简称。"
+        "identify_database": "查看 Database-Table Schema，MF_InvestAdvisorOutline 在'公募基金数据库'（PublicFundDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 PublicFundDB 数据库中的 MF_InvestAdvisorOutline 表，获取博时基金公司的成立日期。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockShareholderDB",
-        "table": "LC_StockHoldingSt"
-      },
-      {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "database": "PublicFundDB",
+        "table": "MF_InvestAdvisorOutline"
       }
     ]
   }
@@ -675,33 +716,43 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "芯片概念概念板块属于什么2级概念？",
+    "raw_question": "厦门钨业在2021年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+        "result": "用户要求返回最低收盘价及其出现的日期，因此需要确保最终输出格式包含这两个信息，且日期格式为XXXX年XX月XX日。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "问题关注芯片概念板块的层级关系，即芯片概念属于哪个2级概念。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "根据NER Result，厦门钨业是一家A股公司，股票代码为600549。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份的最低收盘价及其出现的日期。",
         "result": [
-          "概念层级关系"
+          "A股公司的最低收盘价",
+          "A股公司的最低收盘价出现的日期"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：概念层级关系）",
-        "cot_thinking": "查看 Database-Table Schema，与概念层级相关的表格仅有'概念关系常量表' (LC_ConceptList)。该表记录 A 股市场中概念间的层级关系（如父概念与子概念的关系），因此 LC_ConceptList 表与需求最为相关。"
+        "step_4": "定位所有的相关表格（需求1：A股公司的最低收盘价）",
+        "cot_thinking": "查看 Database-Table Schema，A股收盘价数据与'日行情表' (QT_DailyQuote) 表和 '股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括收盘价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括收盘价。但第一个信息需求核心是在于'特定日期的最低收盘价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选2021年全年最低收盘价。"
       },
       {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，获取芯片概念板块所属的2级概念。"
+        "step_5": "定位所有的相关表格（需求2：A股公司的最低收盘价出现的日期）",
+        "cot_thinking": "查看 Database-Table Schema，A股收盘价出现的日期同样与'日行情表' (QT_DailyQuote) 表相关。该表记录A股数据某交易日的行情数据，包括收盘价和日期，因此适合用于查询最低收盘价出现的日期。"
+      },
+      {
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出厦门钨业在2021年全年的收盘价数据，找出最低收盘价及其出现的日期。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockIndustryDB",
-        "table": "LC_ConceptList"
+        "question": "厦门钨业在2021年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？",
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
       }
     ]
   }
@@ -711,33 +762,42 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "芯片概念板块属于什么2级概念？",
+    "raw_question": "厦门钨业在2021年全年的最低收盘价是多少，出现在哪一天，XXXX年XX月XX日？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+        "result": "用户要求返回最低收盘价以及对应日期，日期格式为XXXX年XX月XX日，因此需要确保最终输出格式符合这一要求。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问芯片概念板块所属的二级概念，即其父概念。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "参考NER Result，厦门钨业是一家A股公司。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份全年的最低收盘价，以及出现该最低收盘价的日期。",
         "result": [
-          "概念层级关系"
+          "特定年份的A股最低收盘价",
+          "特定年份的A股最低收盘价日期"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：概念层级关系）",
-        "cot_thinking": "查看 Database-Table Schema，与概念层级相关的表格仅有'概念关系常量表' (LC_ConceptList)。该表记录 A 股市场中概念间的层级关系（如父概念与子概念的关系），因此 LC_ConceptList 表与需求相关。"
+        "step_4": "定位所有的相关表格（需求1：特定年份的A股最低收盘价）",
+        "cot_thinking": "查看 Database-Table Schema，A股收盘价数据与'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括收盘价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括收盘价。但第一个信息需求核心是在于'特定年份的最低收盘价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2021 年厦门钨业的最低收盘价。"
       },
       {
-        "step_4": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，获取芯片概念板块所属的二级概念。"
+        "step_5": "定位所有的相关表格（需求2：特定年份的A股最低收盘价日期）",
+        "cot_thinking": "查看 Database-Table Schema，A股股票日期数据同样与'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote和QT_StockPerformance都包含日期信息，但QT_DailyQuote专注于当日数据，更适合用于查询特定日期的最低收盘价。"
+      },
+      {
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "因此，要同时满足两个需求，需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出 2021 年厦门钨业的收盘价数据，找出最低收盘价以及对应的日期。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockIndustryDB",
-        "table": "LC_ConceptList"
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
       }
     ]
   }
@@ -932,42 +992,47 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "安琪酵母在2021年12月31日的股东总户数是多少？其中A股股东户均持股数是多少股？",
+    "raw_question": "健康元药业集团股份有限公司在2020-2021年期间进行了几次股份回购？每次回购的金额(单位：万元，保留两位小数)和股数分别是多少？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+        "result": "用户要求回购金额以万元为单位，并保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，安琪酵母是一家A股公司，股票代码为600298。"
+        "result": "根据NER结果，健康元药业集团股份有限公司是一家A股公司，股票代码为600380。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定日期的股东总户数，以及A股股东的户均持股数。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定时间段内进行的股份回购的次数，以及每次回购的金额和股数。",
         "result": [
-          "特定日期的A股股东总户数",
-          "A股股东的户均持股数"
+          "A股公司的股份回购次数",
+          "A股公司的每次回购金额",
+          "A股公司的每次回购股数"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：特定日期的A股股东总户数）",
-        "cot_thinking": "查看 Database-Table Schema，A股股东总户数与'股东户数' (LC_SHNumber) 表相关。该表记录A股公司全体股东、A股股东、B股东、H股东、CDR股东的持股情况及其历史变动情况，包括股东总户数。因此，LC_SHNumber 表适合用于查询2021年12月31日的股东总户数。"
+        "step_4": "定位所有的相关表格（需求1：股份回购次数）",
+        "cot_thinking": "查看 Database-Table Schema，A 股股份回购数据与'股份回购' (LC_Buyback) 表和'股份回购补充说明表' (LC_BuybackAttach) 表相关。LC_Buyback表记录上市公司股份回购的相关方案信息，包括回购数量、回购价格、回购期限等；LC_BuybackAttach的内容与LC_Buyback互斥，补充记录了关于累计回购数量、累计回购金额等信息。因为LC_Buyback主要记录了回购方案，而LC_BuybackAttach的内容偏向于回购相关的数据统计，相比之下，LC_Buyback更适合用于查询股份回购次数。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：A股股东的户均持股数）",
-        "cot_thinking": "查看 Database-Table Schema，A股股东的户均持股数与'股东户数' (LC_SHNumber) 表相关。该表还记录了户均持股数的计算公式，因此适合用于查询A股股东的户均持股数。"
+        "step_5": "定位所有的相关表格（需求2：每次回购金额和股数）",
+        "cot_thinking": "查看 Database-Table Schema，A 股股份回购金额和股数数据与'股份回购补充说明表' (LC_BuybackAttach) 表相关。该表补充记录了累计回购数量、累计回购金额等信息，因此适合用于查询每次回购的金额和股数。"
       },
       {
         "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_SHNumber 在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockShareholderDB 数据库中的 LC_SHNumber 表，获取安琪酵母在2021年12月31日的股东总户数以及A股股东的户均持股数。"
+        "identify_database": "查看 Database-Table Schema，LC_Buyback 和 LC_BuybackAttach 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+        "cot_thinking": "要同时满足两个需求，首先需要查询 LC_Buyback 表，筛选出健康元药业集团股份有限公司在2020-2021年期间的股份回购记录，统计回购次数。然后，再从 LC_BuybackAttach 表，获取同一时间段内的每次回购金额和股数，并将金额转换为万元单位，保留两位小数。"
       }
     ],
     "data_source": [
       {
         "database": "AStockShareholderDB",
-        "table": "LC_SHNumber"
+        "table": "LC_Buyback"
+      },
+      {
+        "database": "AStockShareholderDB",
+        "table": "LC_BuybackAttach"
       }
     ]
   }
@@ -977,42 +1042,42 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "安琪酵母在2021年12月31日的股东总户数是多少？其中A股股东户均持股数是多少股？",
+    "raw_question": "健康元药业集团股份有限公司在2020-2021年期间进行了几次股份回购？每次回购的金额(单位：万元，保留两位小数)和股数分别是多少？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+        "cot_thinking": "用户要求回购金额和股数单位为万元，且需要保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，安琪酵母是一家A股公司。"
+        "result": "参考NER Result，健康元药业集团股份有限公司是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定日期的股东总户数，以及A股股东户均持股数。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定时间段内进行的股票回购的次数，以及每次回购的金额和股数。",
         "result": [
-          "特定日期的A股公司股东总户数",
-          "特定日期的A股股东户均持股数"
+          "A股公司的股票回购次数",
+          "A股公司每次回购的金额和股数"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：股东总户数）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司股东总户数数据与'股东户数' (LC_SHNumber) 表相关。该表反映公司全体股东、A股股东、B股东、H股东、CDR股东的持股情况及其历史变动情况等，因此适合用于查询股东总户数。"
+        "step_4": "定位所有的相关表格（需求1：股票回购次数）",
+        "cot_thinking": "查看 Database-Table Schema，A 股股票回购数据与'股份回购' (LC_Buyback) 表相关。该表记录上市公司股份回购的相关方案信息，包括回购数量、回购价格、回购期限等。因此，LC_Buyback 表适合用于查询健康元药业集团股份有限公司在 2020-2021 年期间进行的股票回购次数。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：A股股东户均持股数）",
-        "cot_thinking": "查看 Database-Table Schema，A股股东户均持股数数据同样与'股东户数' (LC_SHNumber) 表相关。该表计算了户均持股数等指标，因此适合用于查询A股股东户均持股数。"
+        "step_5": "定位所有的相关表格（需求2：每次回购的金额和股数）",
+        "cot_thinking": "查看 Database-Table Schema，A 股公司每次回购的金额和股数数据同样与'股份回购' (LC_Buyback) 表相关。该表记录了每次回购的金额和股数信息，因此适合用于查询每次回购的金额和股数。"
       },
       {
         "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_SHNumber 在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
-        "cot_thinking": "要同时满足两个需求，需要查询 AStockShareholderDB 数据库中的 LC_SHNumber 表，筛选出安琪酵母在 2021 年 12 月 31 日的记录，获取股东总户数和A股股东户均持股数。"
+        "identify_database": "查看 Database-Table Schema，LC_Buyback 在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockShareholderDB 数据库中的 LC_Buyback 表，筛选出健康元药业集团股份有限公司在 2020-2021 年期间的股票回购记录，统计回购次数，并获取每次回购的金额和股数。然后将金额单位转换为万元，并保留两位小数。"
       }
     ],
     "data_source": [
       {
         "database": "AStockShareholderDB",
-        "table": "LC_SHNumber"
+        "table": "LC_Buyback"
       }
     ]
   }
@@ -1024,42 +1089,48 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "2020年之间 哪些公司进行公司名称全称变更，公司代码是什么？",
+    "raw_question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+        "result": "用户要求研发投入金额保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问在2020年期间，哪些公司进行了公司名称全称的变更，并需要获取这些公司的代码。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "根据NER Result，新天绿能是一家A股公司，股票代码为600956。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年度的研发投入金额和研发人员数量，且要求数据为合并报表调整后的。",
         "result": [
-          "2020年公司名称全称变更记录",
-          "公司代码"
+          "A股公司的年度研发投入金额",
+          "A股公司的研发人员数量"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：2020年公司名称全称变更记录）",
-        "cot_thinking": "查看 Database-Table Schema，公司名称变更数据与'公司名称更改状况' (LC_NameChange) 表相关。该表记录公司名称历次变更情况，包括中英文名称、中英文缩写名称、更改日期等内容。因此，LC_NameChange 表适合用于查询2020年公司名称全称变更记录。"
+        "step_4": "定位所有的相关表格（需求1：年度研发投入金额）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表记录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息。因此，LC_IntAssetsDetail 表适合用于查询2020年年度研发投入合计。"
       },
       {
-        "step_4": "定位所有的相关表格（需求2：公司代码）",
-        "cot_thinking": "查看 Database-Table Schema，公司代码与'证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的代码、简称、中英文名、上市交易所、上市状态等基础信息。因此，SecuMain 表适合用于查询公司代码。"
+        "step_5": "定位所有的相关表格（需求2：研发人员数量）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的研发人员数量数据与'公司职工构成' (LC_Staff) 表相关。该表记录公司职工构成情况，包括研发人员数量等信息。因此，LC_Staff 表适合用于查询研发人员数量。"
       },
       {
-        "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_NameChange 在'上市公司基本资料'（AStockBasicInfoDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockBasicInfoDB 数据库中的 LC_NameChange 表，筛选出2020年公司名称全称变更记录，然后查询 ConstantDB 数据库中的 SecuMain 表，获取这些公司的代码。"
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中；LC_Staff 在'上市公司产品供销/人力资源'（AStockOperationsDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockFinanceDB 数据库中的 LC_IntAssetsDetail 表，获取2020年年度研发投入合计；同时查询 AStockOperationsDB 数据库中的 LC_Staff 表，获取研发人员数量。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockBasicInfoDB",
-        "table": "LC_NameChange"
+        "question": "新天绿能2020年年度研发投入合计是多少元？",
+        "database": "AStockFinanceDB",
+        "table": "LC_IntAssetsDetail"
       },
       {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "question": "新天绿能2020年研发人员数量为多少人？",
+        "database": "AStockOperationsDB",
+        "table": "LC_Staff"
       }
     ]
   }
@@ -1069,42 +1140,46 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "2020年之间 哪些公司进行公司名称全称变更，公司代码是什么？",
+    "raw_question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "问题要求输出公司名称全称变更的信息以及对应的公司代码，因此需要确保最终输出格式包含这两项信息。"
+        "result": "用户要求研发投入金额保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问在2020年之间进行公司名称全称变更的公司列表，以及这些公司的代码。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "参考NER Result，新天绿能是一家A股公司。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份的研发投入金额和研发人员数量。",
         "result": [
-          "2020年公司名称全称变更列表",
-          "公司代码"
+          "A股公司的研发投入金额",
+          "A股公司的研发人员数量"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：2020年公司名称全称变更列表）",
-        "cot_thinking": "查看 Database-Table Schema，与公司名称变更相关的表格是'公司名称更改状况' (LC_NameChange) 表。该表记录公司名称历次变更情况，包括中文名称、英文名称、更改日期等内容。因此，LC_NameChange 表适合用于查询2020年之间进行公司名称全称变更的公司列表。"
+        "step_4": "定位所有的相关表格（需求1：研发投入金额）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表记录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息。因此，LC_IntAssetsDetail 表适合用于查询新天绿能2020年年度研发投入金额。"
       },
       {
-        "step_4": "定位所有的相关表格（需求2：公司代码）",
-        "cot_thinking": "查看 Database-Table Schema，公司代码信息与'证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的代码、简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询公司代码。"
+        "step_5": "定位所有的相关表格（需求2：研发人员数量）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司研发人员数量数据与'公司职工构成' (LC_Staff) 表相关。该表从技术职称、专业、文化程度、年龄等几个方面介绍公司职工构成情况，因此适合用于查询新天绿能2020年年度研发人员数量。"
       },
       {
-        "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_NameChange 在'上市公司基本资料'（AStockBasicInfoDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "要同时满足两个需求，首先需要查询 LC_NameChange 表，筛选出 2020 年之间进行公司名称全称变更的公司列表。然后，再查询 SecuMain 表，获取这些公司的代码。"
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 和 LC_Staff 都在'上市公司产品供销/人力资源'（AStockOperationsDB）数据库中。",
+        "cot_thinking": "要同时满足两个需求，首先需要查询 LC_IntAssetsDetail 表，筛选出新天绿能2020年年度的研发投入金额，并保留两位小数。然后，再查询 LC_Staff 表，获取同一时间段内的研发人员数量。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockBasicInfoDB",
-        "table": "LC_NameChange"
+        "database": "AStockOperationsDB",
+        "table": "LC_IntAssetsDetail"
       },
       {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "database": "AStockOperationsDB",
+        "table": "LC_Staff"
       }
     ]
   }
@@ -1116,43 +1191,41 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "在2021-12-31这一天，A股市场中创出月度新高的公司有哪些（中文名称缩写即可）？他们的证券代码是多少？",
+    "raw_question": "中铁工业在2021年签订了哪些金额较大的重大合同？请列出前两大合同的发布日期(xxxx-xx-xx的格式)，合同标的和合同金额(四舍五入保留两位小数)。",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "用户要求返回公司中文名称缩写和证券代码，因此需要确保最终输出格式为中文名称缩写和证券代码，且无需额外的数据精度处理。"
+        "result": "用户要求合同金额需要四舍五入保留两位小数，并且合同发布日期需要以xxxx-xx-xx的格式显示，因此需要确保最终输出格式符合这些要求。"
       },
       {
-        "step_2": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某一天A股市场中创出月度新高的公司及其证券代码。",
+        "step_2": "分析实体属于的证券市场",
+        "result": "根据NER Result，中铁工业是一家A股公司。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份签订的金额较大的重大合同，并列出前两大合同的发布日期、合同标的和合同金额。",
         "result": [
-          "特定日期的A股月度新高公司",
-          "A股公司中文名称缩写",
-          "A股公司证券代码"
+          "A股公司的重大合同信息",
+          "合同发布日期",
+          "合同标的",
+          "合同金额"
         ]
       },
       {
-        "step_3": "定位所有的相关表格（需求1：特定日期的A股月度新高公司）",
-        "cot_thinking": "查看 Database-Table Schema，A股月度新高数据与'股票技术形态表' (CS_StockPatterns) 表相关。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括创新高、创新低的情况。因此，CS_StockPatterns 表适合用于查询2021-12-31创出月度新高的A股公司。"
-      },
-      {
-        "step_4": "定位所有的相关表格（需求2：A股公司中文名称缩写和证券代码）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司中文名称缩写和证券代码与'证券主表' (SecuMain) 表相关。该表记录A股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询A股公司中文名称缩写和证券代码。"
+        "step_4": "定位所有的相关表格（需求1：重大合同信息）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的重大合同信息与'公司重大经营合同明细' (LC_MajorContract) 表相关。该表记录公司重大经营合同的事项，包括合同标的、合同金额、合同起始日等信息，因此适合用于查询中铁工业在2021年签订的金额较大的重大合同。"
       },
       {
         "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，CS_StockPatterns 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "因此，要同时满足两个需求，首先需要查询 CS_StockPatterns 表，筛选出2021-12-31创出月度新高的A股公司。然后，再查询 SecuMain 表，获取这些公司的中文名称缩写和证券代码。"
+        "identify_database": "查看 Database-Table Schema，LC_MajorContract 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockEventsDB 数据库中的 LC_MajorContract 表，筛选出中铁工业在2021年签订的金额较大的重大合同，并列出前两大合同的发布日期、合同标的和合同金额。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockMarketQuotesDB",
-        "table": "CS_StockPatterns"
-      },
-      {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "question": "中铁工业在2021年签订了哪些金额较大的重大合同？请列出前两大合同的发布日期(xxxx-xx-xx的格式)，合同标的和合同金额(四舍五入保留两位小数)。",
+        "database": "AStockEventsDB",
+        "table": "LC_MajorContract"
       }
     ]
   }
@@ -1162,51 +1235,37 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "在2021-12-31这一天，A股市场中创出月度新高的公司有哪些（中文名称缩写即可）？他们的证券代码是多少？",
+    "raw_question": "中铁工业在2021年签订了哪些金额较大的重大合同？请列出前两大合同的发布日期(xxxx-xx-xx的格式)，合同标的和合同金额(四舍五入保留两位小数)。",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "用户要求返回公司中文名称缩写和证券代码，因此需要确保最终输出格式符合这一要求，且无需额外的数据精度处理。"
+        "cot_thinking": "用户要求返回前两大合同的发布日期、合同标的和合同金额，其中合同金额需要四舍五入保留两位小数。因此，需要确保最终输出格式符合这一精度要求，并按合同金额降序排列。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "问题明确指出是 A 股市场，因此无需进行市场分析。"
+        "cot_thinking": "参考NER Result，中铁工业是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问在特定日期，A股市场中创出月度新高的公司及其证券代码。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份签订的重大合同的详细信息，包括发布日期、合同标的和合同金额。",
         "result": [
-          "特定日期的月度新高公司",
-          "公司中文名称缩写",
-          "公司证券代码"
+          "A股公司的重大合同信息"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：特定日期的月度新高公司）",
-        "cot_thinking": "查看 Database-Table Schema，与股票技术形态相关的表格是'股票技术形态表' (CS_StockPatterns)。该表记录股票从最近一个交易日往前追溯一段时期的技术形态表现，包括近1周、近1月、近3月（季度）、近6月（半年）、近1年、上市以来的创新高、创新低的情况，以及连涨跌天数、连续放量缩量天数、向上向下有效突破均线、N天M板、均线多空头排列看涨看跌等技术形态指标。因此，CS_StockPatterns 表适合用于查询在 2021-12-31 这一天，A股市场中创出月度新高的公司。"
+        "step_4": "定位所有的相关表格（需求1：A股公司的重大合同信息）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司重大合同信息与'公司重大经营合同明细' (LC_MajorContract) 表相关。该表记录了公司重大经营合同的事项，包括事件主体/交易对象名称、企业编号、与上市公司关联关系、合同标的、合同获得方式、涉及金额、合同起始日、合同截止日、合同期限等指标。因此，LC_MajorContract 表适合用于查询中铁工业在 2021 年签订的重大合同信息。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：公司中文名称缩写）",
-        "cot_thinking": "查看 Database-Table Schema，与公司中文名称缩写相关的表格是'证券主表' (SecuMain)。该表记录 A 股单个证券品种的简称、中英文名称、上市交易所、上市状态等基础信息，因此适合用于查询公司中文名称缩写。"
-      },
-      {
-        "step_6": "定位所有的相关表格（需求3：公司证券代码）",
-        "cot_thinking": "查看 Database-Table Schema，与公司证券代码相关的表格同样是'证券主表' (SecuMain)。该表记录 A 股单个证券品种的代码、简称、中英文名称、上市交易所、上市板块、上市状态等基础信息，因此适合用于查询公司证券代码。"
-      },
-      {
-        "step_7": "结论",
-        "identify_database": "查看 Database-Table Schema，CS_StockPatterns 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-        "cot_thinking": "要同时满足三个需求，首先需要查询 CS_StockPatterns 表，筛选出在 2021-12-31 这一天，A股市场中创出月度新高的公司。然后，再查询 SecuMain 表，获取这些公司的中文名称缩写和证券代码。"
+        "step_5": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_MajorContract 在'上市公司公告资讯/重大事项'（AStockEventsDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockEventsDB 数据库中的 LC_MajorContract 表，筛选出中铁工业在 2021 年签订的重大合同，并按合同金额降序排列，最后提取前两大合同的发布日期、合同标的和合同金额，并确保合同金额四舍五入保留两位小数。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockMarketQuotesDB",
-        "table": "CS_StockPatterns"
-      },
-      {
-        "database": "ConstantDB",
-        "table": "SecuMain"
+        "database": "AStockEventsDB",
+        "table": "LC_MajorContract"
       }
     ]
   }
@@ -1218,46 +1277,43 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)",
+    "raw_question": "安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "用户要求回购金额合计需要四舍五入保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
+        "result": "问题要求返回最高价、最低价以及成交量最大的一天的日期，且日期格式为XXXX-XX-XX，因此需要确保最终输出格式符合这一要求。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "参考NER Result，梅花生物是一家A股公司。"
+        "result": "根据NER Result，安井食品是一家A股公司，股票代码为603345。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定年份进行的股票回购的次数，以及每次进行回购金额的合计是多少。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定时间段内的最高价、最低价以及成交量最大的一天的日期。",
         "result": [
-          "A股公司的股票回购次数",
-          "A股公司的回购金额合计"
+          "特定时间段的A股最高价",
+          "特定时间段的A股最低价",
+          "特定时间段的A股成交量最大的一天"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：股票回购次数）",
-        "cot_thinking": "查看 Database-Table Schema，A 股股票回购数据与'股份回购' (LC_Buyback) 表和'股份回购补充说明表' (LC_BuybackAttach) 表相关。LC_Buyback表记录上市公司股份回购的相关方案信息，包括回购数量、回购价格、回购期限等；LC_BuybackAttach的内容与LC_Buyback互斥，补充记录了关于累计回购数量、累计回购金额等信息。因为LC_Buyback主要记录了回购方案，而LC_BuybackAttach的内容偏向于回购相关的数据统计，相比之下，LC_Buyback更适合用于查询股票回购次数。"
+        "step_4": "定位所有的相关表格（需求1：特定时间段的A股最高价、最低价）",
+        "cot_thinking": "查看 Database-Table Schema，A股的最高价、最低价数据与'日行情表' (QT_DailyQuote) 表和 '股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括最高价、最低价；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括最高价、最低价。但第一个信息需求核心是在于'特定时间段内的最高价、最低价'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2019 年第一季度的最高价、最低价。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：回购金额合计）",
-        "cot_thinking": "查看 Database-Table Schema，A 股股票回购金额合计数据与'股份回购补充说明表' (LC_BuybackAttach) 表相关。该表补充记录了累计回购数量、累计回购金额等信息，因此适合用于查询回购金额合计。"
+        "step_5": "定位所有的相关表格（需求2：特定时间段的A股成交量最大的一天）",
+        "cot_thinking": "查看 Database-Table Schema，A股的成交量数据与'日行情表' (QT_DailyQuote) 表和 '股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括成交量；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括成交量。但第二个信息需求核心是在于'特定时间段内的成交量最大的一天'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2019 年第一季度成交量最大的一天。"
       },
       {
         "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_Buyback 和 LC_BuybackAttach 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
-        "cot_thinking": "要同时满足两个需求，首先的 LC_Buyback 表，筛选出梅花生物在 2019 年的股票回购记录，统计回购次数。然后，再从  LC_BuybackAttach 表，获取同一时间段内的累计回购金额合计，并四舍五入保留两位小数。"
+        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出安井食品在2019年第一季度的最高价、最低价以及成交量最大的一天的日期。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockShareholderDB",
-        "table": "LC_Buyback"
-      },
-      {
-        "database": "AStockShareholderDB",
-        "table": "LC_BuybackAttach"
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_DailyQuote"
       }
     ]
   }
@@ -1267,46 +1323,43 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "梅花生物在2019年进行了几次股票回购？回购金额合计是多少？(四舍五入保留2位小数)",
+    "raw_question": "安井食品在2019年第一季度的最高价、最低价分别是多少？成交量最大的一天是哪天（XXXX-XX-XX）？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "用户要求回购金额合计需要四舍五入保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
+        "cot_thinking": "问题要求返回安井食品在2019年第一季度的最高价、最低价和成交量最大的一天日期。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "参考NER Result，梅花生物是一家A股公司。"
+        "result": "根据NER Result，安井食品是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定年份进行的股票回购的次数，以及每次进行回购金额的合计是多少。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定时间段的股价最高值、最低值和成交量最大的一天日期。",
         "result": [
-          "A股公司的股票回购次数",
-          "A股公司的回购金额合计"
+          "特定时间段的A股最高价",
+          "特定时间段的A股最低价",
+          "特定时间段的A股成交量最大的一天日期"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：股票回购次数）",
-        "cot_thinking": "查看 Database-Table Schema，A 股股票回购数据与'股份回购' (LC_Buyback) 表和'股份回购补充说明表' (LC_BuybackAttach) 表相关。LC_Buyback表记录上市公司股份回购的相关方案信息，包括回购数量、回购价格、回购期限等；LC_BuybackAttach的内容与LC_Buyback互斥，补充记录了关于累计回购数量、累计回购金额等信息。因为LC_Buyback主要记录了回购方案，而LC_BuybackAttach的内容偏向于回购相关的数据统计，相比之下，LC_Buyback更适合用于查询股票回购次数。"
+        "step_4": "定位所有的相关表格（需求1：特定时间段的A股最高价和最低价）",
+        "cot_thinking": "查看 Database-Table Schema，A股最高价和最低价数据与'日行情股票行情表现(新)' (QT_StockPerformance) 表相关。该表记录A股股票从最近一个交易日往前追溯一段时期的行情表现信息，包括最高价、最低价、成交量等指标。因此，QT_StockPerformance 表适合用于查询安井食品在2019年第一季度的最高价和最低价。"
       },
       {
-        "step_5": "定位所有的相关表格（需求2：回购金额合计）",
-        "cot_thinking": "查看 Database-Table Schema，A 股股票回购金额合计数据与'股份回购补充说明表' (LC_BuybackAttach) 表相关。该表补充记录了累计回购数量、累计回购金额等信息，因此适合用于查询回购金额合计。"
+        "step_5": "定位所有的相关表格（需求2：特定时间段的A股成交量最大的一天日期）",
+        "cot_thinking": "查看 Database-Table Schema，A股成交量数据与'日行情股票行情表现(新)' (QT_StockPerformance) 表相关。该表记录A股股票从最近一个交易日往前追溯一段时期的行情表现信息，包括最高价、最低价、成交量等指标。因此，QT_StockPerformance 表也适合用于查询安井食品在2019年第一季度成交量最大的一天日期。"
       },
       {
         "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_Buyback 和 LC_BuybackAttach 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
-        "cot_thinking": "要同时满足两个需求，首先的 LC_Buyback 表，筛选出梅花生物在 2019 年的股票回购记录，统计回购次数。然后，再从  LC_BuybackAttach 表，获取同一时间段内的累计回购金额合计，并四舍五入保留两位小数。"
+        "identify_database": "查看 Database-Table Schema，QT_StockPerformance 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_StockPerformance 表，筛选出安井食品在2019年第一季度的最高价、最低价和成交量最大的一天日期。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockShareholderDB",
-        "table": "LC_Buyback"
-      },
-      {
-        "database": "AStockShareholderDB",
-        "table": "LC_BuybackAttach"
+        "database": "AStockMarketQuotesDB",
+        "table": "QT_StockPerformance"
       }
     ]
   }
@@ -1318,39 +1371,46 @@ deepseek_v3:
 ```
 [
   {
-    "raw_question": "深科技在2021年12月24日的交易数据如何?具体包括收盘价、成交量、换手率，保留2位小数。",
+    "raw_question": "美年健康在2019年发生的股权质押中，质押比例最大的一笔是哪个股东质押给了谁？质押股数和占总股本比例是多少，保留4位小数？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "result": "用户要求交易数据中的收盘价、成交量、换手率需要保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
+        "result": "用户要求质押股数和占总股本比例需要保留4位小数，因此需要确保最终输出格式符合这一精度要求。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，深科技是一家A股公司，股票代码为000021。"
+        "result": "根据NER Result，美年健康是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定日期的交易数据，包括收盘价、成交量、换手率。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份发生的股权质押中，质押比例最大的一笔交易的详细信息，包括质押股东、质押对象、质押股数及占总股本比例。",
         "result": [
-          "特定日期的A股收盘价",
-          "特定日期的A股成交量",
-          "特定日期的A股换手率"
+          "A股公司的股权质押信息",
+          "质押比例最大的交易",
+          "质押股东",
+          "质押对象",
+          "质押股数",
+          "占总股本比例"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：特定日期的A股收盘价、成交量、换手率）",
-        "cot_thinking": "查看 Database-Table Schema，A股交易数据与'日行情表' (QT_DailyQuote) 表和 '股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括收盘价、成交量等；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括收盘价、成交量、换手率等。但第一个信息需求核心是在于'特定日期的交易数据'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于筛选 2021 年 12 月 24 日的交易数据。"
+        "step_4": "定位所有的相关表格（需求1：股权质押信息）",
+        "cot_thinking": "查看 Database-Table Schema，A股股权质押数据与'股东股权冻结和质押' (LC_ShareFP) 表和'股东股权冻结和质押统计' (LC_ShareFPSta) 表相关。LC_ShareFP表记录股东股权的被冻结和质押及进展情况，包括被冻结质押股东、被接受股权质押方、涉及股数以及冻结质押期限起始和截止日等内容；LC_ShareFPSta表记录股东股权的质押冻结统计数据，包括股东股权累计冻结质押股数、累计占冻结质押方持股数比例和累计占总股本比例等情况。因此，LC_ShareFP表适合用于查询具体的股权质押交易信息，而LC_ShareFPSta表适合用于查询质押比例。"
       },
       {
         "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，获取深科技在2021年12月24日的收盘价、成交量、换手率数据，并保留两位小数。"
+        "identify_database": "查看 Database-Table Schema，LC_ShareFP 和 LC_ShareFPSta 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+        "cot_thinking": "要回答这个问题，我们需要查询 AStockShareholderDB 数据库中的 LC_ShareFP 表，筛选出美年健康在2019年的股权质押记录，并找出质押比例最大的一笔交易。然后，从 LC_ShareFPSta 表中获取该笔交易的质押股数和占总股本比例，并保留4位小数。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockMarketQuotesDB",
-        "table": "QT_DailyQuote"
+        "database": "AStockShareholderDB",
+        "table": "LC_ShareFP"
+      },
+      {
+        "database": "AStockShareholderDB",
+        "table": "LC_ShareFPSta"
       }
     ]
   }
@@ -1360,37 +1420,37 @@ glm_4_plus :
 ```
 [
   {
-    "raw_question": "深科技在2021年12月24日的交易数据如何?具体包括收盘价、成交量、换手率，保留2位小数。",
+    "raw_question": "美年健康在2019年发生的股权质押中，质押比例最大的一笔是哪个股东质押给了谁？质押股数和占总股本比例是多少，保留4位小数？",
     "data_source_reasoning": [
       {
         "step_1": "解析输出格式要求",
-        "cot_thinking": "用户要求输出数据保留2位小数，因此需要确保最终输出格式符合这一精度要求。"
+        "cot_thinking": "用户要求质押股数和占总股本比例保留4位小数，因此需要确保最终输出格式符合这一精度要求。"
       },
       {
         "step_2": "分析实体属于的证券市场",
-        "result": "参考NER Result，深科技是一家A股公司，其股票代码为000021。"
+        "result": "参考NER Result，美年健康是一家A股公司。"
       },
       {
         "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定日期的交易数据，包括收盘价、成交量和换手率。",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份发生的股权质押中，质押比例最大的一笔的股东、质押方、质押股数和占总股本比例。",
         "result": [
-          "特定日期的A股交易数据"
+          "A股公司的股权质押信息"
         ]
       },
       {
-        "step_4": "定位所有的相关表格（需求1：特定日期的A股交易数据）",
-        "cot_thinking": "查看 Database-Table Schema，A股交易数据与'日行情表' (QT_DailyQuote) 表和 '日行情股票行情表现(新)' (QT_StockPerformance) 表相关。QT_DailyQuote收录A股数据某交易日的行情数据，包括收盘价、成交量、换手率等指标；QT_StockPerformance则包含A股股票从最近一个交易日往前追溯一段时期的行情表现信息，也包括收盘价、成交量、换手率等指标。但第一个信息需求核心是在于'特定日期的交易数据'，QT_StockPerformance重点在于某时间段的行情数据，而QT_DailyQuote专注于当日数据。因此QT_DailyQuote更适合用于查询 2021 年 12 月 24 日深科技的交易数据。"
+        "step_4": "定位所有的相关表格（需求1：股权质押信息）",
+        "cot_thinking": "查看 Database-Table Schema，A 股股权质押数据与'股东股权冻结和质押' (LC_ShareFP) 表相关。该表记录股东股权的被冻结和质押及进展情况，包括被冻结质押股东、被接受股权质押方、涉及股数以及冻结质押期限起始和截止日等内容。因此，LC_ShareFP 表适合用于查询美年健康在 2019 年发生的股权质押信息。"
       },
       {
         "step_5": "结论",
-        "identify_database": "查看 Database-Table，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockMarketQuotesDB 数据库中的 QT_DailyQuote 表，筛选出 2021 年 12 月 24 日深科技的交易数据，并保留2位小数。"
+        "identify_database": "查看 Database-Table Schema，LC_ShareFP 在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockShareholderDB 数据库中的 LC_ShareFP 表，筛选出美年健康在 2019 年发生的股权质押记录，并找出质押比例最大的一笔，获取股东、质押方、质押股数和占总股本比例等信息。"
       }
     ],
     "data_source": [
       {
-        "database": "AStockMarketQuotesDB",
-        "table": "QT_DailyQuote"
+        "database": "AStockShareholderDB",
+        "table": "LC_ShareFP"
       }
     ]
   }
