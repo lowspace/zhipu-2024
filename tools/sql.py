@@ -232,6 +232,18 @@ def get_bio_through_industry_name(industry_name: str) -> list:
 
     return [{"query": sql_query, "result": result}]
 
+def get_bio_through_fund_name(fund_name: str) -> list:
+    """
+    Get the bio description from the fund name
+    """
+
+    # there are duplicate items through DisclName
+    sql_query = f"SELECT * FROM PublicFundDB.MF_FundProdName WHERE DisclName = '{fund_name}' LIMIT 1"
+
+    result = get_data_from_sql_query(sql_query)
+
+    return [{"query": sql_query, "result": result}]
+
 def process_ner_res(ner_res: dict) -> list:
     
     ner_res['sql'] = {}
@@ -240,8 +252,10 @@ def process_ner_res(ner_res: dict) -> list:
         for k, v in i.items():
             if k == "代码":
                 tmp = get_bio_through_company_code(v)
-            elif k == "上市公司名称" or k == "基金名称":
+            elif k == "上市公司名称":
                 tmp = get_bio_through_name(v)
+            elif k == "基金名称":
+                tmp = get_bio_through_fund_name(v)
             elif k == "基金公司名称":
                 tmp = get_bio_through_fund_company_name(v)
             elif k == "行业名称":
