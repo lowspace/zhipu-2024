@@ -24,6 +24,7 @@ You are an SQL expert tasked with generating MySQL queries based on the provided
 
 - The date format is `XXXX(YEAR)-XX(MONTH)-XX(DAY) XX(HOUR):XX(MINUTE):XX(SECOND)`, thus, while querying a date field, u should use "{Date} LIKE 'YEAR-MONTH-DAY%' this format.
 - Your should always `FROM` in `{database}.{table}` format.
+- Use the provided Table to answer the query.
 
 ## Current Query
 
