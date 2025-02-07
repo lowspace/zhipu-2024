@@ -167,7 +167,10 @@ def get_bio_through_company_code(company_code: str) -> list:
         }
     ]
 
-    company_code = int(company_code)
+    try:
+        company_code = int(company_code)
+    except:
+        return [{"query": None, "result": None}]
 
     queries = generate_sql_query_ner(src_data, company_code)
     results = [get_data_from_sql_query(query) for query in queries]
@@ -215,7 +218,7 @@ def get_bio_through_fund_company_name(fund_company_name: str) -> list:
             "database": "InstitutionDB",
             "table": "LC_InstiArchive",
             "columns": ["ChiName", "AbbrChiName", "NameChiSpelling", "EngName", "AbbrEngName"]
-        },
+        }
     ]
 
     queries = generate_sql_query_ner(src_data, fund_company_name)
@@ -226,7 +229,7 @@ def get_bio_through_fund_company_name(fund_company_name: str) -> list:
 
 def get_bio_through_industry_name(industry_name: str) -> list:
     
-    sql_query = f"SELECT FirstIndustryCode AS 一级行业代码, SecondIndustryCode AS 二级行业代码, ThirdIndustryCode AS 三级行业代码, FourthIndustryCode AS 四级行业代码, FirstIndustryName AS 一级行业名称, SecondIndustryName AS 二级行业名称, ThirdIndustryName AS 三级行业名称, FourthIndustryName AS 四级行业名称 FROM AStockIndustryDB.LC_ExgIndustry WHERE '{industry_name}' IN (FirstIndustryName, SecondIndustryName, ThirdIndustryName, FourthIndustryName)"
+    sql_query = f"SELECT FirstIndustryCode AS 一级行业代码, SecondIndustryCode AS 二级行业代码, ThirdIndustryCode AS 三级行业代码, FourthIndustryCode AS 四级行业代码, FirstIndustryName AS 一级行业名称, SecondIndustryName AS 二级行业名称, ThirdIndustryName AS 三级行业名称, FourthIndustryName AS 四级行业名称 FROM AStockIndustryDB.LC_ExgIndustry WHERE '{industry_name}' IN (FirstIndustryName, SecondIndustryName, ThirdIndustryName, FourthIndustryName) LIMIT 1"
 
     result = get_data_from_sql_query(sql_query)
 
@@ -238,11 +241,13 @@ def get_bio_through_fund_name(fund_name: str) -> list:
     """
 
     # there are duplicate items through DisclName
-    sql_query = f"SELECT * FROM PublicFundDB.MF_FundProdName WHERE DisclName = '{fund_name}' LIMIT 1"
+    queries = [f"SELECT * FROM PublicFundDB.MF_FundProdName WHERE DisclName = '{fund_name}' LIMIT 1",
+                   f"SELECT * FROM ConstantDB.SecuMain WHERE '{fund_name}' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling) LIMIT 1"]
 
-    result = get_data_from_sql_query(sql_query)
+    results = [get_data_from_sql_query(query) for query in queries]
+    query_result_map = [{"query": query, "result": result} for query, result in zip(queries, results)]
 
-    return [{"query": sql_query, "result": result}]
+    return query_result_map
 
 def process_ner_res(ner_res: dict) -> list:
     
