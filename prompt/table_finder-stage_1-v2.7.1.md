@@ -161,7 +161,6 @@ The return JSON format:
     "data_source_reasoning": "use CoT (chain of thoughts) to reason the related database and table",
     "data_source": [
         {
-            "question": state the question that would be solved in this table containing all information, 
             "database": "english name of database",
             "table": "english name of table"
         }
@@ -200,7 +199,7 @@ The return JSON format:
     {
       "step_5": "结论",
       "identify_database": "查看 Database-Table，LC_ConceptList 在'上市公司行业板块'（AStockIndustryDB）数据库中。",
-      "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，获取互联网金融在科技概念中的分支及其英文名称。",
+      "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockIndustryDB 数据库中的 LC_ConceptList 表，获取互联网金融在科技概念中的分支及其英文名称。"
     }
   ],
   "data_source": [
@@ -238,8 +237,7 @@ The return JSON format:
     {
       "step_5": "结论",
       "identify_database": "查看 Database-Table，QT_DailyQuote 在'上市公司股票行情'（AStockMarketQuotesDB）数据库中；SecuMain 在'常量库'（ConstantDB）数据库中。",
-      "cot_thinking": "因此，要同时满足两个需求，首先需要查询 QT_DailyQuote 表，筛选出 2020 年 10 月 27 日的A股收盘价数据，并找出收盘价第 3 高的A股。然后，再查询 SecuMain 表，获取该A股的简称。",
-
+      "cot_thinking": "因此，要同时满足两个需求，首先需要查询 QT_DailyQuote 表，筛选出 2020 年 10 月 27 日的A股收盘价数据，并找出收盘价第 3 高的A股。然后，再查询 SecuMain 表，获取该A股的简称。"
     }
   ],
   "data_source": [
@@ -319,9 +317,8 @@ The return JSON format:
     {
       "step_6": "结论",
       "identify_database": "查看 Database-Table Schema，LC_Buyback 和 LC_BuybackAttach 都在'上市公司股东与股本/公司治理'（AStockShareholderDB）数据库中。",
-      "cot_thinking": "要同时满足两个需求，首先的 LC_Buyback 表，筛选出梅花生物在 2019 年的股票回购记录，统计回购次数。然后，再从  LC_BuybackAttach 表，获取同一时间段内的累计回购金额合计，并四舍五入保留两位小数。",
-
-    },
+      "cot_thinking": "要同时满足两个需求，首先的 LC_Buyback 表，筛选出梅花生物在 2019 年的股票回购记录，统计回购次数。然后，再从  LC_BuybackAttach 表，获取同一时间段内的累计回购金额合计，并四舍五入保留两位小数。"
+    }
   ],
   "data_source": [
     {

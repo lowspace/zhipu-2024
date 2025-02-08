@@ -1,0 +1,128 @@
+[
+  {
+    "tid": "tttt----17",
+    "team": [
+      {
+        "id": "tttt----17----17-2-1",
+        "question": "2020年4月涨幅前10的港股股票有哪些?"
+      },
+      {
+        "id": "tttt----17----17-2-2",
+        "question": "2020年5月涨幅前10的港股股票有哪些？"
+      },
+      {
+        "id": "tttt----17----17-2-3",
+        "question": "2020年4月涨幅前十的股票中， 5月涨幅最小的是？"
+      }
+    ],
+    "ner": {
+      "stage_1": {
+        "reasoning_process_cot": "当前查询询问的是2020年4月涨幅前10的港股股票，但并未提及具体的上市公司名称、股票代码、基金名称或基金公司名称。问题内容是关于港股市场整体表现的一个统计问题，因此没有识别出具体的命名实体。",
+        "result": [],
+        "sql": {}
+      }
+    },
+    "token_usage": {
+      "answer_generator-stage_1": [
+        {
+          "prompt_tokens": 117,
+          "completion_tokens": 23,
+          "total_tokens": 140
+        }
+      ]
+    },
+    "time_usage": {
+      "answer_generator-stage_1": ["1.37s"]
+    },
+    "table_finder": {
+      "stage_1": [
+        {
+          "raw_question": "2020年4月涨幅前10的港股股票有哪些?",
+          "data_source_reasoning": [
+            {
+              "step_1": "解析输出格式要求",
+              "result": "问题没有对回答格式或数据结构提出特定要求，因此无需进行额外的格式或精度处理。"
+            },
+            {
+              "step_2": "抽象化问题的信息意图",
+              "cot_thinking": "用户的问题是询问某一时间段下港股股票的涨幅的排名信息。",
+              "result": ["特定时间段的港股涨幅排名"]
+            },
+            {
+              "step_3": "定位所有的相关表格（需求1：特定时间段的港股涨幅排名）",
+              "cot_thinking": "查看 Database-Table Schema，港股涨幅数据与'港股行情表现' (CS_HKStockPerformance) 表相关。该表记录港股股票从最近一个交易日往前追溯一段时期的行情表现信息，包括涨幅、成交量、换手率等指标。因此，CS_HKStockPerformance 表适合用于查询2020年4月涨幅前10的港股股票。"
+            },
+            {
+              "step_4": "结论",
+              "identify_database": "查看 Database-Table Schema，CS_HKStockPerformance 在'港股数据库'（HKStockDB）数据库中。",
+              "cot_thinking": "综上所述，要回答这个问题，我们需要查询 HKStockDB 数据库中的 CS_HKStockPerformance 表，筛选出2020年4月涨幅前10的港股股票。"
+            }
+          ],
+          "data_source": [
+            {
+              "database": "HKStockDB",
+              "table": "CS_HKStockPerformance"
+            }
+          ]
+        }
+      ]
+    },
+    "sql_generator": {
+      "stage_1": [
+        {
+          "query": "2020年4月涨幅前10的港股股票有哪些?",
+          "sql_cot_reasoning": "To find the top 10 Hong Kong stocks with the highest increase in April 2020, we need to retrieve data from the `CS_HKStockPerformance` table. The key column to consider is `ChangePCT`, which represents the percentage change in stock price. We will filter the data for the month of April 2020 using the `TradingDay` column. The query will sort the results in descending order based on `ChangePCT` and limit the output to the top 10 records.",
+          "sql_query": "SELECT InnerCode, ChangePCT FROM HKStockDB.CS_HKStockPerformance WHERE TradingDay LIKE '2020-04-%' ORDER BY ChangePCT DESC LIMIT 10;",
+          "sql_explanation": "This SQL query selects the `InnerCode` (which represents the stock's internal code) and `ChangePCT` (percentage change in stock price) from the `CS_HKStockPerformance` table. The `WHERE` clause filters the data to include only records from April 2020 by using the `LIKE` operator to match dates starting with '2020-04-'. The results are then ordered in descending order based on `ChangePCT` to get the stocks with the highest increase. Finally, the `LIMIT 10` clause ensures that only the top 10 records are returned.",
+          "sql_res": [
+            {
+              "InnerCode": 1150048,
+              "ChangePCT": 14.3975
+            },
+            {
+              "InnerCode": 1011289,
+              "ChangePCT": 13.7931
+            },
+            {
+              "InnerCode": 1011289,
+              "ChangePCT": 10.5263
+            },
+            {
+              "InnerCode": 1138492,
+              "ChangePCT": 9.3682
+            },
+            {
+              "InnerCode": 1004870,
+              "ChangePCT": 8.1312
+            },
+            {
+              "InnerCode": 1000807,
+              "ChangePCT": 7.7263
+            },
+            {
+              "InnerCode": 1000721,
+              "ChangePCT": 7.2165
+            },
+            {
+              "InnerCode": 1004870,
+              "ChangePCT": 6.6074
+            },
+            {
+              "InnerCode": 1000593,
+              "ChangePCT": 6.1983
+            },
+            {
+              "InnerCode": 1011289,
+              "ChangePCT": 6.1905
+            }
+          ]
+        }
+      ]
+    },
+    "answer_generator": [
+      {
+        "stage_1": "2019年9月2日，当日收盘价最高的港股是 **1000546**。"
+      }
+    ]
+  }
+]

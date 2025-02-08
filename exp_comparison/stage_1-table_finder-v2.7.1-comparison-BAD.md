@@ -716,97 +716,6 @@ glm_4_plus :
 ]
 ```
 
-Question ID: tttt----75
-deepseek_v3:
-```
-[
-  {
-    "raw_question": "截止至中国软件2021年Q4季度，研发投入总额是多少？（调整后的合并报表）",
-    "data_source_reasoning": [
-      {
-        "step_1": "解析输出格式要求",
-        "result": "用户要求查询的是调整后的合并报表中的研发投入总额，因此需要确保数据来源为调整后的合并报表。"
-      },
-      {
-        "step_2": "分析实体属于的证券市场",
-        "result": "根据NER Result，中国软件是一家A股公司。"
-      },
-      {
-        "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定季度的研发投入总额，且要求数据来自调整后的合并报表。",
-        "result": [
-          "A股公司的研发投入总额",
-          "调整后的合并报表"
-        ]
-      },
-      {
-        "step_4": "定位所有的相关表格（需求1：研发投入总额）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司的研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表记录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息。"
-      },
-      {
-        "step_5": "定位所有的相关表格（需求2：调整后的合并报表）",
-        "cot_thinking": "查看 Database-Table Schema，调整后的合并报表数据与'资产负债表_新会计准则' (LC_BalanceSheetAll) 表、'利润分配表_新会计准则' (LC_IncomeStatementAll) 表和'现金流量表_新会计准则' (LC_CashFlowStatementAll) 表相关。这些表都包含调整后的合并报表数据。然而，研发投入总额通常出现在利润表或现金流量表中，因此 LC_IncomeStatementAll 或 LC_CashFlowStatementAll 表可能更相关。"
-      },
-      {
-        "step_6": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 和 LC_IncomeStatementAll 都在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
-        "cot_thinking": "要同时满足两个需求，首先需要查询 LC_IntAssetsDetail 表，筛选出中国软件在2021年Q4季度的研发投入总额。然后，再查询 LC_IncomeStatementAll 表，确保数据来自调整后的合并报表。"
-      }
-    ],
-    "data_source": [
-      {
-        "database": "AStockFinanceDB",
-        "table": "LC_IntAssetsDetail"
-      },
-      {
-        "database": "AStockFinanceDB",
-        "table": "LC_IncomeStatementAll"
-      }
-    ]
-  }
-]
-```
-glm_4_plus :
-```
-[
-  {
-    "raw_question": "截止至中国软件2021年Q4季度，研发投入总额是多少？（调整后的合并报表）",
-    "data_source_reasoning": [
-      {
-        "step_1": "解析输出格式要求",
-        "cot_thinking": "用户要求查询中国软件2021年Q4季度的研发投入总额，并明确指出需要使用调整后的合并报表数据。因此，需要确保最终输出结果为研发投入总额，并使用调整后的合并报表数据。"
-      },
-      {
-        "step_2": "分析实体属于的证券市场",
-        "cot_thinking": "根据NER Result，中国软件是一家A股公司，因此需要查询A股相关的数据库和表格。"
-      },
-      {
-        "step_3": "抽象化问题的信息意图",
-        "cot_thinking": "用户的问题是询问某A股公司在特定时间段的研发投入总额。",
-        "result": [
-          "特定时间段的A股公司研发投入总额"
-        ]
-      },
-      {
-        "step_4": "定位所有的相关表格（需求1：特定时间段的A股公司研发投入总额）",
-        "cot_thinking": "查看 Database-Table Schema，A股公司研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表收录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息。因此，LC_IntAssetsDetail 表适合用于查询中国软件2021年Q4季度的研发投入总额。"
-      },
-      {
-        "step_5": "结论",
-        "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中。",
-        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockFinanceDB 数据库中的 LC_IntAssetsDetail 表，筛选出中国软件2021年Q4季度的研发投入总额，并确保使用调整后的合并报表数据。"
-      }
-    ],
-    "data_source": [
-      {
-        "database": "AStockFinanceDB",
-        "table": "LC_IntAssetsDetail"
-      }
-    ]
-  }
-]
-```
-
 Question ID: tttt----99
 deepseek_v3:
 ```
@@ -898,3 +807,104 @@ glm_4_plus :
 ]
 ```
 
+Question ID: tttt----9
+deepseek_v3:
+```
+[
+  {
+    "raw_question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）",
+    "data_source_reasoning": [
+      {
+        "step_1": "解析输出格式要求",
+        "result": "用户要求研发投入金额保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
+      },
+      {
+        "step_2": "分析实体属于的证券市场",
+        "result": "根据NER Result，新天绿能是一家A股公司，股票代码为600956。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年度的研发投入金额和研发人员数量，且要求数据为合并报表调整后的。",
+        "result": [
+          "A股公司的年度研发投入金额",
+          "A股公司的研发人员数量"
+        ]
+      },
+      {
+        "step_4": "定位所有的相关表格（需求1：年度研发投入金额）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表记录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息。因此，LC_IntAssetsDetail 表适合用于查询2020年年度研发投入合计。"
+      },
+      {
+        "step_5": "定位所有的相关表格（需求2：研发人员数量）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司的研发人员数量数据与'公司职工构成' (LC_Staff) 表相关。该表记录公司职工构成情况，包括研发人员数量等信息。因此，LC_Staff 表适合用于查询研发人员数量。"
+      },
+      {
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 在'上市公司财务指标/财务报表/融资与分红'（AStockFinanceDB）数据库中；LC_Staff 在'上市公司产品供销/人力资源'（AStockOperationsDB）数据库中。",
+        "cot_thinking": "综上所述，要回答这个问题，我们需要查询 AStockFinanceDB 数据库中的 LC_IntAssetsDetail 表，获取2020年年度研发投入合计；同时查询 AStockOperationsDB 数据库中的 LC_Staff 表，获取研发人员数量。"
+      }
+    ],
+    "data_source": [
+      {
+        "question": "新天绿能2020年年度研发投入合计是多少元？",
+        "database": "AStockFinanceDB",
+        "table": "LC_IntAssetsDetail"
+      },
+      {
+        "question": "新天绿能2020年研发人员数量为多少人？",
+        "database": "AStockOperationsDB",
+        "table": "LC_Staff"
+      }
+    ]
+  }
+]
+```
+glm_4_plus :
+```
+[
+  {
+    "raw_question": "新天绿能2020年年度研发投入合计是多少元？研发人员数量为多少人？（合并报表调整后的，金额保留2位小数）",
+    "data_source_reasoning": [
+      {
+        "step_1": "解析输出格式要求",
+        "result": "用户要求研发投入金额保留两位小数，因此需要确保最终输出格式符合这一精度要求。"
+      },
+      {
+        "step_2": "分析实体属于的证券市场",
+        "result": "参考NER Result，新天绿能是一家A股公司。"
+      },
+      {
+        "step_3": "抽象化问题的信息意图",
+        "cot_thinking": "用户的问题是询问某A股公司在特定年份的研发投入金额和研发人员数量。",
+        "result": [
+          "A股公司的研发投入金额",
+          "A股公司的研发人员数量"
+        ]
+      },
+      {
+        "step_4": "定位所有的相关表格（需求1：研发投入金额）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司研发投入数据与'公司研发投入与产出' (LC_IntAssetsDetail) 表相关。该表记录上市公司研发投入相关数据，包括研发费用投入总额、占比等信息。因此，LC_IntAssetsDetail 表适合用于查询新天绿能2020年年度研发投入金额。"
+      },
+      {
+        "step_5": "定位所有的相关表格（需求2：研发人员数量）",
+        "cot_thinking": "查看 Database-Table Schema，A股公司研发人员数量数据与'公司职工构成' (LC_Staff) 表相关。该表从技术职称、专业、文化程度、年龄等几个方面介绍公司职工构成情况，因此适合用于查询新天绿能2020年年度研发人员数量。"
+      },
+      {
+        "step_6": "结论",
+        "identify_database": "查看 Database-Table Schema，LC_IntAssetsDetail 和 LC_Staff 都在'上市公司产品供销/人力资源'（AStockOperationsDB）数据库中。",
+        "cot_thinking": "要同时满足两个需求，首先需要查询 LC_IntAssetsDetail 表，筛选出新天绿能2020年年度的研发投入金额，并保留两位小数。然后，再查询 LC_Staff 表，获取同一时间段内的研发人员数量。"
+      }
+    ],
+    "data_source": [
+      {
+        "database": "AStockOperationsDB",
+        "table": "LC_IntAssetsDetail"
+      },
+      {
+        "database": "AStockOperationsDB",
+        "table": "LC_Staff"
+      }
+    ]
+  }
+]
+```
