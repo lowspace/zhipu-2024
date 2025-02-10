@@ -14,6 +14,8 @@ import ast
 from openai import OpenAI
 import requests
 
+from zhipuai import ZhipuAI
+
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -40,7 +42,7 @@ llm_api = '1430f2573b273bebdf21c8d68c91d3d6.71llzxJFa9x2Z6ex'
 sql_api = "d989596b9e61478bb368eb14e536db69"
 
 
-client = OpenAI(api_key= llm_api, base_url="https://open.bigmodel.cn/api/paas/v4/")
+client = ZhipuAI(api_key=llm_api)
 
 def fetch_data(data: dict):
     url = "https://comm.chatglm.cn/finglm2/api/query"
@@ -56,7 +58,17 @@ def fetch_data(data: dict):
 ### Embedding
 #####
 
-emb_model = SentenceTransformer('moka-ai/m3e-base')
+def compute_emb(text: str):
+
+    response = client.embeddings.create(
+    model="embedding-3", #填写需要调用的模型编码
+    input=[
+        text,
+    ],
+    )
+    res = json.loads(response.to_json())['data'][0]['embedding']
+
+    return res
 
 # 读取 JSON 文件并转换回字典
 def load_json_to_dict(file_path):
@@ -87,21 +99,20 @@ print("=====Load Embedding Completed=====")
 def cosine_similarity(vec_a, vec_b):
     return np.dot(vec_a, vec_b) / (np.linalg.norm(vec_a) * np.linalg.norm(vec_b))
 
-def find_top_similar_columns(word, columns_info, emb_model, top_k=20):
+def find_top_similar_columns(word, columns_info, top_k=20):
     """
     Find the top `top_k` most similar columns to the given word based on cosine similarity.
 
     Args:
     - word (str): The query word.
     - columns_info (list): list containing column details with embeddings.
-    - emb_model (SentenceTransformer): The embedding model.
     - top_k (int): Number of top similar columns to return.
 
     Returns:
     - List of tuples (column_name, similarity_score, column_description)
     """
     # Encode the input word
-    word_embedding = emb_model.encode(word)
+    word_embedding = compute_emb(word)
 
     table_similarities = []
     column_similarities = []
@@ -160,7 +171,7 @@ def rag_find_tables(query: str) -> str:
     """
 
     available_tables = set()
-    rag_results = find_top_similar_columns(query, columns_info, emb_model, top_k=10)
+    rag_results = find_top_similar_columns(query, columns_info, top_k=10)
     for i in [0, 1, 2, 3]:
         for result in rag_results[i]:
             # get database.table
@@ -205,7 +216,7 @@ table_finder_fname = 'table_finder-stage_1-v4.0.0.md'
 rewriter_fname = 'rewrite_query-v1.0.0.md'
 sql_1_fname = f'sql_generator-stage_1-v2.0.0.md'
 sql_2_fname = f'sql_generator-stage_2-v1.0.0.md'
-ans_fname = f'answer_generator-v2.0.0.md'
+ans_fname = f'answer_generator-v2.1.0.md'
 
 with open(os.path.join(prompt_dir, table_finder_fname), 'r') as f:
     table_finder_prompt_template = ''.join(f.readlines())
@@ -483,12 +494,15 @@ def table_finder_agent(query: str, market: str, ner: dict):
         for attempt in range(max_retries):
             try:
                 response = client.chat.completions.create(
-                    # model="deepseek-chat",
-                    model='glm-4-plus',
+                    model="glm-4-plus",
                     messages=history,
+                    response_format = {
+                        'type': 'json_object'
+                    },
                     stream=False,
                     top_p=0.7,
-                    temperature=0.9
+                    temperature=0.9,
+                    max_tokens=4000
                 )
                 break  # 如果成功，跳出重试循环
             except Exception as e:
@@ -542,12 +556,15 @@ def sql_generator_agent(query: str, ner: dict, table_finder: dict):
         for attempt in range(max_retries):
             try:
                 response = client.chat.completions.create(
-                    # model="deepseek-chat",
-                    model='glm-4-plus',
+                    model="glm-4-plus",
                     messages=chat_history,
+                    response_format = {
+                        'type': 'json_object'
+                    },
                     stream=False,
                     top_p=0.7,
-                    temperature=0.9
+                    temperature=0.9,
+                    max_tokens=4000
                 )
                 break  # 如果成功，跳出重试循环
             except Exception as e:
@@ -687,7 +704,7 @@ def answer_generator_agent(query: str, ner: dict, sql_res: list):
 def table_finder_reflection_agent(chat_history: list, market: str, ner: dict):
     print("====TABLE REFLECTION AGENT UP====")
     retry_delay = 1
-    max_retries = 3
+    max_retries = 6
     query = "结果不正确。可能的原因：表找的不全面；表找错了；忽略了表之间的联系。在原本的思考路径中增加一步「反思与修正」（reflection and correct）。"
 
     history = copy.deepcopy(chat_history)
@@ -706,12 +723,15 @@ def table_finder_reflection_agent(chat_history: list, market: str, ner: dict):
         for attempt in range(max_retries):
             try:
                 response = client.chat.completions.create(
-                    # model="deepseek-chat",
-                    model='glm-4-plus',
+                    model="glm-4-plus",
                     messages=history,
+                    response_format = {
+                        'type': 'json_object'
+                    },
                     stream=False,
                     top_p=0.7,
-                    temperature=0.9
+                    temperature=0.9,
+                    max_tokens=4000
                 )
                 break  # 如果成功，跳出重试循环
             except Exception as e:
@@ -750,7 +770,7 @@ def sql_generator_reflection_agent(chat_history: list, ner: dict, table_finder: 
     print("====SQL REFLECTION AGENT UP====")
 
     retry_delay = 1
-    max_retries = 3
+    max_retries = 4
 
     query = "结果为空。在原本的思考路径中增加一步「反思与修正」（reflection and correct）。"
 
@@ -770,12 +790,15 @@ def sql_generator_reflection_agent(chat_history: list, ner: dict, table_finder: 
         for attempt in range(max_retries):
             try:
                 response = client.chat.completions.create(
-                    # model="deepseek-chat",
-                    model='glm-4-plus',
+                    model="glm-4-plus",
                     messages=history,
+                    response_format = {
+                        'type': 'json_object'
+                    },
                     stream=False,
                     top_p=0.7,
-                    temperature=0.9
+                    temperature=0.9,
+                    max_tokens=4000
                 )
                 break  # 如果成功，跳出重试循环
             except Exception as e:
@@ -833,6 +856,10 @@ def sql_generator_reflection_agent(chat_history: list, ner: dict, table_finder: 
         break
 
     return locals().get('sql_res', [])
+
+###
+# workflow
+###
             
 def main_workflow(data: dict):
     """
@@ -864,7 +891,7 @@ def main_workflow(data: dict):
         answer = answer_generator_agent(query, ner, sql_res)
         print(answer)
 
-        if "信息不足" in answer:
+        if "可以作答" not in answer:
             
             while retries < max_retries:
                 table_finder_history = table_finder_reflection_agent(table_finder_history, market, ner)
@@ -875,7 +902,7 @@ def main_workflow(data: dict):
                 print(answer)
 
                 retries += 1
-                if "信息不足" not in answer:
+                if "可以作答" in answer:
                         break
             
         chat_history.append({"user": query, "assistant": answer})
@@ -955,7 +982,7 @@ def process_data_in_parallel(data_list, num_threads, real_time_output_file="real
     with open(final_output_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=4)
 
-missed = [58, 66, 69, 76, 78, 85, 86, 88, 90, 91, 94, 95, 97, 98, 99, 100]
+missed = [61]
 unsolved = []
 
 for q in questions:
@@ -967,7 +994,7 @@ for q in questions:
 # 示例用法
 process_data_in_parallel(
     unsolved[:], 
-    num_threads=5, 
+    num_threads=1, 
     real_time_output_file="real_time_results-2.json", 
     final_output_file="final_results-2.json"
 )

@@ -176,5 +176,10 @@ The return JSON format:
 }
 ```
 
+## **Tricks**
+
+- 「换手率」只在「AStockMarketQuotesDB.QT_StockPerformance」「HKStockDB.CS_HKStockPerformance」「USStockDB.US_DailyQuote」。
+- 当 Current Query 中没有出现 NER Result 的时候，需要链接「主表」获取 InnerCode 或者是 CompanyCode。
+
 ## **Current Query**
 
