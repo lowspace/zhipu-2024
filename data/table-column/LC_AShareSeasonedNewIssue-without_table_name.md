@@ -23,8 +23,8 @@
 | OverAllotmentOption| 超额配售权(股) || |
 | IssueStartDate | 发行日期上限 || |
 | IssueEndDate | 发行日期下限 || |
-| UnderwritingStartDate| *承销期上限|| |
-| UnderwritingEndDate| *承销期下限|| |
+| UnderwritingStartDate| 承销期上限|| |
+| UnderwritingEndDate| 承销期下限|| |
 | IfExRightAShare| A股除权与否| A股除权与否（IfExRightAShare）：固定常量：1->是0->否 | Whether A-share is ex-right (IfExRightAShare): Fixed constant: 1 -> Yes, 0 -> No|
 | RightRegDate | 股权登记日 || |
 | ExRightDate| 除权日 || |
@@ -47,10 +47,10 @@
 | ApplyMinLPOffline| 法人网下配售申购下限(股) || |
 | ApplyMaxLPOffline| 法人网下配售申购上限(股) || |
 | ValidApplyTimesLPOffline | 法人网下配售有效申购次数限定 | 法人网下配售有效申购次数限定(ValidApplyTimesLPOffline)与(CT_SystemConst)表中的DM字段关联，令LB = 1195，得到法人网下配售有效申购次数限定的具体描述：1-多次申购，2-一次申购。| The valid application times for offline allocation to legal persons (ValidApplyTimesLPOffline) is associated with the DM field in the CT_SystemConst table. When LB equals 1195, the specific description for the valid application times for offline allocation to legal persons is: 1 for multiple applications, 2 for a single application.|
-| ApplyStartDateF| *基金优先配售申购日期上限|| |
-| ApplyEndDateF| *基金优先配售申购日期下限|| |
-| PayStartDateF| *基金优先配售缴款期下限|| |
-| PayEndDateF| *基金优先配售缴款期上限|| |
+| ApplyStartDateF| 基金优先配售申购日期上限|| |
+| ApplyEndDateF| 基金优先配售申购日期下限|| |
+| PayStartDateF| 基金优先配售缴款期下限|| |
+| PayEndDateF| 基金优先配售缴款期上限|| |
 | PrefAllotmentF | 投资基金配售限额(股) || |
 | PrefAllotmentSingleF | 单个基金配售限额(股) || |
 | STAQNETPlaStartDate| STAQ/NET定向配售时间起始日 || |
@@ -61,11 +61,11 @@
 | OddLotsTreatment | 零股处理方法 || |
 | ParValue | 面值(人民币) || |
 | IssuePrice | 实际发行价(元) || |
-| StateSharesIssuePrice| *国有股存量发行每股发行价(元)|| |
+| StateSharesIssuePrice| 国有股存量发行每股发行价(元)|| |
 | WeightedPERatio| 发行市盈率(加权平均)(倍) || |
 | DilutedPERatio | 发行市盈率(全面摊薄)(倍) || |
 | IssueVol | 发行量(股) || |
-| StateSharesIssued| *国有股存量发行股数(股)|| |
+| StateSharesIssued| 国有股存量发行股数(股)|| |
 | TotalIssueMV | 发行总市值(元) || |
 | IssueCost| 发行费用总额(元) || |
 | UnderwritingFee| 承销费用(元) || |
@@ -82,8 +82,8 @@
 | FreezedMoney | 冻结资金(元) || |
 | SNIProceeds| 增发新股募集资金总额(元) || |
 | SNINetProceeds | 增发新股募集资金净额(元) || |
-| StateSharesProceeds| *国有股存量发行收入总额(元)|| |
-| StateSharesNetProceeds | *国有股存量发行收入净额(元)|| |
+| StateSharesProceeds| 国有股存量发行收入总额(元)|| |
+| StateSharesNetProceeds | 国有股存量发行收入净额(元)|| |
 | MoneyToAccount | 募集资金到帐金额(元) || |
 | DateToAccount| 募集资金到帐时间 || |
 | NewShareListDate | 增发股份上市日期 || |

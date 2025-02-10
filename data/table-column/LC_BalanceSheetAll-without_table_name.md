@@ -24,8 +24,8 @@
 | DeferredExpense | 待摊费用(元)| | |
 | NonCurrentAssetIn1Year| 一年内到期的非流动资产| | |
 | OtherCurrentAssets| 其他流动资产| | |
-| CAExceptionalItems| ##流动资产特殊项目| | |
-| CAAdjustmentItems | ##流动资产调整项目| | |
+| CAExceptionalItems| 流动资产特殊项目| | |
+| CAAdjustmentItems | 流动资产调整项目| | |
 | TotalCurrentAssets| 流动资产合计| | |
 | HoldForSaleAssets | 可供出售金融资产| | |
 | HoldToMaturityInvestments | 持有至到期投资| | |
@@ -45,8 +45,8 @@
 | LongDeferredExpense | 长期待摊费用(元)| | |
 | DeferredTaxAssets | 递延所得税资产| | |
 | OtherNonCurrentAssets | 其他非流动资产| | |
-| NCAExceptionalItems | ##非流动资产特殊项目| | |
-| NCAAdjustmentItems| ##非流动资产调整项目| | |
+| NCAExceptionalItems | 非流动资产特殊项目| | |
+| NCAAdjustmentItems| 非流动资产调整项目| | |
 | TotalNonCurrentAssets | 非流动资产合计| | |
 | LoanAndAccountReceivables | 投资-贷款及应收款项(应收款项类投资) | | |
 | SettlementProvi | 结算备付金(元)| 结算备付金（SettlementProvi）：一般为金融类企业披露科目 | Settlement Provision: Generally disclosed by financial companies as an account科目|
@@ -70,8 +70,8 @@
 | RefundableCapitalDeposit| 存出资本保证金| 存出资本保证金（RefundableCapitalDeposit）：一般为金融类:保险公司披露科目 | Refundable Capital Deposit: Generally refers to a financial category: insurance company discloses the subject.|
 | IndependenceAccountAssets | 独立账户资产| 独立账户资产（IndependenceAccountAssets）：一般为金融类:保险公司披露科目| Independent Account Assets: Generally refers to financial categories: Insurance companies disclose items|
 | OtherAssets | 其他资产(元)| 其他资产（OtherAssets）：一般为金融类企业披露科目 | Other Assets: Generally disclosed by financial companies as an account科目|
-| AExceptionalItems | ##资产特殊项目| | |
-| AAdjustmentItems| ##资产调整项目| | |
+| AExceptionalItems | 资产特殊项目| | |
+| AAdjustmentItems| 资产调整项目| | |
 | TotalAssets | 资产总计(元)| | |
 | ShortTermLoan | 短期借款(元)| | |
 | ImpawnedLoan| 质押借款(元) | | |
@@ -89,8 +89,8 @@
 | DeferredProceeds| 递延收益| | |
 | NonCurrentLiabilityIn1Year| 一年内到期的非流动负债| | |
 | OtherCurrentLiability | 其他流动负债(元)| | |
-| CLExceptionalItems| ##流动负债特殊项目| | |
-| CLAdjustmentItems | ##流动负债调整项目| | |
+| CLExceptionalItems| 流动负债特殊项目| | |
+| CLAdjustmentItems | 流动负债调整项目| | |
 | TotalCurrentLiability | 流动负债合计(元)| | |
 | LongtermLoan| 长期借款(元)| | |
 | BondsPayable| 应付债券(元)| | |
@@ -99,8 +99,8 @@
 | EstimateLiability | 预计负债(元)| | |
 | DeferredTaxLiability| 递延所得税负债| | |
 | OtherNonCurrentLiability| 其他非流动负债| | |
-| NCLExceptionalItems | ##非流动负债特殊项目| | |
-| NCLAdjustmentItems| ##非流动负债调整项目| | |
+| NCLExceptionalItems | 非流动负债特殊项目| | |
+| NCLAdjustmentItems| 非流动负债调整项目| | |
 | TotalNonCurrentLiability| 非流动负债合计| | |
 | BorrowingFromCentralBank| 向中央银行借款| 向中央银行借款（BorrowingFromCentralBank）：一般为金融类:银行企业披露科目 | Borrowing from the Central Bank: Generally for financial institutions: Bank enterprises disclose items|
 | DepositOfInterbank| 同业及其他金融机构存放款项| 同业及其他金融机构存放款项（DepositOfInterbank）：一般为金融类企业披露科目 | Interbank and other financial institutions' deposits (DepositOfInterbank): This item is generally disclosed by financial companies. |
@@ -123,8 +123,8 @@
 | LTHealthInsuranceLR | 长期健康险责任准备金| 长期健康险责任准备金（LTHealthInsuranceLR）：一般为金融类:保险公司披露科目 | Long-term health insurance liability reserves (LTHealthInsuranceLR): Generally financial in nature: disclosed items by insurance companies|
 | IndependenceLiability | 独立账户负债| 独立账户负债（IndependenceLiability）：一般为金融类:保险公司披露科目| Independent account liability (IndependenceLiability): Generally refers to financial categories: insurance company disclosure items |
 | OtherLiability| 其他负债(元)| 其他负债（OtherLiability）：一般为金融类企业披露科目| Other Liabilities: Generally disclosed items for financial companies|
-| LExceptionalItems | ##负债特殊项目| | |
-| LAdjustmentItems| ##负债调整项目| | |
+| LExceptionalItems | 负债特殊项目| | |
+| LAdjustmentItems| 负债调整项目| | |
 | TotalLiability| 负债合计(元)| | |
 | PaidInCapital | 实收资本(或股本)(元)| | |
 | CapitalReserveFund| 资本公积(元)| | |
@@ -136,14 +136,14 @@
 | UncertainedInvestmentLoss | 未确认投资损失| | |
 | OtherReserves | 其他储备(公允价值变动储备)(元)| | |
 | SpecificReserves| 专项储备| | |
-| SEExceptionalItems| ##所有者权益特殊项目| | |
-| SEAdjustmentItems | ##所有者权益调整项目| | |
+| SEExceptionalItems| 所有者权益特殊项目| | |
+| SEAdjustmentItems | 所有者权益调整项目| | |
 | SEWithoutMI | 归属于母公司所有者权益合计(元)| | |
 | MinorityInterests | 少数股东权益(元)| | |
 | OtherItemsEffectingSE | 影响所有者权益的其他科目| | |
 | TotalShareholderEquity| 股东权益合计(元)| | |
-| LEExceptionalItems| ##负债和权益特殊项目| | |
-| LEAdjustmentItems | ##负债和权益调整项目| | |
+| LEExceptionalItems| 负债和权益特殊项目| | |
+| LEAdjustmentItems | 负债和权益调整项目| | |
 | TotalLiabilityAndEquity | 负债及股东权益总计(元)| | |
 | SpecialFieldRemark| 特殊字段说明| | |
 | UpdateTime| 更新时间| | |
@@ -222,4 +222,4 @@
 | PubWBiologicalAssets| 公益性生物资产| | |
 | AgencyBusLiability| 代理业务负债| | |
 | SECParentCompanyOwners| 归属于母公司普通股股东权益 | | |
-| TSEExceptionalItems | ##所有者权益(或股东权益)特殊项目| | |
+| TSEExceptionalItems | 所有者权益(或股东权益)特殊项目| | |

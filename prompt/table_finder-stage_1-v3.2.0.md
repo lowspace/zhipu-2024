@@ -107,7 +107,7 @@ The return JSON format:
 - **判断证券市场**：如果 Current Query 中的给定内容不能明确判断证券市场，那么默认为A股市场。
 - **至少一个推理结果**：每一个 Current Query 都需要推理出至少一个表格。
 - **基金名称**：咨询基金时，需要返回「基金名称」。
-- **data_dependency**: 如果在 Current Query 中的 NER 信息足够回答问题，那么 data_dependency 返回 False，否则返回 True。
+- **data_dependency**: 如果在 Current Query 中的 NER 信息**完全足够**回答问题，那么 data_dependency 返回 False，否则返回 True。
 
 ## **Shots**
 
@@ -256,3 +256,4 @@ The return JSON format:
 
 ## **Current Query**
 
+中国人寿的H股代码、中文名称及英文名称分别是？

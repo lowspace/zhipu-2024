@@ -19,7 +19,7 @@
 | FloatShare | 流通股本(股)|| |
 | AFloats| 流通A股(股) || |
 | AFloatListed | 已上市流通A股(包含高管股)(股) || |
-| ManagementShares | ##高管股(股)|| |
+| ManagementShares | 高管股(股)|| |
 | StategicInvestorShares | 战略投资者配售持股(股)|| |
 | CommonLPShares | 一般法人配售持股(股)|| |
 | MutualFundShares | 基金配售持股(股)|| |

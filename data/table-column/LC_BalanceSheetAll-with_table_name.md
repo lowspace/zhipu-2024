@@ -24,8 +24,8 @@
 | LC_BalanceSheetAll | DeferredExpense | 待摊费用(元)| | |
 | LC_BalanceSheetAll | NonCurrentAssetIn1Year| 一年内到期的非流动资产| | |
 | LC_BalanceSheetAll | OtherCurrentAssets| 其他流动资产| | |
-| LC_BalanceSheetAll | CAExceptionalItems| ##流动资产特殊项目| | |
-| LC_BalanceSheetAll | CAAdjustmentItems | ##流动资产调整项目| | |
+| LC_BalanceSheetAll | CAExceptionalItems| 流动资产特殊项目| | |
+| LC_BalanceSheetAll | CAAdjustmentItems | 流动资产调整项目| | |
 | LC_BalanceSheetAll | TotalCurrentAssets| 流动资产合计| | |
 | LC_BalanceSheetAll | HoldForSaleAssets | 可供出售金融资产| | |
 | LC_BalanceSheetAll | HoldToMaturityInvestments | 持有至到期投资| | |
@@ -45,8 +45,8 @@
 | LC_BalanceSheetAll | LongDeferredExpense | 长期待摊费用(元)| | |
 | LC_BalanceSheetAll | DeferredTaxAssets | 递延所得税资产| | |
 | LC_BalanceSheetAll | OtherNonCurrentAssets | 其他非流动资产| | |
-| LC_BalanceSheetAll | NCAExceptionalItems | ##非流动资产特殊项目| | |
-| LC_BalanceSheetAll | NCAAdjustmentItems| ##非流动资产调整项目| | |
+| LC_BalanceSheetAll | NCAExceptionalItems | 非流动资产特殊项目| | |
+| LC_BalanceSheetAll | NCAAdjustmentItems| 非流动资产调整项目| | |
 | LC_BalanceSheetAll | TotalNonCurrentAssets | 非流动资产合计| | |
 | LC_BalanceSheetAll | LoanAndAccountReceivables | 投资-贷款及应收款项(应收款项类投资) | | |
 | LC_BalanceSheetAll | SettlementProvi | 结算备付金(元)| 结算备付金（SettlementProvi）：一般为金融类企业披露科目 | Settlement Provision: Generally disclosed by financial companies as an account科目|
@@ -70,8 +70,8 @@
 | LC_BalanceSheetAll | RefundableCapitalDeposit| 存出资本保证金| 存出资本保证金（RefundableCapitalDeposit）：一般为金融类:保险公司披露科目 | Refundable Capital Deposit: Generally refers to a financial category: insurance company discloses the subject.|
 | LC_BalanceSheetAll | IndependenceAccountAssets | 独立账户资产| 独立账户资产（IndependenceAccountAssets）：一般为金融类:保险公司披露科目| Independent Account Assets: Generally refers to financial categories: Insurance companies disclose items|
 | LC_BalanceSheetAll | OtherAssets | 其他资产(元)| 其他资产（OtherAssets）：一般为金融类企业披露科目 | Other Assets: Generally disclosed by financial companies as an account科目|
-| LC_BalanceSheetAll | AExceptionalItems | ##资产特殊项目| | |
-| LC_BalanceSheetAll | AAdjustmentItems| ##资产调整项目| | |
+| LC_BalanceSheetAll | AExceptionalItems | 资产特殊项目| | |
+| LC_BalanceSheetAll | AAdjustmentItems| 资产调整项目| | |
 | LC_BalanceSheetAll | TotalAssets | 资产总计(元)| | |
 | LC_BalanceSheetAll | ShortTermLoan | 短期借款(元)| | |
 | LC_BalanceSheetAll | ImpawnedLoan| 质押借款(元) | | |
@@ -89,8 +89,8 @@
 | LC_BalanceSheetAll | DeferredProceeds| 递延收益| | |
 | LC_BalanceSheetAll | NonCurrentLiabilityIn1Year| 一年内到期的非流动负债| | |
 | LC_BalanceSheetAll | OtherCurrentLiability | 其他流动负债(元)| | |
-| LC_BalanceSheetAll | CLExceptionalItems| ##流动负债特殊项目| | |
-| LC_BalanceSheetAll | CLAdjustmentItems | ##流动负债调整项目| | |
+| LC_BalanceSheetAll | CLExceptionalItems| 流动负债特殊项目| | |
+| LC_BalanceSheetAll | CLAdjustmentItems | 流动负债调整项目| | |
 | LC_BalanceSheetAll | TotalCurrentLiability | 流动负债合计(元)| | |
 | LC_BalanceSheetAll | LongtermLoan| 长期借款(元)| | |
 | LC_BalanceSheetAll | BondsPayable| 应付债券(元)| | |
@@ -99,8 +99,8 @@
 | LC_BalanceSheetAll | EstimateLiability | 预计负债(元)| | |
 | LC_BalanceSheetAll | DeferredTaxLiability| 递延所得税负债| | |
 | LC_BalanceSheetAll | OtherNonCurrentLiability| 其他非流动负债| | |
-| LC_BalanceSheetAll | NCLExceptionalItems | ##非流动负债特殊项目| | |
-| LC_BalanceSheetAll | NCLAdjustmentItems| ##非流动负债调整项目| | |
+| LC_BalanceSheetAll | NCLExceptionalItems | 非流动负债特殊项目| | |
+| LC_BalanceSheetAll | NCLAdjustmentItems| 非流动负债调整项目| | |
 | LC_BalanceSheetAll | TotalNonCurrentLiability| 非流动负债合计| | |
 | LC_BalanceSheetAll | BorrowingFromCentralBank| 向中央银行借款| 向中央银行借款（BorrowingFromCentralBank）：一般为金融类:银行企业披露科目 | Borrowing from the Central Bank: Generally for financial institutions: Bank enterprises disclose items|
 | LC_BalanceSheetAll | DepositOfInterbank| 同业及其他金融机构存放款项| 同业及其他金融机构存放款项（DepositOfInterbank）：一般为金融类企业披露科目 | Interbank and other financial institutions' deposits (DepositOfInterbank): This item is generally disclosed by financial companies. |
@@ -123,8 +123,8 @@
 | LC_BalanceSheetAll | LTHealthInsuranceLR | 长期健康险责任准备金| 长期健康险责任准备金（LTHealthInsuranceLR）：一般为金融类:保险公司披露科目 | Long-term health insurance liability reserves (LTHealthInsuranceLR): Generally financial in nature: disclosed items by insurance companies|
 | LC_BalanceSheetAll | IndependenceLiability | 独立账户负债| 独立账户负债（IndependenceLiability）：一般为金融类:保险公司披露科目| Independent account liability (IndependenceLiability): Generally refers to financial categories: insurance company disclosure items |
 | LC_BalanceSheetAll | OtherLiability| 其他负债(元)| 其他负债（OtherLiability）：一般为金融类企业披露科目| Other Liabilities: Generally disclosed items for financial companies|
-| LC_BalanceSheetAll | LExceptionalItems | ##负债特殊项目| | |
-| LC_BalanceSheetAll | LAdjustmentItems| ##负债调整项目| | |
+| LC_BalanceSheetAll | LExceptionalItems | 负债特殊项目| | |
+| LC_BalanceSheetAll | LAdjustmentItems| 负债调整项目| | |
 | LC_BalanceSheetAll | TotalLiability| 负债合计(元)| | |
 | LC_BalanceSheetAll | PaidInCapital | 实收资本(或股本)(元)| | |
 | LC_BalanceSheetAll | CapitalReserveFund| 资本公积(元)| | |
@@ -136,14 +136,14 @@
 | LC_BalanceSheetAll | UncertainedInvestmentLoss | 未确认投资损失| | |
 | LC_BalanceSheetAll | OtherReserves | 其他储备(公允价值变动储备)(元)| | |
 | LC_BalanceSheetAll | SpecificReserves| 专项储备| | |
-| LC_BalanceSheetAll | SEExceptionalItems| ##所有者权益特殊项目| | |
-| LC_BalanceSheetAll | SEAdjustmentItems | ##所有者权益调整项目| | |
+| LC_BalanceSheetAll | SEExceptionalItems| 所有者权益特殊项目| | |
+| LC_BalanceSheetAll | SEAdjustmentItems | 所有者权益调整项目| | |
 | LC_BalanceSheetAll | SEWithoutMI | 归属于母公司所有者权益合计(元)| | |
 | LC_BalanceSheetAll | MinorityInterests | 少数股东权益(元)| | |
 | LC_BalanceSheetAll | OtherItemsEffectingSE | 影响所有者权益的其他科目| | |
 | LC_BalanceSheetAll | TotalShareholderEquity| 股东权益合计(元)| | |
-| LC_BalanceSheetAll | LEExceptionalItems| ##负债和权益特殊项目| | |
-| LC_BalanceSheetAll | LEAdjustmentItems | ##负债和权益调整项目| | |
+| LC_BalanceSheetAll | LEExceptionalItems| 负债和权益特殊项目| | |
+| LC_BalanceSheetAll | LEAdjustmentItems | 负债和权益调整项目| | |
 | LC_BalanceSheetAll | TotalLiabilityAndEquity | 负债及股东权益总计(元)| | |
 | LC_BalanceSheetAll | SpecialFieldRemark| 特殊字段说明| | |
 | LC_BalanceSheetAll | UpdateTime| 更新时间| | |
@@ -222,4 +222,4 @@
 | LC_BalanceSheetAll | PubWBiologicalAssets| 公益性生物资产| | |
 | LC_BalanceSheetAll | AgencyBusLiability| 代理业务负债| | |
 | LC_BalanceSheetAll | SECParentCompanyOwners| 归属于母公司普通股股东权益 | | |
-| LC_BalanceSheetAll | TSEExceptionalItems | ##所有者权益(或股东权益)特殊项目| | |
+| LC_BalanceSheetAll | TSEExceptionalItems | 所有者权益(或股东权益)特殊项目| | |

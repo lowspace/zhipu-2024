@@ -23,8 +23,8 @@
 | NetReinsuranceCash| 收到再保业务现金净额 | 收到再保业务现金净额（NetReinsuranceCash） — 一般为金融类：保险公司披露科目。 | Received net reinsurance cash (Net Reinsurance Cash) — usually financial: disclosed by insurance companies. |
 | NetInsurerDepositInvestment | 保户储金及投资款净增加额 | 保户储金及投资款净增加额（NetInsurerDepositInvestment） — 一般为金融类：保险公司披露科目。| Net Increase in Policyholder Deposits and Investment Funds (NetInsurerDepositInvestment) — Generally financial in nature: disclosed item by insurance companies.|
 | OtherCashInRelatedOperate | 收到的其他与经营活动有关的现金(元) | | |
-| SpecialItemsOCIF| ##经营活动现金流入特殊项目 | | |
-| AdjustmentItemsOCIF | ##经营活动现金流入调整项目 | | |
+| SpecialItemsOCIF| 经营活动现金流入特殊项目 | | |
+| AdjustmentItemsOCIF | 经营活动现金流入调整项目 | | |
 | SubtotalOperateCashInflow | 经营活动现金流入小计(元) | | |
 | GoodsServicesCashPaid | 购买商品和劳务所支付的现金(元) | | |
 | StaffBehalfPaid | 支付给职工以及为职工支付的现金(元) | | |
@@ -37,55 +37,55 @@
 | NetCashForReinsurance | 支付再保业务现金净额 | 支付再保业务现金净额（NetCashForReinsurance）：一般为金融类:保险公司披露科目| Net Cash for Reinsurance: Generally falls under the financial category: disclosed by insurance companies. |
 | PolicyDividendCashPaid| 支付保单红利的现金 | 支付保单红利的现金（PolicyDividendCashPaid）：一般为金融类:保险公司披露科目 | Cash paid for policy dividends (PolicyDividendCashPaid): usually financial category: insurance company discloses the subject|
 | OtherOperateCashPaid| 支付的其他与经营活动有关的现金(元) | | |
-| SpecialItemsOCOF| ##经营活动现金流出特殊项目 | | |
-| AdjustmentItemsOCOF | ##经营活动现金流出调整项目 | | |
+| SpecialItemsOCOF| 经营活动现金流出特殊项目 | | |
+| AdjustmentItemsOCOF | 经营活动现金流出调整项目 | | |
 | SubtotalOperateCashOutflow| 经营活动现金流出小计(元) | | |
-| AdjustmentItemsNOCF | ##经营活动现金流量净额调整项目 | | |
+| AdjustmentItemsNOCF | 经营活动现金流量净额调整项目 | | |
 | NetOperateCashFlow| 经营活动产生的现金流量净额(元) | | |
 | InvestWithdrawalCash| 收回投资所收到的现金(元) | | |
 | Investproceeds| 取得投资收益收到的现金(元) | | |
 | FixIntanOtherAssetDispoCash | 处置固定资产、无形资产和其他长期资产而收回的现金净额(元) | | |
 | NetCashDealSubCompany | 处置子公司及其他营业单位收到的现金净额 | | |
 | OtherCashFromInvestAct| 收到的其他与投资活动有关的现金(元) | | |
-| SpecialItemsICIF| ##投资活动现金流入特殊项目 | | |
-| AdjustmentItemsICIF | ##投资活动现金流入调整项目 | | |
+| SpecialItemsICIF| 投资活动现金流入特殊项目 | | |
+| AdjustmentItemsICIF | 投资活动现金流入调整项目 | | |
 | SubtotalInvestCashInflow| 投资活动现金流入小计(元) | | |
 | FixIntanOtherAssetAcquiCash | 购建固定资产、无形资产和其他长期资产所支付的现金(元) | | |
 | InvestCashPaid| 投资支付的现金(元) | | |
 | NetCashFromSubCompany | 取得子公司及其他营业单位支付的现金净额 | | |
 | ImpawnedLoanNetIncrease | 质押贷款净增加额 | | |
 | OtherCashToInvestAct| 支付的其他与投资活动有关的现金(元) | | |
-| SpecialItemsICOF| ##投资活动现金流出特殊项目 | | |
-| AdjustmentItemsICOF | ##投资活动现金流出调整项目 | | |
+| SpecialItemsICOF| 投资活动现金流出特殊项目 | | |
+| AdjustmentItemsICOF | 投资活动现金流出调整项目 | | |
 | SubtotalInvestCashOutflow | 投资活动现金流出小计(元) | | |
-| AdjustmentItemsNICF | ##投资活动现金流量净额调整项目 | | |
+| AdjustmentItemsNICF | 投资活动现金流量净额调整项目 | | |
 | NetInvestCashFlow | 投资活动产生的现金流量净额(元) | | |
 | CashFromInvest| 吸收投资收到的现金(元) | | |
 | CashFromMinoSInvestSub| 子公司吸收少数股东投资收到的现金| | |
 | CashFromBondsIssue| 发行债券收到的现金 | | |
 | CashFromBorrowing | 取得借款收到的现金 | | |
 | OtherFinanceActCash | 收到其他与筹资活动有关的现金 | | |
-| SpecialItemsFCIF| ##筹资活动现金流入特殊项目 | | |
-| AdjustmentItemsFCIF | ##筹资活动现金流入调整项目 | | |
+| SpecialItemsFCIF| 筹资活动现金流入特殊项目 | | |
+| AdjustmentItemsFCIF | 筹资活动现金流入调整项目 | | |
 | SubtotalFinanceCashInflow | 筹资活动现金流入小计(元) | | |
 | BorrowingRepayment| 偿还债务所支付的现金(元) | | |
 | DividendInterestPayment | 分配股利、利润或偿付利息支付的现金 | | |
 | ProceedsFromSubToMinoS| 子公司支付给少数股东的股利、利润或偿付的利息| | |
 | OtherFinanceActPayment| 支付的其他与筹资活动有关的现金(元) | | |
-| SpecialItemsFCOF| ##筹资活动现金流出特殊项目 | | |
-| AdjustmentItemsFCOF | ##筹资活动现金流出调整项目 | | |
+| SpecialItemsFCOF| 筹资活动现金流出特殊项目 | | |
+| AdjustmentItemsFCOF | 筹资活动现金流出调整项目 | | |
 | SubtotalFinanceCashOutflow| 筹资活动现金流出小计(元) | | |
-| AdjustmentItemsNFCF | ##筹资活动流量现金净额调整项目 | | |
+| AdjustmentItemsNFCF | 筹资活动流量现金净额调整项目 | | |
 | NetFinanceCashFlow| 筹资活动产生的现金流量净额(元) | | |
 | ExchanRateChangeEffect| 汇率变动对现金的影响额(元) | | |
-| OtherItemsEffectingCE | ##影响现金及现金等价物的其他科目 | | |
-| AdjustmentItemsCE | ##影响现金及现金等价物的调整项目 | | |
+| OtherItemsEffectingCE | 影响现金及现金等价物的其他科目 | | |
+| AdjustmentItemsCE | 影响现金及现金等价物的调整项目 | | |
 | CashEquivalentIncrease| 现金及现金等价物净增加额(元) | | |
 | BeginPeriodCash | 期初现金及现金等价物余额(元) | | |
-| OtherItemsEffectingCEI| ##现金及现金等价物净增加额的特殊项目 | | |
-| AdjustmentItemsCEI| ##现金及现金等价物净增加额的调整项目 | | |
+| OtherItemsEffectingCEI| 现金及现金等价物净增加额的特殊项目 | | |
+| AdjustmentItemsCEI| 现金及现金等价物净增加额的调整项目 | | |
 | EndPeriodCashEquivalent | 现金及现金等价物的期末余额(元) | | |
-| NetProfit | 四、净利润(元) | | |
+| NetProfit | 净利润(元) | | |
 | MinorityProfit| 少数股东损益(元) | | |
 | AssetsDepreciationReserves| 加:资产减值准备| | |
 | FixedAssetDepreciation| 固定资产折旧(元) | | |
@@ -104,10 +104,10 @@
 | OperateReceivableDecrease | 经营性应收项目的减少(减：增加)(元) | | |
 | OperatePayableIncrease| 经营性应付项目的增加 | | |
 | Others| 其他(元) | | |
-| SpecialItemsNOCF1 | ##(附注)经营活动现金流量净额特殊项目 | | |
-| AdjustmentItemsNOCF1| ##(附注)经营活动现金流量净额调整项目 | | |
+| SpecialItemsNOCF1 | (附注)经营活动现金流量净额特殊项目 | | |
+| AdjustmentItemsNOCF1| (附注)经营活动现金流量净额调整项目 | | |
 | NetOperateCashFlowNotes | (附注)经营活动产生的现金流量净额(元) | | |
-| ContrastAdjutmentNOCF | ##加:经营流量净额前后对比调整项目| | |
+| ContrastAdjutmentNOCF | 加:经营流量净额前后对比调整项目| | |
 | DebtToCaptical| 债务转为资本(元) | | |
 | CBsExpiringWithin1Y | 一年内到期的可转换公司债券 | | |
 | FixedAssetsFinanceLeases| 融资租入固定资产 | | |
@@ -115,10 +115,10 @@
 | CashAtBeginningOfYear | 减:现金的期初余额| | |
 | CashEquivalentsAtEndOfYear| 加:现金等价物的期末余额| | |
 | CashEquivalentsAtBeginning| 减:现金等价物的期初余额| | |
-| SpecialItemsC | ##(附注)现金特殊项目(元) | | |
-| AdjustmentItemsC| ##(附注)现金调整项目 | | |
+| SpecialItemsC | (附注)现金特殊项目(元) | | |
+| AdjustmentItemsC| (附注)现金调整项目 | | |
 | NetIncrInCashAndEquivalents | (附注)现金及现金等价物净增加额 | | |
-| ContrastAdjutmentNC | ##加:现金净额前后对比调整项目| | |
+| ContrastAdjutmentNC | 加:现金净额前后对比调整项目| | |
 | SpecialFieldRemark| 特殊字段说明 | | |
 | UpdateTime| 更新时间 | | |
 | JSID| JSID | | |

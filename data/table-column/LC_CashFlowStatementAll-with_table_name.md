@@ -23,8 +23,8 @@
 | LC_CashFlowStatementAll | NetReinsuranceCash| 收到再保业务现金净额 | 收到再保业务现金净额（NetReinsuranceCash） — 一般为金融类：保险公司披露科目。 | Received net reinsurance cash (Net Reinsurance Cash) — usually financial: disclosed by insurance companies. |
 | LC_CashFlowStatementAll | NetInsurerDepositInvestment | 保户储金及投资款净增加额 | 保户储金及投资款净增加额（NetInsurerDepositInvestment） — 一般为金融类：保险公司披露科目。| Net Increase in Policyholder Deposits and Investment Funds (NetInsurerDepositInvestment) — Generally financial in nature: disclosed item by insurance companies.|
 | LC_CashFlowStatementAll | OtherCashInRelatedOperate | 收到的其他与经营活动有关的现金(元) | | |
-| LC_CashFlowStatementAll | SpecialItemsOCIF| ##经营活动现金流入特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsOCIF | ##经营活动现金流入调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsOCIF| 经营活动现金流入特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsOCIF | 经营活动现金流入调整项目 | | |
 | LC_CashFlowStatementAll | SubtotalOperateCashInflow | 经营活动现金流入小计(元) | | |
 | LC_CashFlowStatementAll | GoodsServicesCashPaid | 购买商品和劳务所支付的现金(元) | | |
 | LC_CashFlowStatementAll | StaffBehalfPaid | 支付给职工以及为职工支付的现金(元) | | |
@@ -37,55 +37,55 @@
 | LC_CashFlowStatementAll | NetCashForReinsurance | 支付再保业务现金净额 | 支付再保业务现金净额（NetCashForReinsurance）：一般为金融类:保险公司披露科目| Net Cash for Reinsurance: Generally falls under the financial category: disclosed by insurance companies. |
 | LC_CashFlowStatementAll | PolicyDividendCashPaid| 支付保单红利的现金 | 支付保单红利的现金（PolicyDividendCashPaid）：一般为金融类:保险公司披露科目 | Cash paid for policy dividends (PolicyDividendCashPaid): usually financial category: insurance company discloses the subject|
 | LC_CashFlowStatementAll | OtherOperateCashPaid| 支付的其他与经营活动有关的现金(元) | | |
-| LC_CashFlowStatementAll | SpecialItemsOCOF| ##经营活动现金流出特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsOCOF | ##经营活动现金流出调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsOCOF| 经营活动现金流出特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsOCOF | 经营活动现金流出调整项目 | | |
 | LC_CashFlowStatementAll | SubtotalOperateCashOutflow| 经营活动现金流出小计(元) | | |
-| LC_CashFlowStatementAll | AdjustmentItemsNOCF | ##经营活动现金流量净额调整项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsNOCF | 经营活动现金流量净额调整项目 | | |
 | LC_CashFlowStatementAll | NetOperateCashFlow| 经营活动产生的现金流量净额(元) | | |
 | LC_CashFlowStatementAll | InvestWithdrawalCash| 收回投资所收到的现金(元) | | |
 | LC_CashFlowStatementAll | Investproceeds| 取得投资收益收到的现金(元) | | |
 | LC_CashFlowStatementAll | FixIntanOtherAssetDispoCash | 处置固定资产、无形资产和其他长期资产而收回的现金净额(元) | | |
 | LC_CashFlowStatementAll | NetCashDealSubCompany | 处置子公司及其他营业单位收到的现金净额 | | |
 | LC_CashFlowStatementAll | OtherCashFromInvestAct| 收到的其他与投资活动有关的现金(元) | | |
-| LC_CashFlowStatementAll | SpecialItemsICIF| ##投资活动现金流入特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsICIF | ##投资活动现金流入调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsICIF| 投资活动现金流入特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsICIF | 投资活动现金流入调整项目 | | |
 | LC_CashFlowStatementAll | SubtotalInvestCashInflow| 投资活动现金流入小计(元) | | |
 | LC_CashFlowStatementAll | FixIntanOtherAssetAcquiCash | 购建固定资产、无形资产和其他长期资产所支付的现金(元) | | |
 | LC_CashFlowStatementAll | InvestCashPaid| 投资支付的现金(元) | | |
 | LC_CashFlowStatementAll | NetCashFromSubCompany | 取得子公司及其他营业单位支付的现金净额 | | |
 | LC_CashFlowStatementAll | ImpawnedLoanNetIncrease | 质押贷款净增加额 | | |
 | LC_CashFlowStatementAll | OtherCashToInvestAct| 支付的其他与投资活动有关的现金(元) | | |
-| LC_CashFlowStatementAll | SpecialItemsICOF| ##投资活动现金流出特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsICOF | ##投资活动现金流出调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsICOF| 投资活动现金流出特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsICOF | 投资活动现金流出调整项目 | | |
 | LC_CashFlowStatementAll | SubtotalInvestCashOutflow | 投资活动现金流出小计(元) | | |
-| LC_CashFlowStatementAll | AdjustmentItemsNICF | ##投资活动现金流量净额调整项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsNICF | 投资活动现金流量净额调整项目 | | |
 | LC_CashFlowStatementAll | NetInvestCashFlow | 投资活动产生的现金流量净额(元) | | |
 | LC_CashFlowStatementAll | CashFromInvest| 吸收投资收到的现金(元) | | |
 | LC_CashFlowStatementAll | CashFromMinoSInvestSub| 子公司吸收少数股东投资收到的现金| | |
 | LC_CashFlowStatementAll | CashFromBondsIssue| 发行债券收到的现金 | | |
 | LC_CashFlowStatementAll | CashFromBorrowing | 取得借款收到的现金 | | |
 | LC_CashFlowStatementAll | OtherFinanceActCash | 收到其他与筹资活动有关的现金 | | |
-| LC_CashFlowStatementAll | SpecialItemsFCIF| ##筹资活动现金流入特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsFCIF | ##筹资活动现金流入调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsFCIF| 筹资活动现金流入特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsFCIF | 筹资活动现金流入调整项目 | | |
 | LC_CashFlowStatementAll | SubtotalFinanceCashInflow | 筹资活动现金流入小计(元) | | |
 | LC_CashFlowStatementAll | BorrowingRepayment| 偿还债务所支付的现金(元) | | |
 | LC_CashFlowStatementAll | DividendInterestPayment | 分配股利、利润或偿付利息支付的现金 | | |
 | LC_CashFlowStatementAll | ProceedsFromSubToMinoS| 子公司支付给少数股东的股利、利润或偿付的利息| | |
 | LC_CashFlowStatementAll | OtherFinanceActPayment| 支付的其他与筹资活动有关的现金(元) | | |
-| LC_CashFlowStatementAll | SpecialItemsFCOF| ##筹资活动现金流出特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsFCOF | ##筹资活动现金流出调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsFCOF| 筹资活动现金流出特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsFCOF | 筹资活动现金流出调整项目 | | |
 | LC_CashFlowStatementAll | SubtotalFinanceCashOutflow| 筹资活动现金流出小计(元) | | |
-| LC_CashFlowStatementAll | AdjustmentItemsNFCF | ##筹资活动流量现金净额调整项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsNFCF | 筹资活动流量现金净额调整项目 | | |
 | LC_CashFlowStatementAll | NetFinanceCashFlow| 筹资活动产生的现金流量净额(元) | | |
 | LC_CashFlowStatementAll | ExchanRateChangeEffect| 汇率变动对现金的影响额(元) | | |
-| LC_CashFlowStatementAll | OtherItemsEffectingCE | ##影响现金及现金等价物的其他科目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsCE | ##影响现金及现金等价物的调整项目 | | |
+| LC_CashFlowStatementAll | OtherItemsEffectingCE | 影响现金及现金等价物的其他科目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsCE | 影响现金及现金等价物的调整项目 | | |
 | LC_CashFlowStatementAll | CashEquivalentIncrease| 现金及现金等价物净增加额(元) | | |
 | LC_CashFlowStatementAll | BeginPeriodCash | 期初现金及现金等价物余额(元) | | |
-| LC_CashFlowStatementAll | OtherItemsEffectingCEI| ##现金及现金等价物净增加额的特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsCEI| ##现金及现金等价物净增加额的调整项目 | | |
+| LC_CashFlowStatementAll | OtherItemsEffectingCEI| 现金及现金等价物净增加额的特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsCEI| 现金及现金等价物净增加额的调整项目 | | |
 | LC_CashFlowStatementAll | EndPeriodCashEquivalent | 现金及现金等价物的期末余额(元) | | |
-| LC_CashFlowStatementAll | NetProfit | 四、净利润(元) | | |
+| LC_CashFlowStatementAll | NetProfit | 净利润(元) | | |
 | LC_CashFlowStatementAll | MinorityProfit| 少数股东损益(元) | | |
 | LC_CashFlowStatementAll | AssetsDepreciationReserves| 加:资产减值准备| | |
 | LC_CashFlowStatementAll | FixedAssetDepreciation| 固定资产折旧(元) | | |
@@ -104,10 +104,10 @@
 | LC_CashFlowStatementAll | OperateReceivableDecrease | 经营性应收项目的减少(减：增加)(元) | | |
 | LC_CashFlowStatementAll | OperatePayableIncrease| 经营性应付项目的增加 | | |
 | LC_CashFlowStatementAll | Others| 其他(元) | | |
-| LC_CashFlowStatementAll | SpecialItemsNOCF1 | ##(附注)经营活动现金流量净额特殊项目 | | |
-| LC_CashFlowStatementAll | AdjustmentItemsNOCF1| ##(附注)经营活动现金流量净额调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsNOCF1 | (附注)经营活动现金流量净额特殊项目 | | |
+| LC_CashFlowStatementAll | AdjustmentItemsNOCF1| (附注)经营活动现金流量净额调整项目 | | |
 | LC_CashFlowStatementAll | NetOperateCashFlowNotes | (附注)经营活动产生的现金流量净额(元) | | |
-| LC_CashFlowStatementAll | ContrastAdjutmentNOCF | ##加:经营流量净额前后对比调整项目| | |
+| LC_CashFlowStatementAll | ContrastAdjutmentNOCF | 加:经营流量净额前后对比调整项目| | |
 | LC_CashFlowStatementAll | DebtToCaptical| 债务转为资本(元) | | |
 | LC_CashFlowStatementAll | CBsExpiringWithin1Y | 一年内到期的可转换公司债券 | | |
 | LC_CashFlowStatementAll | FixedAssetsFinanceLeases| 融资租入固定资产 | | |
@@ -115,10 +115,10 @@
 | LC_CashFlowStatementAll | CashAtBeginningOfYear | 减:现金的期初余额| | |
 | LC_CashFlowStatementAll | CashEquivalentsAtEndOfYear| 加:现金等价物的期末余额| | |
 | LC_CashFlowStatementAll | CashEquivalentsAtBeginning| 减:现金等价物的期初余额| | |
-| LC_CashFlowStatementAll | SpecialItemsC | ##(附注)现金特殊项目(元) | | |
-| LC_CashFlowStatementAll | AdjustmentItemsC| ##(附注)现金调整项目 | | |
+| LC_CashFlowStatementAll | SpecialItemsC | (附注)现金特殊项目(元) | | |
+| LC_CashFlowStatementAll | AdjustmentItemsC| (附注)现金调整项目 | | |
 | LC_CashFlowStatementAll | NetIncrInCashAndEquivalents | (附注)现金及现金等价物净增加额 | | |
-| LC_CashFlowStatementAll | ContrastAdjutmentNC | ##加:现金净额前后对比调整项目| | |
+| LC_CashFlowStatementAll | ContrastAdjutmentNC | 加:现金净额前后对比调整项目| | |
 | LC_CashFlowStatementAll | SpecialFieldRemark| 特殊字段说明 | | |
 | LC_CashFlowStatementAll | UpdateTime| 更新时间 | | |
 | LC_CashFlowStatementAll | JSID| JSID | | |

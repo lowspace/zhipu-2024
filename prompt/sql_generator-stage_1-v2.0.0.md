@@ -17,7 +17,9 @@ Your output should **ALWAYS** follow this JSON format:
 
 ### SQL Query Generating Requirements
 
--  **Day, Date Format**: While the condition including a **date** column, u should use "{Date} LIKE '{YEAR}-{MONTH}-{DAY}%' format to frame that column.
+-  具体的日期（年-月-日）格式应参考： `date(date) = 'YYYY-MM-DD'`。
+-  某一年的格式参考year()函数，比如 `year(YYYY)`
+-  查询「年度报告」的时候，应该参考： `date(EndDate) = 'YYYY-12-31'`
 - **`FROM` Format**: Your should always `FROM` in `{database}.{table}` format.
 
 ### SQL CoT Reasoning Requirements

@@ -23,8 +23,8 @@
 | LC_AShareSeasonedNewIssue | OverAllotmentOption| 超额配售权(股) || |
 | LC_AShareSeasonedNewIssue | IssueStartDate | 发行日期上限 || |
 | LC_AShareSeasonedNewIssue | IssueEndDate | 发行日期下限 || |
-| LC_AShareSeasonedNewIssue | UnderwritingStartDate| *承销期上限|| |
-| LC_AShareSeasonedNewIssue | UnderwritingEndDate| *承销期下限|| |
+| LC_AShareSeasonedNewIssue | UnderwritingStartDate| 承销期上限|| |
+| LC_AShareSeasonedNewIssue | UnderwritingEndDate| 承销期下限|| |
 | LC_AShareSeasonedNewIssue | IfExRightAShare| A股除权与否| A股除权与否（IfExRightAShare）：固定常量：1->是0->否 | Whether A-share is ex-right (IfExRightAShare): Fixed constant: 1 -> Yes, 0 -> No|
 | LC_AShareSeasonedNewIssue | RightRegDate | 股权登记日 || |
 | LC_AShareSeasonedNewIssue | ExRightDate| 除权日 || |
@@ -47,10 +47,10 @@
 | LC_AShareSeasonedNewIssue | ApplyMinLPOffline| 法人网下配售申购下限(股) || |
 | LC_AShareSeasonedNewIssue | ApplyMaxLPOffline| 法人网下配售申购上限(股) || |
 | LC_AShareSeasonedNewIssue | ValidApplyTimesLPOffline | 法人网下配售有效申购次数限定 | 法人网下配售有效申购次数限定(ValidApplyTimesLPOffline)与(CT_SystemConst)表中的DM字段关联，令LB = 1195，得到法人网下配售有效申购次数限定的具体描述：1-多次申购，2-一次申购。| The valid application times for offline allocation to legal persons (ValidApplyTimesLPOffline) is associated with the DM field in the CT_SystemConst table. When LB equals 1195, the specific description for the valid application times for offline allocation to legal persons is: 1 for multiple applications, 2 for a single application.|
-| LC_AShareSeasonedNewIssue | ApplyStartDateF| *基金优先配售申购日期上限|| |
-| LC_AShareSeasonedNewIssue | ApplyEndDateF| *基金优先配售申购日期下限|| |
-| LC_AShareSeasonedNewIssue | PayStartDateF| *基金优先配售缴款期下限|| |
-| LC_AShareSeasonedNewIssue | PayEndDateF| *基金优先配售缴款期上限|| |
+| LC_AShareSeasonedNewIssue | ApplyStartDateF| 基金优先配售申购日期上限|| |
+| LC_AShareSeasonedNewIssue | ApplyEndDateF| 基金优先配售申购日期下限|| |
+| LC_AShareSeasonedNewIssue | PayStartDateF| 基金优先配售缴款期下限|| |
+| LC_AShareSeasonedNewIssue | PayEndDateF| 基金优先配售缴款期上限|| |
 | LC_AShareSeasonedNewIssue | PrefAllotmentF | 投资基金配售限额(股) || |
 | LC_AShareSeasonedNewIssue | PrefAllotmentSingleF | 单个基金配售限额(股) || |
 | LC_AShareSeasonedNewIssue | STAQNETPlaStartDate| STAQ/NET定向配售时间起始日 || |
@@ -61,11 +61,11 @@
 | LC_AShareSeasonedNewIssue | OddLotsTreatment | 零股处理方法 || |
 | LC_AShareSeasonedNewIssue | ParValue | 面值(人民币) || |
 | LC_AShareSeasonedNewIssue | IssuePrice | 实际发行价(元) || |
-| LC_AShareSeasonedNewIssue | StateSharesIssuePrice| *国有股存量发行每股发行价(元)|| |
+| LC_AShareSeasonedNewIssue | StateSharesIssuePrice| 国有股存量发行每股发行价(元)|| |
 | LC_AShareSeasonedNewIssue | WeightedPERatio| 发行市盈率(加权平均)(倍) || |
 | LC_AShareSeasonedNewIssue | DilutedPERatio | 发行市盈率(全面摊薄)(倍) || |
 | LC_AShareSeasonedNewIssue | IssueVol | 发行量(股) || |
-| LC_AShareSeasonedNewIssue | StateSharesIssued| *国有股存量发行股数(股)|| |
+| LC_AShareSeasonedNewIssue | StateSharesIssued| 国有股存量发行股数(股)|| |
 | LC_AShareSeasonedNewIssue | TotalIssueMV | 发行总市值(元) || |
 | LC_AShareSeasonedNewIssue | IssueCost| 发行费用总额(元) || |
 | LC_AShareSeasonedNewIssue | UnderwritingFee| 承销费用(元) || |
@@ -82,8 +82,8 @@
 | LC_AShareSeasonedNewIssue | FreezedMoney | 冻结资金(元) || |
 | LC_AShareSeasonedNewIssue | SNIProceeds| 增发新股募集资金总额(元) || |
 | LC_AShareSeasonedNewIssue | SNINetProceeds | 增发新股募集资金净额(元) || |
-| LC_AShareSeasonedNewIssue | StateSharesProceeds| *国有股存量发行收入总额(元)|| |
-| LC_AShareSeasonedNewIssue | StateSharesNetProceeds | *国有股存量发行收入净额(元)|| |
+| LC_AShareSeasonedNewIssue | StateSharesProceeds| 国有股存量发行收入总额(元)|| |
+| LC_AShareSeasonedNewIssue | StateSharesNetProceeds | 国有股存量发行收入净额(元)|| |
 | LC_AShareSeasonedNewIssue | MoneyToAccount | 募集资金到帐金额(元) || |
 | LC_AShareSeasonedNewIssue | DateToAccount| 募集资金到帐时间 || |
 | LC_AShareSeasonedNewIssue | NewShareListDate | 增发股份上市日期 || |

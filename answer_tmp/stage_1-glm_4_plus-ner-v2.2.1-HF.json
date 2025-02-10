@@ -3228,30 +3228,7 @@
             },
             {
               "query": "SELECT * FROM ConstantDB.SecuMain WHERE '嘉实超短债债券A' IN (ChiName, ChiNameAbbr, EngName, EngNameAbbr, SecuAbbr, ChiSpelling) LIMIT 1",
-              "result": [
-                {
-                  "ID": 677756000000,
-                  "InnerCode": 381528,
-                  "CompanyCode": 643820,
-                  "SecuCode": "12773",
-                  "ChiName": "嘉实超短债证券投资基金A类",
-                  "ChiNameAbbr": "嘉实超短债A",
-                  "EngName": "Harvest Ultra Short-term Bond Fund-A",
-                  "EngNameAbbr": null,
-                  "SecuAbbr": "嘉实超短债债券A",
-                  "ChiSpelling": "JSCDZZQA",
-                  "SecuMarket": null,
-                  "SecuCategory": 8,
-                  "ListedDate": null,
-                  "ListedSector": 4,
-                  "ListedState": 1,
-                  "XGRQ": "06:11.0",
-                  "JSID": 724757000000,
-                  "ISIN": null,
-                  "ExtendedAbbr": null,
-                  "ExtendedSpelling": null
-                }
-              ]
+              "result": []
             }
           ]
         }
