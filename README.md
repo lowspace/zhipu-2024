@@ -205,3 +205,5 @@ flowchart LR
             2.  修改 Few-shot 示例中的 CoT 过程和措辞，使其风格与模型偏好保持一致。
             3.  根据出现的 Bad Case，针对性地调整 Instruction 中的规则描述或 Few-shot 示例的内容。
             4.  在必要时，增加规则约束或增加 Few-shot 示例的数量。
+
+一些不成熟的反思：https://github.com/lowspace/zhipu-2024/discussions/43
